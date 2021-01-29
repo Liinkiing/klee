@@ -31,8 +31,16 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint src"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{css,json,md}": [
+      "npx prettier --write"
+    ],
+    "*.{js,ts,jsx,tsx}": [
+      "npx tsdx lint src --fix"
+    ]
   },
   "name": "@liinkiing/klee",
   "author": "Omar Jbara <omar.jbara2@gmail.com>",
