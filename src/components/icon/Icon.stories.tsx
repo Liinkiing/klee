@@ -18,7 +18,7 @@ const meta: Meta = {
   title: 'Icon',
   component: Icon,
   args: {
-    color: 'rgb(255,0,0)',
+    color: 'rgb(0,0,0)',
   },
   argTypes: {
     color: {
