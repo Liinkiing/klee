@@ -40,7 +40,7 @@ import type {
 } from '../../styles/theme/typography'
 import { ThemeColorsValues } from '../../styles/modules/colors'
 
-type AppBoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
+type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 
 export enum FontSize {
   Xs = 'xs',
@@ -279,18 +279,18 @@ interface CustomBoxProps {
   readonly ref?: any
 }
 
-export type AppBoxProps = AppBoxHTMLProps & CustomBoxProps & StyledSystemProps & ModifiedStyledSystemProps
+export type BoxProps = BoxHTMLProps & CustomBoxProps & StyledSystemProps & ModifiedStyledSystemProps
 
 type PropsOf<E extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<
   E,
   ComponentPropsWithRef<E>
 >
 
-export interface AppBoxOwnProps<E extends ElementType = ElementType> extends AppBoxProps {
+export interface BoxOwnProps<E extends ElementType = ElementType> extends BoxProps {
   as?: E
 }
 
-export type PolymorphicBoxProps<E extends ElementType> = AppBoxOwnProps<E> & Omit<PropsOf<E>, keyof AppBoxOwnProps>
+export type PolymorphicBoxProps<E extends ElementType> = BoxOwnProps<E> & Omit<PropsOf<E>, keyof BoxOwnProps>
 
 export type PolymorphicComponentProps<E extends ElementType, P> = P & PolymorphicBoxProps<E>
 
@@ -308,11 +308,11 @@ export const Spacing = {
   Xl3: Number(SPACES_SCALES[8].replace('rem', '')) * 16,
 } as const
 
-const AppBox = styled('div').withConfig({
+const Box = styled('div').withConfig({
   shouldForwardProp: prop => {
     return shouldForwardProp(prop)
   },
-})<AppBoxProps>(
+})<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
   }),
@@ -339,9 +339,9 @@ const AppBox = styled('div').withConfig({
   ),
 )
 
-AppBox.displayName = 'AppBox'
+Box.displayName = 'Box'
 
-export type PolymorphicAppBox = <E extends ElementType = typeof defaultElement>(
+export type PolymorphicBox = <E extends ElementType = typeof defaultElement>(
   props: PolymorphicBoxProps<E>,
 ) => JSX.Element
 
@@ -349,4 +349,4 @@ export type PolymorphicComponent<P> = <E extends ElementType = typeof defaultEle
   props: PolymorphicComponentProps<E, P>,
 ) => JSX.Element
 
-export default AppBox as PolymorphicAppBox
+export default Box as PolymorphicBox

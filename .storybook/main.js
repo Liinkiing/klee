@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 const EXLUDED_DOCGEN_PROPS = [
   'uppercase',
@@ -13,16 +13,16 @@ const EXLUDED_DOCGEN_PROPS = [
   'fontFamily',
   'lineHeight',
   'css',
-];
+]
 
 module.exports = {
   webpackFinal: async config => {
-    config.resolve.alias['~'] = path.join(__dirname, '../src');
-    config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.alias['~'] = path.join(__dirname, '../src')
+    config.resolve.extensions.push('.ts', '.tsx')
 
     return {
       ...config,
-    };
+    }
   },
   stories: ['../src/**/*.stories.@(ts|tsx|js|jsx)'],
   addons: [
@@ -37,17 +37,17 @@ module.exports = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop, component) => {
-        if (component.name === 'AppBox') {
-          return false;
+        if (component.name === 'Box') {
+          return false
         }
         if (EXLUDED_DOCGEN_PROPS.includes(prop.name)) {
-          return false;
+          return false
         }
         if (prop.parent && /node_modules/.test(prop.parent.fileName)) {
-          return false;
+          return false
         }
 
-        return true;
+        return true
       },
 
       compilerOptions: {
@@ -56,4 +56,4 @@ module.exports = {
       },
     },
   },
-};
+}

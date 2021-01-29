@@ -1,8 +1,8 @@
-import AppBox, { AppBoxOwnProps, LineHeight, PolymorphicComponent } from '../primitives/AppBox'
+import Box, { BoxOwnProps, LineHeight, PolymorphicComponent } from '../primitives/Box'
 import jsxInnerText from '../../utils/jsx'
 import React, { forwardRef } from 'react'
 
-type Props = AppBoxOwnProps & {
+type Props = BoxOwnProps & {
   readonly truncate?: number
 }
 
@@ -13,7 +13,7 @@ const Text = forwardRef<HTMLElement, Props>(({ children, truncate, ...props }, r
     content = `${innerText.slice(0, truncate)}…`
   }
   return (
-    <AppBox
+    <Box
       ref={ref}
       as="p"
       fontFamily="body"
@@ -22,7 +22,7 @@ const Text = forwardRef<HTMLElement, Props>(({ children, truncate, ...props }, r
       {...props}
     >
       {content}
-    </AppBox>
+    </Box>
   )
 })
 

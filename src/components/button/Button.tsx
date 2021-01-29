@@ -1,14 +1,14 @@
 import React, { FC, forwardRef } from 'react'
-import AppBox, { AppBoxProps, FontFamily, PolymorphicComponent } from '../primitives/AppBox'
+import Box, { BoxProps, FontFamily, PolymorphicComponent } from '../primitives/Box'
 import styled from 'styled-components'
 import { variant as systemVariant } from 'styled-system'
 import colors from '../../styles/modules/colors'
 
-export interface ButtonProps extends AppBoxProps {
+export interface ButtonProps extends BoxProps {
   readonly variant?: 'primary' | 'secondary'
 }
 
-const InnerButton = styled(AppBox)(
+const InnerButton = styled(Box)(
   {
     transition: 'background 0.2s, box-shadow 0.3s',
     outline: 'none',

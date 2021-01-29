@@ -1,4 +1,4 @@
-import AppBox, { AppBoxProps, PolymorphicComponent } from '../primitives/AppBox'
+import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import { GridProps as StyledGridProps } from 'styled-system'
 import React, { forwardRef } from 'react'
 
@@ -25,7 +25,7 @@ export interface GridOptions {
 }
 
 export type GridProps = Omit<
-  AppBoxProps,
+  BoxProps,
   | 'templateColumns'
   | 'gap'
   | 'rowGap'
@@ -81,7 +81,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
       }),
   }
   return (
-    <AppBox
+    <Box
       display={display}
       gridTemplateColumns={templateColumns}
       gridGap={gap}

@@ -1,16 +1,16 @@
 export { default as Button } from './components/button'
 export {
-  default as AppBox,
+  default as Box,
   FontSize,
   FontWeight,
   FontFamily,
-  AppBoxProps,
-  PolymorphicAppBox,
+  BoxProps,
+  PolymorphicBox,
   PolymorphicComponent,
   LineHeight,
   LetterSpacing,
   Spacing,
-} from './components/primitives/AppBox'
+} from './components/primitives/Box'
 export { default as Text } from './components/typography/Text'
 export { default as Heading, HeadingSize } from './components/typography/Heading'
 export { default as Flex, FlexProps } from './components/layout/Flex'
