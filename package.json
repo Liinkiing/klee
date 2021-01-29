@@ -91,6 +91,7 @@
     "@styled-system/should-forward-prop": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
     "framer-motion": "^3.2.2-rc.1",
+    "react-icons": "^4.1.0",
     "styled-system": "^5.1.5",
     "tiny-invariant": "^1.1.0",
     "tiny-warning": "^1.0.3"
