@@ -36,7 +36,7 @@
     "trailingComma": "es5"
   },
   "name": "@liinkiing/klee",
-  "author": "Omar Jbara",
+  "author": "Omar Jbara <omar.jbara2@gmail.com>",
   "module": "dist/klee.esm.js",
   "size-limit": [
     {
