@@ -1,8 +1,8 @@
 import type { DefaultTheme } from 'styled-components';
-import type { Breakpoints } from '~/@types/styled-components/theme';
-import { pxToRem } from '~/styles/modules/mixins';
-import typography from '~/styles/theme/typography';
-import colors from '~/styles/modules/colors';
+import type { Breakpoints } from '../../@types/styled-components/theme';
+import { pxToRem } from '../modules/mixins';
+import typography from './typography';
+import colors from '../modules/colors';
 
 /* eslint-disable @typescript-eslint/ban-types */
 

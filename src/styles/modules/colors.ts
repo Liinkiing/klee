@@ -3,10 +3,10 @@ const colors = {
   transparent: 'transparent',
   current: 'currentColor',
   dark: '#30363D',
-  
+
   black: '#000',
   white: '#fff',
-  
+
   rose: {
     '50': '#fff1f2',
     '100': '#ffe4e6',
@@ -273,43 +273,44 @@ const colors = {
   },
 } as const;
 
-type Colors =
-  | 'rose'
-  | 'pink'
-  | 'fuchsia'
-  | 'purple'
-  | 'violet'
-  | 'indigo'
-  | 'blue'
-  | 'cyan'
-  | 'teal'
-  | 'emerald'
-  | 'green'
-  | 'lime'
-  | 'yellow'
-  | 'amber'
-  | 'orange'
-  | 'red'
-  | 'gray'
-  | 'light-blue'
-  | 'warm-gray'
-  | 'true-gray'
-  | 'cool-gray'
-  | 'blue-gray';
-
-type Shading =
-  | '50'
-  | '100'
-  | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '900';
+// type Colors =
+//   | 'rose'
+//   | 'pink'
+//   | 'fuchsia'
+//   | 'purple'
+//   | 'violet'
+//   | 'indigo'
+//   | 'blue'
+//   | 'cyan'
+//   | 'teal'
+//   | 'emerald'
+//   | 'green'
+//   | 'lime'
+//   | 'yellow'
+//   | 'amber'
+//   | 'orange'
+//   | 'red'
+//   | 'gray'
+//   | 'light-blue'
+//   | 'warm-gray'
+//   | 'true-gray'
+//   | 'cool-gray'
+//   | 'blue-gray';
+//
+// type Shading =
+//   | '50'
+//   | '100'
+//   | '200'
+//   | '300'
+//   | '400'
+//   | '500'
+//   | '600'
+//   | '700'
+//   | '800'
+//   | '900';
 
 // seems to cause rollup not to compile... weird, so currently defining here all the colors
+// looks like tsdx is using a rollup plugin which does not understand quite the new TS template litterals types
 // type PathsToStringProps<T> = T extends string
 //   ? []
 //   : {
@@ -328,11 +329,6 @@ type Shading =
 //     : never
 //   : string;
 
-export type ThemeColorsValues = `${Colors}.${Shading}`
-  | 'transparent'
-  | 'current'
-  | 'dark'
-  | 'black'
-  | 'white'
+export type ThemeColorsValues = string;
 
 export default colors;

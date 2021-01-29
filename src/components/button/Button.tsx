@@ -3,10 +3,10 @@ import AppBox, {
   AppBoxProps,
   FontFamily,
   PolymorphicComponent,
-} from '~/components/primitives/AppBox';
+} from '../primitives/AppBox';
 import styled from 'styled-components';
 import { variant as systemVariant } from 'styled-system';
-import colors from '~/styles/modules/colors';
+import colors from '../../styles/modules/colors';
 
 export interface ButtonProps extends AppBoxProps {
   readonly variant?: 'primary' | 'secondary';
@@ -24,7 +24,6 @@ const InnerButton = styled(AppBox)(
     variants: {
       primary: {
         bg: 'indigo.500',
-        color: 'indigo.100',
         '&:hover': {
           bg: 'indigo.600',
           '&:focus': {
@@ -41,7 +40,6 @@ const InnerButton = styled(AppBox)(
       },
       secondary: {
         bg: 'blue.500',
-        color: 'blue.100',
         '&:hover': {
           bg: 'blue.600',
           '&:focus': {
@@ -75,6 +73,7 @@ export const Button: FC<ButtonProps> = forwardRef<
       fontFamily={FontFamily.Body}
       ref={ref}
       as="button"
+      color="white"
       variant={variant}
       {...props}
     >

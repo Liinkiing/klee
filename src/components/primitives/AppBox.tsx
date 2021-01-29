@@ -29,7 +29,7 @@ import {
   ThemeRadiiValues,
   ThemeShadowsValues,
   ThemeZIndicesValues,
-} from '~/styles/theme'
+} from '../../styles/theme'
 import * as CSS from 'csstype'
 import type {
   ThemeFontSizesValues,
@@ -37,8 +37,8 @@ import type {
   ThemeFontWeightsValues,
   ThemeLetterSpacingsValues,
   ThemeLineHeightsValues,
-} from '~/styles/theme/typography'
-import { ThemeColorsValues } from '~/styles/modules/colors';
+} from '../../styles/theme/typography'
+import { ThemeColorsValues } from '../../styles/modules/colors';
 
 type AppBoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 

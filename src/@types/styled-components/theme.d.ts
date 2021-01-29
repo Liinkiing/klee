@@ -1,13 +1,13 @@
 import 'styled-components';
-import colors from '~/styles/modules/colors';
-import { BORDERS, RADII, SHADOWS, Z_INDICES } from '~/styles/theme/base';
+import colors from '../../styles/modules/colors';
+import { BORDERS, RADII, SHADOWS, Z_INDICES } from '../../styles/theme';
 import {
   FONT_FAMILIES,
   FONT_SIZES,
   FONT_WEIGHTS,
   LETTER_SPACINGS,
   LINE_HEIGHTS,
-} from '~/styles/theme/typography';
+} from '../../styles/theme/typography';
 
 export interface Breakpoints {
   tablet: string;

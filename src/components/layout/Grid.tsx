@@ -1,7 +1,7 @@
 import AppBox, {
   AppBoxProps,
   PolymorphicComponent,
-} from '~/components/primitives/AppBox';
+} from '../primitives/AppBox';
 import { GridProps as StyledGridProps } from 'styled-system';
 import React, { forwardRef } from 'react';
 
@@ -60,6 +60,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
     row,
     autoFit,
     autoFill,
+    display = 'grid',
     ...rest
   } = props;
   const styles = {
@@ -86,7 +87,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
   };
   return (
     <AppBox
-      display="grid"
+      display={display}
       gridTemplateColumns={templateColumns}
       gridGap={gap}
       gridRowGap={rowGap}

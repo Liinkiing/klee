@@ -1,5 +1,5 @@
-import { Breakpoints } from '~/@types/styled-components/theme';
-import { breakpoints } from '~/styles/theme';
+import { Breakpoints } from '../../@types/styled-components/theme';
+import { breakpoints } from '../theme';
 
 export const BREAKPOINTS: Breakpoints = breakpoints;
 

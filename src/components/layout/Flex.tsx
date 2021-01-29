@@ -1,8 +1,8 @@
 import AppBox, {
   AppBoxProps,
   PolymorphicComponent,
-} from '~/components/primitives/AppBox';
-import useTheme from '~/hooks/useTheme';
+} from '../primitives/AppBox';
+import useTheme from '../../hooks/useTheme';
 import { FlexboxProps } from 'styled-system';
 import React, { forwardRef } from 'react';
 
@@ -19,7 +19,6 @@ export interface FlexOptions {
 
 export type FlexProps = Omit<
   AppBoxProps,
-  | 'display'
   | 'flexDirection'
   | 'alignItems'
   | 'justifyContent'
@@ -39,6 +38,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
     basis,
     grow,
     spacing: userSpacing,
+    display = 'flex',
     ...rest
   } = props;
   const theme = useTheme();
@@ -92,7 +92,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
 
   return (
     <AppBox
-      display="flex"
+      display={display}
       flexDirection={direction}
       alignItems={align}
       justifyContent={justify}

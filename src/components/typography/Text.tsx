@@ -2,8 +2,8 @@ import AppBox, {
   AppBoxOwnProps,
   LineHeight,
   PolymorphicComponent,
-} from '~/components/primitives/AppBox';
-import jsxInnerText from '~/utils/jsx';
+} from '../primitives/AppBox';
+import jsxInnerText from '../../utils/jsx';
 import React, { forwardRef } from 'react';
 
 type Props = AppBoxOwnProps & {
