@@ -78,6 +78,8 @@
     "@styled-system/should-forward-prop": "^5.1.5",
     "framer-motion": "^3.2.2-rc.1",
     "styled-components": "^5.2.1",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "tiny-invariant": "^1.1.0",
+    "tiny-warning": "^1.0.3"
   }
 }
