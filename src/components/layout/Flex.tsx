@@ -1,10 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
+import { jsx, useTheme } from '@emotion/react'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import { FlexboxProps } from 'styled-system'
-import { forwardRef } from 'react'
-import { useTheme } from '@emotion/react'
+import { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
+import { cleanChildren, hasProps } from '../../utils/jsx'
 
 export interface FlexOptions {
   align?: FlexboxProps['alignItems']
@@ -23,6 +23,30 @@ export type FlexProps = Omit<
 > &
   FlexOptions
 
+const getChildren = (children: ReactNode) => {
+  const style = {
+    marginLeft: 0,
+    marginTop: 0,
+  }
+  if (typeof children === 'string') {
+    return children
+  }
+
+  if (Array.isArray(children)) {
+    return cleanChildren(children).map((c, i) =>
+      cloneElement(c as ReactElement, {
+        ...(i === 0 ? { style } : {}),
+      }),
+    )
+  }
+
+  if (hasProps(children)) {
+    return cloneElement(children as ReactElement, { style })
+  }
+
+  return children
+}
+
 const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
   const {
     direction = 'row',
@@ -33,6 +57,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
     grow,
     spacing: userSpacing,
     display = 'flex',
+    children,
     ...rest
   } = props
   const theme = useTheme()
@@ -72,10 +97,6 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
                   }),
                 },
               )),
-            '&:first-of-type': {
-              marginLeft: 0,
-              marginTop: 0,
-            },
           },
         }
       : {}),
@@ -93,7 +114,9 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
       ref={ref}
       css={styles}
       {...rest}
-    />
+    >
+      {getChildren(children)}
+    </Box>
   )
 })
 

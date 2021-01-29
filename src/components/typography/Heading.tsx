@@ -1,6 +1,6 @@
 import Box, { BoxOwnProps, FontSize, PolymorphicComponent } from '../primitives/Box'
 import { ResponsiveValue } from 'styled-system'
-import jsxInnerText from '../../utils/jsx'
+import { jsxInnerText } from '../../utils/jsx'
 import React, { forwardRef } from 'react'
 
 export enum HeadingSize {

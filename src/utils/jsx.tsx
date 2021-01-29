@@ -1,10 +1,8 @@
-import { ReactElement, ReactNode } from 'react'
+import { Children, isValidElement, ReactElement, ReactNode } from 'react'
 
-function hasProps(jsx: ReactNode): jsx is ReactElement {
-  return Object.prototype.hasOwnProperty.call(jsx, 'props')
-}
+export const hasProps = (jsx: ReactNode): jsx is ReactElement => Object.prototype.hasOwnProperty.call(jsx, 'props')
 
-function jsxInnerText(jsx: ReactNode): string {
+export const jsxInnerText = (jsx: ReactNode): string => {
   if (jsx === null || typeof jsx === 'boolean' || typeof jsx === 'undefined') {
     return ''
   }
@@ -28,4 +26,7 @@ function jsxInnerText(jsx: ReactNode): string {
   return ''
 }
 
-export default jsxInnerText
+export const cleanChildren = (children?: ReactNode) => {
+  if (!children) return []
+  return Children.toArray(children).filter(child => isValidElement(child))
+}

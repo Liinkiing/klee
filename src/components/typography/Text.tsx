@@ -1,5 +1,5 @@
 import Box, { BoxOwnProps, LineHeight, PolymorphicComponent } from '../primitives/Box'
-import jsxInnerText from '../../utils/jsx'
+import { jsxInnerText } from '../../utils/jsx'
 import React, { forwardRef } from 'react'
 
 type Props = BoxOwnProps & {
