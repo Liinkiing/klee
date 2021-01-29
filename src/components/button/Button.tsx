@@ -1,15 +1,11 @@
-import React, { FC, forwardRef } from 'react';
-import AppBox, {
-  AppBoxProps,
-  FontFamily,
-  PolymorphicComponent,
-} from '../primitives/AppBox';
-import styled from 'styled-components';
-import { variant as systemVariant } from 'styled-system';
-import colors from '../../styles/modules/colors';
+import React, { FC, forwardRef } from 'react'
+import AppBox, { AppBoxProps, FontFamily, PolymorphicComponent } from '../primitives/AppBox'
+import styled from 'styled-components'
+import { variant as systemVariant } from 'styled-system'
+import colors from '../../styles/modules/colors'
 
 export interface ButtonProps extends AppBoxProps {
-  readonly variant?: 'primary' | 'secondary';
+  readonly variant?: 'primary' | 'secondary'
 }
 
 const InnerButton = styled(AppBox)(
@@ -55,31 +51,30 @@ const InnerButton = styled(AppBox)(
         },
       },
     },
-  })
-) as PolymorphicComponent<ButtonProps>;
+  }),
+) as PolymorphicComponent<ButtonProps>
 
-export const Button: FC<ButtonProps> = forwardRef<
-  HTMLButtonElement,
-  ButtonProps
->(({ children, variant = 'primary', ...props }, ref) => {
-  return (
-    <InnerButton
-      display="flex"
-      alignItems="center"
-      border="none"
-      borderRadius="md"
-      px={3}
-      py={2}
-      fontFamily={FontFamily.Body}
-      ref={ref}
-      as="button"
-      color="white"
-      variant={variant}
-      {...props}
-    >
-      {children}
-    </InnerButton>
-  );
-});
+export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, variant = 'primary', ...props }, ref) => {
+    return (
+      <InnerButton
+        display="flex"
+        alignItems="center"
+        border="none"
+        borderRadius="md"
+        px={3}
+        py={2}
+        fontFamily={FontFamily.Body}
+        ref={ref}
+        as="button"
+        color="white"
+        variant={variant}
+        {...props}
+      >
+        {children}
+      </InnerButton>
+    )
+  },
+)
 
-export default Button;
+export default Button

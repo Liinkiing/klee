@@ -1,11 +1,7 @@
-import AppBox, {
-  AppBoxOwnProps,
-  FontSize,
-  PolymorphicComponent,
-} from '../primitives/AppBox';
-import { ResponsiveValue } from 'styled-system';
-import jsxInnerText from '../../utils/jsx';
-import React, { forwardRef } from 'react';
+import AppBox, { AppBoxOwnProps, FontSize, PolymorphicComponent } from '../primitives/AppBox'
+import { ResponsiveValue } from 'styled-system'
+import jsxInnerText from '../../utils/jsx'
+import React, { forwardRef } from 'react'
 
 export enum HeadingSize {
   Xl = 'xl',
@@ -15,7 +11,7 @@ export enum HeadingSize {
   Xs = 'xs',
 }
 
-type Size = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+type Size = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
 const sizes: { [Key in Size]: ResponsiveValue<string | FontSize> } = {
   xl: [FontSize.Xl3, null, FontSize.Xl4],
@@ -23,37 +19,35 @@ const sizes: { [Key in Size]: ResponsiveValue<string | FontSize> } = {
   md: FontSize.Xl,
   sm: FontSize.Md,
   xs: FontSize.Sm,
-};
+}
 
 type Props = Omit<AppBoxOwnProps, 'size' | 'as'> & {
-  readonly as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  readonly size?: HeadingSize | Size;
-  readonly truncate?: number;
-};
+  readonly as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  readonly size?: HeadingSize | Size
+  readonly truncate?: number
+}
 
-const Heading = forwardRef<any, Props>(
-  ({ children, truncate, size = 'xl', as = 'h2', ...rest }, ref) => {
-    let content = children;
-    const innerText = jsxInnerText(content);
-    if (truncate && innerText.length > truncate) {
-      content = `${innerText.slice(0, truncate)}…`;
-    }
-    return (
-      <AppBox
-        ref={ref}
-        lineHeight="shorter"
-        fontWeight="bold"
-        fontFamily="heading"
-        as={as}
-        fontSize={sizes[size]}
-        {...rest}
-      >
-        {content}
-      </AppBox>
-    );
+const Heading = forwardRef<any, Props>(({ children, truncate, size = 'xl', as = 'h2', ...rest }, ref) => {
+  let content = children
+  const innerText = jsxInnerText(content)
+  if (truncate && innerText.length > truncate) {
+    content = `${innerText.slice(0, truncate)}…`
   }
-);
+  return (
+    <AppBox
+      ref={ref}
+      lineHeight="shorter"
+      fontWeight="bold"
+      fontFamily="heading"
+      as={as}
+      fontSize={sizes[size]}
+      {...rest}
+    >
+      {content}
+    </AppBox>
+  )
+})
 
-Heading.displayName = 'Heading';
+Heading.displayName = 'Heading'
 
-export default Heading as PolymorphicComponent<Props>;
+export default Heading as PolymorphicComponent<Props>

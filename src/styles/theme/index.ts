@@ -1,26 +1,26 @@
-import type { DefaultTheme } from 'styled-components';
-import type { Breakpoints } from '../../@types/styled-components/theme';
-import { pxToRem } from '../modules/mixins';
-import typography from './typography';
-import colors from '../modules/colors';
+import type { DefaultTheme } from 'styled-components'
+import type { Breakpoints } from '../../@types/styled-components/theme'
+import { pxToRem } from '../modules/mixins'
+import typography from './typography'
+import colors from '../modules/colors'
 
 /* eslint-disable @typescript-eslint/ban-types */
 
 // Some values comes from chakra-ui, a great UI library!
 
-export const theme = <Props extends { theme: DefaultTheme }>(props: Props) => props.theme;
+export const theme = <Props extends { theme: DefaultTheme }>(props: Props) => props.theme
 
-export const BR_TABLET = 720;
-export const BR_DESKTOP = 1024;
-export const BR_WIDE = 1800;
-export const BR_ULTRAWIDE = 2200;
+export const BR_TABLET = 720
+export const BR_DESKTOP = 1024
+export const BR_WIDE = 1800
+export const BR_ULTRAWIDE = 2200
 
 export const breakpoints: Breakpoints = {
   tablet: `${BR_TABLET}px`,
   desktop: `${BR_DESKTOP}px`,
   wide: `${BR_WIDE}px`,
   ultraWide: `${BR_ULTRAWIDE}px`,
-};
+}
 
 export const SPACES_SCALES = [
   0,
@@ -32,7 +32,7 @@ export const SPACES_SCALES = [
   pxToRem(128), // xl
   pxToRem(256), // 2xl
   pxToRem(512), // 3xl
-] as const;
+] as const
 
 export const SHADOWS = {
   xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
@@ -46,7 +46,7 @@ export const SHADOWS = {
   inner: 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
   none: 'none',
   'dark-lg': 'rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px',
-} as const;
+} as const
 
 export type ThemeShadowsValues = keyof typeof SHADOWS | (string & {})
 
@@ -60,7 +60,7 @@ export const RADII = {
   '2xl': '1rem',
   '3xl': '1.5rem',
   full: '9999px',
-} as const;
+} as const
 
 export type ThemeRadiiValues = keyof typeof RADII | (string & {}) | (number & {})
 
@@ -68,7 +68,7 @@ export const BORDERS = {
   sm: '1px solid',
   md: '4px solid',
   lg: '10px solid',
-} as const;
+} as const
 
 export type ThemeBordersValues = keyof typeof BORDERS | (string & {})
 
@@ -85,7 +85,7 @@ export const Z_INDICES = {
   popover: 1500,
   toast: 1700,
   tooltip: 1800,
-} as const;
+} as const
 
 export type ThemeZIndicesValues = keyof typeof Z_INDICES | (string & {}) | (number & {})
 

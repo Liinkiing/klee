@@ -1,8 +1,8 @@
-import { DefaultTheme, ThemeContext } from 'styled-components';
-import { useContext } from 'react';
+import { DefaultTheme, ThemeContext } from 'styled-components'
+import { useContext } from 'react'
 
 const useTheme = (): DefaultTheme => {
-  return useContext(ThemeContext);
-};
+  return useContext(ThemeContext)
+}
 
-export default useTheme;
+export default useTheme

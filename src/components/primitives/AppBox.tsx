@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react';
+import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
 import styled, { css, DefaultTheme } from 'styled-components'
 import {
   border,
@@ -38,7 +38,7 @@ import type {
   ThemeLetterSpacingsValues,
   ThemeLineHeightsValues,
 } from '../../styles/theme/typography'
-import { ThemeColorsValues } from '../../styles/modules/colors';
+import { ThemeColorsValues } from '../../styles/modules/colors'
 
 type AppBoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 
@@ -115,7 +115,7 @@ interface AppLetterSpacing {
 type AppTypographyProps = Omit<
   TypographyProps,
   'fontFamily' | 'fontWeight' | 'lineHeight' | 'fontSize' | 'letterSpacing'
-  >
+>
 
 type AppCustomStyledProps = {
   minSize?: StyledSystemProps['size']
@@ -182,7 +182,7 @@ type AppBorderProps = {
    * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border-right-color)
    */
   borderRightColor?: ColorsProps
-  
+
   /**
    * The border-radius CSS property rounds the corners of an element's outer border edge. You can set a single
    * radius to make circular corners, or two radii to make elliptical corners.
@@ -284,14 +284,13 @@ export type AppBoxProps = AppBoxHTMLProps & CustomBoxProps & StyledSystemProps &
 type PropsOf<E extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<
   E,
   ComponentPropsWithRef<E>
-  >
+>
 
 export interface AppBoxOwnProps<E extends ElementType = ElementType> extends AppBoxProps {
   as?: E
 }
 
-export type PolymorphicBoxProps<E extends ElementType> = AppBoxOwnProps<E> &
-  Omit<PropsOf<E>, keyof AppBoxOwnProps>
+export type PolymorphicBoxProps<E extends ElementType> = AppBoxOwnProps<E> & Omit<PropsOf<E>, keyof AppBoxOwnProps>
 
 export type PolymorphicComponentProps<E extends ElementType, P> = P & PolymorphicBoxProps<E>
 

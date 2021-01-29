@@ -271,7 +271,7 @@ const colors = {
     '800': '#1e293b',
     '900': '#0f172a',
   },
-} as const;
+} as const
 
 // type Colors =
 //   | 'rose'
@@ -329,6 +329,6 @@ const colors = {
 //     : never
 //   : string;
 
-export type ThemeColorsValues = string;
+export type ThemeColorsValues = string
 
-export default colors;
+export default colors

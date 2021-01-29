@@ -1,34 +1,31 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react'
 
 function hasProps(jsx: ReactNode): jsx is ReactElement {
-  return Object.prototype.hasOwnProperty.call(jsx, 'props');
+  return Object.prototype.hasOwnProperty.call(jsx, 'props')
 }
 
 function jsxInnerText(jsx: ReactNode): string {
   if (jsx === null || typeof jsx === 'boolean' || typeof jsx === 'undefined') {
-    return '';
+    return ''
   }
 
   if (typeof jsx === 'number') {
-    return jsx.toString();
+    return jsx.toString()
   }
 
   if (typeof jsx === 'string') {
-    return jsx;
+    return jsx
   }
 
   if (Array.isArray(jsx)) {
-    return jsx.reduce<string>((acc, node) => acc + jsxInnerText(node), '');
+    return jsx.reduce<string>((acc, node) => acc + jsxInnerText(node), '')
   }
 
-  if (
-    hasProps(jsx) &&
-    Object.prototype.hasOwnProperty.call(jsx.props, 'children')
-  ) {
-    return jsxInnerText(jsx.props.children);
+  if (hasProps(jsx) && Object.prototype.hasOwnProperty.call(jsx.props, 'children')) {
+    return jsxInnerText(jsx.props.children)
   }
 
-  return '';
+  return ''
 }
 
-export default jsxInnerText;
+export default jsxInnerText

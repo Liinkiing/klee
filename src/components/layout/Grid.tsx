@@ -1,30 +1,27 @@
-import AppBox, {
-  AppBoxProps,
-  PolymorphicComponent,
-} from '../primitives/AppBox';
-import { GridProps as StyledGridProps } from 'styled-system';
-import React, { forwardRef } from 'react';
+import AppBox, { AppBoxProps, PolymorphicComponent } from '../primitives/AppBox'
+import { GridProps as StyledGridProps } from 'styled-system'
+import React, { forwardRef } from 'react'
 
 type AutoFillFitOptions = {
-  min: string;
-  max: string;
-};
+  min: string
+  max: string
+}
 
 export interface GridOptions {
-  templateColumns?: StyledGridProps['gridTemplateColumns'];
-  gap?: StyledGridProps['gridGap'];
-  rowGap?: StyledGridProps['gridRowGap'];
-  columnGap?: StyledGridProps['gridColumnGap'];
-  autoFlow?: StyledGridProps['gridAutoFlow'];
-  autoRows?: StyledGridProps['gridAutoRows'];
-  autoColumns?: StyledGridProps['gridAutoColumns'];
-  templateRows?: StyledGridProps['gridTemplateRows'];
-  templateAreas?: StyledGridProps['gridTemplateAreas'];
-  area?: StyledGridProps['gridArea'];
-  column?: StyledGridProps['gridColumn'];
-  row?: StyledGridProps['gridRow'];
-  autoFit?: AutoFillFitOptions | boolean;
-  autoFill?: AutoFillFitOptions | boolean;
+  templateColumns?: StyledGridProps['gridTemplateColumns']
+  gap?: StyledGridProps['gridGap']
+  rowGap?: StyledGridProps['gridRowGap']
+  columnGap?: StyledGridProps['gridColumnGap']
+  autoFlow?: StyledGridProps['gridAutoFlow']
+  autoRows?: StyledGridProps['gridAutoRows']
+  autoColumns?: StyledGridProps['gridAutoColumns']
+  templateRows?: StyledGridProps['gridTemplateRows']
+  templateAreas?: StyledGridProps['gridTemplateAreas']
+  area?: StyledGridProps['gridArea']
+  column?: StyledGridProps['gridColumn']
+  row?: StyledGridProps['gridRow']
+  autoFit?: AutoFillFitOptions | boolean
+  autoFill?: AutoFillFitOptions | boolean
 }
 
 export type GridProps = Omit<
@@ -42,7 +39,7 @@ export type GridProps = Omit<
   | 'column'
   | 'row'
 > &
-  GridOptions;
+  GridOptions
 
 const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
   const {
@@ -62,7 +59,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
     autoFill,
     display = 'grid',
     ...rest
-  } = props;
+  } = props
   const styles = {
     ...(autoFit &&
       typeof autoFit === 'boolean' &&
@@ -71,8 +68,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
       }),
     ...(autoFit &&
       typeof autoFit === 'object' && {
-        gridTemplateColumns: `repeat(auto-fit, minmax(${autoFit.min ??
-          '100px'}, ${autoFit.max ?? '1fr'}))`,
+        gridTemplateColumns: `repeat(auto-fit, minmax(${autoFit.min ?? '100px'}, ${autoFit.max ?? '1fr'}))`,
       }),
     ...(autoFill &&
       typeof autoFill === 'boolean' &&
@@ -81,10 +77,9 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
       }),
     ...(autoFill &&
       typeof autoFill === 'object' && {
-        gridTemplateColumns: `repeat(auto-fill, minmax(${autoFill.min ??
-          '100px'}, ${autoFill.max ?? '1fr'}))`,
+        gridTemplateColumns: `repeat(auto-fill, minmax(${autoFill.min ?? '100px'}, ${autoFill.max ?? '1fr'}))`,
       }),
-  };
+  }
   return (
     <AppBox
       display={display}
@@ -104,9 +99,9 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
       css={styles}
       {...rest}
     />
-  );
-});
+  )
+})
 
-Grid.displayName = 'Grid';
+Grid.displayName = 'Grid'
 
-export default Grid as PolymorphicComponent<GridProps>;
+export default Grid as PolymorphicComponent<GridProps>

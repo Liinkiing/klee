@@ -1,20 +1,17 @@
-import { css } from 'styled-components';
-import colors from './colors';
+import { css } from 'styled-components'
+import colors from './colors'
 
-export const pxToRem = (px: number) => `${(px / 16).toFixed(3)}rem`;
+export const pxToRem = (px: number) => `${(px / 16).toFixed(3)}rem`
 
-export const linearGradient = (
-  direction: 'vertical' | 'horizontal',
-  color: string = colors.white
-) => css`
+export const linearGradient = (direction: 'vertical' | 'horizontal', color: string = colors.white) => css`
   linear-gradient(to ${direction === 'horizontal' ? 'right' : 'bottom'},
   ${color} 0%,
   rgba(255, 255, 255, 0) 5%,
   rgba(255, 255, 255, 0) 95%,
   ${color} 100%);
-`;
+`
 
-const SCROLLBAR_WIDTH = 16;
+const SCROLLBAR_WIDTH = 16
 
 export const customScrollbar = css`
   ::-webkit-scrollbar {
@@ -27,8 +24,7 @@ export const customScrollbar = css`
   }
 
   ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 ${SCROLLBAR_WIDTH}px ${SCROLLBAR_WIDTH}px
-      rgba(187, 187, 190, 0.38);
+    box-shadow: inset 0 0 ${SCROLLBAR_WIDTH}px ${SCROLLBAR_WIDTH}px rgba(187, 187, 190, 0.38);
     border: solid ${SCROLLBAR_WIDTH - 10}px transparent;
     border-radius: ${SCROLLBAR_WIDTH}px;
   }
@@ -36,4 +32,4 @@ export const customScrollbar = css`
   ::-webkit-scrollbar-button {
     display: none;
   }
-`;
+`
