@@ -25,7 +25,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "release": "np",
-    "chromatic": "npx chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes"
+    "chromatic": "npx chromatic --skip '@(renovate/**|dependabot/**)' --project-token CHROMATIC_PROJECT_TOKEN"
   },
   "peerDependencies": {
     "react": ">=16"
