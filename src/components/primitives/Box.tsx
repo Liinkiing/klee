@@ -1,5 +1,8 @@
 import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
-import styled, { css, DefaultTheme } from 'styled-components'
+import styled from '@emotion/styled'
+import css from '@emotion/css'
+import { Theme } from '@emotion/react'
+
 import {
   border,
   BorderProps,
@@ -273,7 +276,7 @@ type ModifiedStyledSystemProps = AppBorderProps &
 interface CustomBoxProps {
   readonly uppercase?: boolean
   readonly css?:
-    | ((props: { theme: DefaultTheme } & Record<string, any>) => Record<string, unknown>)
+    | ((props: { theme: Theme } & Record<string, any>) => Record<string, unknown>)
     | ReturnType<typeof css>
     | Record<string, unknown>
   readonly ref?: any
@@ -308,11 +311,7 @@ export const Spacing = {
   Xl3: Number(SPACES_SCALES[8].replace('rem', '')) * 16,
 } as const
 
-const Box = styled('div').withConfig({
-  shouldForwardProp: prop => {
-    return shouldForwardProp(prop)
-  },
-})<BoxProps>(
+const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
   }),

@@ -1,7 +1,12 @@
-import 'styled-components'
-import colors from '../../styles/modules/colors'
-import { BORDERS, RADII, SHADOWS, Z_INDICES } from '../../styles/theme'
-import { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from '../../styles/theme/typography'
+import '@emotion/react'
+import {
+  FONT_FAMILIES,
+  FONT_SIZES,
+  FONT_WEIGHTS,
+  LETTER_SPACINGS,
+  LINE_HEIGHTS,
+} from '../../../styles/theme/typography'
+import { BORDERS, RADII, SHADOWS, Z_INDICES } from '../../../styles/theme'
 
 export interface Breakpoints {
   tablet: string
@@ -10,7 +15,7 @@ export interface Breakpoints {
   ultraWide: string
 }
 
-declare module 'styled-components' {
+declare module '@emotion/react' {
   export interface Typography {
     letterSpacings: typeof LETTER_SPACINGS
     lineHeights: typeof LINE_HEIGHTS
@@ -19,7 +24,7 @@ declare module 'styled-components' {
     fontSizes: typeof FONT_SIZES
   }
 
-  export interface DefaultTheme extends Typography {
+  export interface Theme extends Typography {
     breakpoints: string[]
     space: ReadonlyArray<string | number>
     sizes: ReadonlyArray<string | number>

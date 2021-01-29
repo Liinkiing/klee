@@ -1,6 +1,9 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import { GridProps as StyledGridProps } from 'styled-system'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 type AutoFillFitOptions = {
   min: string

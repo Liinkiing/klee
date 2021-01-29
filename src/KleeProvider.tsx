@@ -1,5 +1,7 @@
-import React, { FC } from 'react'
-import { ThemeProvider } from 'styled-components'
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { FC } from 'react'
+import { jsx, ThemeProvider } from '@emotion/react'
 import { kleeTheme } from './styles/theme'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'

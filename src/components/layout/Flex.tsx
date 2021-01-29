@@ -1,7 +1,10 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx } from '@emotion/react'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
-import useTheme from '../../hooks/useTheme'
 import { FlexboxProps } from 'styled-system'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
+import { useTheme } from '@emotion/react'
 
 export interface FlexOptions {
   align?: FlexboxProps['alignItems']
@@ -69,7 +72,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
                   }),
                 },
               )),
-            '&:first-child': {
+            '&:first-of-type': {
               marginLeft: 0,
               marginTop: 0,
             },

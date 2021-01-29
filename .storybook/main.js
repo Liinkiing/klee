@@ -1,4 +1,5 @@
 const path = require('path')
+const toPath = _path => path.join(process.cwd(), _path)
 
 const EXLUDED_DOCGEN_PROPS = [
   'uppercase',
@@ -17,11 +18,18 @@ const EXLUDED_DOCGEN_PROPS = [
 
 module.exports = {
   webpackFinal: async config => {
-    config.resolve.alias['~'] = path.join(__dirname, '../src')
-    config.resolve.extensions.push('.ts', '.tsx')
-
     return {
       ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@emotion/core': toPath('node_modules/@emotion/react'),
+          '@emotion/styled-base': toPath('node_modules/@emotion/styled'),
+          '@emotion/styled': toPath('node_modules/@emotion/styled'),
+          'emotion-theming': toPath('node_modules/@emotion/react'),
+        },
+      },
     }
   },
   stories: ['../src/**/*.stories.@(ts|tsx|js|jsx)'],
@@ -29,6 +37,12 @@ module.exports = {
     '@storybook/addon-viewport',
     '@storybook/addon-storysource',
     '@storybook/addon-links',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        configureJSX: true,
+      },
+    },
     '@storybook/addon-essentials',
   ],
   typescript: {

@@ -1,6 +1,6 @@
 import React, { FC, forwardRef } from 'react'
 import Box, { BoxProps, FontFamily, FontSize, FontWeight, PolymorphicComponent } from '../primitives/Box'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { variant as systemVariant } from 'styled-system'
 import colors from '../../styles/modules/colors'
 

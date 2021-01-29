@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import css from '@emotion/css'
 import colors from './colors'
 
 export const pxToRem = (px: number) => `${(px / 16).toFixed(3)}rem`

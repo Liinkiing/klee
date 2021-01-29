@@ -1,5 +1,5 @@
-import type { DefaultTheme } from 'styled-components'
-import type { Breakpoints } from '../../@types/styled-components/theme'
+import type { Theme } from '@emotion/react'
+import type { Breakpoints } from '../../@types/@emotion/react'
 import { pxToRem } from '../modules/mixins'
 import typography from './typography'
 import colors from '../modules/colors'
@@ -8,7 +8,7 @@ import colors from '../modules/colors'
 
 // Some values comes from chakra-ui, a great UI library!
 
-export const theme = <Props extends { theme: DefaultTheme }>(props: Props) => props.theme
+export const theme = <Props extends { theme: Theme }>(props: Props) => props.theme
 
 export const BR_TABLET = 720
 export const BR_DESKTOP = 1024
@@ -89,7 +89,7 @@ export const Z_INDICES = {
 
 export type ThemeZIndicesValues = keyof typeof Z_INDICES | (string & {}) | (number & {})
 
-export const kleeTheme: DefaultTheme = {
+export const kleeTheme: Theme = {
   ...typography,
   colors: colors as any,
   breakpoints: [breakpoints.tablet, breakpoints.desktop, breakpoints.wide, breakpoints.ultraWide],
