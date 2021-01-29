@@ -1,12 +1,32 @@
 import React, { FC, forwardRef } from 'react'
-import Box, { BoxProps, FontFamily, PolymorphicComponent } from '../primitives/Box'
+import Box, { BoxProps, FontFamily, FontSize, FontWeight, PolymorphicComponent } from '../primitives/Box'
 import styled from 'styled-components'
 import { variant as systemVariant } from 'styled-system'
 import colors from '../../styles/modules/colors'
 
+type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger'
+
 export interface ButtonProps extends BoxProps {
-  readonly variant?: 'primary' | 'secondary'
+  readonly variant?: Variant
+  readonly variantSize?: 'sm' | 'md' | 'lg'
 }
+
+const generateVariant = (color: keyof typeof colors) => ({
+  bg: `${color}.500`,
+  '&:hover': {
+    bg: `${color}.600`,
+    '&:focus': {
+      boxShadow: `0 0 2px 1px ${colors[color]['600']}`,
+    },
+  },
+  '&:focus': {
+    boxShadow: `0 0 2px 1px ${colors[color]['600']}`,
+  },
+  '&:disabled': {
+    bg: `${color}.100`,
+    color: `${color}.300`,
+  },
+})
 
 const InnerButton = styled(Box)(
   {
@@ -16,59 +36,51 @@ const InnerButton = styled(Box)(
       cursor: 'pointer',
     },
   },
-  systemVariant({
+  systemVariant<{}, Variant>({
     variants: {
-      primary: {
-        bg: 'indigo.500',
-        '&:hover': {
-          bg: 'indigo.600',
-          '&:focus': {
-            boxShadow: `0 0 2px 2px ${colors.indigo['300']}`,
-          },
-        },
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.indigo['300']}`,
-        },
-        '&:disabled': {
-          bg: 'indigo.100',
-          color: 'indigo.300',
-        },
+      primary: generateVariant('indigo'),
+      secondary: generateVariant('blue'),
+      tertiary: generateVariant('cool-gray'),
+      danger: generateVariant('red'),
+    },
+  }),
+  systemVariant({
+    prop: 'variantSize',
+    variants: {
+      sm: {
+        px: 2,
+        py: 1,
+        fontSize: FontSize.Sm,
       },
-      secondary: {
-        bg: 'blue.500',
-        '&:hover': {
-          bg: 'blue.600',
-          '&:focus': {
-            boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
-          },
-        },
-        '&:focus': {
-          boxShadow: `0 0 2px 2px ${colors.blue['300']}`,
-        },
-        '&:disabled': {
-          bg: 'blue.100',
-          color: 'blue.300',
-        },
+      md: {
+        px: 3,
+        py: 2,
+        fontSize: FontSize.Sm,
+      },
+      lg: {
+        px: 4,
+        py: 3,
+        fontSize: FontSize.Md,
       },
     },
   }),
 ) as PolymorphicComponent<ButtonProps>
 
 export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, variant = 'primary', ...props }, ref) => {
+  ({ children, variant = 'primary', variantSize = 'md', ...props }, ref) => {
     return (
       <InnerButton
         display="flex"
         alignItems="center"
         border="none"
-        borderRadius="md"
-        px={3}
-        py={2}
+        borderRadius="lg"
         fontFamily={FontFamily.Body}
+        fontWeight={FontWeight.Semibold}
         ref={ref}
         as="button"
         color="white"
         variant={variant}
+        variantSize={variantSize}
         {...props}
       >
         {children}

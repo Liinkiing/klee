@@ -18,5 +18,5 @@ const Template: Story<ButtonProps> = args => <Button {...args} />
 export const Default = Template.bind({})
 
 Default.args = {
-  children: 'Hello world',
+  children: 'Join a course',
 }
