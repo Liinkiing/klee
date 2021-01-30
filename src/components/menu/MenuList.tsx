@@ -9,6 +9,7 @@ import Flex from '../layout/Flex'
 import { useMenu } from './Menu.context'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { KleeFontSize } from '../../styles/theme/typography'
+import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 
 export interface MenuListProps extends Omit<BoxProps, 'children'>, CommonProps {
   readonly align?: 'left' | 'right'
@@ -38,13 +39,13 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, align = 'ri
           direction="column"
           minWidth="200px"
           bg="white"
-          boxShadow=""
+          boxShadow={KleeShadow.Lg}
           mt={2}
-          border="sm"
+          border={KleeBorder.Sm}
           fontSize={KleeFontSize.Sm}
           borderColor="cool-gray.200"
-          borderRadius="lg"
-          zIndex="dropdown"
+          borderRadius={KleeRadius.Lg}
+          zIndex={KleeZIndex.Dropdown}
           overflow="hidden"
           {...props}
           initial={{ opacity: 0, y: -10 }}
