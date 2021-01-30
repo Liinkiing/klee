@@ -1,7 +1,6 @@
 import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
-import { Theme } from '@emotion/react'
+import { css, Theme } from '@emotion/react'
 
 import {
   border,
@@ -35,84 +34,41 @@ import {
 } from '../../styles/theme'
 import * as CSS from 'csstype'
 import type {
-  ThemeFontSizesValues,
   ThemeFontFamiliesValue,
+  ThemeFontSizesValues,
   ThemeFontWeightsValues,
   ThemeLetterSpacingsValues,
   ThemeLineHeightsValues,
+} from '../../styles/theme/typography'
+import {
+  KleeFontFamily,
+  KleeFontSize,
+  KleeFontWeight,
+  KleeLetterSpacing,
+  KleeLineHeight,
 } from '../../styles/theme/typography'
 import { ThemeColorsValues } from '../../styles/modules/colors'
 
 type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 
-export enum FontSize {
-  Xs = 'xs',
-  Sm = 'sm',
-  Md = 'md',
-  Lg = 'lg',
-  Xl = 'xl',
-  Xl2 = '2xl',
-  Xl3 = '3xl',
-  Xl4 = '4xl',
-  Xl5 = '5xl',
-  Xl6 = '6xl',
-}
-
 interface AppFontSize {
-  fontSize?: ResponsiveValue<FontSize | ThemeFontSizesValues>
-}
-
-export enum FontWeight {
-  Hairline = 'hairline',
-  Thin = 'thin',
-  Light = 'light',
-  Normal = 'normal',
-  Medium = 'medium',
-  Semibold = 'semibold',
-  Bold = 'bold',
-  Extrabold = 'extrabold',
-  Black = 'black',
+  fontSize?: ResponsiveValue<KleeFontSize | ThemeFontSizesValues>
 }
 
 interface AppFontWeight {
-  fontWeight?: ResponsiveValue<FontWeight | ThemeFontWeightsValues>
-}
-
-export enum FontFamily {
-  Heading = 'heading',
-  Body = 'body',
-  Mono = 'mono',
+  fontWeight?: ResponsiveValue<KleeFontWeight | ThemeFontWeightsValues>
 }
 
 interface AppFontFamily {
-  fontFamily?: ResponsiveValue<FontFamily | ThemeFontFamiliesValue>
-}
-
-export enum LineHeight {
-  Normal = 'normal',
-  None = 'none',
-  Shorter = 'shorter',
-  Short = 'short',
-  Base = 'base',
-  Tall = 'tall',
-  Taller = 'taller',
+  fontFamily?: ResponsiveValue<KleeFontFamily | ThemeFontFamiliesValue>
 }
 
 interface AppLineHeight {
-  lineHeight?: ResponsiveValue<LineHeight | ThemeLineHeightsValues>
-}
-
-export enum LetterSpacing {
-  Tighter = 'tighter',
-  Tight = 'tight',
-  Normal = 'normal',
-  Wide = 'wide',
-  Wider = 'wider',
-  Widest = 'widest',
+  lineHeight?: ResponsiveValue<KleeLineHeight | ThemeLineHeightsValues>
 }
 
 interface AppLetterSpacing {
-  letterSpacing?: ResponsiveValue<LetterSpacing | ThemeLetterSpacingsValues>
+  letterSpacing?: ResponsiveValue<KleeLetterSpacing | ThemeLetterSpacingsValues>
 }
 
 type AppTypographyProps = Omit<
@@ -275,10 +231,7 @@ type ModifiedStyledSystemProps = AppBorderProps &
 
 interface CustomBoxProps {
   readonly uppercase?: boolean
-  readonly css?:
-    | ((props: { theme: Theme } & Record<string, any>) => Record<string, unknown>)
-    | ReturnType<typeof css>
-    | Record<string, unknown>
+  readonly css?: ((theme: Theme) => any) | ReturnType<typeof css> | Record<string, unknown>
   readonly ref?: any
 }
 

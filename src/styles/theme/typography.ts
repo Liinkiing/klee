@@ -8,6 +8,15 @@ export const LETTER_SPACINGS = {
   widest: '0.1em',
 } as const
 
+export enum KleeLetterSpacing {
+  Tighter = 'tighter',
+  Tight = 'tight',
+  Normal = 'normal',
+  Wide = 'wide',
+  Wider = 'wider',
+  Widest = 'widest',
+}
+
 export type ThemeLetterSpacingsValues = keyof typeof LETTER_SPACINGS | (string & {}) | (number & {})
 
 export const LINE_HEIGHTS = {
@@ -19,6 +28,16 @@ export const LINE_HEIGHTS = {
   tall: '1.625',
   taller: '2',
 } as const
+
+export enum KleeLineHeight {
+  Normal = 'normal',
+  None = 'none',
+  Shorter = 'shorter',
+  Short = 'short',
+  Base = 'base',
+  Tall = 'tall',
+  Taller = 'taller',
+}
 
 export type ThemeLineHeightsValues = keyof typeof LINE_HEIGHTS | (string & {}) | (number & {})
 
@@ -34,6 +53,18 @@ export const FONT_WEIGHTS = {
   black: 900,
 } as const
 
+export enum KleeFontWeight {
+  Hairline = 'hairline',
+  Thin = 'thin',
+  Light = 'light',
+  Normal = 'normal',
+  Medium = 'medium',
+  Semibold = 'semibold',
+  Bold = 'bold',
+  Extrabold = 'extrabold',
+  Black = 'black',
+}
+
 export type ThemeFontWeightsValues = keyof typeof FONT_WEIGHTS | (string & {}) | (number & {})
 
 export const FONT_FAMILIES = {
@@ -41,6 +72,12 @@ export const FONT_FAMILIES = {
   body: `Inter, Zilla Slab, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   mono: `SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`,
 } as const
+
+export enum KleeFontFamily {
+  Heading = 'heading',
+  Body = 'body',
+  Mono = 'mono',
+}
 
 export type ThemeFontFamiliesValue = keyof typeof FONT_FAMILIES | (string & {})
 
@@ -56,6 +93,19 @@ export const FONT_SIZES = {
   '5xl': '3rem',
   '6xl': '4rem',
 } as const
+
+export enum KleeFontSize {
+  Xs = 'xs',
+  Sm = 'sm',
+  Md = 'md',
+  Lg = 'lg',
+  Xl = 'xl',
+  Xl2 = '2xl',
+  Xl3 = '3xl',
+  Xl4 = '4xl',
+  Xl5 = '5xl',
+  Xl6 = '6xl',
+}
 
 export type ThemeFontSizesValues = keyof typeof FONT_SIZES | (string & {}) | (number & {})
 

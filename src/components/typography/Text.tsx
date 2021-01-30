@@ -1,6 +1,7 @@
-import Box, { BoxOwnProps, LineHeight, PolymorphicComponent } from '../primitives/Box'
+import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
 import { jsxInnerText } from '../../utils/jsx'
 import React, { forwardRef } from 'react'
+import { KleeLineHeight } from '../../styles/theme/typography'
 
 type Props = BoxOwnProps & {
   readonly truncate?: number
@@ -18,7 +19,7 @@ const Text = forwardRef<HTMLElement, Props>(({ children, truncate, ...props }, r
       as="p"
       fontFamily="body"
       {...(truncate ? { title: innerText } : {})}
-      lineHeight={LineHeight.Base}
+      lineHeight={KleeLineHeight.Base}
       {...props}
     >
       {content}

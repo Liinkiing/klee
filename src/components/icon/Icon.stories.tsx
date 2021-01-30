@@ -11,8 +11,8 @@ import Flex from '../layout/Flex'
 import Heading from '../typography/Heading'
 import Grid from '../layout/Grid'
 import Text from '../typography/Text'
-import { FontSize } from '../primitives/Box'
 import type { IconType } from 'react-icons'
+import { KleeFontSize } from '../../styles/theme/typography'
 
 const meta: Meta = {
   title: 'Icon',
@@ -43,7 +43,7 @@ const Template: Story<IconProps & { title: string; icons: Record<string, IconTyp
       {Object.entries(icons).map(([moduleName, icon]) => (
         <Flex py={2} align="center" direction="column" spacing={2}>
           <Icon as={icon} {...args} />
-          <Text fontSize={FontSize.Xs}>{moduleName}</Text>
+          <Text fontSize={KleeFontSize.Xs}>{moduleName}</Text>
         </Flex>
       ))}
     </Grid>

@@ -40,7 +40,7 @@ export const Icon = forwardRef<SVGElement, IconProps>(
       display,
       lineHeight,
       className,
-      size = 'md',
+      size = 'sm',
       ...rest
     },
     ref,
