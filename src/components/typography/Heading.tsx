@@ -1,7 +1,8 @@
-import Box, { BoxOwnProps, FontSize, PolymorphicComponent } from '../primitives/Box'
+import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
 import { ResponsiveValue } from 'styled-system'
 import { jsxInnerText } from '../../utils/jsx'
 import React, { forwardRef } from 'react'
+import { KleeFontSize } from '../../styles/theme/typography'
 
 export enum HeadingSize {
   Xl = 'xl',
@@ -13,12 +14,12 @@ export enum HeadingSize {
 
 type Size = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 
-const sizes: { [Key in Size]: ResponsiveValue<string | FontSize> } = {
-  xl: [FontSize.Xl3, null, FontSize.Xl4],
-  lg: [FontSize.Xl, null, FontSize.Xl2],
-  md: FontSize.Xl,
-  sm: FontSize.Md,
-  xs: FontSize.Sm,
+const sizes: { [Key in Size]: ResponsiveValue<string | KleeFontSize> } = {
+  xl: [KleeFontSize.Xl3, null, KleeFontSize.Xl4],
+  lg: [KleeFontSize.Xl, null, KleeFontSize.Xl2],
+  md: KleeFontSize.Xl,
+  sm: KleeFontSize.Md,
+  xs: KleeFontSize.Sm,
 }
 
 type Props = Omit<BoxOwnProps, 'size' | 'as'> & {

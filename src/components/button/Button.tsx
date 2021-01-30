@@ -1,8 +1,9 @@
 import React, { FC, forwardRef } from 'react'
-import Box, { BoxProps, FontFamily, FontSize, FontWeight, PolymorphicComponent } from '../primitives/Box'
+import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import styled from '@emotion/styled'
 import { variant as systemVariant } from 'styled-system'
 import colors from '../../styles/modules/colors'
+import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 
 type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger'
 
@@ -50,17 +51,17 @@ const InnerButton = styled(Box)(
       sm: {
         px: 2,
         py: 1,
-        fontSize: FontSize.Sm,
+        fontSize: KleeFontSize.Sm,
       },
       md: {
         px: 3,
         py: 2,
-        fontSize: FontSize.Sm,
+        fontSize: KleeFontSize.Sm,
       },
       lg: {
         px: 4,
         py: 3,
-        fontSize: FontSize.Md,
+        fontSize: KleeFontSize.Md,
       },
     },
   }),
@@ -74,8 +75,8 @@ export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps
         alignItems="center"
         border="none"
         borderRadius="lg"
-        fontFamily={FontFamily.Body}
-        fontWeight={FontWeight.Semibold}
+        fontFamily={KleeFontFamily.Body}
+        fontWeight={KleeFontWeight.Semibold}
         ref={ref}
         as="button"
         color="white"

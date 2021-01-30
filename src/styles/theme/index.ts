@@ -48,6 +48,20 @@ export const SHADOWS = {
   'dark-lg': 'rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.2) 0px 5px 10px, rgba(0, 0, 0, 0.4) 0px 15px 40px',
 } as const
 
+export enum KleeShadow {
+  Xs = 'xs',
+  Sm = 'sm',
+  Base = 'base',
+  Md = 'md',
+  Lg = 'lg',
+  Xl = 'xl',
+  '2xl' = '2xl',
+  Outline = 'outline',
+  Inner = 'inner',
+  None = 'none',
+  DarkLg = 'dark-lg',
+}
+
 export type ThemeShadowsValues = keyof typeof SHADOWS | (string & {})
 
 export const RADII = {
@@ -62,6 +76,18 @@ export const RADII = {
   full: '9999px',
 } as const
 
+export enum KleeRadius {
+  None = 'none',
+  Sm = 'sm',
+  Base = 'base',
+  Md = 'md',
+  Lg = 'lg',
+  Xl = 'xl',
+  '2xl' = '2xl',
+  '3xl' = '3xl',
+  Full = 'full',
+}
+
 export type ThemeRadiiValues = keyof typeof RADII | (string & {}) | (number & {})
 
 export const BORDERS = {
@@ -69,6 +95,12 @@ export const BORDERS = {
   md: '4px solid',
   lg: '10px solid',
 } as const
+
+export enum KleeBorder {
+  Sm = 'sm',
+  Md = 'md',
+  Lg = 'lg',
+}
 
 export type ThemeBordersValues = keyof typeof BORDERS | (string & {})
 
@@ -86,6 +118,21 @@ export const Z_INDICES = {
   toast: 1700,
   tooltip: 1800,
 } as const
+
+export enum KleeZIndex {
+  Hide = 'hide',
+  Auto = 'auto',
+  Base = 'base',
+  Docked = 'docked',
+  Dropdown = 'dropdown',
+  Sticky = 'sticky',
+  Banner = 'banner',
+  Overlay = 'overlay',
+  Modal = 'modal',
+  Popover = 'popover',
+  Toast = 'toast',
+  Tooltip = 'tooltip',
+}
 
 export type ThemeZIndicesValues = keyof typeof Z_INDICES | (string & {}) | (number & {})
 

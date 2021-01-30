@@ -11,14 +11,16 @@ import Flex from '../layout/Flex'
 import Heading from '../typography/Heading'
 import Grid from '../layout/Grid'
 import Text from '../typography/Text'
-import { FontSize } from '../primitives/Box'
 import type { IconType } from 'react-icons'
+import { KleeFontSize } from '../../styles/theme/typography'
+import { KleeRadius, KleeShadow } from '../../styles/theme'
 
 const meta: Meta = {
   title: 'Icon',
   component: Icon,
   args: {
     color: 'rgb(0,0,0)',
+    size: 'md',
   },
   argTypes: {
     color: {
@@ -41,9 +43,20 @@ const Template: Story<IconProps & { title: string; icons: Record<string, IconTyp
     <Heading>{title}</Heading>
     <Grid autoFit={{ min: '130px', max: '1fr' }} gap={2}>
       {Object.entries(icons).map(([moduleName, icon]) => (
-        <Flex py={2} align="center" direction="column" spacing={2}>
-          <Icon as={icon} {...args} />
-          <Text fontSize={FontSize.Xs}>{moduleName}</Text>
+        <Flex key={moduleName} borderRadius={KleeRadius.Md} p={2} align="center" direction="column" spacing={3}>
+          <Flex
+            boxShadow={KleeShadow.Md}
+            borderRadius={KleeRadius.Md}
+            p={2}
+            align="center"
+            justify="center"
+            bg="cool-gray.100"
+          >
+            <Icon as={icon} {...args} />
+          </Flex>
+          <Text truncate={16} fontSize={KleeFontSize.Xs}>
+            {moduleName}
+          </Text>
         </Flex>
       ))}
     </Grid>
