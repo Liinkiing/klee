@@ -50,11 +50,11 @@
   "size-limit": [
     {
       "path": "dist/klee.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "200 KB"
     },
     {
       "path": "dist/klee.esm.js",
-      "limit": "10 KB"
+      "limit": "200 KB"
     }
   ],
   "devDependencies": {
