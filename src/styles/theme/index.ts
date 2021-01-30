@@ -1,6 +1,5 @@
 import type { Theme } from '@emotion/react'
 import type { Breakpoints } from '../../@types/@emotion/react'
-import { pxToRem } from '../modules/mixins'
 import typography from './typography'
 import colors from '../modules/colors'
 
@@ -22,17 +21,40 @@ export const breakpoints: Breakpoints = {
   ultraWide: `${BR_ULTRAWIDE}px`,
 }
 
-export const SPACES_SCALES = [
-  0,
-  pxToRem(4), // 2xs
-  pxToRem(8), // xs
-  pxToRem(16), // base
-  pxToRem(32), // medium
-  pxToRem(64), // large
-  pxToRem(128), // xl
-  pxToRem(256), // 2xl
-  pxToRem(512), // 3xl
-] as const
+export const SPACING = {
+  px: '1px',
+  0: '0',
+  1: '0.25rem',
+  2: '0.5rem',
+  3: '0.75rem',
+  4: '1rem',
+  5: '1.25rem',
+  6: '1.5rem',
+  7: '1.75rem',
+  8: '2rem',
+  9: '2.25rem',
+  10: '2.5rem',
+  11: '3rem',
+  12: '3.5rem',
+  13: '4rem',
+  14: '5rem',
+  15: '6rem',
+  16: '7rem',
+  17: '8rem',
+  18: '9rem',
+  19: '10rem',
+  20: '11rem',
+  21: '12rem',
+  22: '13rem',
+  23: '14rem',
+  24: '15rem',
+  25: '16rem',
+  26: '18rem',
+  27: '20rem',
+  28: '24rem',
+} as const
+
+export type ThemeSpacingValues = keyof typeof SPACING | (string & {}) | (number & {})
 
 export const SHADOWS = {
   xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
@@ -91,12 +113,14 @@ export enum KleeRadius {
 export type ThemeRadiiValues = keyof typeof RADII | (string & {}) | (number & {})
 
 export const BORDERS = {
-  sm: '1px solid',
+  xs: '1px solid',
+  sm: '2px solid',
   md: '4px solid',
   lg: '10px solid',
 } as const
 
 export enum KleeBorder {
+  Xs = 'xs',
   Sm = 'sm',
   Md = 'md',
   Lg = 'lg',
@@ -146,8 +170,8 @@ export const kleeTheme: Theme = {
     wide: `@media screen and (min-width: ${breakpoints.wide})`,
     ultraWide: `@media screen and (min-width: ${breakpoints.ultraWide})`,
   },
-  space: SPACES_SCALES,
-  sizes: SPACES_SCALES,
+  space: SPACING,
+  sizes: SPACING,
   radii: RADII,
   borders: BORDERS,
   shadows: SHADOWS,

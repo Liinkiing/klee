@@ -41,7 +41,7 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, align = 'ri
           bg="white"
           boxShadow={KleeShadow.Lg}
           mt={2}
-          border={KleeBorder.Sm}
+          border={KleeBorder.Xs}
           fontSize={KleeFontSize.Sm}
           borderColor="cool-gray.200"
           borderRadius={KleeRadius.Lg}

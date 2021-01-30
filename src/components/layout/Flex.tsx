@@ -5,6 +5,7 @@ import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import { FlexboxProps } from 'styled-system'
 import { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
 import { cleanChildren, hasProps } from '../../utils/jsx'
+import { themeGet } from '@styled-system/theme-get'
 
 export interface FlexOptions {
   align?: FlexboxProps['alignItems']
@@ -61,7 +62,7 @@ const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
     ...rest
   } = props
   const theme = useTheme()
-  const spacing = typeof userSpacing === 'number' ? theme.space[userSpacing] : userSpacing
+  const spacing = (themeGet(`space.${userSpacing}`, userSpacing ?? 0)({ theme }) as unknown) as number
   const styles = {
     ...(spacing
       ? {

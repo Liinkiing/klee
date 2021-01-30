@@ -6,7 +6,7 @@ import {
   LETTER_SPACINGS,
   LINE_HEIGHTS,
 } from '../../../styles/theme/typography'
-import { BORDERS, RADII, SHADOWS, Z_INDICES } from '../../../styles/theme'
+import { BORDERS, RADII, SHADOWS, SPACING, ThemeSpacingValues, Z_INDICES } from '../../../styles/theme'
 
 export interface Breakpoints {
   tablet: string
@@ -26,8 +26,8 @@ declare module '@emotion/react' {
 
   export interface Theme extends Typography {
     breakpoints: string[]
-    space: ReadonlyArray<string | number>
-    sizes: ReadonlyArray<string | number>
+    space: typeof SPACING
+    sizes: typeof SPACING
     mediaQueries: {
       tablet: string
       desktop: string

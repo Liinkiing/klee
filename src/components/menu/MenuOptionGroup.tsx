@@ -7,6 +7,7 @@ import Box, { BoxProps } from '../primitives/Box'
 import { Context, MenuOptionGroupContext } from './MenuOptionGroup.context'
 import Text from '../typography/Text'
 import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import { KleeBorder } from '../../styles/theme'
 
 interface Props extends Omit<BoxProps, 'onChange'> {
   readonly title?: string
@@ -46,8 +47,8 @@ const MenuOptionGroup: FC<Props> = ({ children, title, value, onChange, type, ..
             px={3}
             py={2}
             bg="cool-gray.100"
-            borderBottom="sm"
-            borderTop="sm"
+            borderBottom={KleeBorder.Xs}
+            borderTop={KleeBorder.Xs}
             borderColor="cool-gray.300"
             uppercase
           >

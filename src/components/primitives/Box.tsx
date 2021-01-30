@@ -26,10 +26,10 @@ import {
 } from 'styled-system'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import {
-  SPACES_SCALES,
   ThemeBordersValues,
   ThemeRadiiValues,
   ThemeShadowsValues,
+  ThemeSpacingValues,
   ThemeZIndicesValues,
 } from '../../styles/theme'
 import * as CSS from 'csstype'
@@ -77,8 +77,8 @@ type AppTypographyProps = Omit<
 >
 
 type AppCustomStyledProps = {
-  minSize?: StyledSystemProps['size']
-  maxSize?: StyledSystemProps['size']
+  minSize?: AppSizeProps['size']
+  maxSize?: AppSizeProps['size']
 }
 
 type AppShadowProps = {
@@ -209,6 +209,50 @@ type AppPositionProps = {
   zIndex?: ResponsiveValue<ThemeZIndicesValues>
 }
 
+type AppSpaceProps = {
+  m?: ResponsiveValue<ThemeSpacingValues>
+  margin?: ResponsiveValue<ThemeSpacingValues>
+  mt?: ResponsiveValue<ThemeSpacingValues>
+  marginTop?: ResponsiveValue<ThemeSpacingValues>
+  mr?: ResponsiveValue<ThemeSpacingValues>
+  marginRight?: ResponsiveValue<ThemeSpacingValues>
+  mb?: ResponsiveValue<ThemeSpacingValues>
+  marginBottom?: ResponsiveValue<ThemeSpacingValues>
+  ml?: ResponsiveValue<ThemeSpacingValues>
+  marginLeft?: ResponsiveValue<ThemeSpacingValues>
+  mx?: ResponsiveValue<ThemeSpacingValues>
+  marginX?: ResponsiveValue<ThemeSpacingValues>
+  my?: ResponsiveValue<ThemeSpacingValues>
+  marginY?: ResponsiveValue<ThemeSpacingValues>
+  p?: ResponsiveValue<ThemeSpacingValues>
+  padding?: ResponsiveValue<ThemeSpacingValues>
+  pt?: ResponsiveValue<ThemeSpacingValues>
+  paddingTop?: ResponsiveValue<ThemeSpacingValues>
+  pr?: ResponsiveValue<ThemeSpacingValues>
+  paddingRight?: ResponsiveValue<ThemeSpacingValues>
+  pb?: ResponsiveValue<ThemeSpacingValues>
+  paddingBottom?: ResponsiveValue<ThemeSpacingValues>
+  pl?: ResponsiveValue<ThemeSpacingValues>
+  paddingLeft?: ResponsiveValue<ThemeSpacingValues>
+  px?: ResponsiveValue<ThemeSpacingValues>
+  paddingX?: ResponsiveValue<ThemeSpacingValues>
+  py?: ResponsiveValue<ThemeSpacingValues>
+  paddingY?: ResponsiveValue<ThemeSpacingValues>
+  gridGap?: ResponsiveValue<ThemeSpacingValues>
+  gridColumnGap?: ResponsiveValue<ThemeSpacingValues>
+  gridRowGap?: ResponsiveValue<ThemeSpacingValues>
+}
+
+type AppSizeProps = {
+  width?: ResponsiveValue<ThemeSpacingValues>
+  size?: ResponsiveValue<ThemeSpacingValues>
+  height?: ResponsiveValue<ThemeSpacingValues>
+  minWidth?: ResponsiveValue<ThemeSpacingValues>
+  maxWidth?: ResponsiveValue<ThemeSpacingValues>
+  minHeight?: ResponsiveValue<ThemeSpacingValues>
+  maxHeight?: ResponsiveValue<ThemeSpacingValues>
+}
+
 type StyledSystemProps = ColorProps &
   BorderProps &
   SpaceProps &
@@ -217,7 +261,9 @@ type StyledSystemProps = ColorProps &
   GridProps &
   Omit<PositionProps, 'zIndex'>
 
-type ModifiedStyledSystemProps = AppBorderProps &
+type ModifiedStyledSystemProps = AppSizeProps &
+  AppBorderProps &
+  AppSpaceProps &
   AppTypographyProps &
   AppPositionProps &
   AppCustomStyledProps &
@@ -251,18 +297,6 @@ export type PolymorphicBoxProps<E extends ElementType> = BoxOwnProps<E> & Omit<P
 export type PolymorphicComponentProps<E extends ElementType, P> = P & PolymorphicBoxProps<E>
 
 const defaultElement = 'div'
-
-export const Spacing = {
-  None: Number(SPACES_SCALES[0]),
-  Xs2: Number(SPACES_SCALES[1].replace('rem', '')) * 16,
-  Xs: Number(SPACES_SCALES[2].replace('rem', '')) * 16,
-  Base: Number(SPACES_SCALES[3].replace('rem', '')) * 16,
-  Medium: Number(SPACES_SCALES[4].replace('rem', '')) * 16,
-  Large: Number(SPACES_SCALES[5].replace('rem', '')) * 16,
-  Xl: Number(SPACES_SCALES[6].replace('rem', '')) * 16,
-  Xl2: Number(SPACES_SCALES[7].replace('rem', '')) * 16,
-  Xl3: Number(SPACES_SCALES[8].replace('rem', '')) * 16,
-} as const
 
 const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
