@@ -39,15 +39,15 @@ const meta: Meta = {
 export default meta
 
 const Template: Story<IconProps & { title: string; icons: Record<string, IconType> }> = ({ title, icons, ...args }) => (
-  <Flex spacing={3} direction="column">
+  <Flex spacing={4} direction="column">
     <Heading>{title}</Heading>
     <Grid autoFit={{ min: '130px', max: '1fr' }} gap={2}>
       {Object.entries(icons).map(([moduleName, icon]) => (
-        <Flex key={moduleName} borderRadius={KleeRadius.Md} p={2} align="center" direction="column" spacing={3}>
+        <Flex key={moduleName} borderRadius={KleeRadius.Md} p={4} align="center" direction="column" spacing={3}>
           <Flex
             boxShadow={KleeShadow.Md}
             borderRadius={KleeRadius.Md}
-            p={2}
+            p={3}
             align="center"
             justify="center"
             bg="cool-gray.100"

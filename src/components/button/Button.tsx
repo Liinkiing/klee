@@ -54,13 +54,13 @@ const InnerButton = styled(Box)(
         fontSize: KleeFontSize.Sm,
       },
       md: {
-        px: 3,
+        px: 4,
         py: 2,
         fontSize: KleeFontSize.Sm,
       },
       lg: {
-        px: 4,
-        py: 3,
+        px: 8,
+        py: 4,
         fontSize: KleeFontSize.Md,
       },
     },

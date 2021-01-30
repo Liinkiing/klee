@@ -12,9 +12,9 @@ type AutoFillFitOptions = {
 
 export interface GridOptions {
   templateColumns?: StyledGridProps['gridTemplateColumns']
-  gap?: StyledGridProps['gridGap']
-  rowGap?: StyledGridProps['gridRowGap']
-  columnGap?: StyledGridProps['gridColumnGap']
+  gap?: BoxProps['gridGap']
+  rowGap?: BoxProps['gridGap']
+  columnGap?: BoxProps['gridGap']
   autoFlow?: StyledGridProps['gridAutoFlow']
   autoRows?: StyledGridProps['gridAutoRows']
   autoColumns?: StyledGridProps['gridAutoColumns']
