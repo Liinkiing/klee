@@ -5,7 +5,9 @@ import { ease } from '../../utils/motion'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import styled from '@emotion/styled'
 
-type Appear = `from-${'left' | 'top' | 'right' | 'bottom'}`
+// While tsdx support the new Typescript template litteral types
+type Appear = 'from-left' | 'from-top' | 'from-right' | 'from-bottom'
+// type Appear = `from-${'left' | 'top' | 'right' | 'bottom'}`
 
 export interface RevealProps extends BoxProps {
   readonly appear?: Appear
@@ -79,20 +81,20 @@ const Container = styled(motion.custom(Box))``
 
 // @ts-ignore
 export const Reveal: FC<RevealProps> = ({
-                                          children,
-                                          onViewExit,
-                                          onViewEnter,
-                                          isFixed = false,
-                                          threshold = 0.8,
-                                          duration = 1,
-                                          delay = 0,
-                                          staggerChildren = 0.2,
-                                          triggerOnce = true,
-                                          initialInView = false,
-                                          isActive = true,
-                                          appear = 'from-bottom',
-                                          ...props
-                                        }) => {
+  children,
+  onViewExit,
+  onViewEnter,
+  isFixed = false,
+  threshold = 0.8,
+  duration = 1,
+  delay = 0,
+  staggerChildren = 0.2,
+  triggerOnce = true,
+  initialInView = false,
+  isActive = true,
+  appear = 'from-bottom',
+  ...props
+}) => {
   const { ref, inView } = useInView({
     triggerOnce,
     initialInView,
@@ -115,20 +117,20 @@ export const Reveal: FC<RevealProps> = ({
           position: isFixed ? 'fixed' : 'static',
           ...(isFixed
             ? {
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
-            }
+                left: 0,
+                right: 0,
+                bottom: 0,
+                top: 0,
+              }
             : {}),
         }}
         ref={ref}
         custom={{ appear: appear }}
         variants={variants}
         transition={{ delay, ease, duration }}
-        initial='hidden'
+        initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
-        exit='hidden'
+        exit="hidden"
         {...props}
       >
         {React.cloneElement(validChildren[0] as ReactElement)}
@@ -148,9 +150,9 @@ export const Reveal: FC<RevealProps> = ({
         staggerChildren,
         delayChildren: delay,
       }}
-      initial='hidden'
+      initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      exit='hidden'
+      exit="hidden"
       {...props}
     >
       {validChildren.map((c, i) =>
