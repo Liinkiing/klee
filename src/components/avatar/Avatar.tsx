@@ -6,7 +6,7 @@ import { variant } from 'styled-system'
 import styled from '@emotion/styled'
 import Box, { BoxProps } from '../primitives/Box'
 import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 import Flex from '../layout/Flex'
 import { colorContrast } from '../../utils/color'
 import { KleeRadius } from '../../styles/theme'
@@ -110,7 +110,7 @@ export const Avatar: FC<AvatarProps> = ({
 
   const render = () => {
     if (children) {
-      return children
+      return <Fragment>{children}</Fragment>
     }
     if (!children && shouldDisplayName) {
       return getInitials(name, showLastname)
@@ -144,7 +144,7 @@ export const Avatar: FC<AvatarProps> = ({
         color: color ?? undefined,
         ...props,
       }}
-      borderRadius={squared ? KleeRadius.Lg : '100%'}
+      borderRadius={squared ? (size === 'xl' ? KleeRadius['2xl'] : KleeRadius.Lg) : '100%'}
       overflow="hidden"
       align="center"
       justify="center"

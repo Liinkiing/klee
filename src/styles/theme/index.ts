@@ -54,7 +54,7 @@ export const SPACING = {
   28: '24rem',
 } as const
 
-export type ThemeSpacingValues = keyof typeof SPACING | (string & {})
+export type ThemeSpacingValues = keyof typeof SPACING | (string & {}) | (number & {})
 
 export const SHADOWS = {
   xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
@@ -113,12 +113,14 @@ export enum KleeRadius {
 export type ThemeRadiiValues = keyof typeof RADII | (string & {}) | (number & {})
 
 export const BORDERS = {
-  sm: '1px solid',
+  xs: '1px solid',
+  sm: '2px solid',
   md: '4px solid',
   lg: '10px solid',
 } as const
 
 export enum KleeBorder {
+  Xs = 'xs',
   Sm = 'sm',
   Md = 'md',
   Lg = 'lg',
