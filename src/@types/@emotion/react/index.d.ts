@@ -6,7 +6,7 @@ import {
   LETTER_SPACINGS,
   LINE_HEIGHTS,
 } from '../../../styles/theme/typography'
-import { BORDERS, RADII, SHADOWS, SPACING, ThemeSpacingValues, Z_INDICES } from '../../../styles/theme'
+import { BORDERS, RADII, SHADOWS, SPACING, Z_INDICES } from '../../../styles/theme'
 
 export interface Breakpoints {
   tablet: string

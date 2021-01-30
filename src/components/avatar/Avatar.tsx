@@ -144,7 +144,7 @@ export const Avatar: FC<AvatarProps> = ({
         color: color ?? undefined,
         ...props,
       }}
-      borderRadius={squared ? (size === 'xl' ? KleeRadius['2xl'] : KleeRadius.Lg) : '100%'}
+      borderRadius={squared ? (size === 'xl' ? KleeRadius.Xxl : KleeRadius.Lg) : '100%'}
       overflow="hidden"
       align="center"
       justify="center"

@@ -1,7 +1,7 @@
-import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
+import Box, { BoxOwnProps } from '../primitives/Box'
 import { ResponsiveValue } from 'styled-system'
 import { jsxInnerText } from '../../utils/jsx'
-import React, { forwardRef } from 'react'
+import React, { FC, forwardRef } from 'react'
 import { KleeFontSize } from '../../styles/theme/typography'
 
 export enum HeadingSize {
@@ -28,19 +28,29 @@ type Props = Omit<BoxOwnProps, 'size' | 'as'> & {
   readonly truncate?: number
 }
 
-const Heading = forwardRef<any, Props>(({ children, truncate, size = 'xl', as = 'h2', ...rest }, ref) => {
-  let content = children
-  const innerText = jsxInnerText(content)
-  if (truncate && innerText.length > truncate) {
-    content = `${innerText.slice(0, truncate)}…`
-  }
-  return (
-    <Box ref={ref} lineHeight="shorter" fontWeight="bold" fontFamily="heading" as={as} fontSize={sizes[size]} {...rest}>
-      {content}
-    </Box>
-  )
-})
+const Heading: FC<Props> = forwardRef<HTMLHeadingElement, Props>(
+  ({ children, truncate, size = 'xl', as = 'h2', ...rest }, ref) => {
+    let content = children
+    const innerText = jsxInnerText(content)
+    if (truncate && innerText.length > truncate) {
+      content = `${innerText.slice(0, truncate)}…`
+    }
+    return (
+      <Box
+        ref={ref}
+        lineHeight="shorter"
+        fontWeight="bold"
+        fontFamily="heading"
+        as={as}
+        fontSize={sizes[size]}
+        {...rest}
+      >
+        {content}
+      </Box>
+    )
+  },
+)
 
 Heading.displayName = 'Heading'
 
-export default Heading as PolymorphicComponent<Props>
+export default Heading

@@ -103,6 +103,7 @@
     "patch-package": "^6.2.2",
     "postinstall-postinstall": "^2.1.0",
     "react-icons": "^4.1.0",
+    "react-intersection-observer": "^8.31.0",
     "styled-system": "^5.1.5",
     "tiny-invariant": "^1.1.0",
     "tiny-warning": "^1.0.3"

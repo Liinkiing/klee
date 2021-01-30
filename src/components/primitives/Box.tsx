@@ -241,6 +241,7 @@ type AppSpaceProps = {
   gridGap?: ResponsiveValue<ThemeSpacingValues>
   gridColumnGap?: ResponsiveValue<ThemeSpacingValues>
   gridRowGap?: ResponsiveValue<ThemeSpacingValues>
+  gap?: ResponsiveValue<ThemeSpacingValues>
 }
 
 type AppSizeProps = {
@@ -304,6 +305,10 @@ const Box = styled('div', { shouldForwardProp })<BoxProps>(
   }),
   compose(
     system({
+      gap: {
+        properties: ['gap'],
+        scale: 'sizes',
+      },
       minSize: {
         properties: ['minWidth', 'minHeight'],
         scale: 'sizes',

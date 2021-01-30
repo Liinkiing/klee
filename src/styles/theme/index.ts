@@ -105,8 +105,8 @@ export enum KleeRadius {
   Md = 'md',
   Lg = 'lg',
   Xl = 'xl',
-  '2xl' = '2xl',
-  '3xl' = '3xl',
+  Xxl = '2xl',
+  Xxxl = '3xl',
   Full = 'full',
 }
 

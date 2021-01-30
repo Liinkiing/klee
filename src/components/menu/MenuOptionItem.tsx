@@ -6,7 +6,7 @@ import { themeGet } from '@styled-system/theme-get'
 import MenuListItem, { MenuListItemProps } from './MenuListItem'
 import { useMenuOptionGroup } from './MenuOptionGroup.context'
 import Box, { PolymorphicComponent } from '../primitives/Box'
-import Text from '../typography/Text'
+import { textifyChildren } from '../../utils/jsx'
 
 interface Props extends MenuListItemProps {
   readonly value: string
@@ -44,7 +44,7 @@ const MenuOptionItem = ({ children, value, ...props }: Props) => {
         }
         type={type}
       />
-      {typeof children === 'string' ? <Text>{children}</Text> : children}
+      {textifyChildren(children)}
     </MenuListItem>
   )
 }
