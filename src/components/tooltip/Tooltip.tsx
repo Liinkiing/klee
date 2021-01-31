@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
+import { jsx, useTheme } from '@emotion/react'
 import { Fragment } from 'react'
 import css from '@styled-system/css'
 import Tippy from '@tippyjs/react/headless'
@@ -14,16 +14,19 @@ import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { Text } from '../typography'
 import { KleeRadius, KleeShadow } from '../../styles/theme'
 import { KleeFontSize } from '../../styles/theme/typography'
+import { transparentize } from 'polished'
+import { themeGet } from '@styled-system/theme-get'
 
 export interface TooltipProps
   extends Omit<BoxProps, 'children'>,
     Partial<Pick<TippyPropsType, 'delay' | 'showOnCreate' | 'onShow' | 'onHide' | 'placement' | 'children'>> {
-  readonly label: ReactNode
-  readonly truncate?: number
   readonly trigger?: Array<'mouseenter' | 'focus' | 'click' | 'focusin' | 'manual'>
+  readonly label: ReactNode
+  readonly vibrancy?: boolean
   readonly useArrow?: boolean
-  readonly isDisabled?: boolean
   readonly keepOnHover?: boolean
+  readonly isDisabled?: boolean
+  readonly truncate?: number
 }
 
 const TooltipInner = styled(motion.custom(Box))`
@@ -61,6 +64,7 @@ const Arrow = styled(Box)`
 
 const INITIAL_SCALE = 0.8
 const DEFAULT_BG = 'cool-gray.500'
+const BLUR_AMOUNT = 20
 
 export const Tooltip: FC<TooltipProps> = ({
   children,
@@ -69,6 +73,9 @@ export const Tooltip: FC<TooltipProps> = ({
   onShow,
   onHide,
   truncate,
+  bg,
+  backgroundColor,
+  vibrancy = false,
   delay = [null, null],
   trigger = ['mouseenter', 'focus'],
   useArrow = true,
@@ -77,8 +84,9 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = 'bottom',
   ...props
 }) => {
-  const opacity = useSpring(0, LAYOUT_TRANSITION_SPRING)
-  const scale = useSpring(INITIAL_SCALE, LAYOUT_TRANSITION_SPRING)
+  const theme = useTheme()
+  const opacity = useSpring(showOnCreate ? 1 : 0, LAYOUT_TRANSITION_SPRING)
+  const scale = useSpring(showOnCreate ? 1 : INITIAL_SCALE, LAYOUT_TRANSITION_SPRING)
 
   const onMount = () => {
     scale.set(1)
@@ -99,6 +107,7 @@ export const Tooltip: FC<TooltipProps> = ({
     scale.set(INITIAL_SCALE)
     opacity.set(0)
   }
+  const computedBg = bg ?? backgroundColor ?? DEFAULT_BG
   return (
     <Tippy
       disabled={isDisabled}
@@ -131,7 +140,15 @@ export const Tooltip: FC<TooltipProps> = ({
       render={attrs => (
         <TooltipInner
           p={2}
-          bg={DEFAULT_BG}
+          bg={computedBg}
+          css={css({
+            ...(vibrancy
+              ? {
+                  backdropFilter: `blur(${BLUR_AMOUNT}px)`,
+                  bg: transparentize(0.5, themeGet(`colors.${computedBg}`, '#000')({ theme })),
+                }
+              : {}),
+          })}
           color="white"
           borderRadius={KleeRadius.Md}
           boxShadow={KleeShadow.Md}
@@ -146,8 +163,16 @@ export const Tooltip: FC<TooltipProps> = ({
           {useArrow && (
             <Arrow
               css={css({
-                '&::before': {
-                  bg: props.bg ?? props.backgroundColor ?? DEFAULT_BG,
+                '&:before': {
+                  ...(vibrancy
+                    ? {
+                        backdropFilter: `blur(${BLUR_AMOUNT}px)`,
+                        clipPath: 'polygon(0 0, 100% 0%, 100% 22%, 0% 100%)',
+                        bg: transparentize(0.5, themeGet(`colors.${computedBg}`, '#000')({ theme })),
+                      }
+                    : {
+                        bg: computedBg,
+                      }),
                 },
               })}
               id="arrow"

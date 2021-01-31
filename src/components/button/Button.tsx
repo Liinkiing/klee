@@ -5,29 +5,49 @@ import { variant as systemVariant } from 'styled-system'
 import colors from '../../styles/modules/colors'
 import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 
-type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger'
+type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'semi-transparent'
 
 export interface ButtonProps extends BoxProps {
   readonly variant?: Variant
   readonly variantSize?: 'sm' | 'md' | 'lg'
 }
 
-const generateVariant = (color: keyof typeof colors) => ({
-  bg: `${color}.500`,
-  '&:hover': {
-    bg: `${color}.600`,
+const generateVariant = (color: keyof typeof colors | 'semi-transparent') => {
+  if (color === 'semi-transparent') {
+    return {
+      bg: 'rgba(0,0,0,0.3)',
+      '&:hover': {
+        bg: `rgba(0,0,0,0.5)`,
+        '&:focus': {
+          boxShadow: `0 0 2px 1px rgba(0,0,0,0.6)`,
+        },
+      },
+      '&:focus': {
+        boxShadow: `0 0 2px 1px rgba(0,0,0,0.6)`,
+      },
+      '&:disabled': {
+        bg: `rgba(0,0,0,0.3)`,
+        color: `rgba(0,0,0,0.5)`,
+      },
+    }
+  }
+  return {
+    bg: `${color}.500`,
+    '&:hover': {
+      bg: `${color}.600`,
+      '&:focus': {
+        boxShadow: `0 0 2px 1px ${colors[color]['600']}`,
+      },
+    },
     '&:focus': {
       boxShadow: `0 0 2px 1px ${colors[color]['600']}`,
     },
-  },
-  '&:focus': {
-    boxShadow: `0 0 2px 1px ${colors[color]['600']}`,
-  },
-  '&:disabled': {
-    bg: `${color}.100`,
-    color: `${color}.300`,
-  },
-})
+    '&:disabled': {
+      bg: `${color}.100`,
+      color: `${color}.300`,
+    },
+  }
+}
 
 const InnerButton = styled(Box)(
   {
@@ -43,6 +63,7 @@ const InnerButton = styled(Box)(
       secondary: generateVariant('blue'),
       tertiary: generateVariant('cool-gray'),
       danger: generateVariant('red'),
+      'semi-transparent': generateVariant('semi-transparent'),
     },
   }),
   systemVariant({

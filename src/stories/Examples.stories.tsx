@@ -3,11 +3,12 @@ import { Meta, Story } from '@storybook/react'
 import Grid from '../components/layout/Grid'
 import css from '@styled-system/css'
 import Flex from '../components/layout/Flex'
-import { Tooltip, Reveal, Avatar, Heading, List } from '../components'
+import { Button, Tooltip, Reveal, Avatar, Heading, List } from '../components'
 import Text from '../components/typography/Text'
 import { KleeRadius, KleeShadow } from '../styles/theme'
 import Box from '../components/primitives/Box'
 import styled from '@emotion/styled'
+import Popover from '../components/popover/Popover'
 
 const meta: Meta = {
   title: 'Examples/Layouts',
@@ -95,6 +96,20 @@ export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters
           as="img"
           src="https://uploadstatic-sea.mihoyo.com/contentweb/20210129/2021012910250180234.jpg"
         />
+        <Popover
+          vibrancy
+          ariaLabel="Informations"
+          bg="indigo.600"
+          color="white"
+          disclosure={<Button mt={4}>Show informations</Button>}
+        >
+          <Popover.Header>
+            <Heading>Informations</Heading>
+          </Popover.Header>
+          <Popover.Body>
+            <Text>Hello from the othder side</Text>
+          </Popover.Body>
+        </Popover>
         <Flex maxWidth={[null, 700]} direction="column" mt={6} gap={4}>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur illum incidunt iure minus nesciunt

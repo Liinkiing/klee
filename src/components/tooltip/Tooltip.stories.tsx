@@ -23,6 +23,7 @@ const meta: Meta = {
     },
   },
   args: {
+    showOnCreate: true,
     label: 'Hello Klee',
     trigger: ['mouseenter', 'focus'],
   },
