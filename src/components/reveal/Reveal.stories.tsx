@@ -9,6 +9,7 @@ const meta: Meta = {
   title: 'Reveal',
   component: Reveal,
   parameters: {
+    chromatic: { disable: true },
     controls: { expanded: true },
   },
 }

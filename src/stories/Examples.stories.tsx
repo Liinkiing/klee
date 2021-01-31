@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react'
 import Grid from '../components/layout/Grid'
 import css from '@styled-system/css'
 import Flex from '../components/layout/Flex'
-import { Reveal, Avatar, Heading, List } from '../components'
+import { Tooltip, Reveal, Avatar, Heading, List } from '../components'
 import Text from '../components/typography/Text'
 import { KleeRadius, KleeShadow } from '../styles/theme'
 import Box from '../components/primitives/Box'
@@ -12,6 +12,7 @@ import styled from '@emotion/styled'
 const meta: Meta = {
   title: 'Examples/Layouts',
   parameters: {
+    chromatic: { disable: true },
     controls: { disable: true },
   },
 }
@@ -34,7 +35,7 @@ const NavItem = styled(List.Item)(
   css({ '&:hover': { cursor: 'pointer', bg: 'cool-gray.200' }, p: [0, 2], gap: 2, borderRadius: KleeRadius.Lg }),
 )
 
-type Character = { name: string; avatarUrl: string; elementUrl: string }
+type Character = { name: string; avatarUrl: string; elementUrl: string; description: string }
 
 export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters }) => (
   <AppContainer
@@ -60,19 +61,21 @@ export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters
       </Reveal>
       <Reveal as={List} gap={2} direction={['row', 'column']} appear="from-left" staggerChildren={0.15}>
         {characters.map(c => (
-          <NavItem key={c.name}>
-            <Avatar bg="cool-gray.500" src={c.avatarUrl} name={c.name} size="xs" />
-            <Text>{c.name}</Text>
-            <Avatar
-              display={['none', 'flex']}
-              p={1}
-              ml="auto"
-              squared
-              bg="cool-gray.500"
-              src={c.elementUrl}
-              size="xs"
-            />
-          </NavItem>
+          <Tooltip label={c.description} key={c.name}>
+            <NavItem key={c.name}>
+              <Avatar bg="cool-gray.500" src={c.avatarUrl} name={c.name} size="xs" />
+              <Text>{c.name}</Text>
+              <Avatar
+                display={['none', 'flex']}
+                p={1}
+                ml="auto"
+                squared
+                bg="cool-gray.500"
+                src={c.elementUrl}
+                size="xs"
+              />
+            </NavItem>
+          </Tooltip>
         ))}
       </Reveal>
     </Flex>
@@ -142,21 +145,28 @@ PageLayout.args = {
       name: 'Klee',
       avatarUrl: 'https://rerollcdn.com/GENSHIN/Characters/Klee.png',
       elementUrl: 'https://rerollcdn.com/GENSHIN/Elements/Element_Pyro.png',
+      description:
+        "An explosives expert and a regular at the Knights of Favonius' confinement room. Also known as Fleeing Sunlight.",
     },
     {
       name: 'Fischl',
       avatarUrl: 'https://rerollcdn.com/GENSHIN/Characters/Fischl.png',
       elementUrl: 'https://rerollcdn.com/GENSHIN/Elements/Element_Electro.png',
+      description:
+        'A mysterious girl who calls herself "Prinzessia der Verurteilung" and travels with a night raven named Oz.',
     },
     {
       name: 'Benett',
       avatarUrl: 'https://rerollcdn.com/GENSHIN/Characters/Bennett.png',
       elementUrl: 'https://rerollcdn.com/GENSHIN/Elements/Element_Pyro.png',
+      description: "A righteous and good-natured adventurer from Mondstadt who's unfortunately extremely unlucky.",
     },
     {
       name: 'Qiqi',
       avatarUrl: 'https://rerollcdn.com/GENSHIN/Characters/Qiqi.png',
       elementUrl: 'https://rerollcdn.com/GENSHIN/Elements/Element_Cryo.png',
+      description:
+        'An apprentice and herb-picker Bubu Pharmacy. An undead with a bone-white complexion, she seldom has much in the way of words or emotion.',
     },
   ],
 }
