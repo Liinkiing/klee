@@ -17,6 +17,9 @@ export interface RevealProps extends BoxProps {
   readonly threshold?: number
   readonly delay?: number
   readonly duration?: number
+  /**
+   * When having multiple children, staggering them means that they will be animated one after one
+   */
   readonly staggerChildren?: number
   readonly initialInView?: boolean
   /**
@@ -28,9 +31,6 @@ export interface RevealProps extends BoxProps {
    */
   readonly isActive?: boolean
   readonly triggerOnce?: boolean
-  /**
-   * When having multiple children, staggering them means that they will be animated one after one
-   */
   readonly onViewEnter?: () => void
   readonly onViewExit?: () => void
 }

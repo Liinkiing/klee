@@ -18,6 +18,8 @@ const EXLUDED_DOCGEN_PROPS = [
   'css',
 ]
 
+const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
+
 module.exports = {
   webpackFinal: async config => {
     return {
@@ -58,6 +60,13 @@ module.exports = {
         }
         if (EXLUDED_DOCGEN_PROPS.includes(prop.name)) {
           return false
+        }
+        if (
+          prop.parent &&
+          prop.parent.fileName &&
+          ALLOWED_DOCGEN_NODE_MODULES.some(module => prop.parent.fileName.includes(module))
+        ) {
+          return true
         }
         if (prop.parent && /node_modules/.test(prop.parent.fileName)) {
           return false

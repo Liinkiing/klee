@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import Tippy from '@tippyjs/react/headless'
-import { Placement } from 'tippy.js'
+import Tippy, { TippyProps } from '@tippyjs/react/headless'
 import MenuButton, { MENU_BUTTON_TYPE } from './MenuButton'
 import MenuDivider from './MenuDivider'
 import MenuListItem from './MenuListItem'
@@ -13,9 +12,8 @@ import { FC, ReactNode } from 'react'
 import MenuList, { MENU_LIST_TYPE } from './MenuList'
 import { CommonProps } from './common'
 
-export interface MenuProps extends CommonProps {
+export interface MenuProps extends CommonProps, Pick<TippyProps, 'placement'> {
   readonly closeOnSelect?: boolean
-  readonly placement?: Placement
 }
 
 const Provider = ({ context: { open, closeOnSelect }, children }: { context: Context; children: ReactNode }) => (

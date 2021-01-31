@@ -1,13 +1,13 @@
 import React, { FC } from 'react'
 import Box, { BoxProps } from '../primitives/Box'
-import { textifyChildren } from '../../utils/jsx'
+import Text from '../typography/Text'
 
 export interface ListItemProps extends BoxProps {}
 
 export const ListItem: FC<ListItemProps> = ({ children, ...props }) => {
   return (
     <Box as="li" display="flex" alignItems="center" {...props}>
-      {textifyChildren(children)}
+      {typeof children === 'string' ? <Text>{children}</Text> : children}
     </Box>
   )
 }

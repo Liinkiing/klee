@@ -13,7 +13,7 @@ const meta: Meta = {
     menuList: { table: { disable: true }, control: { disable: true } },
   },
   parameters: {
-    controls: { expanded: false },
+    controls: { expanded: true },
   },
 }
 

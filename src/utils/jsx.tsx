@@ -1,11 +1,6 @@
-import React, { Children, isValidElement, ReactElement, ReactNode } from 'react'
-import Text from '../components/typography/Text'
+import { Children, isValidElement, ReactElement, ReactNode } from 'react'
 
 export const hasProps = (jsx: ReactNode): jsx is ReactElement => Object.prototype.hasOwnProperty.call(jsx, 'props')
-
-export const textifyChildren = (children: ReactNode): ReactNode => {
-  return typeof children === 'string' ? <Text>{children}</Text> : children
-}
 
 export const jsxInnerText = (jsx: ReactNode): string => {
   if (jsx === null || typeof jsx === 'boolean' || typeof jsx === 'undefined') {

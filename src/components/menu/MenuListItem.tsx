@@ -8,7 +8,7 @@ import css from '@styled-system/css'
 import Flex from '../layout/Flex'
 import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
-import { textifyChildren } from '../../utils/jsx'
+import Text from '../typography/Text'
 
 export interface MenuListItemProps extends BoxProps {
   readonly disabled?: boolean
@@ -61,7 +61,7 @@ const MenuListItem: FC<MenuListItemProps> = ({ disabled, children, ...props }) =
           })}
           {...props}
         >
-          {textifyChildren(children)}
+          {typeof children === 'string' ? <Text>{children}</Text> : children}
         </MenuListItemInner>
       )}
     </HeadlessMenu.Item>
