@@ -12,7 +12,7 @@ import { FC, ReactNode } from 'react'
 import MenuList, { MENU_LIST_TYPE } from './MenuList'
 import { CommonProps } from './common'
 
-export interface MenuProps extends CommonProps, Pick<TippyProps, 'placement'> {
+export interface MenuProps extends CommonProps, Partial<Pick<TippyProps, 'placement'>> {
   readonly closeOnSelect?: boolean
 }
 
