@@ -24,17 +24,22 @@ $ npm i @liinkiing/klee
 
 ## Usage
 
+The package uses **styled-system** underneath, so all the UI component extends the base `Box` component and so you can use all of the styled system props and responsive styles!
+
+You can see all the theme values (typography, colors, spacing etc) in the [theme file](src/styles/theme/index.ts). The color palette used is from **Tailwind 2.0**, which is a great color palette!
+
 ```tsx
-import { KleeProvider, Flex, Button, Icon } from '@liinkiing/klee'
+import { KleeProvider, Flex, Button, Icon, Box } from '@liinkiing/klee'
 import { FiAirplay } from 'react-icons/fi'
 
 const App = () => {
   return (
     <KleeProvider>
-      <Flex spacing={4}>
+      <Flex spacing={4} bg="amber.300">
         <Button>Hello world</Button>
         <Button variant="danger">Hello world</Button>
         <Icon as={FiAirplay} />
+        <Box color="cyan.500" p={4}><Text>Ehe te nandayo</Text></Box>
       </Flex>
     </KleeProvider>
   )
