@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import { jsx, useTheme } from '@emotion/react'
 import { cloneElement, FC, FunctionComponentElement, memo, ReactNode, useMemo } from 'react'
-import { Popover as ReakitPopover, PopoverArrow, PopoverDisclosure, usePopoverState } from 'reakit/Popover'
+import { Popover as ReakitPopover, PopoverArrow, PopoverDisclosure } from 'reakit/Popover'
 import { AnimatePresence, motion } from 'framer-motion'
 import styled from '@emotion/styled'
 import { ease } from '../../utils/motion'
@@ -18,18 +18,24 @@ import { css as emotionCss } from '@emotion/react'
 import { TippyProps } from '@tippyjs/react/headless'
 import { transparentize } from 'polished'
 import { themeGet } from '@styled-system/theme-get'
+import { useHoverPopoverState } from '../../hooks/useHoverPopoverState'
 
 type RenderProps = (props: IPopoverContext) => ReactNode
 
-export interface PopoverProps
-  extends Omit<BoxProps, 'children'>,
-    Partial<Pick<TippyProps, 'placement' | 'showOnCreate'>> {
-  readonly ariaLabel: string
-  readonly vibrancy?: boolean
-  readonly hideCloseButton?: boolean
-  readonly children: RenderProps | ReactNode
-  readonly disclosure: FunctionComponentElement<{}>
-}
+export type PopoverProps = Omit<BoxProps, 'children'> &
+  Partial<Pick<TippyProps, 'placement' | 'showOnCreate'>> & {
+    readonly ariaLabel: string
+    readonly vibrancy?: boolean
+    readonly hideCloseButton?: boolean
+    readonly children: RenderProps | ReactNode
+    readonly disclosure: FunctionComponentElement<{}>
+  } & (
+    | {
+        readonly trigger?: 'click'
+        readonly triggerDelay?: never
+      }
+    | { readonly trigger?: 'hover'; readonly triggerDelay?: number }
+  )
 
 interface ProviderProps {
   readonly children: ReactNode
@@ -62,6 +68,8 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
   ariaLabel,
   bg,
   backgroundColor,
+  triggerDelay = 0,
+  trigger = 'click',
   vibrancy = false,
   placement = 'top',
   showOnCreate = false,
@@ -69,12 +77,22 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
   ...props
 }) => {
   const theme = useTheme()
-  const popover = usePopoverState({
+  const popover = useHoverPopoverState({
+    timeout: trigger === 'hover' ? triggerDelay : 0,
     modal: true,
     animated: TRANSITION_DURATION * 1000,
     visible: showOnCreate,
     placement,
   })
+  const popoverProps = {
+    ...(trigger === 'hover'
+      ? {
+          onMouseEnter: popover.show,
+          onMouseLeave: popover.hide,
+        }
+      : {}),
+  }
+
   const context = useMemo<IPopoverContext>(
     () => ({
       hide: popover.hide,
@@ -88,11 +106,13 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
   const computedBg = bg ?? backgroundColor ?? 'white'
   return (
     <Provider context={context}>
-      <PopoverDisclosure {...popover} ref={disclosure.ref} {...disclosure.props}>
+      <PopoverDisclosure {...popover} {...popoverProps} ref={disclosure.ref} {...disclosure.props}>
         {disclosureProps => cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>
       <ReakitPopover
         {...popover}
+        {...popoverProps}
+        unstable_autoFocusOnShow={trigger === 'hover' ? false : undefined}
         aria-label={ariaLabel}
         css={emotionCss({
           '&:focus': {

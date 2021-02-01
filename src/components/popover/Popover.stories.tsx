@@ -10,6 +10,7 @@ const meta: Meta = {
   component: Popover,
   argTypes: {
     disclosure: { table: { disable: true }, control: { disable: true } },
+    buttonText: { table: { disable: true }, control: { disable: true } },
   },
   args: {
     placement: 'right-end',
@@ -22,8 +23,8 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<PopoverProps> = args => (
-  <Popover {...args} disclosure={<Button>Trigger</Button>}>
+const Template: Story<PopoverProps & { buttonText: string }> = ({ buttonText, ...args }) => (
+  <Popover {...args} disclosure={<Button>{buttonText}</Button>}>
     {({ hide }) => (
       <>
         <Popover.Header>
@@ -45,6 +46,7 @@ const Template: Story<PopoverProps> = args => (
 export const Default = Template.bind({})
 
 Default.args = {
+  buttonText: 'Click me',
   hideCloseButton: true,
   ariaLabel: 'Popover example',
 }
@@ -52,9 +54,19 @@ Default.args = {
 export const WithCustomization = Template.bind({})
 
 WithCustomization.args = {
+  buttonText: 'Click me',
   hideCloseButton: true,
   ariaLabel: 'Popover example',
   bg: 'cyan.600',
   color: 'white',
   minWidth: 400,
+}
+
+export const OnHover = Template.bind({})
+
+OnHover.args = {
+  ...WithCustomization.args,
+  buttonText: 'Hover me',
+  showOnCreate: false,
+  trigger: 'hover',
 }
