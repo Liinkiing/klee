@@ -1,9 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx, useTheme } from '@emotion/react'
-import { FC, FunctionComponentElement, memo, ReactNode, useMemo } from 'react'
+import { cloneElement, FC, FunctionComponentElement, memo, ReactNode, useMemo } from 'react'
 import { Popover as ReakitPopover, PopoverArrow, PopoverDisclosure, usePopoverState } from 'reakit/Popover'
-import { Button } from '../button'
 import { AnimatePresence, motion } from 'framer-motion'
 import styled from '@emotion/styled'
 import { ease } from '../../utils/motion'
@@ -46,7 +45,6 @@ type SubComponents = {
 const PopoverInner = styled(motion.custom(Flex))({
   '&:focus': {
     outline: 'none',
-    boxShadow: 'rgb(0 109 255 / 50%) 0px 0px 0px 0.2em',
   },
 })
 
@@ -90,18 +88,15 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
   const computedBg = bg ?? backgroundColor ?? 'white'
   return (
     <Provider context={context}>
-      <PopoverDisclosure
-        {...popover}
-        {...(disclosure ? { ref: disclosure.ref, ...disclosure.props } : {})}
-        as={Button}
-      />
+      <PopoverDisclosure {...popover} ref={disclosure.ref} {...disclosure.props}>
+        {disclosureProps => cloneElement(disclosure, disclosureProps)}
+      </PopoverDisclosure>
       <ReakitPopover
         {...popover}
         aria-label={ariaLabel}
         css={emotionCss({
           '&:focus': {
             outline: 'none',
-            boxShadow: 'rgb(0 109 255 / 50%) 0px 0px 0px 0.2em',
           },
         })}
       >

@@ -7,13 +7,13 @@ import { Flex } from '../layout'
 import { Box } from '../primitives'
 import { Icon } from '../icon'
 import { FiX } from 'react-icons/fi'
-import { usePopover } from './context'
-import { BoxProps } from '../primitives/Box'
+import { useModal } from './context'
 import css from '@styled-system/css'
 import { KleeFontSize } from '../../styles/theme/typography'
+import { FlexProps } from '../layout/Flex'
 
-const PopoverHeader: FC<BoxProps> = ({ children, ...rest }) => {
-  const { hide, hideCloseButton } = usePopover()
+const ModalHeader: FC<FlexProps> = ({ children, ...rest }) => {
+  const { hide, hideCloseButton } = useModal()
   return (
     <Flex as="header" p={4} pb={0} align="center" {...rest}>
       <Box
@@ -36,6 +36,6 @@ const PopoverHeader: FC<BoxProps> = ({ children, ...rest }) => {
   )
 }
 
-PopoverHeader.displayName = 'Popover.Header'
+ModalHeader.displayName = 'Modal.Header'
 
-export default PopoverHeader
+export default ModalHeader

@@ -60,7 +60,13 @@ WithHTMLContent.args = {
       <Text>
         Hi I have some{' '}
         <Box as="span" fontWeight={KleeFontWeight.Bold}>
-          ✨ HTML ✨
+          <span role="img" aria-label="sprinkes">
+            ✨
+          </span>{' '}
+          HTML{' '}
+          <span role="img" aria-label="sprinkes">
+            ✨
+          </span>
         </Box>
       </Text>
       <Flex>

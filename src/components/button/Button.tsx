@@ -5,29 +5,48 @@ import { variant as systemVariant } from 'styled-system'
 import colors from '../../styles/modules/colors'
 import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 
-type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'semi-transparent'
+type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'semi-transparent' | 'transparent'
+type VariantSize = 'sm' | 'md' | 'lg' | 'icon'
 
 export interface ButtonProps extends BoxProps {
   readonly variant?: Variant
-  readonly variantSize?: 'sm' | 'md' | 'lg'
+  readonly variantSize?: VariantSize
 }
 
 const generateVariant = (color: keyof typeof colors | 'semi-transparent') => {
+  if (color === 'transparent') {
+    return {
+      bg: 'transparent',
+      color: 'inherit',
+      '&:hover': {
+        bg: `rgba(0,0,0,0.1)`,
+        '&:focus': {
+          boxShadow: `0 0 2px 3px rgba(0,0,0,0.15)`,
+        },
+      },
+      '&:focus': {
+        boxShadow: `0 0 2px 3px rgba(0,0,0,0.15)`,
+      },
+      '&:disabled': {
+        bg: `transparent`,
+        opacity: 0.6,
+      },
+    }
+  }
   if (color === 'semi-transparent') {
     return {
       bg: 'rgba(0,0,0,0.3)',
       '&:hover': {
         bg: `rgba(0,0,0,0.5)`,
         '&:focus': {
-          boxShadow: `0 0 2px 1px rgba(0,0,0,0.6)`,
+          boxShadow: `0 0 2px 3px rgba(0,0,0,0.3)`,
         },
       },
       '&:focus': {
-        boxShadow: `0 0 2px 1px rgba(0,0,0,0.6)`,
+        boxShadow: `0 0 2px 3px rgba(0,0,0,0.3)`,
       },
       '&:disabled': {
         bg: `rgba(0,0,0,0.3)`,
-        color: `rgba(0,0,0,0.5)`,
       },
     }
   }
@@ -62,13 +81,18 @@ const InnerButton = styled(Box)(
       primary: generateVariant('indigo'),
       secondary: generateVariant('blue'),
       tertiary: generateVariant('cool-gray'),
-      danger: generateVariant('red'),
+      danger: generateVariant('rose'),
+      transparent: generateVariant('transparent'),
       'semi-transparent': generateVariant('semi-transparent'),
     },
   }),
-  systemVariant({
+  systemVariant<{}, VariantSize>({
     prop: 'variantSize',
     variants: {
+      icon: {
+        p: 2,
+        fontSize: KleeFontSize.Sm,
+      },
       sm: {
         px: 2,
         py: 1,
