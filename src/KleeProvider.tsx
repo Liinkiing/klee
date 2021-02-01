@@ -5,6 +5,7 @@ import { jsx, ThemeProvider } from '@emotion/react'
 import { kleeTheme } from './styles/theme'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'
+import { Provider } from 'reakit'
 
 interface Props {
   readonly resetCSS?: boolean
@@ -12,11 +13,13 @@ interface Props {
 
 export const KleeProvider: FC<Props> = ({ resetCSS = true, children }) => {
   return (
-    <ThemeProvider theme={kleeTheme}>
-      {resetCSS && <CSSReset />}
-      <GlobalFonts />
-      {children}
-    </ThemeProvider>
+    <Provider>
+      <ThemeProvider theme={kleeTheme}>
+        {resetCSS && <CSSReset />}
+        <GlobalFonts />
+        {children}
+      </ThemeProvider>
+    </Provider>
   )
 }
 
