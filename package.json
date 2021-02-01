@@ -92,7 +92,7 @@
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "@headlessui/react": "^0.2.0",
-    "@liinkiing/react-hooks": "^1.7.4",
+    "@liinkiing/react-hooks": "^1.7.6",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
