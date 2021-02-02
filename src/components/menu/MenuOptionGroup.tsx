@@ -42,7 +42,7 @@ const MenuOptionGroup: FC<Props> = ({ children, title, value, onChange, type, ..
           <Text
             className="menu__option__group--title"
             color="cool-gray.900"
-            fontWeight={KleeFontWeight.Semibold}
+            fontWeight={KleeFontWeight.Bold}
             fontSize={KleeFontSize.Xs}
             px={3}
             py={2}

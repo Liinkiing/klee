@@ -1,7 +1,7 @@
 import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
 import { jsxInnerText } from '../../utils/jsx'
 import React, { forwardRef } from 'react'
-import { KleeLineHeight } from '../../styles/theme/typography'
+import { KleeFontFamily, KleeFontWeight, KleeLineHeight } from '../../styles/theme/typography'
 
 type Props = BoxOwnProps & {
   readonly truncate?: number
@@ -17,9 +17,10 @@ const Text = forwardRef<HTMLElement, Props>(({ children, truncate, ...props }, r
     <Box
       ref={ref}
       as="p"
-      fontFamily="body"
-      {...(truncate ? { title: innerText } : {})}
+      fontFamily={KleeFontFamily.Body}
+      fontWeight={KleeFontWeight.Semibold}
       lineHeight={KleeLineHeight.Base}
+      {...(truncate ? { title: innerText } : {})}
       {...props}
     >
       {content}
