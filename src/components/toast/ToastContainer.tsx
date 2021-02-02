@@ -51,12 +51,15 @@ export const ToastsContainer = () => {
     setToasts(v => v.filter(toast => toast.id !== id))
   }
   useEffect(() => {
-    Emitter.on(UIEvents.ToastShow, (toast: ToastProps) => {
+    const handler = (toast?: ToastProps) => {
+      if (!toast) return
       setToasts(n => [...n, toast])
-    })
+    }
+
+    Emitter.on(UIEvents.ToastShow, handler)
 
     return () => {
-      Emitter.removeAllListeners(UIEvents.ToastShow)
+      Emitter.off(UIEvents.ToastShow, handler)
     }
   }, [])
 

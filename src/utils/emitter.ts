@@ -1,7 +1,7 @@
-import EventEmitter from 'events'
+import mitt from 'mitt'
 
 export enum UIEvents {
   ToastShow = 'toast-show',
 }
 
-export const Emitter = new EventEmitter()
+export const Emitter = mitt()
