@@ -17,7 +17,7 @@ import { KleeRadius, KleeShadow } from '../../styles/theme'
 import Box from '../primitives/Box'
 
 const meta: Meta = {
-  title: 'Icon',
+  title: 'Library/Icon',
   component: Icon,
   args: {
     color: 'rgb(0,0,0)',
@@ -82,27 +82,27 @@ const Template: Story<IconProps & { title: string; icons: Record<string, IconTyp
 export const MaterialDesign = Template.bind({})
 
 MaterialDesign.args = {
-  title: 'Material Design',
+  title: 'Library/Material Design',
   icons: MdIcons,
 }
 
 export const FontAwesome = Template.bind({})
 
 FontAwesome.args = {
-  title: 'Font Awesome',
+  title: 'Library/Font Awesome',
   icons: FaIcons,
 }
 
 export const FeatherIcons = Template.bind({})
 
 FeatherIcons.args = {
-  title: 'Feather Icons',
+  title: 'Library/Feather Icons',
   icons: FiIcons,
 }
 
 export const VisualStudioCode = Template.bind({})
 
 VisualStudioCode.args = {
-  title: 'Visual Studio Code',
+  title: 'Library/Visual Studio Code',
   icons: VscIcons,
 }

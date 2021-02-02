@@ -6,7 +6,7 @@ import { Button } from '../button'
 import { Heading, Text } from '../typography'
 
 const meta: Meta = {
-  title: 'Popover',
+  title: 'Library/Popover',
   component: Popover,
   argTypes: {
     disclosure: { table: { disable: true }, control: { disable: true } },

@@ -4,7 +4,7 @@ import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'
 import { Avatar } from '../avatar'
 
 const meta: Meta = {
-  title: 'AvatarGroup',
+  title: 'Library/AvatarGroup',
   component: AvatarGroup,
   argTypes: {
     direction: {

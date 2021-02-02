@@ -6,7 +6,7 @@ import Text from '../typography/Text'
 import { Button } from '../button'
 
 const meta: Meta = {
-  title: 'Reveal',
+  title: 'Library/Reveal',
   component: Reveal,
   parameters: {
     chromatic: { disable: true },

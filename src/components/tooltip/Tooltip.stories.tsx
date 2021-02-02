@@ -11,7 +11,7 @@ import { Reveal } from '../reveal'
 import { List } from '../list'
 
 const meta: Meta = {
-  title: 'Tooltip',
+  title: 'Library/Tooltip',
   component: Tooltip,
   argTypes: {
     truncate: { table: { disable: true }, control: { disable: true } },

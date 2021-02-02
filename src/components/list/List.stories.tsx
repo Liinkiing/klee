@@ -6,7 +6,7 @@ import Text from '../typography/Text'
 import { Avatar } from '../avatar'
 
 const meta: Meta = {
-  title: 'List',
+  title: 'Library/List',
   component: List,
   argTypes: {
     direction: {

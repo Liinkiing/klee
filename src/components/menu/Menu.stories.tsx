@@ -7,7 +7,7 @@ import { Icon } from '../icon'
 import { FiChevronDown, FiChevronUp, FiEdit, FiLogOut, FiPrinter, FiSettings, FiUser } from 'react-icons/fi'
 
 const meta: Meta = {
-  title: 'Menu',
+  title: 'Library/Menu',
   component: Menu,
   argTypes: {
     menuList: { table: { disable: true }, control: { disable: true } },

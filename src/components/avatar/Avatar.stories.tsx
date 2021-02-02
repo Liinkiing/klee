@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react'
 import Avatar, { AvatarProps } from './Avatar'
 
 const meta: Meta = {
-  title: 'Avatar',
+  title: 'Library/Avatar',
   component: Avatar,
   parameters: {
     controls: { expanded: true },

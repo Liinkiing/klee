@@ -4,7 +4,7 @@ import Button from './Button'
 import { ButtonProps } from './Button'
 
 const meta: Meta = {
-  title: 'Button',
+  title: 'Library/Button',
   component: Button,
   parameters: {
     controls: { expanded: true },

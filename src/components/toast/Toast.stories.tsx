@@ -9,7 +9,7 @@ import { Reveal } from '../reveal'
 import { List } from '../list'
 
 const meta: Meta = {
-  title: 'Toast',
+  title: 'Library/Toast',
   component: Toast,
   argTypes: {
     id: { table: { disable: true }, control: { disable: true } },
