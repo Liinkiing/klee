@@ -1,6 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": ["src", "types"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "typeRoots": ["node_modules/@types/*", "src/@types/*"],
     "module": "esnext",

@@ -1,6 +1,7 @@
 import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
 import styled from '@emotion/styled'
-import { css, Theme } from '@emotion/react'
+import { Theme } from '@emotion/react'
+import css from '@styled-system/css'
 
 import {
   border,
@@ -48,6 +49,7 @@ import {
   KleeLineHeight,
 } from '../../styles/theme/typography'
 import { ThemeColorsValues } from '../../styles/modules/colors'
+import { SystemStyleObject } from '@styled-system/css'
 
 type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 
@@ -282,7 +284,15 @@ interface CustomBoxProps {
   readonly ref?: any
 }
 
-export type BoxProps = BoxHTMLProps & CustomBoxProps & StyledSystemProps & ModifiedStyledSystemProps
+type BoxCssStateProps = {
+  sx?: SystemStyleObject
+  _hover?: SystemStyleObject
+  _active?: SystemStyleObject
+  _focus?: SystemStyleObject
+  _disabled?: SystemStyleObject
+}
+
+export type BoxProps = BoxHTMLProps & CustomBoxProps & StyledSystemProps & ModifiedStyledSystemProps & BoxCssStateProps
 
 type PropsOf<E extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<
   E,
@@ -303,6 +313,14 @@ const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
   }),
+  ({ sx, _hover, _active, _focus, _disabled }) =>
+    css({
+      ...(sx ?? {}),
+      '&:hover': _hover ?? {},
+      '&:active': _active ?? {},
+      '&:focus': _focus ?? {},
+      '&:disabled': _disabled ?? {},
+    }),
   compose(
     system({
       gap: {
