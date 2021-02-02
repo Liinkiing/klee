@@ -125,7 +125,7 @@ export const Reveal: FC<RevealProps> = ({
             : {}),
         }}
         ref={ref}
-        custom={{ appear: appear }}
+        custom={{ appear }}
         variants={variants}
         transition={{ delay, ease, duration }}
         initial="hidden"
@@ -141,7 +141,7 @@ export const Reveal: FC<RevealProps> = ({
   }
   return isActive ? (
     <Container
-      custom={{ appear: appear }}
+      custom={{ appear }}
       variants={variants}
       transition={{
         delay,
