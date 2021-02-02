@@ -8,6 +8,7 @@ import { KleeZIndex } from '../../styles/theme'
 import { Toast, ToastProps } from './Toast'
 import { Emitter, UIEvents } from '../../utils/emitter'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
+import { Portal } from 'reakit/Portal'
 
 const ToastWrapper = styled(motion.custom(Box))(
   css({
@@ -62,7 +63,7 @@ export const ToastsContainer = () => {
   const visible = toasts.length > 0
 
   return (
-    <>
+    <Portal>
       <ToastContainerInner
         className="toasts-container toasts-container--top"
         alignItems="center"
@@ -162,7 +163,7 @@ export const ToastsContainer = () => {
           reverse: true,
         })}
       </ToastContainerInner>
-    </>
+    </Portal>
   )
 }
 
