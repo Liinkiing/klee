@@ -1500,10 +1500,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@liinkiing/react-hooks@^1.7.6":
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/@liinkiing/react-hooks/-/react-hooks-1.7.6.tgz#4ae730bfd985959304862375afb52a422993a6b9"
-  integrity sha512-TwZt+dMT1yG5zyi+UrulZq23yj/FQlgo5Wa1frjuTyrciU1rEFGhDYIKHGNFGz6WrblkbzzaG0dMYUc6tVgMDg==
+"@liinkiing/react-hooks@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@liinkiing/react-hooks/-/react-hooks-1.8.1.tgz#42f41088d6c0b408d04962cf0bc60cb0808638a5"
+  integrity sha512-CDoqhrcx6gJBrJATyIZyT+IctAMCAhP77+gOoAmSShU7D3lxYl+klbIYB7RM9D4qaVyDm3sfYLimEI/0q/NmWQ==
 
 "@mdx-js/loader@^1.6.19":
   version "1.6.22"

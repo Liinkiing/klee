@@ -24,6 +24,12 @@ const meta: Meta = {
     size: 'md',
   },
   argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['xs', 'sm', 'md', 'lg'],
+      },
+    },
     color: {
       control: {
         type: 'color',

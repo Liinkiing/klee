@@ -7,15 +7,17 @@ import Box, { BoxProps } from '../primitives/Box'
 import type { IconType } from 'react-icons'
 import css from '@styled-system/css'
 
-type Size = 'sm' | 'md' | 'lg'
+type Size = 'xs' | 'sm' | 'md' | 'lg' | (string | {})
 
 export interface IconProps extends Omit<PropsOf<'svg'>, keyof BoxProps>, Omit<BoxProps, 'size'> {
   readonly as?: IconType
   readonly size?: Size
 }
 
-const getSize = (size: Size): string | null => {
+const getSize = (size: Size): string => {
   switch (size) {
+    case 'xs':
+      return '0.7em'
     case 'sm':
       return '1em'
     case 'md':
@@ -23,7 +25,7 @@ const getSize = (size: Size): string | null => {
     case 'lg':
       return '4em'
     default:
-      return null
+      return size as string
   }
 }
 

@@ -5,6 +5,7 @@ import { jsx, ThemeProvider } from '@emotion/react'
 import { kleeTheme } from './styles/theme'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'
+import { ToastsContainer } from './components/toast/ToastContainer'
 import { Provider } from 'reakit'
 
 interface Props {
@@ -17,6 +18,7 @@ export const KleeProvider: FC<Props> = ({ resetCSS = true, children }) => {
       <ThemeProvider theme={kleeTheme}>
         {resetCSS && <CSSReset />}
         <GlobalFonts />
+        <ToastsContainer />
         {children}
       </ThemeProvider>
     </Provider>
