@@ -4,6 +4,11 @@ const toPath = _path => path.join(process.cwd(), _path)
 const EXLUDED_DOCGEN_PROPS = [
   'as',
   'gap',
+  'sx',
+  '_hover',
+  '_active',
+  '_focus',
+  '_disabled',
   'uppercase',
   'zIndex',
   'minSize',
