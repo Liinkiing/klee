@@ -97,9 +97,7 @@ package-lock.json
 rn-cli.config.js
 webpack.config.js
 yarn.lock
-src/**/*.stories.js
-src/**/*.test.js
-src/storybook/**/*
+src/
 **/*/__snapshots__
 metro.config.js
 ./index.js

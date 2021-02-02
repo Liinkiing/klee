@@ -28,11 +28,11 @@ interface FilterByPositionParams {
   reverse?: boolean
   toasts: ToastProps[]
   onHide: ToastProps['onHide']
-  position: ToastProps['placement']
+  placement: ToastProps['placement']
 }
 
-const filterByPosition = ({ toasts, position, onHide, reverse = false }: FilterByPositionParams) => {
-  let results = toasts.filter(n => n.placement === position)
+const filterByPosition = ({ toasts, placement, onHide, reverse = false }: FilterByPositionParams) => {
+  let results = toasts.filter(n => n.placement === placement)
 
   if (reverse) {
     results = results.reverse()
@@ -80,7 +80,7 @@ export const ToastsContainer = () => {
         {filterByPosition({
           toasts,
           onHide: clearToast,
-          position: 'top',
+          placement: 'top',
         })}
       </ToastContainerInner>
       <ToastContainerInner
@@ -96,7 +96,7 @@ export const ToastsContainer = () => {
         {filterByPosition({
           toasts,
           onHide: clearToast,
-          position: 'top-left',
+          placement: 'top-left',
         })}
       </ToastContainerInner>
       <ToastContainerInner
@@ -112,7 +112,7 @@ export const ToastsContainer = () => {
         {filterByPosition({
           toasts,
           onHide: clearToast,
-          position: 'top-right',
+          placement: 'top-right',
         })}
       </ToastContainerInner>
       <ToastContainerInner
@@ -128,7 +128,7 @@ export const ToastsContainer = () => {
         {filterByPosition({
           toasts,
           onHide: clearToast,
-          position: 'bottom',
+          placement: 'bottom',
           reverse: true,
         })}
       </ToastContainerInner>
@@ -145,7 +145,7 @@ export const ToastsContainer = () => {
         {filterByPosition({
           toasts,
           onHide: clearToast,
-          position: 'bottom-left',
+          placement: 'bottom-left',
           reverse: true,
         })}
       </ToastContainerInner>
@@ -162,7 +162,7 @@ export const ToastsContainer = () => {
         {filterByPosition({
           toasts,
           onHide: clearToast,
-          position: 'bottom-right',
+          placement: 'bottom-right',
           reverse: true,
         })}
       </ToastContainerInner>
