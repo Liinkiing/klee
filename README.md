@@ -4,7 +4,7 @@
     <img width="256" src="https://i.ibb.co/d0fq7c1/klee.png"/>
 </p>
 
-A libray UI made as an excuse to test the workflow of building a packaged UI kit with **styled-system**, **emotion**, **framer-motion**
+A library UI made as an excuse to test the workflow of building a packaged UI kit with **styled-system**, **emotion**, **framer-motion**
 and **TypeScript**. Also made to try out Storybook v6 with **Chromatic**. Not made to be as huge (and great) as Chakra-UI (which is a great
 inspiration), but may be used to do some livestream... And to put **KLEE** EVERYWHERE
 
