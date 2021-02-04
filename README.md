@@ -35,11 +35,15 @@ import { FiAirplay } from 'react-icons/fi'
 const App = () => {
   return (
     <KleeProvider>
-      <Flex spacing={4} bg="amber.300">
+      <Flex spacing={4} direction={['column', 'row']} bg="amber.300">
         <Button>Hello world</Button>
         <Button variant="danger">Hello world</Button>
         <Icon as={FiAirplay} />
-        <Box color="cyan.500" p={4}><Text>Ehe te nandayo</Text></Box>
+        <Box color="cyan.500" p={4}>
+          <Text _hover={{ bg: 'amber.500', cursor: 'pointer' }}>
+            Ehe te nandayo
+          </Text>
+        </Box>
       </Flex>
     </KleeProvider>
   )
