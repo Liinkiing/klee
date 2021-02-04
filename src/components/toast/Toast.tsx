@@ -16,7 +16,7 @@ import { FiAlertCircle, FiCheckCircle, FiInfo, FiX, FiXCircle } from 'react-icon
 import { jsxInnerText } from '../../utils/jsx'
 import { useTimeout } from '@liinkiing/react-hooks'
 import { Text } from '../typography'
-import { Button } from '../button'
+import { IconButton } from '../button/IconButton'
 
 type Variant = 'info' | 'success' | 'danger' | 'warning'
 
@@ -179,7 +179,8 @@ export const Toast: FC<ToastProps> = ({
         {typeof content === 'string' ? <Text dangerouslySetInnerHTML={{ __html: content }} /> : content}
       </Flex>
       {closable && (
-        <Button
+        <IconButton
+          icon={<Icon as={FiX} />}
           position="absolute"
           top={0}
           right={0}
@@ -187,7 +188,6 @@ export const Toast: FC<ToastProps> = ({
             clearTimeout()
             setShow(false)
           }}
-          p={2}
           variant="transparent"
           css={{
             '&:focus': {
@@ -201,10 +201,7 @@ export const Toast: FC<ToastProps> = ({
               },
             },
           }}
-          variantSize="icon"
-        >
-          <Icon as={FiX} />
-        </Button>
+        />
       )}
     </ToastInner>
   )

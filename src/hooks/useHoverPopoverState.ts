@@ -21,12 +21,16 @@ export const useHoverPopoverState = (initialState?: PopoverInitialState & { time
     showTimeout.current = window.setTimeout(() => {
       popover.show()
     }, timeout)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clearTimeouts, popover.show])
   const hide = useCallback(() => {
     clearTimeouts()
     hideTimeout.current = window.setTimeout(() => {
       popover.hide()
     }, timeout)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clearTimeouts, popover.hide])
   useEffect(
     () => () => {

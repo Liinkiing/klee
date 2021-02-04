@@ -1,4 +1,4 @@
-import React, { FC, forwardRef } from 'react'
+import React, { cloneElement, FC, forwardRef, ReactElement } from 'react'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import styled from '@emotion/styled'
 import { variant as systemVariant } from 'styled-system'
@@ -6,10 +6,12 @@ import colors from '../../styles/modules/colors'
 import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 
 type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'semi-transparent' | 'transparent'
-type VariantSize = 'sm' | 'md' | 'lg' | 'icon'
+type VariantSize = 'sm' | 'md' | 'lg'
 
 export interface ButtonProps extends BoxProps {
   readonly variant?: Variant
+  readonly startIcon?: ReactElement
+  readonly endIcon?: ReactElement
   readonly variantSize?: VariantSize
 }
 
@@ -19,13 +21,13 @@ const generateVariant = (color: keyof typeof colors | 'semi-transparent') => {
       bg: 'transparent',
       color: 'inherit',
       '&:hover': {
-        bg: `rgba(0,0,0,0.1)`,
+        bg: `rgba(0,0,0,0.06)`,
         '&:focus': {
-          boxShadow: `0 0 2px 3px rgba(0,0,0,0.15)`,
+          boxShadow: `0 0 2px 3px rgba(0,0,0,0.10)`,
         },
       },
       '&:focus': {
-        boxShadow: `0 0 2px 3px rgba(0,0,0,0.15)`,
+        boxShadow: `0 0 2px 3px rgba(0,0,0,0.10)`,
       },
       '&:disabled': {
         bg: `transparent`,
@@ -79,7 +81,7 @@ const InnerButton = styled(Box)(
   systemVariant<{}, Variant>({
     variants: {
       primary: generateVariant('indigo'),
-      secondary: generateVariant('blue'),
+      secondary: generateVariant('cyan'),
       tertiary: generateVariant('cool-gray'),
       danger: generateVariant('rose'),
       transparent: generateVariant('transparent'),
@@ -89,10 +91,6 @@ const InnerButton = styled(Box)(
   systemVariant<{}, VariantSize>({
     prop: 'variantSize',
     variants: {
-      icon: {
-        p: 2,
-        fontSize: KleeFontSize.Sm,
-      },
       sm: {
         px: 2,
         py: 1,
@@ -113,7 +111,7 @@ const InnerButton = styled(Box)(
 ) as PolymorphicComponent<ButtonProps>
 
 export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, variant = 'primary', variantSize = 'md', ...props }, ref) => {
+  ({ children, startIcon, endIcon, variant = 'primary', variantSize = 'md', ...props }, ref) => {
     return (
       <InnerButton
         display="flex"
@@ -129,7 +127,9 @@ export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps
         variantSize={variantSize}
         {...props}
       >
+        {startIcon && cloneElement(startIcon, { mr: 2 })}
         {children}
+        {endIcon && cloneElement(endIcon, { ml: 2 })}
       </InnerButton>
     )
   },

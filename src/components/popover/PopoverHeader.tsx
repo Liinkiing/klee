@@ -2,7 +2,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 import { FC } from 'react'
-import { Button } from '../button'
 import { Flex } from '../layout'
 import { Box } from '../primitives'
 import { Icon } from '../icon'
@@ -11,6 +10,7 @@ import { usePopover } from './context'
 import { BoxProps } from '../primitives/Box'
 import css from '@styled-system/css'
 import { KleeFontSize } from '../../styles/theme/typography'
+import { IconButton } from '../button/IconButton'
 
 const PopoverHeader: FC<BoxProps> = ({ children, ...rest }) => {
   const { hide, hideCloseButton } = usePopover()
@@ -27,11 +27,7 @@ const PopoverHeader: FC<BoxProps> = ({ children, ...rest }) => {
       >
         {children}
       </Box>
-      {!hideCloseButton && (
-        <Button p={2} variant="transparent" variantSize="icon" onClick={hide}>
-          <Icon as={FiX} />
-        </Button>
-      )}
+      {!hideCloseButton && <IconButton p={2} variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
     </Flex>
   )
 }

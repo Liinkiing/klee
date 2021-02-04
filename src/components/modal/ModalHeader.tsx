@@ -2,15 +2,15 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 import { FC } from 'react'
-import { Button } from '../button'
 import { Flex } from '../layout'
 import { Box } from '../primitives'
-import { Icon } from '../icon'
 import { FiX } from 'react-icons/fi'
 import { useModal } from './context'
 import css from '@styled-system/css'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { FlexProps } from '../layout/Flex'
+import { IconButton } from '../button/IconButton'
+import { Icon } from '../icon'
 
 const ModalHeader: FC<FlexProps> = ({ children, ...rest }) => {
   const { hide, hideCloseButton } = useModal()
@@ -27,11 +27,7 @@ const ModalHeader: FC<FlexProps> = ({ children, ...rest }) => {
       >
         {children}
       </Box>
-      {!hideCloseButton && (
-        <Button p={2} variant="transparent" variantSize="icon" onClick={hide}>
-          <Icon as={FiX} />
-        </Button>
-      )}
+      {!hideCloseButton && <IconButton variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
     </Flex>
   )
 }
