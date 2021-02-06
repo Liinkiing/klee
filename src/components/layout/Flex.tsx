@@ -48,7 +48,7 @@ const getChildren = (children: ReactNode) => {
   return children
 }
 
-const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
+export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
   const {
     direction = 'row',
     align,

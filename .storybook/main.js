@@ -21,6 +21,8 @@ const EXLUDED_DOCGEN_PROPS = [
   'fontFamily',
   'lineHeight',
   'css',
+  'disableFocusStyles',
+  '_variants',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']

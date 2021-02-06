@@ -24,6 +24,7 @@ import {
   system,
   typography,
   TypographyProps,
+  variant,
 } from 'styled-system'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import {
@@ -280,12 +281,14 @@ type ModifiedStyledSystemProps = AppSizeProps &
 
 interface CustomBoxProps {
   readonly uppercase?: boolean
+  readonly disableFocusStyles?: boolean
   readonly css?: ((theme: Theme) => any) | ReturnType<typeof css> | Record<string, unknown>
   readonly ref?: any
 }
 
 type BoxCssStateProps = {
   sx?: SystemStyleObject
+  _variants?: typeof variant
   _hover?: SystemStyleObject
   _active?: SystemStyleObject
   _focus?: SystemStyleObject
@@ -309,18 +312,19 @@ export type PolymorphicComponentProps<E extends ElementType, P> = P & Polymorphi
 
 const defaultElement = 'div'
 
-const Box = styled('div', { shouldForwardProp })<BoxProps>(
+export const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
   }),
-  ({ sx, _hover, _active, _focus, _disabled }) =>
+  ({ sx, _hover, _active, _focus, _disabled, disableFocusStyles }) =>
     css({
       ...(sx ?? {}),
       '&:hover': _hover ?? {},
       '&:active': _active ?? {},
-      '&:focus': _focus ?? {},
+      '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
       '&:disabled': _disabled ?? {},
     }),
+  ({ _variants }) => _variants ?? {},
   compose(
     system({
       gap: {
