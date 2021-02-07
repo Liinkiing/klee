@@ -113,6 +113,7 @@ export enum KleeRadius {
 export type ThemeRadiiValues = keyof typeof RADII | (string & {}) | (number & {})
 
 export const BORDERS = {
+  none: 'none',
   xs: '1px solid',
   sm: '2px solid',
   md: '4px solid',
@@ -120,6 +121,7 @@ export const BORDERS = {
 } as const
 
 export enum KleeBorder {
+  None = 'none',
   Xs = 'xs',
   Sm = 'sm',
   Md = 'md',

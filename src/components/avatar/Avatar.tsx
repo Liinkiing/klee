@@ -5,7 +5,7 @@ import ColorHash from 'color-hash-ts'
 import { variant } from 'styled-system'
 import styled from '@emotion/styled'
 import Box, { BoxProps } from '../primitives/Box'
-import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 import { FC, Fragment } from 'react'
 import Flex from '../layout/Flex'
 import { colorContrast } from '../../utils/color'
@@ -148,6 +148,7 @@ export const Avatar: FC<AvatarProps> = ({
       overflow="hidden"
       align="center"
       justify="center"
+      fontFamily={KleeFontFamily.Body}
       fontWeight={KleeFontWeight.Semibold}
       variant={size}
     >

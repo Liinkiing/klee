@@ -1,0 +1,6 @@
+export { default as Tab, TabProps } from './Tab'
+export { default as TabList, TabListProps } from './TabList'
+export { default as TabPanel, TabPanelProps } from './TabPanel'
+export { default as TabPanels, TabPanelsProps } from './TabPanels'
+export { useTabs } from './Tabs.context'
+export { default as Tabs, TabsProps } from './Tabs'

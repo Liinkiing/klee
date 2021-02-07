@@ -1,1 +1,1 @@
-export { default as Reveal } from './Reveal'
+export { default as Reveal, RevealProps } from './Reveal'

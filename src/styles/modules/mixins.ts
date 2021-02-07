@@ -3,6 +3,11 @@ import colors from './colors'
 
 export const pxToRem = (px: number) => `${(px / 16).toFixed(3)}rem`
 
+export const BASE_FOCUS = {
+  outline: 'none',
+  boxShadow: `rgb(66 153 225 / 60%) 0px 0px 0px 3px`,
+}
+
 export const linearGradient = (direction: 'vertical' | 'horizontal', color: string = colors.white) => css`
   linear-gradient(to ${direction === 'horizontal' ? 'right' : 'bottom'},
   ${color} 0%,

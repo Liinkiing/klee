@@ -24,6 +24,7 @@ import {
   system,
   typography,
   TypographyProps,
+  variant,
 } from 'styled-system'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import {
@@ -280,13 +281,16 @@ type ModifiedStyledSystemProps = AppSizeProps &
 
 interface CustomBoxProps {
   readonly uppercase?: boolean
+  readonly disableFocusStyles?: boolean
   readonly css?: ((theme: Theme) => any) | ReturnType<typeof css> | Record<string, unknown>
   readonly ref?: any
 }
 
 type BoxCssStateProps = {
   sx?: SystemStyleObject
+  _variants?: Array<typeof variant> | typeof variant
   _hover?: SystemStyleObject
+  _selected?: SystemStyleObject
   _active?: SystemStyleObject
   _focus?: SystemStyleObject
   _disabled?: SystemStyleObject
@@ -309,18 +313,20 @@ export type PolymorphicComponentProps<E extends ElementType, P> = P & Polymorphi
 
 const defaultElement = 'div'
 
-const Box = styled('div', { shouldForwardProp })<BoxProps>(
+export const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
   }),
-  ({ sx, _hover, _active, _focus, _disabled }) =>
+  ({ sx, _hover, _active, _focus, _disabled, _selected, disableFocusStyles }) =>
     css({
       ...(sx ?? {}),
       '&:hover': _hover ?? {},
       '&:active': _active ?? {},
-      '&:focus': _focus ?? {},
+      '&[aria-selected="true"]': _selected ?? {},
+      '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
       '&:disabled': _disabled ?? {},
     }),
+  ({ _variants }) => (Array.isArray(_variants) ? _variants.map(v => v) : _variants ?? {}),
   compose(
     system({
       gap: {
