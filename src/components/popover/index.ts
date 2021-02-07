@@ -1,4 +1,4 @@
-export { default as Popover } from './Popover'
+export { default as Popover, PopoverProps } from './Popover'
 export { default as PopoverHeader } from './PopoverHeader'
 export { default as PopoverBody } from './PopoverBody'
 export { default as PopoverFooter } from './PopoverFooter'
