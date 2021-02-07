@@ -290,6 +290,7 @@ type BoxCssStateProps = {
   sx?: SystemStyleObject
   _variants?: typeof variant
   _hover?: SystemStyleObject
+  _selected?: SystemStyleObject
   _active?: SystemStyleObject
   _focus?: SystemStyleObject
   _disabled?: SystemStyleObject
@@ -316,11 +317,12 @@ export const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
   }),
-  ({ sx, _hover, _active, _focus, _disabled, disableFocusStyles }) =>
+  ({ sx, _hover, _active, _focus, _disabled, _selected, disableFocusStyles }) =>
     css({
       ...(sx ?? {}),
       '&:hover': _hover ?? {},
       '&:active': _active ?? {},
+      '&[aria-selected="true"]': _selected ?? {},
       '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
       '&:disabled': _disabled ?? {},
     }),

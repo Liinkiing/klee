@@ -23,6 +23,7 @@ const EXLUDED_DOCGEN_PROPS = [
   'css',
   'disableFocusStyles',
   '_variants',
+  '_selected',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
