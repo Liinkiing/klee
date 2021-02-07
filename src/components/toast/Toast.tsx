@@ -119,7 +119,7 @@ export const Toast: FC<ToastProps> = ({
   onHide,
   duration = jsxInnerText(content) !== '' ? jsxInnerText(content).length * 100 : MIN_TIMEOUT,
   closable = false,
-  placement = 'top',
+  placement = 'bottom',
   variant = 'success',
   ...props
 }) => {

@@ -15,7 +15,7 @@ const meta: Meta = {
     id: { table: { disable: true }, control: { disable: true } },
     onHide: { table: { disable: true }, control: { disable: true } },
     placement: {
-      defaultValue: 'top',
+      defaultValue: 'bottom',
     },
     duration: {
       defaultValue: null,

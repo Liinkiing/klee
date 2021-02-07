@@ -71,7 +71,7 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
   triggerDelay = 0,
   trigger = 'click',
   vibrancy = false,
-  placement = 'top',
+  placement = 'bottom',
   showOnCreate = false,
   hideCloseButton = false,
   ...props
