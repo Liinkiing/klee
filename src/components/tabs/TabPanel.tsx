@@ -8,7 +8,7 @@ export interface TabPanelProps extends BoxProps {}
 export const TabPanel: FC<TabPanelProps> = ({ children, _focus, ...props }) => {
   const { tabs } = useTabs()
   return (
-    <BaseTabPanel as={Box} {...tabs} disableFocusStyles {...props}>
+    <BaseTabPanel as={Box} {...tabs} tabIndex={undefined} {...props}>
       {children}
     </BaseTabPanel>
   )
