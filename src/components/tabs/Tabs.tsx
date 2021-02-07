@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useMemo } from 'react'
 import { useTabState, TabInitialState } from 'reakit'
-import { Context, TabsContext, TabsVariant } from './Tabs.context'
+import { Context, TabsAlign, TabsContext, TabsVariant } from './Tabs.context'
 import Box, { BoxProps } from '../primitives/Box'
 import TabPanels from './TabPanels'
 import TabPanel from './TabPanel'
@@ -11,6 +11,8 @@ import { KleeFontFamily } from '../../styles/theme/typography'
 
 export interface TabsProps extends Pick<TabInitialState, 'selectedId'>, Omit<BoxProps, 'onChange'> {
   readonly onChange?: (tabId: string) => void
+  readonly stretch?: boolean
+  readonly align?: TabsAlign
   readonly variant?: TabsVariant
   readonly colorScheme?: string
 }
@@ -26,6 +28,8 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
   children,
   selectedId,
   onChange,
+  align = 'start',
+  stretch = false,
   colorScheme = 'blue',
   variant = 'line',
   ...props
@@ -33,8 +37,10 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
   const tabs = useTabState({
     selectedId,
   })
-  const context = useMemo<Context>(() => ({ tabs, colorScheme, variant }), [
+  const context = useMemo<Context>(() => ({ tabs, colorScheme, variant, stretch, align }), [
     ...Object.values(tabs),
+    align,
+    stretch,
     colorScheme,
     variant,
   ])

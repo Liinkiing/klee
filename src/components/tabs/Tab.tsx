@@ -34,7 +34,7 @@ const borderBoxVariants = ({ colorScheme, theme }: VariantArgs) =>
         right: 0,
         bottom: 0,
         top: 0,
-        zIndex: -1,
+        zIndex: 0,
         bg: themeGet(`colors.${colorScheme}.200`, 'transparent')({ theme }),
       },
     },
@@ -53,7 +53,7 @@ const tabVariants = ({ colorScheme, theme }: VariantArgs) =>
     },
   })
 
-export const Tab: FC<TabProps> = ({ children, _focus, ...props }) => {
+export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, ...props }) => {
   const { tabs, colorScheme, variant } = useTabs()
   const theme = useTheme()
   const [id, setId] = useState<string | undefined>(undefined)
@@ -73,6 +73,18 @@ export const Tab: FC<TabProps> = ({ children, _focus, ...props }) => {
       fontWeight={KleeFontWeight.Semibold}
       p={2}
       px={4}
+      className="tab"
+      _hover={{
+        cursor: 'pointer',
+        ..._hover,
+      }}
+      sx={{
+        transition: 'box-shadow 0.2s, opacity 0.2s',
+        '&[aria-selected="false"]:hover': {
+          opacity: 0.6,
+        },
+        ...sx,
+      }}
       _focus={{
         ...BASE_FOCUS,
         ..._focus,
@@ -81,7 +93,9 @@ export const Tab: FC<TabProps> = ({ children, _focus, ...props }) => {
       _variants={tabVariants({ colorScheme, theme })}
       {...props}
     >
-      {children}
+      <Box as="span" zIndex={1} position="relative">
+        {children}
+      </Box>
       {id === tabs.currentId && (
         <BorderBox
           layoutId="tabs-border-box"
