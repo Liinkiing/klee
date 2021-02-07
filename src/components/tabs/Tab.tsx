@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
-import { TabsVariant, useTabs } from './Tabs.context'
+import { TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
 import { Box, BoxProps } from '../primitives/Box'
 import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit'
 import { KleeFontWeight } from '../../styles/theme/typography'
@@ -17,7 +17,7 @@ const BorderBox = styled(motion.custom(Box))()
 
 type VariantArgs = { theme: Theme; colorScheme: string }
 
-const borderBoxVariants = ({ colorScheme, theme }: VariantArgs) =>
+const borderBoxVariants = ({ colorScheme, theme, variant: tabVariant }: VariantArgs & { variant: TabsVariant }) => [
   variant<{}, TabsVariant>({
     variants: {
       line: {
@@ -38,8 +38,25 @@ const borderBoxVariants = ({ colorScheme, theme }: VariantArgs) =>
         bg: themeGet(`colors.${colorScheme}.200`, 'transparent')({ theme }),
       },
     },
-  })
-
+  }),
+  variant<{}, TabsOrientation>({
+    prop: 'variantOrientation',
+    variants: {
+      horizontal: {},
+      vertical:
+        tabVariant === 'line'
+          ? {
+              left: 'unset',
+              bottom: 0,
+              right: '-2px',
+              width: '2px',
+              height: '100%',
+              top: 0,
+            }
+          : {},
+    },
+  }),
+]
 const tabVariants = ({ colorScheme, theme }: VariantArgs) =>
   variant<{}, TabsVariant>({
     variants: {
@@ -54,7 +71,7 @@ const tabVariants = ({ colorScheme, theme }: VariantArgs) =>
   })
 
 export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, ...props }) => {
-  const { tabs, colorScheme, variant } = useTabs()
+  const { tabs, colorScheme, variant, orientation } = useTabs()
   const theme = useTheme()
   const [id, setId] = useState<string | undefined>(undefined)
   const $tab = useRef<HTMLElement>()
@@ -101,8 +118,8 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, ...props }) =>
           layoutId="tabs-border-box"
           transition={{ type: 'spring', damping: 30, stiffness: 500 }}
           position="absolute"
-          {...{ variant }}
-          _variants={borderBoxVariants({ colorScheme, theme })}
+          {...{ variant, variantOrientation: orientation }}
+          _variants={borderBoxVariants({ colorScheme, theme, variant })}
         />
       )}
     </BaseTab>

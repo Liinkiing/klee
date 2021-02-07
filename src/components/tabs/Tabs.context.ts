@@ -3,6 +3,7 @@ import { useTabState } from 'reakit'
 
 export type TabsVariant = 'line' | 'rounded'
 export type TabsAlign = 'start' | 'center' | 'end'
+export type TabsOrientation = 'horizontal' | 'vertical'
 
 export type Context = {
   tabs: ReturnType<typeof useTabState>
@@ -10,6 +11,7 @@ export type Context = {
   stretch: boolean
   align: TabsAlign
   variant: TabsVariant
+  orientation: TabsOrientation
 }
 
 export const TabsContext = React.createContext<Context | undefined>(undefined)

@@ -1,5 +1,5 @@
 import React, { CSSProperties, FC } from 'react'
-import { TabsAlign, TabsVariant, useTabs } from './Tabs.context'
+import { TabsAlign, TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
 import { Box, BoxProps } from '../primitives/Box'
 import { TabList as BaseTabList } from 'reakit'
 import { AnimateSharedLayout } from 'framer-motion'
@@ -10,16 +10,34 @@ export interface TabListProps extends BoxProps {
   readonly ariaLabel: string
 }
 
-const variants = variant<{}, TabsVariant>({
-  variants: {
-    line: {
-      borderBottom: KleeBorder.Sm,
-      borderColor: 'cool-gray.200',
+const variants = [
+  variant<{}, TabsVariant>({
+    variants: {
+      line: {
+        borderBottom: KleeBorder.Sm,
+        borderRight: KleeBorder.Sm,
+        borderBottomColor: 'cool-gray.200',
+        borderRightColor: 'cool-gray.200',
+      },
+      rounded: {},
     },
-    rounded: {},
-  },
-})
-
+  }),
+  variant<{}, TabsOrientation>({
+    prop: 'variantOrientation',
+    variants: {
+      horizontal: {
+        mb: 3,
+        borderRight: KleeBorder.None,
+        flexDirection: 'row',
+      },
+      vertical: {
+        borderBottom: KleeBorder.None,
+        mr: 3,
+        flexDirection: 'column',
+      },
+    },
+  }),
+]
 const getAlign = (align: TabsAlign): CSSProperties['justifyContent'] => {
   switch (align) {
     default:
@@ -33,7 +51,7 @@ const getAlign = (align: TabsAlign): CSSProperties['justifyContent'] => {
 }
 
 export const TabList: FC<TabListProps> = ({ children, ariaLabel, ...props }) => {
-  const { tabs, variant, stretch, align } = useTabs()
+  const { tabs, variant, stretch, align, orientation } = useTabs()
   return (
     <AnimateSharedLayout>
       <BaseTabList
@@ -42,9 +60,8 @@ export const TabList: FC<TabListProps> = ({ children, ariaLabel, ...props }) => 
         display="flex"
         textAlign={stretch ? 'center' : undefined}
         justifyContent={getAlign(align)}
-        mb={3}
         {...tabs}
-        {...{ variant }}
+        {...{ variant, variantOrientation: orientation }}
         _variants={variants}
         sx={
           stretch

@@ -288,7 +288,7 @@ interface CustomBoxProps {
 
 type BoxCssStateProps = {
   sx?: SystemStyleObject
-  _variants?: typeof variant
+  _variants?: Array<typeof variant> | typeof variant
   _hover?: SystemStyleObject
   _selected?: SystemStyleObject
   _active?: SystemStyleObject
@@ -326,7 +326,7 @@ export const Box = styled('div', { shouldForwardProp })<BoxProps>(
       '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
       '&:disabled': _disabled ?? {},
     }),
-  ({ _variants }) => _variants ?? {},
+  ({ _variants }) => (Array.isArray(_variants) ? _variants.map(v => v) : _variants ?? {}),
   compose(
     system({
       gap: {

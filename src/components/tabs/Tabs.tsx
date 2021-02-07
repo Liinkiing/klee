@@ -1,19 +1,20 @@
 import React, { FC, useEffect, useMemo } from 'react'
-import { useTabState, TabInitialState } from 'reakit'
-import { Context, TabsAlign, TabsContext, TabsVariant } from './Tabs.context'
-import Box, { BoxProps } from '../primitives/Box'
+import { TabInitialState, useTabState } from 'reakit'
+import { Context, TabsAlign, TabsContext, TabsOrientation, TabsVariant } from './Tabs.context'
+import { BoxProps } from '../primitives/Box'
 import TabPanels from './TabPanels'
 import TabPanel from './TabPanel'
 import TabList from './TabList'
-
 import Tab from './Tab'
 import { KleeFontFamily } from '../../styles/theme/typography'
+import { Flex } from '../layout/Flex'
 
 export interface TabsProps extends Pick<TabInitialState, 'selectedId'>, Omit<BoxProps, 'onChange'> {
   readonly onChange?: (tabId: string) => void
   readonly stretch?: boolean
   readonly align?: TabsAlign
   readonly variant?: TabsVariant
+  readonly orientation?: TabsOrientation
   readonly colorScheme?: string
 }
 
@@ -28,6 +29,7 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
   children,
   selectedId,
   onChange,
+  orientation = 'horizontal',
   align = 'start',
   stretch = false,
   colorScheme = 'blue',
@@ -36,13 +38,15 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
 }) => {
   const tabs = useTabState({
     selectedId,
+    orientation,
   })
-  const context = useMemo<Context>(() => ({ tabs, colorScheme, variant, stretch, align }), [
+  const context = useMemo<Context>(() => ({ tabs, colorScheme, variant, stretch, align, orientation }), [
     ...Object.values(tabs),
     align,
     stretch,
     colorScheme,
     variant,
+    orientation,
   ])
 
   useEffect(() => {
@@ -53,9 +57,9 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
 
   return (
     <TabsContext.Provider value={context}>
-      <Box fontFamily={KleeFontFamily.Body} {...props}>
+      <Flex fontFamily={KleeFontFamily.Body} direction={orientation === 'horizontal' ? 'column' : 'row'} {...props}>
         {children}
-      </Box>
+      </Flex>
     </TabsContext.Provider>
   )
 }
