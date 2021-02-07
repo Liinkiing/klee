@@ -1,1 +1,3 @@
-export { default as AvatarGroup, AvatarGroupProps } from './AvatarGroup'
+export { default as AvatarGroup } from './AvatarGroup'
+
+export type { AvatarGroupProps } from './AvatarGroup'

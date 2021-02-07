@@ -1,4 +1,4 @@
-import { ToastProps } from './Toast'
+import type { ToastProps } from './Toast'
 import { Emitter, UIEvents } from '../../utils/emitter'
 import { uuid } from '../../utils/string'
 

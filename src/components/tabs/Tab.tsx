@@ -70,7 +70,7 @@ const tabVariants = ({ colorScheme, theme }: VariantArgs) =>
     },
   })
 
-export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, ...props }) => {
+export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, ...props }) => {
   const { tabs, colorScheme, variant, orientation } = useTabs()
   const theme = useTheme()
   const [id, setId] = useState<string | undefined>(undefined)
@@ -106,6 +106,12 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, ...props }) =>
         ...BASE_FOCUS,
         ..._focus,
       }}
+      _selected={{
+        ..._selected,
+        '& .tab--border-box': {
+          ..._selected,
+        },
+      }}
       {...{ variant }}
       _variants={tabVariants({ colorScheme, theme })}
       {...props}
@@ -116,6 +122,7 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, ...props }) =>
       {id === tabs.currentId && (
         <BorderBox
           layoutId="tabs-border-box"
+          className="tab--border-box"
           transition={{ type: 'spring', damping: 30, stiffness: 500 }}
           position="absolute"
           {...{ variant, variantOrientation: orientation }}
