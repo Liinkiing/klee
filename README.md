@@ -8,7 +8,7 @@ A library UI made as an excuse to test the workflow of building a packaged UI ki
 and **TypeScript**. Also made to try out Storybook v6 with **Chromatic**. Not made to be as huge (and great) as Chakra-UI (which is a great
 inspiration), but may be used to do some livestream... And to put **KLEE** EVERYWHERE
 
-[View the storybook](https://master--601420e5b1a157002157352a.chromatic.com/)
+[View the storybook](https://master--601420e5b1a157002157352a.chromatic.com/) - [View the chromatic page](https://www.chromatic.com/library?appId=601420e5b1a157002157352a)
 
 ## Install
 
