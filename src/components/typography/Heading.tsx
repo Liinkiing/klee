@@ -4,7 +4,7 @@ import { jsxInnerText } from '../../utils/jsx'
 import React, { FC, forwardRef } from 'react'
 import { KleeFontSize } from '../../styles/theme/typography'
 
-export enum HeadingSize {
+export enum KleeHeadingSize {
   Xl = 'xl',
   Lg = 'lg',
   Md = 'md',
@@ -24,7 +24,7 @@ const sizes: { [Key in Size]: ResponsiveValue<string | KleeFontSize> } = {
 
 type Props = Omit<BoxOwnProps, 'size' | 'as'> & {
   readonly as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  readonly size?: HeadingSize | Size
+  readonly size?: KleeHeadingSize | Size
   readonly truncate?: number
 }
 
