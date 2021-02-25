@@ -1,0 +1,36 @@
+import ConditionalWrapper from './ConditionalWrapper'
+import Text from '../typography/Text'
+import VStack from '../layout/VStack'
+import { Meta, Story } from '@storybook/addon-docs/blocks'
+
+<Meta parameters={{ viewMode: 'docs', controls: { hideNoControlsWarning: true } }} title='Library/ConditionalWrapper' component={ConditionalWrapper} />
+
+# ConditionalWrapper
+
+The `ConditionalWrapper` component allows you to wrap anything only `when` props is true. Otherwise, it will directly render the children.
+
+Here is how it is rendered `when={1 + 1 === 2}`
+
+<Story name="when the condition is true">
+  <ConditionalWrapper when={1 + 1 === 2} wrapper={children =>
+    <VStack gap={2} p={4} bg="cool-gray.100" id='wrapper'>
+      <Text>I am the wrapper</Text>
+      {children}
+    </VStack>
+  }>
+    <Text p={2} bg="cool-gray.50" id='children'>I am the children</Text>
+  </ConditionalWrapper>
+</Story>
+
+Here is how it is rendered `when={1 + 1 === 10}`
+
+<Story name="when the condition is false">
+  <ConditionalWrapper when={1 + 1 === 10} wrapper={children =>
+    <VStack gap={2} p={4} bg="cool-gray.100" id='wrapper'>
+      <Text>I am the wrapper</Text>
+      {children}
+    </VStack>
+  }>
+    <Text p={2} bg="cool-gray.50" id='children'>I am the children</Text>
+  </ConditionalWrapper>
+</Story>
