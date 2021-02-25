@@ -13,7 +13,7 @@ import { variant } from 'styled-system'
 
 export interface TabProps extends BoxProps, Pick<BaseTabProps, 'disabled' | 'focusable'> {}
 
-const BorderBox = styled(motion.custom(Box))()
+const BorderBox = styled(motion(Box))()
 
 type VariantArgs = { theme: Theme; colorScheme: string }
 

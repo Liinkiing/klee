@@ -17,7 +17,7 @@ export interface MenuListProps extends Omit<BoxProps, 'children'>, CommonProps {
 
 export const MENU_LIST_TYPE: 'MenuList' = 'MenuList'
 
-const MenuItems = styled(motion.custom(Flex))`
+const MenuItems = styled(motion(Flex))`
   &:active,
   &:focus {
     outline: none;

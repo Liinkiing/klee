@@ -36,7 +36,7 @@ export interface ToastProps extends IToast {
 
 const MIN_TIMEOUT = 1500
 
-const ToastInner = styled(motion.custom(Box))`
+const ToastInner = styled(motion(Box))`
   pointer-events: all;
   position: relative;
 

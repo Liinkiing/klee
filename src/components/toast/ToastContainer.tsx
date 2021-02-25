@@ -10,7 +10,7 @@ import { Emitter, UIEvents } from '../../utils/emitter'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { Portal } from 'reakit/Portal'
 
-const ToastWrapper = styled(motion.custom(Box))(
+const ToastWrapper = styled(motion(Box))(
   css({
     width: ['100%', 'auto'],
   }),

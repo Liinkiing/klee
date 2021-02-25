@@ -29,7 +29,7 @@ export interface TooltipProps
   readonly truncate?: number
 }
 
-const TooltipInner = styled(motion.custom(Box))`
+const TooltipInner = styled(motion(Box))`
   &[data-placement^='top'] > #arrow {
     bottom: -4px;
   }

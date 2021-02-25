@@ -28,9 +28,9 @@ export interface ModalProps
   readonly onClose?: () => void
 }
 
-const ModalContainerInner = styled(motion.custom(Box))()
+const ModalContainerInner = styled(motion(Box))()
 
-const ModalInner = styled(motion.custom(Box))()
+const ModalInner = styled(motion(Box))()
 
 type ProviderProps = { readonly children: ReactNode; readonly context: Context }
 

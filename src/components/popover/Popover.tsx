@@ -48,7 +48,7 @@ type SubComponents = {
   Footer: typeof PopoverFooter
 }
 
-const PopoverInner = styled(motion.custom(Flex))({
+const PopoverInner = styled(motion(Flex))({
   '&:focus': {
     outline: 'none',
   },

@@ -77,7 +77,7 @@ const variants: Variants = {
   },
 }
 
-const Container = styled(motion.custom(Box))``
+const Container = styled(motion(Box))``
 
 // @ts-ignore
 export const Reveal: FC<RevealProps> = ({
