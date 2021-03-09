@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useTabState } from 'reakit'
+import { useTabState } from 'reakit/Tab'
 
 export type TabsVariant = 'line' | 'rounded'
 export type TabsAlign = 'start' | 'center' | 'end'

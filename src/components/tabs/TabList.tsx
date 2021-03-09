@@ -1,7 +1,7 @@
 import React, { CSSProperties, FC } from 'react'
 import { TabsAlign, TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
 import { Box, BoxProps } from '../primitives/Box'
-import { TabList as BaseTabList } from 'reakit'
+import { TabList as BaseTabList } from 'reakit/Tab'
 import { AnimateSharedLayout } from 'framer-motion'
 import { variant } from 'styled-system'
 import { KleeBorder } from '../../styles/theme'

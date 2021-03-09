@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo } from 'react'
-import { TabInitialState, useTabState } from 'reakit'
+import { TabInitialState, useTabState } from 'reakit/Tab'
 import { Context, TabsAlign, TabsContext, TabsOrientation, TabsVariant } from './Tabs.context'
 import { BoxProps } from '../primitives/Box'
 import TabPanels from './TabPanels'
