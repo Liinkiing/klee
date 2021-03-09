@@ -6,7 +6,7 @@ import { kleeTheme } from './styles/theme'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'
 import { ToastsContainer } from './components/toast/ToastContainer'
-import { Provider } from 'reakit'
+import { Provider } from 'reakit/Provider'
 
 interface Props {
   readonly resetCSS?: boolean

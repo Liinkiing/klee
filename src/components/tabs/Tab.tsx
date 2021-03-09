@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from 'react'
 import { TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
 import { Box, BoxProps } from '../primitives/Box'
-import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit'
+import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
 import { KleeFontWeight } from '../../styles/theme/typography'
 import { BASE_FOCUS } from '../../styles/modules/mixins'
 import styled from '@emotion/styled'
