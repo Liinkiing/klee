@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } from 'react'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import styled from '@emotion/styled'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -12,7 +13,7 @@ import ModalHeader from './ModalHeader'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
 import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
-import { BoxProps } from '../primitives/Box'
+import { BoxProps } from '../primitives'
 
 type RenderProps = (props: Context) => ReactNode
 
@@ -64,6 +65,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
   const dialog = useDialogState({ animated: TRANSITION_DURATION * 1000 })
   const isMobile = useIsMobile()
   const $container = useRef()
+  const $scrollBox = useRef<HTMLElement>()
   const context = useMemo(
     () => ({
       hide: dialog.hide,
@@ -74,6 +76,19 @@ const Modal: FC<ModalProps> & SubComponents = ({
     }),
     [dialog, hideCloseButton],
   )
+  useEffect(() => {
+    const scrollContainer = $scrollBox.current;
+    if (dialog.visible) {
+      if (scrollContainer && preventBodyScroll) {
+        disableBodyScroll(scrollContainer);
+      }
+    }
+    return () => {
+      if (scrollContainer && preventBodyScroll) {
+        enableBodyScroll(scrollContainer);
+      }
+    };
+  }, [dialog.visible, preventBodyScroll]);
   useEffect(() => {
     if (dialog.visible) {
       if (onOpen) {
@@ -136,6 +151,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
                 borderBottomLeftRadius={[0, KleeRadius.Lg]}
                 borderBottomRightRadius={[0, KleeRadius.Lg]}
                 overflow={scrollBehavior === 'inside' ? 'overlay' : undefined}
+                ref={$scrollBox}
                 initial={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
