@@ -13,6 +13,7 @@ import Popover from '../components/popover/Popover'
 const meta: Meta = {
   title: 'Examples/Layouts',
   parameters: {
+    chromatic: { disable: true },
     controls: { disable: true },
   },
 }
