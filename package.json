@@ -34,6 +34,7 @@
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "framer-motion": ">=3.0.0",
+    "@styled-system/css": "^5.0.0",
     "react": ">=16",
     "react-icons": "^4.0.0"
   },
