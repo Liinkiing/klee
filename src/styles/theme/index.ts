@@ -1,13 +1,44 @@
 import type { Theme } from '@emotion/react'
-import type { Breakpoints } from '../../@types/@emotion/react'
-import typography from './typography'
+import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
 import colors from '../modules/colors'
 
 /* eslint-disable @typescript-eslint/ban-types */
 
 // Some values comes from chakra-ui, a great UI library!
 
-export const theme = <Props extends { theme: Theme }>(props: Props) => props.theme
+export interface Breakpoints {
+  tablet: string
+  desktop: string
+  wide: string
+  ultraWide: string
+}
+
+export interface Typography {
+  letterSpacings: typeof LETTER_SPACINGS
+  lineHeights: typeof LINE_HEIGHTS
+  fontWeights: typeof FONT_WEIGHTS
+  fonts: typeof FONT_FAMILIES
+  fontSizes: typeof FONT_SIZES
+}
+
+export interface KleeTheme extends Typography {
+  breakpoints: string[]
+  space: typeof SPACING
+  sizes: typeof SPACING
+  mediaQueries: {
+    tablet: string
+    desktop: string
+    wide: string
+    ultraWide: string
+  }
+  colors: typeof colors
+  radii: typeof RADII
+  shadows: typeof SHADOWS
+  borders: typeof BORDERS
+  zIndices: typeof Z_INDICES
+}
+
+export const theme = <Props extends { theme: KleeTheme }>(props: Props) => props.theme
 
 export const BR_TABLET = 720
 export const BR_DESKTOP = 1024
@@ -164,7 +195,7 @@ export type ThemeZIndicesValues = keyof typeof Z_INDICES | (string & {}) | (numb
 
 export const kleeTheme: Theme = {
   ...typography,
-  colors: colors as any,
+  colors,
   breakpoints: [breakpoints.tablet, breakpoints.desktop, breakpoints.wide, breakpoints.ultraWide],
   mediaQueries: {
     tablet: `@media screen and (min-width: ${breakpoints.tablet})`,

@@ -1,5 +1,4 @@
-import { Breakpoints } from '../../@types/@emotion/react'
-import { breakpoints } from '../theme'
+import { Breakpoints, breakpoints } from '../theme'
 
 export const BREAKPOINTS: Breakpoints = breakpoints
 

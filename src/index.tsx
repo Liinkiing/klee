@@ -17,6 +17,11 @@ export {
 export * from './components'
 
 /**
+ * Types
+ */
+export { KleeTheme } from './styles/theme'
+
+/**
  * Provider
  */
 export { KleeProvider } from './KleeProvider'

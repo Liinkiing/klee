@@ -1,50 +1,6 @@
 import '@emotion/react'
-import {
-  FONT_FAMILIES,
-  FONT_SIZES,
-  FONT_WEIGHTS,
-  LETTER_SPACINGS,
-  LINE_HEIGHTS,
-} from '../../../styles/theme/typography'
-import { BORDERS, RADII, SHADOWS, SPACING, Z_INDICES } from '../../../styles/theme'
-
-export interface Breakpoints {
-  tablet: string
-  desktop: string
-  wide: string
-  ultraWide: string
-}
+import { KleeTheme } from '../../../styles/theme'
 
 declare module '@emotion/react' {
-  export interface Typography {
-    letterSpacings: typeof LETTER_SPACINGS
-    lineHeights: typeof LINE_HEIGHTS
-    fontWeights: typeof FONT_WEIGHTS
-    fonts: typeof FONT_FAMILIES
-    fontSizes: typeof FONT_SIZES
-  }
-
-  export interface Theme extends Typography {
-    breakpoints: string[]
-    space: typeof SPACING
-    sizes: typeof SPACING
-    mediaQueries: {
-      tablet: string
-      desktop: string
-      wide: string
-      ultraWide: string
-    }
-    colors: typeof colors & {
-      background: string
-      text: string
-      link: string
-      primary: string
-      secondary: string
-      tertiary: string
-    }
-    radii: typeof RADII
-    shadows: typeof SHADOWS
-    borders: typeof BORDERS
-    zIndices: typeof Z_INDICES
-  }
+  export interface Theme extends KleeTheme {}
 }
