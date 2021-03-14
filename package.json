@@ -1,5 +1,5 @@
 {
-  "version": "0.13.5",
+  "version": "0.13.6",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -32,8 +32,8 @@
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "framer-motion": ">=3.0.0",
-    "react-icons": "^4.0.0",
-    "react": ">=16"
+    "react": ">=16",
+    "react-icons": "^4.0.0"
   },
   "husky": {
     "hooks": {
