@@ -5,7 +5,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import styled from '@emotion/styled'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Box } from '../primitives'
+import { Box, BoxProps } from '../primitives'
 import useIsMobile from '../../hooks/useIsMobile'
 import { Context, ModalContext } from './context'
 import { ease, LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
@@ -13,7 +13,6 @@ import ModalHeader from './ModalHeader'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
 import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
-import { BoxProps } from '../primitives'
 
 type RenderProps = (props: Context) => ReactNode
 
@@ -77,18 +76,18 @@ const Modal: FC<ModalProps> & SubComponents = ({
     [dialog, hideCloseButton],
   )
   useEffect(() => {
-    const scrollContainer = $scrollBox.current;
+    const scrollContainer = $scrollBox.current
     if (dialog.visible) {
       if (scrollContainer && preventBodyScroll) {
-        disableBodyScroll(scrollContainer);
+        disableBodyScroll(scrollContainer)
       }
     }
     return () => {
       if (scrollContainer && preventBodyScroll) {
-        enableBodyScroll(scrollContainer);
+        enableBodyScroll(scrollContainer)
       }
-    };
-  }, [dialog.visible, preventBodyScroll]);
+    }
+  }, [dialog.visible, preventBodyScroll])
   useEffect(() => {
     if (dialog.visible) {
       if (onOpen) {
