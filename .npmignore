@@ -23,6 +23,8 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+.husky/
+
 # Android/IntelliJ
 #
 build/
