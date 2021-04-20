@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { FC, forwardRef, ReactNode } from 'react'
+import { FC, forwardRef, MouseEventHandler, ReactNode, useCallback } from 'react'
 import { jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
@@ -10,8 +10,9 @@ import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
 import { MenuItem } from 'reakit'
 import { KleeLineHeight } from '../../styles/theme/typography'
+import { MenuProps } from './Menu'
 
-export interface MenuListItemProps extends BoxProps {
+export interface MenuListItemProps extends BoxProps, Pick<MenuProps, 'closeOnSelect'> {
   readonly disabled?: boolean
   readonly children: ReactNode
 }
@@ -34,14 +35,33 @@ const MenuListItemInner = styled(Flex)`
 `
 
 const MenuListItem: FC<MenuListItemProps> = forwardRef<HTMLElement, MenuListItemProps>(
-  ({ disabled, children, ...props }, ref) => {
-    const { reakitMenu } = useMenu()
+  ({ disabled, children, onClick, closeOnSelect, ...props }, ref) => {
+    const { reakitMenu, closeOnSelect: menuCloseOnSelect } = useMenu()
+    const onClickHandler = useCallback<MouseEventHandler>(
+      e => {
+        onClick?.(e)
+        const shouldHide = (() => {
+          if (closeOnSelect !== undefined && closeOnSelect) {
+            return true
+          }
+          if (closeOnSelect !== undefined && !closeOnSelect) {
+            return false
+          }
+          return menuCloseOnSelect && !closeOnSelect
+        })()
+        if (shouldHide) {
+          reakitMenu.hide()
+        }
+      },
+      [closeOnSelect, menuCloseOnSelect, onClick, reakitMenu],
+    )
     return (
       <MenuItem
         as={MenuListItemInner}
         disabled={disabled}
         ref={ref}
         {...props}
+        onClick={onClickHandler}
         {...reakitMenu}
         px={3}
         py={2}

@@ -85,7 +85,7 @@ WithModalOptions.args = {
         color="white"
         bg="cyan.500"
         disclosure={
-          <Menu.ListItem>
+          <Menu.ListItem closeOnSelect={false}>
             <Icon as={FiUser} />
             <Text>Open profile</Text>
           </Menu.ListItem>

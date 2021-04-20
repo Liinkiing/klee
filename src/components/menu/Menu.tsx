@@ -18,6 +18,10 @@ export interface MenuProps
     Partial<Pick<TippyProps, 'placement'>>,
     Pick<MenuInitialState, 'loop'>,
     Pick<ReakitMenuProps, 'hideOnClickOutside'> {
+  /**
+   * When enabled, the menu will auto close itself after you've selected a choice. It can also be enabled on a
+   * per-instance of a `Menu.ListItem`
+   */
   readonly closeOnSelect?: boolean
 }
 
@@ -45,6 +49,7 @@ const Menu: FC<MenuProps> & SubComponents = ({
   const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside }), [
     menu,
     closeOnSelect,
+    hideOnClickOutside,
   ])
   return (
     <MenuContext.Provider value={context}>
