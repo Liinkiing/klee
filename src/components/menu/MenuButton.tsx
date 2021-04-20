@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { MenuButton as ReakitMenuButton } from 'reakit'
+import { MenuButton as ReakitMenuButton } from 'reakit/Menu'
 import { PolymorphicComponent } from '../primitives/Box'
 import { CommonProps } from './common'
 import { Button } from '../button'

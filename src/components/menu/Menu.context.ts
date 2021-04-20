@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { MenuStateReturn } from 'reakit'
+import type { MenuStateReturn } from 'reakit/Menu'
 
 export interface Context {
   readonly reakitMenu: MenuStateReturn

@@ -9,7 +9,7 @@ import Box from '../primitives/Box'
 import { FC, ReactElement, useMemo } from 'react'
 import MenuList from './MenuList'
 import { CommonProps } from './common'
-import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit'
+import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
 import { Context, MenuContext } from './Menu.context'
 import { KleeZIndex, Z_INDICES } from '../../styles/theme'
 

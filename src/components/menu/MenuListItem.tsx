@@ -8,7 +8,7 @@ import Flex from '../layout/Flex'
 import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
-import { MenuItem } from 'reakit'
+import { MenuItem } from 'reakit/Menu'
 import { KleeLineHeight } from '../../styles/theme/typography'
 import { MenuProps } from './Menu'
 

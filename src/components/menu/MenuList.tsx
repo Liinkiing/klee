@@ -10,7 +10,7 @@ import { useMenu } from './Menu.context'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
-import { Menu } from 'reakit'
+import { Menu } from 'reakit/Menu'
 
 export type MenuListProps = Omit<BoxProps, 'children'> &
   CommonProps &
