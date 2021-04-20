@@ -34,7 +34,7 @@ type SubComponents = {
   OptionItem: typeof MenuOptionItem
 }
 
-const TRANSITION_DURATION = 0.2
+export const TRANSITION_DURATION = 0.2
 
 const Menu: FC<MenuProps> & SubComponents = ({
   placement = 'bottom-start',

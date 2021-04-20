@@ -7,10 +7,11 @@ import { BoxProps } from '../primitives/Box'
 import { CommonProps } from './common'
 import Flex from '../layout/Flex'
 import { useMenu } from './Menu.context'
-import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
+import { ease } from '../../utils/motion'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { Menu } from 'reakit/Menu'
+import { TRANSITION_DURATION } from './Menu'
 
 export type MenuListProps = Omit<BoxProps, 'children'> &
   CommonProps &
@@ -44,7 +45,7 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, ariaLabel, 
           aria-labelledby={labelledby}
           hideOnClickOutside={hideOnClickOutside}
           {...reakitMenu}
-          style={{ outline: 'none' }}
+          style={{ outline: 'none', transformOrigin: 'top left' }}
           as={MenuItems}
           ref={ref}
           direction="column"
@@ -58,10 +59,10 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, ariaLabel, 
           zIndex={KleeZIndex.Dropdown}
           overflow="hidden"
           {...props}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={LAYOUT_TRANSITION_SPRING}
-          exit={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -10, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: TRANSITION_DURATION, ease }}
+          exit={{ opacity: 0, y: -10, scale: 0.9 }}
         >
           {children}
         </Menu>
