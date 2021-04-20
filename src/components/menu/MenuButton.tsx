@@ -6,8 +6,8 @@ import { Button } from '../button'
 import { useMenu } from './Menu.context'
 
 const MenuButton = React.forwardRef<HTMLButtonElement, any>(({ ...props }, ref) => {
-  const menu = useMenu()
-  return <ReakitMenuButton as={Button} ref={ref} {...menu} {...props} />
+  const { reakitMenu } = useMenu()
+  return <ReakitMenuButton as={Button} ref={ref} {...reakitMenu} {...props} />
 })
 
 MenuButton.displayName = 'Menu.Button'

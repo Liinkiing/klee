@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { FC, ReactNode } from 'react'
+import { FC, forwardRef, ReactNode } from 'react'
 import { jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
@@ -9,6 +9,7 @@ import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
 import { MenuItem } from 'reakit'
+import { KleeLineHeight } from '../../styles/theme/typography'
 
 export interface MenuListItemProps extends BoxProps {
   readonly disabled?: boolean
@@ -18,12 +19,11 @@ export interface MenuListItemProps extends BoxProps {
 const MenuListItemInner = styled(Flex)`
   pointer-events: all;
   &[disabled] {
-    pointer-events: none;
+    cursor: not-allowed;
   }
   &:hover {
     cursor: pointer;
     &[disabled] {
-      pointer-events: none;
       cursor: not-allowed;
     }
   }
@@ -33,36 +33,38 @@ const MenuListItemInner = styled(Flex)`
   }
 `
 
-const MenuListItem: FC<MenuListItemProps> = ({ disabled, children, ...props }) => {
-  const menu = useMenu()
-  return (
-    <MenuItem
-      as={MenuListItemInner}
-      {...props}
-      {...menu}
-      px={3}
-      py={2}
-      _focus={{ bg: 'cool-gray.100' }}
-      _disabled={{ color: props.color ?? 'cool-gray.500' }}
-      align="center"
-      lineHeight="base"
-      borderBottom="normal"
-      borderColor="cool-gray.200"
-      sx={css({
-        '&:last-of-type': {
-          borderBottom: 0,
-        },
-        '& svg + *': {
-          ml: 2,
-        },
-      })}
-      {...props}
-    >
-      {typeof children === 'string' ? <Text>{children}</Text> : children}
-    </MenuItem>
-  )
-}
-
+const MenuListItem: FC<MenuListItemProps> = forwardRef<HTMLElement, MenuListItemProps>(
+  ({ disabled, children, ...props }, ref) => {
+    const { reakitMenu } = useMenu()
+    return (
+      <MenuItem
+        as={MenuListItemInner}
+        disabled={disabled}
+        ref={ref}
+        {...props}
+        {...reakitMenu}
+        px={3}
+        py={2}
+        _focus={{ bg: 'cool-gray.100' }}
+        _disabled={{ color: props.color ?? 'cool-gray.500' }}
+        align="center"
+        lineHeight={KleeLineHeight.Normal}
+        borderColor="cool-gray.200"
+        css={css({
+          '&:last-of-type': {
+            borderBottom: 0,
+          },
+          '& svg + *': {
+            ml: 2,
+          },
+        })}
+        {...props}
+      >
+        {typeof children === 'string' ? <Text>{children}</Text> : children}
+      </MenuItem>
+    )
+  },
+)
 MenuListItem.displayName = 'Menu.ListItem'
 
 export default MenuListItem

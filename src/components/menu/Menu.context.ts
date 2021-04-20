@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { MenuStateReturn } from 'reakit'
 
-export interface Context extends MenuStateReturn {
+export interface Context {
+  readonly reakitMenu: MenuStateReturn
+  readonly hideOnClickOutside: boolean
   readonly closeOnSelect: boolean
 }
 

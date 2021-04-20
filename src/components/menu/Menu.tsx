@@ -9,10 +9,15 @@ import Box from '../primitives/Box'
 import { FC, ReactElement, useMemo } from 'react'
 import MenuList from './MenuList'
 import { CommonProps } from './common'
-import { useMenuState } from 'reakit'
+import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit'
 import { Context, MenuContext } from './Menu.context'
+import { KleeZIndex, Z_INDICES } from '../../styles/theme'
 
-export interface MenuProps extends CommonProps, Partial<Pick<TippyProps, 'placement'>> {
+export interface MenuProps
+  extends CommonProps,
+    Partial<Pick<TippyProps, 'placement'>>,
+    Pick<MenuInitialState, 'loop'>,
+    Pick<ReakitMenuProps, 'hideOnClickOutside'> {
   readonly closeOnSelect?: boolean
 }
 
@@ -27,16 +32,25 @@ type SubComponents = {
 
 const TRANSITION_DURATION = 0.2
 
-const Menu: FC<MenuProps> & SubComponents = ({ placement = 'bottom-start', closeOnSelect = true, children }) => {
+const Menu: FC<MenuProps> & SubComponents = ({
+  placement = 'bottom-start',
+  closeOnSelect = true,
+  loop = false,
+  hideOnClickOutside = true,
+  children,
+}) => {
   const button = React.Children.toArray(children).find((c: any) => c.type === MenuButton) as ReactElement
   const list = React.Children.toArray(children).find((c: any) => c.type === MenuList) as ReactElement
-  const menu = useMenuState({ animated: TRANSITION_DURATION * 1000 })
-  const context = useMemo<Context>(() => ({ ...menu, closeOnSelect }), [menu, closeOnSelect])
-  console.log({ context })
+  const menu = useMenuState({ animated: TRANSITION_DURATION * 1000, loop })
+  const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside }), [
+    menu,
+    closeOnSelect,
+  ])
   return (
     <MenuContext.Provider value={context}>
       <Box position="relative" display="inline-block">
         <Tippy
+          zIndex={Z_INDICES[KleeZIndex.Dropdown]}
           placement={placement}
           render={attrs => (list ? React.cloneElement(list, attrs) : null)}
           animation

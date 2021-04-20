@@ -324,7 +324,7 @@ export const Box = styled('div', { shouldForwardProp })<BoxProps>(
       '&:active': _active ?? {},
       '&[aria-selected="true"]': _selected ?? {},
       '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
-      '&:disabled': _disabled ?? {},
+      '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled ?? {},
     }),
   ({ _variants }) => (Array.isArray(_variants) ? _variants.map(v => v) : _variants ?? {}),
   compose(
