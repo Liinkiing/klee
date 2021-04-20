@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { forwardRef } from 'react'
-import { Menu as HeadlessMenu } from '@headlessui/react'
 import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BoxProps } from '../primitives/Box'
@@ -10,6 +9,7 @@ import { useMenu } from './Menu.context'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
+import { Menu } from 'reakit'
 
 export interface MenuListProps extends Omit<BoxProps, 'children'>, CommonProps {
   readonly align?: 'left' | 'right'
@@ -25,17 +25,14 @@ const MenuItems = styled(motion(Flex))`
 `
 
 const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, align = 'right', ...props }, ref) => {
-  const { open, closeOnSelect } = useMenu()
-
+  const menu = useMenu()
   return (
     <AnimatePresence>
-      {open && (
-        <HeadlessMenu.Items
-          static
-          closeOnSelect={closeOnSelect}
+      {menu.visible && (
+        <Menu
           ref={ref}
+          {...menu}
           as={MenuItems}
-          align={align}
           direction="column"
           minWidth="200px"
           bg="white"
@@ -54,13 +51,12 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, align = 'ri
           exit={{ opacity: 0, y: -10 }}
         >
           {children}
-        </HeadlessMenu.Items>
+        </Menu>
       )}
     </AnimatePresence>
   )
 })
 
-;(MenuList as any).name = MENU_LIST_TYPE
 MenuList.displayName = 'Menu.List'
 
 export default MenuList

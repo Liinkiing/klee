@@ -2,13 +2,13 @@
 /** @jsx jsx */
 import { FC, ReactNode } from 'react'
 import { jsx } from '@emotion/react'
-import { Menu as HeadlessMenu } from '@headlessui/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
 import Flex from '../layout/Flex'
 import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
+import { MenuItem } from 'reakit'
 
 export interface MenuListItemProps extends BoxProps {
   readonly disabled?: boolean
@@ -34,37 +34,32 @@ const MenuListItemInner = styled(Flex)`
 `
 
 const MenuListItem: FC<MenuListItemProps> = ({ disabled, children, ...props }) => {
-  const { closeOnSelect } = useMenu()
+  const menu = useMenu()
   return (
-    // @ts-ignore
-    <HeadlessMenu.Item closeOnSelect={closeOnSelect} disabled={disabled}>
-      {({ active }) => (
-        <MenuListItemInner
-          disabled={disabled}
-          px={3}
-          py={2}
-          bg={active ? 'cool-gray.100' : 'transparent'}
-          align="center"
-          lineHeight="base"
-          borderBottom="normal"
-          borderColor="cool-gray.200"
-          css={css({
-            '&:last-of-type': {
-              borderBottom: 0,
-            },
-            '& svg + *': {
-              ml: 2,
-            },
-            '&[disabled]': {
-              color: props.color ?? 'cool-gray.500',
-            },
-          })}
-          {...props}
-        >
-          {typeof children === 'string' ? <Text>{children}</Text> : children}
-        </MenuListItemInner>
-      )}
-    </HeadlessMenu.Item>
+    <MenuItem
+      as={MenuListItemInner}
+      {...props}
+      {...menu}
+      px={3}
+      py={2}
+      _focus={{ bg: 'cool-gray.100' }}
+      _disabled={{ color: props.color ?? 'cool-gray.500' }}
+      align="center"
+      lineHeight="base"
+      borderBottom="normal"
+      borderColor="cool-gray.200"
+      sx={css({
+        '&:last-of-type': {
+          borderBottom: 0,
+        },
+        '& svg + *': {
+          ml: 2,
+        },
+      })}
+      {...props}
+    >
+      {typeof children === 'string' ? <Text>{children}</Text> : children}
+    </MenuItem>
   )
 }
 

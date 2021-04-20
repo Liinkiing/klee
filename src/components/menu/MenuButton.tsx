@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { Menu as HeadlessMenu } from '@headlessui/react'
+import { MenuButton as ReakitMenuButton } from 'reakit'
 import { PolymorphicComponent } from '../primitives/Box'
 import { CommonProps } from './common'
-
-export const MENU_BUTTON_TYPE: 'MenuButton' = 'MenuButton'
+import { Button } from '../button'
+import { useMenu } from './Menu.context'
 
 const MenuButton = React.forwardRef<HTMLButtonElement, any>(({ ...props }, ref) => {
-  return <HeadlessMenu.Button ref={ref} {...props} />
+  const menu = useMenu()
+  return <ReakitMenuButton as={Button} ref={ref} {...menu} {...props} />
 })
 
-;(MenuButton as any).name = MENU_BUTTON_TYPE
 MenuButton.displayName = 'Menu.Button'
 
 export default MenuButton as PolymorphicComponent<CommonProps>
