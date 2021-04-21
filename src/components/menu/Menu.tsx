@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { FC, ReactElement, useMemo } from 'react'
 import Tippy, { TippyProps } from '@tippyjs/react/headless'
 import MenuButton from './MenuButton'
 import MenuDivider from './MenuDivider'
@@ -6,10 +7,9 @@ import MenuListItem from './MenuListItem'
 import MenuOptionGroup from './MenuOptionGroup'
 import MenuOptionItem from './MenuOptionItem'
 import Box from '../primitives/Box'
-import { FC, ReactElement, useMemo } from 'react'
 import MenuList from './MenuList'
 import { CommonProps } from './common'
-import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
+import { MenuInitialState, MenuProps as ReakitMenuProps, useMenuState } from 'reakit/Menu'
 import { Context, MenuContext } from './Menu.context'
 import { KleeZIndex, Z_INDICES } from '../../styles/theme'
 
@@ -41,6 +41,7 @@ const Menu: FC<MenuProps> & SubComponents = ({
   closeOnSelect = true,
   loop = false,
   hideOnClickOutside = true,
+
   children,
 }) => {
   const button = React.Children.toArray(children).find((c: any) => c.type === MenuButton) as ReactElement

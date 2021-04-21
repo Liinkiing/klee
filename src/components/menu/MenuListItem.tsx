@@ -1,7 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { FC, forwardRef, MouseEventHandler, ReactNode, useCallback } from 'react'
-import { jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
 import Flex from '../layout/Flex'
@@ -17,13 +16,16 @@ export interface MenuListItemProps extends BoxProps, Pick<MenuProps, 'closeOnSel
   readonly children: ReactNode
 }
 
-const MenuListItemInner = styled(Flex)`
+export const MenuListItemInner = styled(Flex)`
   pointer-events: all;
+
   &[disabled] {
     cursor: not-allowed;
   }
+
   &:hover {
     cursor: pointer;
+
     &[disabled] {
       cursor: not-allowed;
     }

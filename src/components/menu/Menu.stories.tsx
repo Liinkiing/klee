@@ -6,6 +6,7 @@ import Text from '../typography/Text'
 import { Icon } from '../icon'
 import { FiChevronDown, FiChevronUp, FiEdit, FiLogOut, FiPrinter, FiSettings, FiUser } from 'react-icons/fi'
 import { Modal } from '../modal'
+import { SubMenu } from './test'
 
 const meta: Meta = {
   title: 'Library/Menu',
@@ -145,4 +146,44 @@ export const WithOptionGroups: Story<MenuProps> = args => {
 
 WithOptionGroups.args = {
   closeOnSelect: false,
+}
+
+export const WithSub = () => {
+  return (
+    <Menu isSubMenu={false}>
+      <Menu.Button as={Button} variant="transparent">
+        Oe le menu
+      </Menu.Button>
+      <Menu.List ariaLabel="main">
+        <Menu.ListItem>Salut</Menu.ListItem>
+        <Menu.ListItem>Les</Menu.ListItem>
+        <Menu.ListItem>Filles</Menu.ListItem>
+        <Menu.ListItem as={SubMenu} title="oe la cité">
+          <Menu.List ariaLabel="sub">
+            <Menu.ListItem>Sub 1</Menu.ListItem>
+            <Menu.ListItem>Sub 2</Menu.ListItem>
+            <Menu.ListItem as={SubMenu} title="oe la cité">
+              <Menu.List ariaLabel="sub-2">
+                <Menu.ListItem>Sub 1</Menu.ListItem>
+                <Menu.ListItem>Sub 2</Menu.ListItem>
+                <Menu.ListItem as={SubMenu} title="oe la cité">
+                  <Menu.List ariaLabel="sub-3">
+                    <Menu.ListItem>Sub 1</Menu.ListItem>
+                    <Menu.ListItem>Sub 2</Menu.ListItem>
+                    <Menu.ListItem as={SubMenu} title="oe la cité">
+                      <Menu.List ariaLabel="sub-4">
+                        <Menu.ListItem>Sub 1</Menu.ListItem>
+                        <Menu.ListItem>Sub 2</Menu.ListItem>
+                        <Menu.ListItem>Sub 3</Menu.ListItem>
+                      </Menu.List>
+                    </Menu.ListItem>
+                  </Menu.List>
+                </Menu.ListItem>
+              </Menu.List>
+            </Menu.ListItem>
+          </Menu.List>
+        </Menu.ListItem>
+      </Menu.List>
+    </Menu>
+  )
 }
