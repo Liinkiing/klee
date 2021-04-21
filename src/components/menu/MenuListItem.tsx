@@ -1,16 +1,18 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { FC, ReactNode } from 'react'
+import { FC, forwardRef, MouseEventHandler, ReactNode, useCallback } from 'react'
 import { jsx } from '@emotion/react'
-import { Menu as HeadlessMenu } from '@headlessui/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
 import Flex from '../layout/Flex'
 import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
+import { MenuItem } from 'reakit/Menu'
+import { KleeLineHeight } from '../../styles/theme/typography'
+import { MenuProps } from './Menu'
 
-export interface MenuListItemProps extends BoxProps {
+export interface MenuListItemProps extends BoxProps, Pick<MenuProps, 'closeOnSelect'> {
   readonly disabled?: boolean
   readonly children: ReactNode
 }
@@ -18,12 +20,11 @@ export interface MenuListItemProps extends BoxProps {
 const MenuListItemInner = styled(Flex)`
   pointer-events: all;
   &[disabled] {
-    pointer-events: none;
+    cursor: not-allowed;
   }
   &:hover {
     cursor: pointer;
     &[disabled] {
-      pointer-events: none;
       cursor: not-allowed;
     }
   }
@@ -33,41 +34,57 @@ const MenuListItemInner = styled(Flex)`
   }
 `
 
-const MenuListItem: FC<MenuListItemProps> = ({ disabled, children, ...props }) => {
-  const { closeOnSelect } = useMenu()
-  return (
-    // @ts-ignore
-    <HeadlessMenu.Item closeOnSelect={closeOnSelect} disabled={disabled}>
-      {({ active }) => (
-        <MenuListItemInner
-          disabled={disabled}
-          px={3}
-          py={2}
-          bg={active ? 'cool-gray.100' : 'transparent'}
-          align="center"
-          lineHeight="base"
-          borderBottom="normal"
-          borderColor="cool-gray.200"
-          css={css({
-            '&:last-of-type': {
-              borderBottom: 0,
-            },
-            '& svg + *': {
-              ml: 2,
-            },
-            '&[disabled]': {
-              color: props.color ?? 'cool-gray.500',
-            },
-          })}
-          {...props}
-        >
-          {typeof children === 'string' ? <Text>{children}</Text> : children}
-        </MenuListItemInner>
-      )}
-    </HeadlessMenu.Item>
-  )
-}
-
+const MenuListItem: FC<MenuListItemProps> = forwardRef<HTMLElement, MenuListItemProps>(
+  ({ disabled, children, onClick, closeOnSelect, ...props }, ref) => {
+    const { reakitMenu, closeOnSelect: menuCloseOnSelect } = useMenu()
+    const onClickHandler = useCallback<MouseEventHandler>(
+      e => {
+        onClick?.(e)
+        const shouldHide = (() => {
+          if (closeOnSelect !== undefined && closeOnSelect) {
+            return true
+          }
+          if (closeOnSelect !== undefined && !closeOnSelect) {
+            return false
+          }
+          return menuCloseOnSelect && !closeOnSelect
+        })()
+        if (shouldHide) {
+          reakitMenu.hide()
+        }
+      },
+      [closeOnSelect, menuCloseOnSelect, onClick, reakitMenu],
+    )
+    return (
+      <MenuItem
+        as={MenuListItemInner}
+        disabled={disabled}
+        ref={ref}
+        {...props}
+        onClick={onClickHandler}
+        {...reakitMenu}
+        px={3}
+        py={2}
+        _focus={{ bg: 'cool-gray.100' }}
+        _disabled={{ color: props.color ?? 'cool-gray.500' }}
+        align="center"
+        lineHeight={KleeLineHeight.Normal}
+        borderColor="cool-gray.200"
+        css={css({
+          '&:last-of-type': {
+            borderBottom: 0,
+          },
+          '& svg + *': {
+            ml: 2,
+          },
+        })}
+        {...props}
+      >
+        {typeof children === 'string' ? <Text>{children}</Text> : children}
+      </MenuItem>
+    )
+  },
+)
 MenuListItem.displayName = 'Menu.ListItem'
 
 export default MenuListItem

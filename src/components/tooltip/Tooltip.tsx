@@ -12,7 +12,7 @@ import Box, { BoxProps } from '../primitives/Box'
 import { FC, ReactNode } from 'react'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { Text } from '../typography'
-import { KleeRadius, KleeShadow } from '../../styles/theme'
+import { KleeRadius, KleeShadow, KleeZIndex, Z_INDICES } from '../../styles/theme'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { transparentize } from 'polished'
 import { themeGet } from '@styled-system/theme-get'
@@ -110,6 +110,7 @@ export const Tooltip: FC<TooltipProps> = ({
   const computedBg = bg ?? backgroundColor ?? DEFAULT_BG
   return (
     <Tippy
+      zIndex={Z_INDICES[KleeZIndex.Tooltip]}
       disabled={isDisabled}
       placement={placement}
       interactive={keepOnHover}

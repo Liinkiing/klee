@@ -11,6 +11,7 @@ import { KleeFontSize } from '../../styles/theme/typography'
 import { FlexProps } from '../layout/Flex'
 import { IconButton } from '../button/IconButton'
 import { Icon } from '../icon'
+import { Heading } from '../typography'
 
 const ModalHeader: FC<FlexProps> = ({ children, ...rest }) => {
   const { hide, hideCloseButton } = useModal()
@@ -25,7 +26,7 @@ const ModalHeader: FC<FlexProps> = ({ children, ...rest }) => {
         })}
         flex={1}
       >
-        {children}
+        {typeof children === 'string' ? <Heading as="h2">{children}</Heading> : children}
       </Box>
       {!hideCloseButton && <IconButton variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
     </Flex>

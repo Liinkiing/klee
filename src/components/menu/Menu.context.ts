@@ -1,19 +1,18 @@
 import * as React from 'react'
+import type { MenuStateReturn } from 'reakit/Menu'
 
-export type Context = {
-  readonly open: boolean
+export interface Context {
+  readonly reakitMenu: MenuStateReturn
+  readonly hideOnClickOutside: boolean
   readonly closeOnSelect: boolean
 }
 
-export const MenuContext = React.createContext<Context>({
-  open: false,
-  closeOnSelect: true,
-})
+export const MenuContext = React.createContext<Context | undefined>(undefined)
 
 export const useMenu = (): Context => {
   const context = React.useContext(MenuContext)
   if (!context) {
-    throw new Error(`You can't use the MenuContext outsides a Menu component.`)
+    throw new Error(`You can't use the ReakitMenuContext outsides a ReakitMenu component.`)
   }
   return context
 }
