@@ -61,7 +61,6 @@ const Menu: FC<MenuProps> & SubComponents = ({
           render={attrs => (list ? React.cloneElement(list, attrs) : null)}
           animation
           visible={menu.visible}
-          onClickOutside={menu.hide}
           popperOptions={{
             strategy: 'fixed',
           }}
