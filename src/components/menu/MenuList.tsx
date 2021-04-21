@@ -2,7 +2,7 @@ import * as React from 'react'
 import { FC } from 'react'
 import { forwardRef } from 'react'
 import styled from '@emotion/styled'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { BoxProps } from '../primitives/Box'
 import { CommonProps } from './common'
 import Flex from '../layout/Flex'
@@ -38,36 +38,35 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, ariaLabel, 
   const label = ariaLabel ?? props['aria-label'] ?? undefined
   const labelledby = ariaLabelledby ?? props['aria-labelledby'] ?? undefined
   return (
-    <AnimatePresence>
-      {reakitMenu.visible && (
-        <Menu
-          aria-label={label}
-          aria-labelledby={labelledby}
-          hideOnClickOutside={hideOnClickOutside}
-          {...reakitMenu}
-          style={{ outline: 'none', transformOrigin: 'top left' }}
-          as={MenuItems}
-          ref={ref}
-          direction="column"
-          minWidth="200px"
-          bg="white"
-          boxShadow={KleeShadow.Lg}
-          border={KleeBorder.Xs}
-          fontSize={KleeFontSize.Sm}
-          borderColor="cool-gray.200"
-          borderRadius={KleeRadius.Lg}
-          zIndex={KleeZIndex.Dropdown}
-          overflow="hidden"
-          {...props}
-          initial={{ opacity: 0, y: -10, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: TRANSITION_DURATION, ease }}
-          exit={{ opacity: 0, y: -10, scale: 0.9 }}
-        >
-          {children}
-        </Menu>
-      )}
-    </AnimatePresence>
+    <Menu
+      variants={{
+        hidden: { opacity: 0, y: -10, scale: 0.9 },
+        visible: { opacity: 1, y: 0, scale: 1 },
+      }}
+      aria-label={label}
+      aria-labelledby={labelledby}
+      hideOnClickOutside={hideOnClickOutside}
+      {...reakitMenu}
+      style={{ outline: 'none', transformOrigin: 'top left' }}
+      as={MenuItems}
+      ref={ref}
+      direction="column"
+      minWidth="200px"
+      bg="white"
+      boxShadow={KleeShadow.Lg}
+      border={KleeBorder.Xs}
+      fontSize={KleeFontSize.Sm}
+      borderColor="cool-gray.200"
+      borderRadius={KleeRadius.Lg}
+      zIndex={KleeZIndex.Dropdown}
+      overflow="hidden"
+      {...props}
+      initial="hidden"
+      animate={reakitMenu.visible ? 'visible' : 'hidden'}
+      transition={{ duration: TRANSITION_DURATION, ease }}
+    >
+      {children}
+    </Menu>
   )
 }) as FC<MenuListProps>
 
