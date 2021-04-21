@@ -51,6 +51,7 @@ const Menu: FC<MenuProps> & SubComponents = ({
     closeOnSelect,
     hideOnClickOutside,
   ])
+
   return (
     <MenuContext.Provider value={context}>
       <Box position="relative" display="inline-block">
@@ -59,7 +60,8 @@ const Menu: FC<MenuProps> & SubComponents = ({
           placement={placement}
           render={attrs => (list ? React.cloneElement(list, attrs) : null)}
           animation
-          trigger="click"
+          visible={menu.visible}
+          onClickOutside={menu.hide}
           popperOptions={{
             strategy: 'fixed',
           }}
