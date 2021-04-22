@@ -5,7 +5,7 @@ import { jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
 import Flex from '../layout/Flex'
-import { BoxProps } from '../primitives/Box'
+import { BoxProps } from '../primitives'
 import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
 import { MenuItem } from 'reakit/Menu'
@@ -60,7 +60,6 @@ const MenuListItem: FC<MenuListItemProps> = forwardRef<HTMLElement, MenuListItem
         as={MenuListItemInner}
         disabled={disabled}
         ref={ref}
-        {...props}
         onClick={onClickHandler}
         {...reakitMenu}
         px={3}
