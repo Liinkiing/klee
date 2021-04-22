@@ -49,7 +49,13 @@ export const Default: Story = () => {
     <VStack spacing={4}>
       {palettes.map(value => (
         <VStack spacing={4} key={value.color}>
-          <Heading>{value.color}</Heading>
+          <Heading
+            alignSelf="flex-start"
+            bgClip="text"
+            bgGradient={`linear(to right, ${value.color}.500, ${value.color}.700)`}
+          >
+            {value.color}
+          </Heading>
           <Grid autoFit gap={4}>
             {value.palette.map(p => (
               <Flex
