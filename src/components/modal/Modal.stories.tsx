@@ -63,7 +63,7 @@ export const WithCustomization = Template.bind({})
 
 WithCustomization.args = {
   ariaLabel: 'Modal example',
-  bg: 'cyan.500',
+  bgGradient: ['linear(to top, amber.600, amber.500)', 'linear(to top, cyan.600, cyan.500)'],
   color: 'white',
   width: ['100%', '300px'],
 }

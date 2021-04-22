@@ -4,6 +4,7 @@ import { Theme } from '@emotion/react'
 import css from '@styled-system/css'
 
 import {
+  BackgroundImageProps,
   border,
   BorderProps,
   color,
@@ -51,6 +52,7 @@ import {
 } from '../../styles/theme/typography'
 import { ThemeColorsValues } from '../../styles/modules/colors'
 import { SystemStyleObject } from '@styled-system/css'
+import { bgClipTransform, bgGradientTransform } from '../../utils/styled-system/transforms'
 
 type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 
@@ -82,6 +84,10 @@ type AppTypographyProps = Omit<
 type AppCustomStyledProps = {
   minSize?: AppSizeProps['size']
   maxSize?: AppSizeProps['size']
+  backgroundGradient?: BackgroundImageProps['backgroundImage']
+  bgGradient?: BackgroundImageProps['backgroundImage']
+  bgClip?: 'text' | (string & {})
+  backgroundClip?: 'text' | (string & {})
 }
 
 type AppShadowProps = {
@@ -316,6 +322,7 @@ const defaultElement = 'div'
 export const Box = styled('div', { shouldForwardProp })<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
+    ...bgClipTransform(props.bgClip ?? props.backgroundClip),
   }),
   ({ sx, _hover, _active, _focus, _disabled, _selected, disableFocusStyles }) =>
     css({
@@ -329,6 +336,14 @@ export const Box = styled('div', { shouldForwardProp })<BoxProps>(
   ({ _variants }) => (Array.isArray(_variants) ? _variants.map(v => v) : _variants ?? {}),
   compose(
     system({
+      bgGradient: {
+        properties: ['backgroundImage'],
+        transform: bgGradientTransform,
+      },
+      backgroundGradient: {
+        properties: ['backgroundImage'],
+        transform: bgGradientTransform,
+      },
       gap: {
         properties: ['gap'],
         scale: 'sizes',
