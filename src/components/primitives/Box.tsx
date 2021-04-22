@@ -1,7 +1,6 @@
 import { Theme } from '@emotion/react'
 import styled from '@emotion/styled'
-import css from '@styled-system/css'
-import { SystemStyleObject } from '@styled-system/css'
+import css, { SystemStyleObject } from '@styled-system/css'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
@@ -52,6 +51,7 @@ import {
   KleeLetterSpacing,
   KleeLineHeight,
 } from '../../styles/theme/typography'
+import { CssVars } from '../../utils/css-vars'
 import { bgClipTransform, bgGradientTransform } from '../../utils/styled-system/transforms'
 
 type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
@@ -88,6 +88,7 @@ type AppCustomStyledProps = {
   bgGradient?: BackgroundImageProps['backgroundImage']
   bgClip?: 'text' | (string & {})
   backgroundClip?: 'text' | (string & {})
+  focusBorderColor?: AppBorderProps['borderColor']
 }
 
 type AppShadowProps = {
@@ -347,6 +348,10 @@ export const Box = styled('div', { shouldForwardProp })<BoxProps>(
       gap: {
         properties: ['gap'],
         scale: 'sizes',
+      },
+      focusBorderColor: {
+        property: CssVars.FocusBorderColor,
+        scale: 'colors',
       },
       minSize: {
         properties: ['minWidth', 'minHeight'],

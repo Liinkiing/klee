@@ -28,6 +28,7 @@ const EXLUDED_DOCGEN_PROPS = [
   'backgroundGradient',
   'bgClip',
   'backgroundClip',
+  'focusBorderColor',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
