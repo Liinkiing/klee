@@ -16,10 +16,10 @@ inspiration), but may be used to do some livestream... And to put **KLEE** EVERY
 
 ```bash
 # using yarn
-$ yarn add @liinkiing/klee @emotion/react @emotion/styled framer-motion react-icons @styled-system/css
+$ yarn add @liinkiing/klee @emotion/react@^11 @emotion/styled@^11 framer-motion@^4 react-icons@^4 @styled-system/css@^5
 
 # using npm
-$ npm i @liinkiing/klee @emotion/react @emotion/styled framer-motion react-icons @styled-system/css
+$ npm i @liinkiing/klee @emotion/react@^11 @emotion/styled@^11 framer-motion@^4 react-icons@^4 @styled-system/css@^5
 ```
 
 ## Usage
@@ -40,9 +40,7 @@ const App = () => {
         <Button variant="danger">Hello world</Button>
         <Icon as={FiAirplay} />
         <Box color="cyan.500" p={4}>
-          <Text _hover={{ bg: 'amber.500', cursor: 'pointer' }}>
-            Ehe te nandayo
-          </Text>
+          <Text _hover={{ bg: 'amber.500', cursor: 'pointer' }}>Ehe te nandayo</Text>
         </Box>
       </Flex>
     </KleeProvider>

@@ -33,13 +33,16 @@
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "@styled-system/css": "^5.0.0",
-    "framer-motion": ">=3.0.0",
+    "framer-motion": ">=4.0.0",
     "react": ">=16",
     "react-icons": "^4.0.0"
   },
   "lint-staged": {
-    "*.{css,md}": [
-      "npx prettier --write"
+    "*.md": [
+      "npx prettier --parser markdown --write"
+    ],
+    "*.css": [
+      "npx prettier --parser css --write"
     ],
     "*.{js,ts,jsx,tsx}": [
       "npx tsdx lint src --fix"
@@ -59,7 +62,7 @@
     }
   ],
   "devDependencies": {
-    "@babel/core": "^7.13.15",
+    "@babel/core": "^7.13.16",
     "@size-limit/preset-small-lib": "^4.10.2",
     "@storybook/addon-essentials": "^6.2.8",
     "@storybook/addon-info": "^5.3.21",
@@ -104,14 +107,14 @@
     "body-scroll-lock": "^3.1.5",
     "color-hash-ts": "^0.0.7",
     "font-color-contrast": "^1.0.3",
-    "framer-motion": "^3.10.0",
+    "framer-motion": "^4.1.8",
     "lint-staged": "^10.5.4",
     "mitt": "^2.1.0",
     "patch-package": "^6.4.7",
     "polished": "^4.1.1",
     "postinstall-postinstall": "^2.1.0",
     "react-icons": "^4.2.0",
-    "react-intersection-observer": "^8.31.0",
+    "react-intersection-observer": "^8.31.1",
     "react-no-ssr": "^1.1.0",
     "reakit": "^1.3.7",
     "styled-system": "^5.1.5",
