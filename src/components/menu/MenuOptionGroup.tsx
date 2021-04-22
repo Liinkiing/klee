@@ -1,13 +1,15 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import { FC, useMemo } from 'react'
 import css from '@styled-system/css'
-import Box, { BoxProps } from '../primitives/Box'
-import { Context, MenuOptionGroupContext } from './MenuOptionGroup.context'
-import Text from '../typography/Text'
-import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import { FC, useMemo } from 'react'
+
 import { KleeBorder } from '../../styles/theme'
+import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import Box, { BoxProps } from '../primitives/Box'
+import Text from '../typography/Text'
+import { Context, MenuOptionGroupContext } from './MenuOptionGroup.context'
 
 interface Props extends Omit<BoxProps, 'onChange'> {
   readonly title?: string

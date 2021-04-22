@@ -1,10 +1,10 @@
 // Taken from here and adapted it a bit for simplicity sake
 // https://github.com/chakra-ui/chakra-ui/blob/75edcf41e7ff4acc2569f2169949063c164d8f6e/packages/styled-system/src/utils/parse-gradient.ts
 // Again, check ChakraUI, a great library!
-
 import { themeGet } from '@styled-system/theme-get'
-import { kleeTheme } from '../../styles/theme'
 import { Scale } from 'styled-system'
+
+import { kleeTheme } from '../../styles/theme'
 
 const globalSet = new Set(['none', '-moz-initial', 'inherit', 'initial', 'revert', 'unset'])
 

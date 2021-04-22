@@ -1,13 +1,14 @@
 import React, { FC, useEffect, useMemo } from 'react'
 import { TabInitialState, useTabState } from 'reakit/Tab'
-import { Context, TabsAlign, TabsContext, TabsOrientation, TabsVariant } from './Tabs.context'
-import { BoxProps } from '../primitives/Box'
-import TabPanels from './TabPanels'
-import TabPanel from './TabPanel'
-import TabList from './TabList'
-import Tab from './Tab'
+
 import { KleeFontFamily } from '../../styles/theme/typography'
 import { Flex } from '../layout/Flex'
+import { BoxProps } from '../primitives/Box'
+import Tab from './Tab'
+import TabList from './TabList'
+import TabPanel from './TabPanel'
+import TabPanels from './TabPanels'
+import { Context, TabsAlign, TabsContext, TabsOrientation, TabsVariant } from './Tabs.context'
 
 export interface TabsProps extends Pick<TabInitialState, 'selectedId'>, Omit<BoxProps, 'onChange'> {
   readonly onChange?: (tabId: string) => void

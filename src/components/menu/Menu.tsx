@@ -1,18 +1,19 @@
-import * as React from 'react'
 import Tippy, { TippyProps } from '@tippyjs/react/headless'
+import * as React from 'react'
+import { FC, ReactElement, useMemo } from 'react'
+import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
+
+import { KleeZIndex, Z_INDICES } from '../../styles/theme'
+import { MENU_TRANSITION_DURATION } from '../../utils/motion'
+import Box from '../primitives/Box'
+import { Context, MenuContext } from './Menu.context'
 import MenuButton from './MenuButton'
 import MenuDivider from './MenuDivider'
+import MenuList from './MenuList'
 import MenuListItem from './MenuListItem'
 import MenuOptionGroup from './MenuOptionGroup'
 import MenuOptionItem from './MenuOptionItem'
-import Box from '../primitives/Box'
-import { FC, ReactElement, useMemo } from 'react'
-import MenuList from './MenuList'
 import { CommonProps } from './common'
-import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
-import { Context, MenuContext } from './Menu.context'
-import { KleeZIndex, Z_INDICES } from '../../styles/theme'
-import { MENU_TRANSITION_DURATION } from '../../utils/motion'
 
 export interface MenuProps
   extends CommonProps,

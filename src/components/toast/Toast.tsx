@@ -1,22 +1,24 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import styled from '@emotion/styled'
-import { motion } from 'framer-motion'
-import { variant as styledVariant } from 'styled-system'
-import { fadeOut, slideInDown, slideInLeftToRight, slideInRightToLeft, slideInUp } from '../../styles/modules/keyframes'
-import { Box } from '../primitives'
-import { Flex } from '../layout'
-import colors from '../../styles/modules/colors'
-import { KleeBorder, SHADOWS } from '../../styles/theme'
-import { IconProps } from '../icon/Icon'
-import { Icon } from '../icon'
-import { FiAlertCircle, FiCheckCircle, FiInfo, FiX, FiXCircle } from 'react-icons/fi'
-import { jsxInnerText } from '../../utils/jsx'
 import { useTimeout } from '@liinkiing/react-hooks'
-import { Text } from '../typography'
+import { motion } from 'framer-motion'
+import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import { FiAlertCircle, FiCheckCircle, FiInfo, FiX, FiXCircle } from 'react-icons/fi'
+import { variant as styledVariant } from 'styled-system'
+
+import colors from '../../styles/modules/colors'
+import { fadeOut, slideInDown, slideInLeftToRight, slideInRightToLeft, slideInUp } from '../../styles/modules/keyframes'
+import { KleeBorder, SHADOWS } from '../../styles/theme'
+import { jsxInnerText } from '../../utils/jsx'
 import { IconButton } from '../button/IconButton'
+import { Icon } from '../icon'
+import { IconProps } from '../icon/Icon'
+import { Flex } from '../layout'
+import { Box } from '../primitives'
+import { Text } from '../typography'
 
 type Variant = 'info' | 'success' | 'danger' | 'warning'
 

@@ -1,12 +1,14 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
-import { FC } from 'react'
 import { jsx, ThemeProvider } from '@emotion/react'
-import { kleeTheme } from './styles/theme'
+import { FC } from 'react'
+import { Provider } from 'reakit/Provider'
+
+import { ToastsContainer } from './components/toast/ToastContainer'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'
-import { ToastsContainer } from './components/toast/ToastContainer'
-import { Provider } from 'reakit/Provider'
+import { kleeTheme } from './styles/theme'
 
 interface Props {
   readonly resetCSS?: boolean

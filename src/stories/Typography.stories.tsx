@@ -1,7 +1,8 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import { FONT_SIZES, KleeFontSize, KleeFontWeight } from '../styles/theme/typography'
+import React from 'react'
+
 import { Heading, HStack, Text, VStack } from '../components'
+import { FONT_SIZES, KleeFontSize, KleeFontWeight } from '../styles/theme/typography'
 
 const meta: Meta = {
   title: 'Tokens/Typography',

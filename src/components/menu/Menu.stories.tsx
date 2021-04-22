@@ -1,11 +1,12 @@
-import React, { ReactNode, useState } from 'react'
 import { Meta, Story } from '@storybook/react'
-import Menu, { MenuProps } from './Menu'
-import { Button } from '../button'
-import Text from '../typography/Text'
-import { Icon } from '../icon'
+import React, { ReactNode, useState } from 'react'
 import { FiChevronDown, FiChevronUp, FiEdit, FiLogOut, FiPrinter, FiSettings, FiUser } from 'react-icons/fi'
+
+import { Button } from '../button'
+import { Icon } from '../icon'
 import { Modal } from '../modal'
+import Text from '../typography/Text'
+import Menu, { MenuProps } from './Menu'
 
 const meta: Meta = {
   title: 'Library/Menu',

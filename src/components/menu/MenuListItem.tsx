@@ -1,16 +1,18 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
-import { FC, forwardRef, MouseEventHandler, ReactNode, useCallback } from 'react'
 import { jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import css from '@styled-system/css'
+import { FC, forwardRef, MouseEventHandler, ReactNode, useCallback } from 'react'
+import { MenuItem } from 'reakit/Menu'
+
+import { KleeLineHeight } from '../../styles/theme/typography'
 import Flex from '../layout/Flex'
 import { BoxProps } from '../primitives'
-import { useMenu } from './Menu.context'
 import Text from '../typography/Text'
-import { MenuItem } from 'reakit/Menu'
-import { KleeLineHeight } from '../../styles/theme/typography'
 import { MenuProps } from './Menu'
+import { useMenu } from './Menu.context'
 
 export interface MenuListItemProps extends BoxProps, Pick<MenuProps, 'closeOnSelect'> {
   readonly disabled?: boolean

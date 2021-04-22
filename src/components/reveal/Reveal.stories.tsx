@@ -1,9 +1,10 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import React from 'react'
+
+import { Button } from '../button'
+import Text from '../typography/Text'
 import type { RevealProps } from './Reveal'
 import Reveal from './Reveal'
-import Text from '../typography/Text'
-import { Button } from '../button'
 
 const meta: Meta = {
   title: 'Library/Reveal',

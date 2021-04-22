@@ -1,20 +1,19 @@
-import React from 'react'
-
 import { Meta, Story } from '@storybook/react'
-import Icon, { IconProps } from './Icon'
-import * as MdIcons from 'react-icons/md'
+import React from 'react'
+import type { IconType } from 'react-icons'
 import * as FaIcons from 'react-icons/fa'
 import * as FiIcons from 'react-icons/fi'
+import * as MdIcons from 'react-icons/md'
 import * as VscIcons from 'react-icons/vsc'
 
-import Flex from '../layout/Flex'
-import Heading from '../typography/Heading'
-import Grid from '../layout/Grid'
-import Text from '../typography/Text'
-import type { IconType } from 'react-icons'
-import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 import { KleeRadius, KleeShadow } from '../../styles/theme'
+import { KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import Flex from '../layout/Flex'
+import Grid from '../layout/Grid'
 import Box from '../primitives/Box'
+import Heading from '../typography/Heading'
+import Text from '../typography/Text'
+import Icon, { IconProps } from './Icon'
 
 const meta: Meta = {
   title: 'Library/Icon',

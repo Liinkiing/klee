@@ -1,9 +1,10 @@
+import styled from '@emotion/styled'
+import { motion, Variant, Variants } from 'framer-motion'
 import React, { FC, ReactElement, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { motion, Variant, Variants } from 'framer-motion'
+
 import { ease } from '../../utils/motion'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
-import styled from '@emotion/styled'
 
 // While tsdx support the new Typescript template litteral types
 type Appear = 'from-left' | 'from-top' | 'from-right' | 'from-bottom'

@@ -1,15 +1,17 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import ColorHash from 'color-hash-ts'
-import { variant } from 'styled-system'
 import styled from '@emotion/styled'
-import Box, { BoxProps } from '../primitives/Box'
-import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import ColorHash from 'color-hash-ts'
 import { FC, Fragment } from 'react'
-import Flex from '../layout/Flex'
-import { colorContrast } from '../../utils/color'
+import { variant } from 'styled-system'
+
 import { KleeRadius } from '../../styles/theme'
+import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import { colorContrast } from '../../utils/color'
+import Flex from '../layout/Flex'
+import Box, { BoxProps } from '../primitives/Box'
 
 const hash = new ColorHash()
 

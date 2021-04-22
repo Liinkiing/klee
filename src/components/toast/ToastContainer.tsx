@@ -1,15 +1,16 @@
+import styled from '@emotion/styled'
+import css from '@styled-system/css'
+import { motion } from 'framer-motion'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import styled from '@emotion/styled'
-import { Box } from '../primitives'
-import css from '@styled-system/css'
+import NoSSR from 'react-no-ssr'
+import { Portal } from 'reakit/Portal'
+
 import { KleeZIndex } from '../../styles/theme'
-import { Toast, ToastProps } from './Toast'
 import { Emitter, UIEvents } from '../../utils/emitter'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
-import { Portal } from 'reakit/Portal'
-import NoSSR from 'react-no-ssr'
+import { Box } from '../primitives'
+import { Toast, ToastProps } from './Toast'
 
 const ToastWrapper = styled(motion(Box))(
   css({

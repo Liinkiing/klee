@@ -1,7 +1,8 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import Flex, { FlexProps } from './Flex'
+import React from 'react'
+
 import { Text } from '../typography'
+import Flex, { FlexProps } from './Flex'
 
 const meta: Meta = {
   title: 'Library/Layout/Flex',

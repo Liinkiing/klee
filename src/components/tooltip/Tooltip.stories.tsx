@@ -1,14 +1,15 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import React from 'react'
+
+import { KleeFontWeight } from '../../styles/theme/typography'
+import { Button } from '../button'
+import Flex from '../layout/Flex'
+import { List } from '../list'
+import Box from '../primitives/Box'
+import { Reveal } from '../reveal'
+import Text from '../typography/Text'
 import Tooltip from './Tooltip'
 import { TooltipProps } from './Tooltip'
-import { Button } from '../button'
-import Box from '../primitives/Box'
-import Text from '../typography/Text'
-import { KleeFontWeight } from '../../styles/theme/typography'
-import Flex from '../layout/Flex'
-import { Reveal } from '../reveal'
-import { List } from '../list'
 
 const meta: Meta = {
   title: 'Library/Tooltip',

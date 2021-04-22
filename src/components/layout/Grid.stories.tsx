@@ -1,7 +1,8 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import Grid from './Grid'
+import React from 'react'
+
 import { Text } from '../typography'
+import Grid from './Grid'
 
 const meta: Meta = {
   title: 'Library/Layout/Grid',

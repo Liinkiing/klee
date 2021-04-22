@@ -1,8 +1,9 @@
-import Box, { BoxOwnProps } from '../primitives/Box'
-import { ResponsiveValue } from 'styled-system'
-import { jsxInnerText } from '../../utils/jsx'
 import React, { FC, forwardRef } from 'react'
+import { ResponsiveValue } from 'styled-system'
+
 import { KleeFontSize } from '../../styles/theme/typography'
+import { jsxInnerText } from '../../utils/jsx'
+import Box, { BoxOwnProps } from '../primitives/Box'
 
 export enum KleeHeadingSize {
   Xl = 'xl',

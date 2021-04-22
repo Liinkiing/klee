@@ -1,18 +1,19 @@
 // @flow
+import styled from '@emotion/styled'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { AnimatePresence, motion } from 'framer-motion'
 import * as React from 'react'
 import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } from 'react'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import styled from '@emotion/styled'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Box, BoxProps } from '../primitives'
+
 import useIsMobile from '../../hooks/useIsMobile'
-import { Context, ModalContext } from './context'
+import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { ease, LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
-import ModalHeader from './ModalHeader'
+import { Box, BoxProps } from '../primitives'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
-import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
+import ModalHeader from './ModalHeader'
+import { Context, ModalContext } from './context'
 
 type RenderProps = (props: Context) => ReactNode
 

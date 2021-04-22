@@ -1,9 +1,10 @@
 import { useTheme } from '@emotion/react'
-import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
-import { FlexboxProps } from 'styled-system'
-import React, { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
-import { cleanChildren, hasProps } from '../../utils/jsx'
 import { themeGet } from '@styled-system/theme-get'
+import React, { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
+import { FlexboxProps } from 'styled-system'
+
+import { cleanChildren, hasProps } from '../../utils/jsx'
+import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 
 export interface FlexOptions {
   align?: FlexboxProps['alignItems']

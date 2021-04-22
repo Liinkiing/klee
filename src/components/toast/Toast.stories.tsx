@@ -1,12 +1,13 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import { IToast, Toast } from './Toast'
+import React from 'react'
+
 import { Button } from '../button'
-import { toast } from './index'
 import { Flex } from '../layout'
-import { Text } from '../typography'
-import { Reveal } from '../reveal'
 import { List } from '../list'
+import { Reveal } from '../reveal'
+import { Text } from '../typography'
+import { IToast, Toast } from './Toast'
+import { toast } from './index'
 
 const meta: Meta = {
   title: 'Library/Toast',

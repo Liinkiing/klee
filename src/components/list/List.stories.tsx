@@ -1,9 +1,10 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import React from 'react'
+
+import { Avatar } from '../avatar'
+import Text from '../typography/Text'
 import type { ListProps } from './List'
 import List from './List'
-import Text from '../typography/Text'
-import { Avatar } from '../avatar'
 
 const meta: Meta = {
   title: 'Library/List',

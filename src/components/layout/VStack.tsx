@@ -1,6 +1,7 @@
 import React, { FC, forwardRef } from 'react'
-import Flex, { FlexProps } from './Flex'
+
 import { PolymorphicComponent } from '../primitives/Box'
+import Flex, { FlexProps } from './Flex'
 
 export interface VStackProps extends FlexProps {}
 

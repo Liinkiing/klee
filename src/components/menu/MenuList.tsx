@@ -1,16 +1,17 @@
+import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 import * as React from 'react'
 import { FC } from 'react'
 import { forwardRef } from 'react'
-import styled from '@emotion/styled'
-import { motion } from 'framer-motion'
-import { BoxProps } from '../primitives/Box'
-import { CommonProps } from './common'
-import Flex from '../layout/Flex'
-import { useMenu } from './Menu.context'
-import { ease, MENU_TRANSITION_DURATION } from '../../utils/motion'
-import { KleeFontSize } from '../../styles/theme/typography'
-import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { Menu } from 'reakit/Menu'
+
+import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
+import { KleeFontSize } from '../../styles/theme/typography'
+import { ease, MENU_TRANSITION_DURATION } from '../../utils/motion'
+import Flex from '../layout/Flex'
+import { BoxProps } from '../primitives/Box'
+import { useMenu } from './Menu.context'
+import { CommonProps } from './common'
 
 export type MenuListProps = Omit<BoxProps, 'children'> &
   CommonProps &

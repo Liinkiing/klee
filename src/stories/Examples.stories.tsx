@@ -1,14 +1,15 @@
-import React from 'react'
+import styled from '@emotion/styled'
 import { Meta, Story } from '@storybook/react'
-import Grid from '../components/layout/Grid'
 import css from '@styled-system/css'
-import Flex from '../components/layout/Flex'
+import React from 'react'
+
 import { Button, Tooltip, Reveal, Avatar, Heading, List } from '../components'
+import Flex from '../components/layout/Flex'
+import Grid from '../components/layout/Grid'
+import Popover from '../components/popover/Popover'
+import Box from '../components/primitives/Box'
 import Text from '../components/typography/Text'
 import { KleeRadius, KleeShadow } from '../styles/theme'
-import Box from '../components/primitives/Box'
-import styled from '@emotion/styled'
-import Popover from '../components/popover/Popover'
 
 const meta: Meta = {
   title: 'Examples/Layouts',

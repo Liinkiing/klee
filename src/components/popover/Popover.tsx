@@ -1,24 +1,26 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx, useTheme } from '@emotion/react'
+import { css as emotionCss } from '@emotion/react'
+import styled from '@emotion/styled'
+import css from '@styled-system/css'
+import { themeGet } from '@styled-system/theme-get'
+import { TippyProps } from '@tippyjs/react/headless'
+import { AnimatePresence, motion } from 'framer-motion'
+import { transparentize } from 'polished'
 import { cloneElement, FC, FunctionComponentElement, memo, ReactNode, useMemo } from 'react'
 import { Popover as ReakitPopover, PopoverArrow, PopoverDisclosure } from 'reakit/Popover'
-import { AnimatePresence, motion } from 'framer-motion'
-import styled from '@emotion/styled'
-import { ease } from '../../utils/motion'
+
+import { useHoverPopoverState } from '../../hooks/useHoverPopoverState'
 import { KleeRadius, KleeShadow } from '../../styles/theme'
+import { ease } from '../../utils/motion'
 import { Flex } from '../layout'
-import { IPopoverContext, PopoverContext } from './context'
-import PopoverHeader from './PopoverHeader'
+import { BoxProps } from '../primitives/Box'
 import PopoverBody from './PopoverBody'
 import PopoverFooter from './PopoverFooter'
-import { BoxProps } from '../primitives/Box'
-import css from '@styled-system/css'
-import { css as emotionCss } from '@emotion/react'
-import { TippyProps } from '@tippyjs/react/headless'
-import { transparentize } from 'polished'
-import { themeGet } from '@styled-system/theme-get'
-import { useHoverPopoverState } from '../../hooks/useHoverPopoverState'
+import PopoverHeader from './PopoverHeader'
+import { IPopoverContext, PopoverContext } from './context'
 
 type RenderProps = (props: IPopoverContext) => ReactNode
 

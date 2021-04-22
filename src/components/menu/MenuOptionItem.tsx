@@ -1,12 +1,14 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx, Theme } from '@emotion/react'
 import css from '@styled-system/css'
 import { themeGet } from '@styled-system/theme-get'
-import MenuListItem, { MenuListItemProps } from './MenuListItem'
-import { useMenuOptionGroup } from './MenuOptionGroup.context'
+
 import Box, { PolymorphicComponent } from '../primitives/Box'
 import Text from '../typography/Text'
+import MenuListItem, { MenuListItemProps } from './MenuListItem'
+import { useMenuOptionGroup } from './MenuOptionGroup.context'
 
 interface Props extends MenuListItemProps {
   readonly value: string

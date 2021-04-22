@@ -1,10 +1,11 @@
 import * as React from 'react'
-import Box, { BoxProps } from '../primitives/Box'
+import { FC, ReactElement } from 'react'
+
+import { KleeBorder } from '../../styles/theme'
+import { cleanChildren } from '../../utils/jsx'
 import Avatar, { AvatarProps, AvatarSize } from '../avatar/Avatar'
 import Flex, { FlexProps } from '../layout/Flex'
-import { FC, ReactElement } from 'react'
-import { cleanChildren } from '../../utils/jsx'
-import { KleeBorder } from '../../styles/theme'
+import Box, { BoxProps } from '../primitives/Box'
 
 export interface AvatarGroupProps
   extends Omit<BoxProps, 'size'>,

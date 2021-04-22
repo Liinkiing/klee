@@ -1,7 +1,8 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import VStack, { VStackProps } from './VStack'
+import React from 'react'
+
 import { Text } from '../typography'
+import VStack, { VStackProps } from './VStack'
 
 const meta: Meta = {
   title: 'Library/Layout/VStack',

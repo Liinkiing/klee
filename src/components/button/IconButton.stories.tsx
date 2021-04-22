@@ -1,8 +1,9 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import { IconButton, IconButtonProps } from './IconButton'
-import { Icon } from '../icon'
+import React from 'react'
+
 import { ICON_CONTROL } from '../../utils/storybook'
+import { Icon } from '../icon'
+import { IconButton, IconButtonProps } from './IconButton'
 
 const meta: Meta = {
   title: 'Library/IconButton',

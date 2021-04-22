@@ -1,7 +1,6 @@
 // https://github.com/reakit/reakit/pull/633, but added timeout in parameters, thx MY MEEEEEEN
-
-import { PopoverInitialState, PopoverStateReturn, usePopoverState } from 'reakit/Popover'
 import { useCallback, useEffect, useRef } from 'react'
+import { PopoverInitialState, PopoverStateReturn, usePopoverState } from 'reakit/Popover'
 
 export const useHoverPopoverState = (initialState?: PopoverInitialState & { timeout?: number }): PopoverStateReturn => {
   const timeout = initialState?.timeout ?? 300

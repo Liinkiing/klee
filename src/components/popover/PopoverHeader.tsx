@@ -1,16 +1,18 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import { FC } from 'react'
-import { Flex } from '../layout'
-import { Box } from '../primitives'
-import { Icon } from '../icon'
-import { FiX } from 'react-icons/fi'
-import { usePopover } from './context'
-import { BoxProps } from '../primitives/Box'
 import css from '@styled-system/css'
+import { FC } from 'react'
+import { FiX } from 'react-icons/fi'
+
 import { KleeFontSize } from '../../styles/theme/typography'
 import { IconButton } from '../button/IconButton'
+import { Icon } from '../icon'
+import { Flex } from '../layout'
+import { Box } from '../primitives'
+import { BoxProps } from '../primitives/Box'
+import { usePopover } from './context'
 
 const PopoverHeader: FC<BoxProps> = ({ children, ...rest }) => {
   const { hide, hideCloseButton } = usePopover()

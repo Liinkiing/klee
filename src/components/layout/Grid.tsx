@@ -1,6 +1,7 @@
-import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
-import { GridProps as StyledGridProps } from 'styled-system'
 import React, { forwardRef } from 'react'
+import { GridProps as StyledGridProps } from 'styled-system'
+
+import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 
 type AutoFillFitOptions = {
   min: string

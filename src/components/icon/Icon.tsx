@@ -1,11 +1,13 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 import type { PropsOf } from '@emotion/react'
-import { forwardRef } from 'react'
-import Box, { BoxProps } from '../primitives/Box'
-import type { IconType } from 'react-icons'
 import css from '@styled-system/css'
+import { forwardRef } from 'react'
+import type { IconType } from 'react-icons'
+
+import Box, { BoxProps } from '../primitives/Box'
 
 type Size = 'xs' | 'sm' | 'md' | 'lg' | (string | {})
 

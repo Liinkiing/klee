@@ -1,9 +1,10 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import Popover from './Popover'
-import { PopoverProps } from './Popover'
+import React from 'react'
+
 import { Button } from '../button'
 import { Heading, Text } from '../typography'
+import Popover from './Popover'
+import { PopoverProps } from './Popover'
 
 const meta: Meta = {
   title: 'Library/Popover',

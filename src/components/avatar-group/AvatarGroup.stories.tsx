@@ -1,7 +1,8 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'
+import React from 'react'
+
 import { Avatar } from '../avatar'
+import AvatarGroup, { AvatarGroupProps } from './AvatarGroup'
 
 const meta: Meta = {
   title: 'Library/AvatarGroup',

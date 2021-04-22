@@ -1,15 +1,16 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
-import { Box, BoxProps } from '../primitives/Box'
-import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
-import { KleeFontWeight } from '../../styles/theme/typography'
-import { BASE_FOCUS } from '../../styles/modules/mixins'
-import styled from '@emotion/styled'
-import { motion } from 'framer-motion'
-import { KleeRadius } from '../../styles/theme'
 import { Theme, useTheme } from '@emotion/react'
+import styled from '@emotion/styled'
 import { themeGet } from '@styled-system/theme-get'
+import { motion } from 'framer-motion'
+import React, { FC, useEffect, useRef, useState } from 'react'
+import { Tab as BaseTab, TabProps as BaseTabProps } from 'reakit/Tab'
 import { variant } from 'styled-system'
+
+import { BASE_FOCUS } from '../../styles/modules/mixins'
+import { KleeRadius } from '../../styles/theme'
+import { KleeFontWeight } from '../../styles/theme/typography'
+import { Box, BoxProps } from '../primitives/Box'
+import { TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
 
 export interface TabProps extends BoxProps, Pick<BaseTabProps, 'disabled' | 'focusable'> {}
 

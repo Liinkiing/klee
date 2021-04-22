@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import { Box, BoxProps } from '../primitives/Box'
 
 export interface TabPanelsProps extends BoxProps {}

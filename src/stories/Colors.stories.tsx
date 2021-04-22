@@ -1,10 +1,11 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
+import React from 'react'
+
 import { Flex, Grid, Heading, Text, VStack } from '../components'
 import colors from '../styles/modules/colors'
-import { colorContrast } from '../utils/color'
 import { KleeBorder, KleeShadow } from '../styles/theme'
 import { KleeFontWeight } from '../styles/theme/typography'
+import { colorContrast } from '../utils/color'
 
 const meta: Meta = {
   title: 'Tokens/Colors',

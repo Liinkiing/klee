@@ -1,9 +1,10 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import Modal from './Modal'
-import { ModalProps } from './Modal'
+import React from 'react'
+
 import { Button } from '../button'
 import { Heading, Text } from '../typography'
+import Modal from './Modal'
+import { ModalProps } from './Modal'
 
 const meta: Meta = {
   title: 'Library/Modal',

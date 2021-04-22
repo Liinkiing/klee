@@ -1,7 +1,8 @@
-import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
-import { jsxInnerText } from '../../utils/jsx'
 import React, { forwardRef } from 'react'
+
 import { KleeFontFamily, KleeFontWeight, KleeLineHeight } from '../../styles/theme/typography'
+import { jsxInnerText } from '../../utils/jsx'
+import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
 
 type Props = BoxOwnProps & {
   readonly truncate?: number

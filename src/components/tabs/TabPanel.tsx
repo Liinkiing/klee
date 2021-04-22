@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
-import { useTabs } from './Tabs.context'
-import { Box, BoxProps } from '../primitives/Box'
 import { TabPanel as BaseTabPanel } from 'reakit/Tab'
+
+import { Box, BoxProps } from '../primitives/Box'
+import { useTabs } from './Tabs.context'
 
 export interface TabPanelProps extends BoxProps {}
 

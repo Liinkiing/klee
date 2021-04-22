@@ -1,7 +1,8 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
-import HStack, { HStackProps } from './HStack'
+import React from 'react'
+
 import { Text } from '../typography'
+import HStack, { HStackProps } from './HStack'
 
 const meta: Meta = {
   title: 'Library/Layout/HStack',

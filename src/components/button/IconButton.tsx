@@ -1,8 +1,9 @@
+import styled from '@emotion/styled'
 import React, { FC, forwardRef, ReactElement } from 'react'
 import { variant as systemVariant } from 'styled-system'
-import styled from '@emotion/styled'
-import Button, { ButtonProps } from './Button'
+
 import { KleeFontSize } from '../../styles/theme/typography'
+import Button, { ButtonProps } from './Button'
 
 type VariantSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export interface IconButtonProps extends Omit<ButtonProps, 'startIcon' | 'endIcon' | 'variantSize'> {

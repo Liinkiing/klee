@@ -1,6 +1,7 @@
 import type { Theme } from '@emotion/react'
-import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
+
 import colors from '../modules/colors'
+import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
 
 /* eslint-disable @typescript-eslint/ban-types */
 

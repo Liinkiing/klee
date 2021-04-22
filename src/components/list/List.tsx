@@ -1,10 +1,12 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
+import css from '@styled-system/css'
 import { FC, forwardRef } from 'react'
+
 import Box, { BoxProps } from '../primitives/Box'
 import ListItem from './ListItem'
-import css from '@styled-system/css'
 
 export interface ListProps extends BoxProps {
   readonly direction?: BoxProps['flexDirection']

@@ -1,21 +1,23 @@
 /** @jsxRuntime classic */
+
 /** @jsx jsx */
 import { jsx, useTheme } from '@emotion/react'
-import { Fragment } from 'react'
-import css from '@styled-system/css'
-import Tippy from '@tippyjs/react/headless'
-import { Instance as TippyInstance } from 'tippy.js'
-import { TippyProps as TippyPropsType } from '@tippyjs/react'
-import { motion, useSpring } from 'framer-motion'
 import styled from '@emotion/styled'
-import Box, { BoxProps } from '../primitives/Box'
+import css from '@styled-system/css'
+import { themeGet } from '@styled-system/theme-get'
+import { TippyProps as TippyPropsType } from '@tippyjs/react'
+import Tippy from '@tippyjs/react/headless'
+import { motion, useSpring } from 'framer-motion'
+import { transparentize } from 'polished'
+import { Fragment } from 'react'
 import { FC, ReactNode } from 'react'
-import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
-import { Text } from '../typography'
+import { Instance as TippyInstance } from 'tippy.js'
+
 import { KleeRadius, KleeShadow, KleeZIndex, Z_INDICES } from '../../styles/theme'
 import { KleeFontSize } from '../../styles/theme/typography'
-import { transparentize } from 'polished'
-import { themeGet } from '@styled-system/theme-get'
+import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
+import Box, { BoxProps } from '../primitives/Box'
+import { Text } from '../typography'
 
 export interface TooltipProps
   extends Omit<BoxProps, 'children'>,

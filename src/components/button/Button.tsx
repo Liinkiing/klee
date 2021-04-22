@@ -1,9 +1,10 @@
-import React, { cloneElement, FC, forwardRef, ReactElement } from 'react'
-import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import styled from '@emotion/styled'
+import React, { cloneElement, FC, forwardRef, ReactElement } from 'react'
 import { variant as systemVariant } from 'styled-system'
+
 import colors from '../../styles/modules/colors'
 import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
+import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 
 type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'semi-transparent' | 'transparent'
 type VariantSize = 'sm' | 'md' | 'lg'

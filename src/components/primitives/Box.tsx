@@ -1,8 +1,10 @@
-import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
-import styled from '@emotion/styled'
 import { Theme } from '@emotion/react'
+import styled from '@emotion/styled'
 import css from '@styled-system/css'
-
+import { SystemStyleObject } from '@styled-system/css'
+import shouldForwardProp from '@styled-system/should-forward-prop'
+import * as CSS from 'csstype'
+import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
 import {
   BackgroundImageProps,
   border,
@@ -27,7 +29,8 @@ import {
   TypographyProps,
   variant,
 } from 'styled-system'
-import shouldForwardProp from '@styled-system/should-forward-prop'
+
+import { ThemeColorsValues } from '../../styles/modules/colors'
 import {
   ThemeBordersValues,
   ThemeRadiiValues,
@@ -35,7 +38,6 @@ import {
   ThemeSpacingValues,
   ThemeZIndicesValues,
 } from '../../styles/theme'
-import * as CSS from 'csstype'
 import type {
   ThemeFontFamiliesValue,
   ThemeFontSizesValues,
@@ -50,8 +52,6 @@ import {
   KleeLetterSpacing,
   KleeLineHeight,
 } from '../../styles/theme/typography'
-import { ThemeColorsValues } from '../../styles/modules/colors'
-import { SystemStyleObject } from '@styled-system/css'
 import { bgClipTransform, bgGradientTransform } from '../../utils/styled-system/transforms'
 
 type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>

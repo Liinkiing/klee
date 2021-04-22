@@ -1,10 +1,11 @@
-import React, { CSSProperties, FC } from 'react'
-import { TabsAlign, TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
-import { Box, BoxProps } from '../primitives/Box'
-import { TabList as BaseTabList } from 'reakit/Tab'
 import { AnimateSharedLayout } from 'framer-motion'
+import React, { CSSProperties, FC } from 'react'
+import { TabList as BaseTabList } from 'reakit/Tab'
 import { variant } from 'styled-system'
+
 import { KleeBorder } from '../../styles/theme'
+import { Box, BoxProps } from '../primitives/Box'
+import { TabsAlign, TabsOrientation, TabsVariant, useTabs } from './Tabs.context'
 
 export interface TabListProps extends BoxProps {
   readonly ariaLabel: string
