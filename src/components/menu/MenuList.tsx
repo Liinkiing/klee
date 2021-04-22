@@ -7,11 +7,10 @@ import { BoxProps } from '../primitives/Box'
 import { CommonProps } from './common'
 import Flex from '../layout/Flex'
 import { useMenu } from './Menu.context'
-import { ease } from '../../utils/motion'
+import { ease, MENU_TRANSITION_DURATION } from '../../utils/motion'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { Menu } from 'reakit/Menu'
-import { TRANSITION_DURATION } from './Menu'
 
 export type MenuListProps = Omit<BoxProps, 'children'> &
   CommonProps &
@@ -63,7 +62,7 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, ariaLabel, 
       {...props}
       initial="hidden"
       animate={reakitMenu.visible ? 'visible' : 'hidden'}
-      transition={{ duration: TRANSITION_DURATION, ease }}
+      transition={{ duration: MENU_TRANSITION_DURATION, ease }}
     >
       {children}
     </Menu>

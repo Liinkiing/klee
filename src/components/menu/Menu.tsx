@@ -12,6 +12,7 @@ import { CommonProps } from './common'
 import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
 import { Context, MenuContext } from './Menu.context'
 import { KleeZIndex, Z_INDICES } from '../../styles/theme'
+import { MENU_TRANSITION_DURATION } from '../../utils/motion'
 
 export interface MenuProps
   extends CommonProps,
@@ -34,8 +35,6 @@ type SubComponents = {
   OptionItem: typeof MenuOptionItem
 }
 
-export const TRANSITION_DURATION = 0.2
-
 const Menu: FC<MenuProps> & SubComponents = ({
   placement = 'bottom-start',
   closeOnSelect = true,
@@ -45,7 +44,7 @@ const Menu: FC<MenuProps> & SubComponents = ({
 }) => {
   const button = React.Children.toArray(children).find((c: any) => c.type === MenuButton) as ReactElement
   const list = React.Children.toArray(children).find((c: any) => c.type === MenuList) as ReactElement
-  const menu = useMenuState({ animated: TRANSITION_DURATION * 1000, loop })
+  const menu = useMenuState({ animated: MENU_TRANSITION_DURATION * 1000, loop })
   const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside }), [
     menu,
     closeOnSelect,
