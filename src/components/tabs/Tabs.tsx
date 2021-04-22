@@ -42,7 +42,7 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
     orientation,
   })
   const context = useMemo<Context>(() => ({ tabs, colorScheme, variant, stretch, align, orientation }), [
-    ...Object.values(tabs),
+    tabs,
     align,
     stretch,
     colorScheme,

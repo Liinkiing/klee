@@ -71,7 +71,7 @@ const tabVariants = ({ colorScheme, theme }: VariantArgs) =>
     },
   })
 
-export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, ...props }) => {
+export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, _disabled, ...props }) => {
   const { tabs, colorScheme, variant, orientation } = useTabs()
   const theme = useTheme()
   const [id, setId] = useState<string | undefined>(undefined)
@@ -80,7 +80,7 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, ...
     if ($tab.current) {
       setId($tab.current.id)
     }
-  }, [$tab.current])
+  }, [])
 
   return (
     <BaseTab
@@ -106,6 +106,10 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, ...
       _focus={{
         ...BASE_FOCUS,
         ..._focus,
+      }}
+      _disabled={{
+        opacity: 0.5,
+        ..._disabled,
       }}
       _selected={{
         ..._selected,
