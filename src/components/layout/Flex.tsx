@@ -54,6 +54,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
     wrap,
     basis,
     grow,
+    sx,
     spacing: userSpacing,
     display = 'flex',
     children,
@@ -111,7 +112,10 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
       flexBasis={basis}
       flexGrow={grow}
       ref={ref}
-      sx={styles}
+      sx={{
+        ...styles,
+        ...sx,
+      }}
       {...rest}
     >
       {getChildren(children)}

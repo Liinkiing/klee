@@ -57,6 +57,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
     row,
     autoFit,
     autoFill,
+    sx,
     display = 'grid',
     ...rest
   } = props
@@ -96,7 +97,10 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
       gridColumn={column}
       gridRow={row}
       ref={ref}
-      sx={styles}
+      sx={{
+        ...styles,
+        ...sx,
+      }}
       {...rest}
     />
   )
