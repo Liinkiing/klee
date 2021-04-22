@@ -1,9 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from '@emotion/react'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import { GridProps as StyledGridProps } from 'styled-system'
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 
 type AutoFillFitOptions = {
   min: string
@@ -99,7 +96,7 @@ const Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
       gridColumn={column}
       gridRow={row}
       ref={ref}
-      css={styles}
+      sx={styles}
       {...rest}
     />
   )

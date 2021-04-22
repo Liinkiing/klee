@@ -1,9 +1,7 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx, useTheme } from '@emotion/react'
+import { useTheme } from '@emotion/react'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 import { FlexboxProps } from 'styled-system'
-import { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
+import React, { cloneElement, forwardRef, ReactElement, ReactNode } from 'react'
 import { cleanChildren, hasProps } from '../../utils/jsx'
 import { themeGet } from '@styled-system/theme-get'
 
@@ -113,7 +111,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
       flexBasis={basis}
       flexGrow={grow}
       ref={ref}
-      css={styles}
+      sx={styles}
       {...rest}
     >
       {getChildren(children)}
