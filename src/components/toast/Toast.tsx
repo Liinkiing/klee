@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
-import { FC, ReactNode, useEffect, useRef, useState } from 'react'
+import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import { variant as styledVariant } from 'styled-system'
@@ -117,21 +117,30 @@ export const Toast: FC<ToastProps> = ({
   id,
   onClose,
   onHide,
-  duration = jsxInnerText(content) !== '' ? jsxInnerText(content).length * 100 : MIN_TIMEOUT,
+  duration,
   closable = false,
   placement = 'bottom',
   variant = 'success',
   ...props
 }) => {
+  const computedDuration = useMemo(
+    () =>
+      duration !== undefined && duration !== null
+        ? duration
+        : jsxInnerText(content) !== ''
+        ? jsxInnerText(content).length * 100
+        : MIN_TIMEOUT,
+    [duration, content],
+  )
   const [show, setShow] = useState(true)
   const container = useRef<HTMLElement>()
   const clearTimeout = useTimeout(
     () => {
-      if (duration && duration > 0) {
+      if (computedDuration && computedDuration > 0) {
         setShow(false)
       }
     },
-    duration < MIN_TIMEOUT ? MIN_TIMEOUT : duration,
+    computedDuration < MIN_TIMEOUT ? MIN_TIMEOUT : computedDuration,
     [],
   )
 
