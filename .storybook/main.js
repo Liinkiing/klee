@@ -24,6 +24,10 @@ const EXLUDED_DOCGEN_PROPS = [
   'disableFocusStyles',
   '_variants',
   '_selected',
+  'bgGradient',
+  'backgroundGradient',
+  'bgClip',
+  'backgroundClip',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
