@@ -50,7 +50,7 @@ export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters
     <Flex
       p={6}
       bg="cool-gray.100"
-      gap={4}
+      spacing={4}
       overflowX={['overlay' as any, 'auto']}
       justify={['center', 'flex-start']}
       direction="column"
@@ -111,7 +111,7 @@ export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters
             <Text>Hello from the othder side</Text>
           </Popover.Body>
         </Popover>
-        <Flex maxWidth={[null, 700]} direction="column" mt={6} gap={4}>
+        <Flex maxWidth={[null, 700]} direction="column" mt={6} spacing={4}>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur illum incidunt iure minus nesciunt
             porro repellat, totam ullam voluptatem. Autem blanditiis dolores eum eveniet fugiat iusto necessitatibus non

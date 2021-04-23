@@ -58,7 +58,7 @@ WithCustomContent.argTypes = {
 
 WithCustomContent.args = {
   content: (
-    <Flex direction="column" gap={2}>
+    <Flex direction="column" spacing={2}>
       <Text>You can also use other components</Text>
       <Reveal as={List} direction="row" gap={1} duration={0.5} staggerChildren={0.1}>
         <List.Item>Like the</List.Item>

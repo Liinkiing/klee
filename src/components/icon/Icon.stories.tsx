@@ -47,18 +47,18 @@ export default meta
 const MAX_ICONS = 100
 
 const Template: Story<IconProps & { title: string; icons: Record<string, IconType> }> = ({ title, icons, ...args }) => (
-  <Flex gap={4} direction="column">
+  <Flex spacing={4} direction="column">
     <Heading>
       {title}{' '}
       <Box fontWeight={KleeFontWeight.Normal} fontSize={KleeFontSize.Sm} color="gray.500" as="span">
         (showing first {MAX_ICONS} icons)
       </Box>
     </Heading>
-    <Grid autoFit={{ min: '130px', max: '1fr' }} gap={2}>
+    <Grid autoFit={{ min: '130px', max: '1fr' }} spacing={2}>
       {Object.entries(icons)
         .slice(0, MAX_ICONS)
         .map(([moduleName, icon]) => (
-          <Flex key={moduleName} borderRadius={KleeRadius.Md} p={4} align="center" direction="column" gap={3}>
+          <Flex key={moduleName} borderRadius={KleeRadius.Md} p={4} align="center" direction="column" spacing={3}>
             <Flex
               boxShadow={KleeShadow.Md}
               borderRadius={KleeRadius.Md}

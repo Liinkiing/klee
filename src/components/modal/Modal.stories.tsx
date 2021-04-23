@@ -74,7 +74,7 @@ export const WithLongContent: Story<ModalProps> = args => (
     <Modal.Header>
       <Heading>Hello Klee</Heading>
     </Modal.Header>
-    <Modal.Body gap={4}>
+    <Modal.Body spacing={4}>
       <Text>I have something very long to tell you...</Text>
       <Text>
         But first, you can change how the modal will be scrolled by using the <code>scrollBehavior</code> prop.

@@ -22,14 +22,14 @@ const meta: Meta = {
 export default meta
 
 export const WithAddons: Story<InputGroupProps> = args => (
-  <VStack gap={4}>
+  <VStack spacing={4}>
     <InputGroup {...args}>
       <InputGroup.LeftAdon>
         <Icon as={FiUser} />
       </InputGroup.LeftAdon>
       <Input name="name" placeholder="Your name" />
     </InputGroup>
-    <HStack gap={4} direction={['column', 'row']}>
+    <HStack spacing={4} direction={['column', 'row']}>
       <InputGroup {...args}>
         <InputGroup.LeftAdon>
           <Icon as={FiMail} />
@@ -56,14 +56,14 @@ export const WithAddons: Story<InputGroupProps> = args => (
 WithAddons.args = {}
 
 export const WithElements: Story<InputGroupProps> = args => (
-  <VStack gap={4}>
+  <VStack spacing={4}>
     <InputGroup {...args}>
       <InputGroup.LeftElement>
         <Icon as={FiUser} />
       </InputGroup.LeftElement>
       <Input name="name" placeholder="Your name" />
     </InputGroup>
-    <HStack gap={4} direction={['column', 'row']}>
+    <HStack spacing={4} direction={['column', 'row']}>
       <InputGroup {...args}>
         <InputGroup.LeftElement>
           <Icon as={FiMail} />

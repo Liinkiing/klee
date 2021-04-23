@@ -16,10 +16,10 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<VStackProps> = () => (
-  <VStack gap={4} p={4} bg="cool-gray.100" align="center">
+  <VStack spacing={4} p={4} bg="cool-gray.100" align="center">
     <Text>Hello</Text>
     <Text>Everybody</Text>
-    <VStack gap={4} p={4} bg="cool-gray.200" align="center">
+    <VStack spacing={4} p={4} bg="cool-gray.200" align="center">
       <Text>
         I am <code>{'<VStack/>'}</code>
       </Text>

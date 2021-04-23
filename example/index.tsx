@@ -7,7 +7,7 @@ import { Button, Flex, KleeProvider } from '../.'
 const App = () => {
   return (
     <KleeProvider>
-      <Flex gap={4}>
+      <Flex spacing={4}>
         <Button>Hello World</Button>
         <Button>Hello World</Button>
         <Button>Hello World</Button>
