@@ -1,3 +1,11 @@
+import { css } from '@emotion/react'
+
 export enum CssVars {
-  FocusBorderColor = '--focus-border-color',
+  FocusBorderColor = '--klee-focus-border-color',
 }
+
+export const initializeCssVars = css({
+  ':root': {
+    [CssVars.FocusBorderColor]: 'rgb(66 153 225 / 60%)',
+  },
+})

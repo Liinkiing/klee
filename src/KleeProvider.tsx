@@ -8,6 +8,7 @@ import { Provider } from 'reakit/Provider'
 import { ToastsContainer } from './components/toast/ToastContainer'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'
+import GlobalStyles from './styles/GlobalStyles'
 import { kleeTheme } from './styles/theme'
 
 interface Props {
@@ -19,6 +20,7 @@ export const KleeProvider: FC<Props> = ({ resetCSS = true, children }) => {
     <Provider>
       <ThemeProvider theme={kleeTheme}>
         {resetCSS && <CSSReset />}
+        <GlobalStyles />
         <GlobalFonts />
         <ToastsContainer />
         {children}
