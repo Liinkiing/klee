@@ -17,6 +17,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint src",
     "prepare": "run-s husky:install build",

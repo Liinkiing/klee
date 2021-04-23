@@ -54,7 +54,7 @@ const Template: Story<IconProps & { title: string; icons: Record<string, IconTyp
         (showing first {MAX_ICONS} icons)
       </Box>
     </Heading>
-    <Grid autoFit={{ min: '130px', max: '1fr' }} spacing={2}>
+    <Grid autoFit={{ min: '130px', max: '1fr' }} gap={2}>
       {Object.entries(icons)
         .slice(0, MAX_ICONS)
         .map(([moduleName, icon]) => (
