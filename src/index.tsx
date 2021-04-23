@@ -22,6 +22,11 @@ export * from './components'
 export { KleeTheme } from './styles/theme'
 
 /**
+ * Utils
+ */
+export * from './utils'
+
+/**
  * Hooks
  */
 export { useTheme } from './hooks/useTheme'
