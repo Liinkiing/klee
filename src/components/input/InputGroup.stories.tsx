@@ -11,6 +11,9 @@ import { InputGroup, InputGroupProps } from './InputGroup'
 const meta: Meta = {
   title: 'Library/Forms/InputGroup',
   component: InputGroup,
+  args: {
+    focusBorderColor: 'blue.300',
+  },
   parameters: {
     controls: { expanded: true },
   },
@@ -18,29 +21,29 @@ const meta: Meta = {
 
 export default meta
 
-export const WithAddons: Story<InputGroupProps> = () => (
+export const WithAddons: Story<InputGroupProps> = args => (
   <VStack gap={4}>
-    <InputGroup>
+    <InputGroup {...args}>
       <InputGroup.LeftAdon>
         <Icon as={FiUser} />
       </InputGroup.LeftAdon>
       <Input name="name" placeholder="Your name" />
     </InputGroup>
     <HStack gap={4} direction={['column', 'row']}>
-      <InputGroup>
+      <InputGroup {...args}>
         <InputGroup.LeftAdon>
           <Icon as={FiMail} />
         </InputGroup.LeftAdon>
         <Input name="email" placeholder="Your email" />
       </InputGroup>
-      <InputGroup>
+      <InputGroup {...args}>
         <InputGroup.LeftAdon>
           <Icon as={FiGlobe} />
         </InputGroup.LeftAdon>
         <Input name="website" placeholder="https://website.com" />
       </InputGroup>
     </HStack>
-    <InputGroup>
+    <InputGroup {...args}>
       <InputGroup.LeftAdon>@</InputGroup.LeftAdon>
       <Input name="username" placeholder="username" />
       <InputGroup.RightAddon>
@@ -51,3 +54,37 @@ export const WithAddons: Story<InputGroupProps> = () => (
 )
 
 WithAddons.args = {}
+
+export const WithElements: Story<InputGroupProps> = args => (
+  <VStack gap={4}>
+    <InputGroup {...args}>
+      <InputGroup.LeftElement>
+        <Icon as={FiUser} />
+      </InputGroup.LeftElement>
+      <Input name="name" placeholder="Your name" />
+    </InputGroup>
+    <HStack gap={4} direction={['column', 'row']}>
+      <InputGroup {...args}>
+        <InputGroup.LeftElement>
+          <Icon as={FiMail} />
+        </InputGroup.LeftElement>
+        <Input name="email" placeholder="Your email" />
+      </InputGroup>
+      <InputGroup {...args}>
+        <InputGroup.LeftElement>
+          <Icon as={FiGlobe} />
+        </InputGroup.LeftElement>
+        <Input name="website" placeholder="https://website.com" />
+      </InputGroup>
+    </HStack>
+    <InputGroup {...args}>
+      <InputGroup.LeftElement>@</InputGroup.LeftElement>
+      <Input name="username" placeholder="username" />
+      <InputGroup.RightElement>
+        <Avatar name="Omar Jbara" size="xs" />
+      </InputGroup.RightElement>
+    </InputGroup>
+  </VStack>
+)
+
+WithElements.args = {}

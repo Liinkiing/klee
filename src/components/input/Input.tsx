@@ -49,16 +49,18 @@ const variants = [
     prop: 'variantSize',
     variants: {
       sm: {
-        p: 1,
+        px: 2,
+        height: 8,
         fontSize: KleeFontSize.Sm,
       },
       md: {
-        p: 2,
+        px: 2,
+        height: 10,
         fontSize: KleeFontSize.Md,
       },
       lg: {
-        px: 2,
-        py: 3,
+        px: 3,
+        height: 12,
         fontSize: KleeFontSize.Lg,
       },
     },
