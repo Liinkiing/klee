@@ -99,6 +99,18 @@ const variants = [
   }),
 ]
 
+const getInputPaddingBasedOnVariant = (size: InputProps['variantSize']) => {
+  switch (size) {
+    case 'sm':
+      return 9
+    case 'md':
+    default:
+      return 11
+    case 'lg':
+      return 12
+  }
+}
+
 export const InputGroup: FC<InputGroupProps> & SubComponents = ({ children, ...props }) => {
   const leftAddon = cleanChildren(children).find((c: any) => c.type === InputGroupLeftAddon)
   const leftElement = cleanChildren(children).find((c: any) => c.type === InputGroupLeftElement)
@@ -110,8 +122,8 @@ export const InputGroup: FC<InputGroupProps> & SubComponents = ({ children, ...p
     borderBottomLeftRadius: !!leftAddon ? 0 : undefined,
     borderTopRightRadius: !!rightAddon ? 0 : undefined,
     borderBottomRightRadius: !!rightAddon ? 0 : undefined,
-    pl: !!leftElement ? 12 : undefined,
-    pr: !!rightElement ? 12 : undefined,
+    pl: !!leftElement ? getInputPaddingBasedOnVariant(props.variantSize) : undefined,
+    pr: !!rightElement ? getInputPaddingBasedOnVariant(props.variantSize) : undefined,
   }
   return (
     <InputGroupInner position="relative" width="100%" align="stretch" _variants={variants} {...props}>
