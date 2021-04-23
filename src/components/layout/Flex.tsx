@@ -41,7 +41,7 @@ const getChildren = (children: ReactNode) => {
   }
 
   if (hasProps(children)) {
-    return cloneElement(children as ReactElement, { style })
+    return cloneElement(children as ReactElement, { sx: style })
   }
 
   return children
@@ -119,7 +119,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
       }}
       {...rest}
     >
-      {getChildren(children)}
+      {userSpacing ? getChildren(children) : children}
     </Box>
   )
 })

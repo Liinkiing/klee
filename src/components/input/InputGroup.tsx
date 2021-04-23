@@ -15,7 +15,7 @@ type SubComponents = {
 }
 
 const COMMON_ADDON_PROPS: Partial<FlexProps> = {
-  px: 2,
+  px: 4,
   bg: 'cool-gray.100',
   align: 'center',
   color: 'cool-gray.600',
@@ -52,7 +52,7 @@ export const InputGroup: FC<InputGroupProps> & SubComponents = ({ children, ...p
     borderBottomRightRadius: !!rightAddon ? 0 : undefined,
   }
   return (
-    <InputGroupInner align="stretch" {...props}>
+    <InputGroupInner width="100%" align="stretch" {...props}>
       {leftAddon}
       {input && React.cloneElement(input as ReactElement, { ...inputStyles })}
       {rightAddon}
