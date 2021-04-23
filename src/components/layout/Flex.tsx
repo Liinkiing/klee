@@ -35,7 +35,7 @@ const getChildren = (children: ReactNode) => {
   if (Array.isArray(children)) {
     return cleanChildren(children).map((c, i) =>
       cloneElement(c as ReactElement, {
-        ...(i === 0 ? { sx: style } : {}),
+        ...(i === 0 ? { style } : {}),
       }),
     )
   }
@@ -119,7 +119,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
       }}
       {...rest}
     >
-      {getChildren(children)}
+      {userSpacing ? getChildren(children) : children}
     </Box>
   )
 })

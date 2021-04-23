@@ -13,7 +13,7 @@ Here is how it is rendered `when={1 + 1 === 2}`
 
 <Story name="when the condition is true">
   <ConditionalWrapper when={1 + 1 === 2} wrapper={children =>
-    <VStack gap={2} p={4} bg="cool-gray.100" id='wrapper'>
+    <VStack spacing={2} p={4} bg="cool-gray.100" id='wrapper'>
       <Text>I am the wrapper</Text>
       {children}
     </VStack>
@@ -26,7 +26,7 @@ Here is how it is rendered `when={1 + 1 === 10}`
 
 <Story name="when the condition is false">
   <ConditionalWrapper when={1 + 1 === 10} wrapper={children =>
-    <VStack gap={2} p={4} bg="cool-gray.100" id='wrapper'>
+    <VStack spacing={2} p={4} bg="cool-gray.100" id='wrapper'>
       <Text>I am the wrapper</Text>
       {children}
     </VStack>

@@ -31,7 +31,6 @@ You can see all the theme values (typography, colors, spacing etc) in the [theme
 ```tsx
 import { KleeProvider, Flex, Button, Icon, Box } from '@liinkiing/klee'
 import { FiAirplay } from 'react-icons/fi'
-
 const App = () => {
   return (
     <KleeProvider>
