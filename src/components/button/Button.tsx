@@ -1,5 +1,6 @@
+import type { PropsOf } from '@emotion/react'
 import styled from '@emotion/styled'
-import React, { cloneElement, FC, forwardRef, ReactElement } from 'react'
+import React, { cloneElement, FC, forwardRef, PropsWithoutRef, ReactElement } from 'react'
 import { variant as systemVariant } from 'styled-system'
 
 import colors from '../../styles/modules/colors'
@@ -9,7 +10,9 @@ import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 type Variant = 'primary' | 'secondary' | 'tertiary' | 'danger' | 'semi-transparent' | 'transparent'
 type VariantSize = 'sm' | 'md' | 'lg'
 
-export interface ButtonProps extends BoxProps {
+type HTMLButtonProps = Omit<PropsWithoutRef<PropsOf<'button'>>, 'css'>
+
+export interface ButtonProps extends Omit<BoxProps, keyof HTMLButtonProps>, HTMLButtonProps {
   readonly variant?: Variant
   readonly startIcon?: ReactElement
   readonly endIcon?: ReactElement
