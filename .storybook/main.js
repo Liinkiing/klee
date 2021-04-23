@@ -37,6 +37,17 @@ const EXLUDED_DOCGEN_PROPS = [
   'grow',
   'shrink',
   'spacing',
+  'transform',
+  'transformOrigin',
+  'enableGpuAcceleration',
+  'scale',
+  'scaleX',
+  'scaleY',
+  'rotate',
+  'translateX',
+  'translateY',
+  'skewY',
+  'skewX',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
