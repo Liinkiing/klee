@@ -35,7 +35,7 @@ const getChildren = (children: ReactNode) => {
   if (Array.isArray(children)) {
     return cleanChildren(children).map((c, i) =>
       cloneElement(c as ReactElement, {
-        ...(i === 0 ? { style } : {}),
+        ...(i === 0 ? { sx: style } : {}),
       }),
     )
   }
