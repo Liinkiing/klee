@@ -29,6 +29,14 @@ const EXLUDED_DOCGEN_PROPS = [
   'bgClip',
   'backgroundClip',
   'focusBorderColor',
+  'align',
+  'justify',
+  'wrap',
+  'direction',
+  'basis',
+  'grow',
+  'shrink',
+  'spacing',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
