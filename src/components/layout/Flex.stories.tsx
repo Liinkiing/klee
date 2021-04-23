@@ -16,10 +16,10 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<FlexProps> = () => (
-  <Flex spacing={4} p={4} bg="cool-gray.100" align="center">
+  <Flex gap={4} p={4} bg="cool-gray.100" align="center">
     <Text>Hello</Text>
     <Text>Everybody</Text>
-    <Flex spacing={4} p={4} bg="cool-gray.200" direction="column">
+    <Flex gap={4} p={4} bg="cool-gray.200" direction="column">
       <Text>I am Klee</Text>
       <Text>I am Fischl</Text>
     </Flex>

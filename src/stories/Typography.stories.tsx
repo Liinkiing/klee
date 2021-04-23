@@ -24,11 +24,11 @@ const WEIGHTS = Object.entries({
 
 export const Default: Story = () => {
   return (
-    <VStack spacing={4}>
+    <VStack gap={4}>
       <Heading as="h1">Nunito</Heading>
-      <VStack spacing={8}>
+      <VStack gap={8}>
         {SIZES.map((set, i) => (
-          <HStack align="center" spacing={4} key={`.0${i}`}>
+          <HStack align="center" gap={4} key={`.0${i}`}>
             <Text minWidth={12} color="cool-gray.400">
               {set.size}
             </Text>
@@ -38,7 +38,7 @@ export const Default: Story = () => {
       </VStack>
       <Heading as="h2">Weights</Heading>
       {WEIGHTS.map((set, i) => (
-        <HStack align="center" spacing={4} key={`.0${i}`}>
+        <HStack align="center" gap={4} key={`.0${i}`}>
           <Text minWidth={16} color="cool-gray.400">
             {set.weight}
           </Text>

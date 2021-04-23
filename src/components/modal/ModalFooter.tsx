@@ -5,7 +5,7 @@ import { FlexProps } from '../layout/Flex'
 
 const ModalFooter: FC<FlexProps> = ({ children, ...rest }) => {
   return (
-    <Flex as="footer" p={4} pt={0} align="center" justify="flex-end" spacing={4} {...rest}>
+    <Flex as="footer" p={4} pt={0} align="center" justify="flex-end" gap={4} {...rest}>
       {children}
     </Flex>
   )

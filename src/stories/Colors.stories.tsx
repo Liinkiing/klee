@@ -47,9 +47,9 @@ export const Default: Story = () => {
     palette: Object.entries(colors[color]).map(([shade, hex]) => ({ shade, hex })),
   }))
   return (
-    <VStack spacing={4}>
+    <VStack gap={4}>
       {palettes.map(value => (
-        <VStack spacing={4} key={value.color}>
+        <VStack gap={4} key={value.color}>
           <Heading
             alignSelf="flex-start"
             bgClip="text"

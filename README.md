@@ -31,11 +31,10 @@ You can see all the theme values (typography, colors, spacing etc) in the [theme
 ```tsx
 import { KleeProvider, Flex, Button, Icon, Box } from '@liinkiing/klee'
 import { FiAirplay } from 'react-icons/fi'
-
 const App = () => {
   return (
     <KleeProvider>
-      <Flex spacing={4} direction={['column', 'row']} bg="amber.300">
+      <Flex gap={4} direction={['column', 'row']} bg="amber.300">
         <Button>Hello world</Button>
         <Button variant="danger">Hello world</Button>
         <Icon as={FiAirplay} />

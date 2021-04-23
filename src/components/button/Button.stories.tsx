@@ -32,7 +32,7 @@ export const WithIcon: Story<Omit<ButtonProps, 'startIcon' | 'endIcon'> & { star
   endIcon,
   ...args
 }) => (
-  <HStack spacing={4}>
+  <HStack gap={4}>
     <Button startIcon={<Icon as={ICON_CONTROL.__ICONS[startIcon]} />} {...args} />
     <Button endIcon={<Icon as={ICON_CONTROL.__ICONS[endIcon]} />} {...args} />
     <Button
