@@ -13,8 +13,8 @@ export interface InputGroupProps extends FlexProps, Pick<InputProps, 'variantSiz
 type SubComponents = {
   LeftAdon: typeof InputGroupLeftAddon
   RightAddon: typeof InputGroupRightAddon
-  LeftElement: typeof InputGroupRightAddon
-  RightElement: typeof InputGroupRightAddon
+  LeftElement: typeof InputGroupLeftElement
+  RightElement: typeof InputGroupRightElement
 }
 
 const COMMON_ADDON_PROPS: Partial<FlexProps> = {
