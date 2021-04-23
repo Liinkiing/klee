@@ -51,8 +51,8 @@ import {
   KleeLetterSpacing,
   KleeLineHeight,
 } from '../../styles/theme/typography'
-import { CssVars } from '../../utils/css-vars'
-import { bgClipTransform, bgGradientTransform } from '../../utils/styled-system/transforms'
+import { CssVars, transformCssWithVariables, transformGpuCssWithVariables } from '../../utils/css-vars'
+import { bgClipTransform, bgGradientTransform, translateTransform } from '../../utils/styled-system/transforms'
 
 type BoxHTMLProps = RefAttributes<any> & HTMLAttributes<any>
 
@@ -89,6 +89,17 @@ type AppCustomStyledProps = {
   bgClip?: 'text' | (string & {})
   backgroundClip?: 'text' | (string & {})
   focusBorderColor?: AppBorderProps['borderColor']
+  scale?: ResponsiveValue<number>
+  scaleX?: ResponsiveValue<number>
+  scaleY?: ResponsiveValue<number>
+  rotate?: ResponsiveValue<string>
+  translateX?: ResponsiveValue<string | number>
+  translateY?: ResponsiveValue<string | number>
+  skewY?: ResponsiveValue<string | number>
+  skewX?: ResponsiveValue<string | number>
+  transform?: boolean
+  transformOrigin?: ResponsiveValue<CSS.Property.TransformOrigin>
+  enableGpuAcceleration?: boolean
 }
 
 type AppShadowProps = {
@@ -320,14 +331,26 @@ export type PolymorphicComponentProps<E extends ElementType, P> = P & Polymorphi
 
 const defaultElement = 'div'
 
-export const Box = styled('div', { shouldForwardProp })<BoxProps>(
+const ALLOWED_PROPS = ['rotate', 'transform', 'scale']
+
+export const Box = styled('div', {
+  shouldForwardProp: propName => {
+    if (ALLOWED_PROPS.includes(propName.toString())) return false
+    return shouldForwardProp(propName.toString())
+  },
+})<BoxProps>(
   props => ({
     textTransform: props.uppercase ? 'uppercase' : undefined,
     ...bgClipTransform(props.bgClip ?? props.backgroundClip),
   }),
-  ({ sx, _hover, _active, _focus, _disabled, _selected, disableFocusStyles }) =>
+  ({ sx, _hover, _active, _focus, _disabled, _selected, disableFocusStyles, transform, enableGpuAcceleration }) =>
     css({
       ...(sx ?? {}),
+      ...(transform
+        ? {
+            transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
+          }
+        : {}),
       '&:hover': _hover ?? {},
       '&:active': _active ?? {},
       '&[aria-selected="true"]': _selected ?? {},
@@ -349,6 +372,35 @@ export const Box = styled('div', { shouldForwardProp })<BoxProps>(
         properties: ['gap'],
         scale: 'sizes',
       },
+      scale: {
+        properties: [CssVars.ScaleX, CssVars.ScaleY],
+      },
+      scaleX: {
+        properties: [CssVars.ScaleX],
+      },
+      scaleY: {
+        properties: [CssVars.ScaleY],
+      },
+      rotate: {
+        properties: [CssVars.Rotate],
+      },
+      translateX: {
+        properties: [CssVars.TranslateX],
+        scale: 'sizes',
+        transform: translateTransform,
+      },
+      translateY: {
+        properties: [CssVars.TranslateY],
+        scale: 'sizes',
+        transform: translateTransform,
+      },
+      skewY: {
+        properties: [CssVars.SkewY],
+      },
+      skewX: {
+        properties: [CssVars.SkewX],
+      },
+      transformOrigin: true,
       focusBorderColor: {
         property: CssVars.FocusBorderColor,
         scale: 'colors',

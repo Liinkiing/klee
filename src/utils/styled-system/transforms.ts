@@ -15,6 +15,29 @@ export const bgClipTransform = (value: string | null | undefined) => {
   return value === 'text' ? { color: 'transparent', backgroundClip: 'text' } : { backgroundClip: value }
 }
 
+export const translateTransform = (value: string | number | null | undefined, scale?: Scale) => {
+  if (!value) return 0
+  if (!scale) {
+    return value
+  }
+  if (typeof value === 'string' && value in scale) {
+    return scale[value as any]
+  }
+  if (typeof value === 'string') {
+    return value
+  }
+  const index = Math.abs(value)
+  const computedValue = scale[index]
+  if (!computedValue) {
+    return `${value}px`
+  }
+  if (value < 0) {
+    return typeof computedValue === 'string' ? `-${computedValue}` : -computedValue
+  }
+
+  return computedValue ?? value
+}
+
 export const bgGradientTransform = (value: string | null | undefined, _scale?: Scale) => {
   if (value == null || globalSet.has(value)) return value
   const regex = /(?<type>^[a-z-A-Z]+)\((?<values>(.*))\)/g
