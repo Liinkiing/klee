@@ -21,6 +21,7 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint src",
     "prepare": "run-s husky:install build",
+    "size-limit:build": "yarn install --ignore-scripts && yarn run build",
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
