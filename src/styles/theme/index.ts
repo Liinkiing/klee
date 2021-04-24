@@ -213,5 +213,6 @@ export const kleeTheme: Theme = {
   zIndices: Z_INDICES,
 }
 
-export const extendTheme = <T extends Record<any, any>>(extendedTheme: T): KleeTheme & T =>
-  merge.all([kleeTheme, extendedTheme]) as KleeTheme & T
+export const extendTheme = <T extends Record<any, any>>(
+  extendedTheme: T & Partial<Record<keyof KleeTheme, unknown>>,
+): KleeTheme & T => merge.all([kleeTheme, extendedTheme]) as KleeTheme & T
