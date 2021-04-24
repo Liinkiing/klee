@@ -1,5 +1,5 @@
 import type { Theme } from '@emotion/react'
-import merge from 'lodash/fp/merge'
+import merge from 'deepmerge'
 
 import colors from '../modules/colors'
 import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
@@ -214,4 +214,4 @@ export const kleeTheme: Theme = {
 }
 
 export const extendTheme = <T extends Record<any, any>>(extendedTheme: T): KleeTheme & T =>
-  merge(kleeTheme, extendedTheme)
+  merge.all([kleeTheme, extendedTheme]) as KleeTheme & T
