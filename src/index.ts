@@ -32,6 +32,11 @@ export * from './utils'
 export { useTheme } from './hooks/useTheme'
 
 /**
+ * Theming
+ */
+export { extendTheme } from './styles/theme'
+
+/**
  * Provider
  */
 export { KleeProvider } from './KleeProvider'
