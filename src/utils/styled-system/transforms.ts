@@ -1,10 +1,5 @@
-// Taken from here and adapted it a bit for simplicity sake
-// https://github.com/chakra-ui/chakra-ui/blob/75edcf41e7ff4acc2569f2169949063c164d8f6e/packages/styled-system/src/utils/parse-gradient.ts
-// Again, check ChakraUI, a great library!
 import { themeGet } from '@styled-system/theme-get'
 import { Scale } from 'styled-system'
-
-import { kleeTheme } from '../../styles/theme'
 
 const globalSet = new Set(['none', '-moz-initial', 'inherit', 'initial', 'revert', 'unset'])
 
@@ -38,7 +33,10 @@ export const translateTransform = (value: string | number | null | undefined, sc
   return computedValue ?? value
 }
 
-export const bgGradientTransform = (value: string | null | undefined, _scale?: Scale) => {
+// Taken from here and adapted it a bit for simplicity sake
+// https://github.com/chakra-ui/chakra-ui/blob/75edcf41e7ff4acc2569f2169949063c164d8f6e/packages/styled-system/src/utils/parse-gradient.ts
+// Again, check ChakraUI, a great library!
+export const bgGradientTransform = (value: string | null | undefined, colors?: Scale) => {
   if (value == null || globalSet.has(value)) return value
   const regex = /(?<type>^[a-z-A-Z]+)\((?<values>(.*))\)/g
   const { type, values } = regex.exec(value)?.groups ?? {}
@@ -53,7 +51,7 @@ export const bgGradientTransform = (value: string | null | undefined, _scale?: S
   const _values = stops.map(stop => {
     const [_color, _stop] = stop.split(' ')
 
-    const color = themeGet(`colors.${_color}`, _color)({ theme: kleeTheme })
+    const color = themeGet(`colors.${_color}`, _color)({ theme: { colors } })
     return _stop ? [color, _stop].join(' ') : color
   })
 

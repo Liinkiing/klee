@@ -362,10 +362,12 @@ export const Box = styled('div', {
     system({
       bgGradient: {
         properties: ['backgroundImage'],
+        scale: 'colors',
         transform: bgGradientTransform,
       },
       backgroundGradient: {
         properties: ['backgroundImage'],
+        scale: 'colors',
         transform: bgGradientTransform,
       },
       gap: {
