@@ -17,6 +17,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
+    "size-limit:build": "yarn install --ignore-scripts && yarn run build",
     "ts:check": "tsc --noEmit",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint src",
