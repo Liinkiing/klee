@@ -6,7 +6,7 @@ import { variant } from 'styled-system'
 import { cleanChildren } from '../../utils/jsx'
 import { Flex, FlexProps } from '../layout'
 import { BoxProps } from '../primitives'
-import { Input, InputProps } from './Input'
+import { DEFAULT_INPUT_RADIUS, Input, InputProps } from './Input'
 
 export interface InputGroupProps extends FlexProps, Pick<InputProps, 'variantSize' | 'variant'> {}
 
@@ -32,14 +32,30 @@ const COMMON_ELEMENT_PROPS: Partial<FlexProps> = {
 
 const INPUT_GROUP_LEFT_ADDON_CN = 'input__group--left-addon'
 export const InputGroupLeftAddon: FC<FlexProps> = ({ className, ...props }) => {
-  return <Flex className={cx(INPUT_GROUP_LEFT_ADDON_CN, className)} {...COMMON_ADDON_PROPS} {...props} />
+  return (
+    <Flex
+      className={cx(INPUT_GROUP_LEFT_ADDON_CN, className)}
+      {...COMMON_ADDON_PROPS}
+      borderTopLeftRadius={DEFAULT_INPUT_RADIUS}
+      borderBottomLeftRadius={DEFAULT_INPUT_RADIUS}
+      {...props}
+    />
+  )
 }
 
 InputGroupLeftAddon.displayName = 'InputGroup.LeftAddon'
 
 const INPUT_GROUP_RIGHT_ADDON_CN = 'input__group--right-addon'
 export const InputGroupRightAddon: FC<FlexProps> = ({ className, ...props }) => {
-  return <Flex className={cx(INPUT_GROUP_RIGHT_ADDON_CN, className)} {...COMMON_ADDON_PROPS} {...props} />
+  return (
+    <Flex
+      className={cx(INPUT_GROUP_RIGHT_ADDON_CN, className)}
+      {...COMMON_ADDON_PROPS}
+      borderTopRightRadius={DEFAULT_INPUT_RADIUS}
+      borderBottomRightRadius={DEFAULT_INPUT_RADIUS}
+      {...props}
+    />
+  )
 }
 
 InputGroupRightAddon.displayName = 'InputGroup.RightAddon'

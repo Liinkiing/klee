@@ -5,13 +5,15 @@ import { variant } from 'styled-system'
 import { BASE_FOCUS } from '../../styles/modules/mixins'
 import { KleeBorder, KleeRadius } from '../../styles/theme'
 import { KleeFontFamily, KleeFontSize } from '../../styles/theme/typography'
-import { CssVars } from '../../utils/css-vars'
+import { CssVars } from '../../utils'
 import { Box, BoxProps } from '../primitives'
 
 type FilteredInputProps = Omit<ComponentProps<'input'>, 'css'>
 type Props = FilteredInputProps & Omit<BoxProps, keyof FilteredInputProps>
 type VariantSize = 'sm' | 'md' | 'lg'
 type Variant = 'outline' | 'flushed' | 'blank'
+
+export const DEFAULT_INPUT_RADIUS = KleeRadius.Md
 
 export interface InputProps extends PropsWithoutRef<Props> {
   readonly variantSize?: VariantSize
@@ -26,7 +28,7 @@ const variants = [
   variant<unknown, Variant>({
     variants: {
       blank: {
-        borderRadius: KleeRadius.Base,
+        borderRadius: DEFAULT_INPUT_RADIUS,
         border: 0,
       },
       flushed: {
@@ -40,7 +42,7 @@ const variants = [
         },
       },
       outline: {
-        borderRadius: KleeRadius.Base,
+        borderRadius: DEFAULT_INPUT_RADIUS,
         border: KleeBorder.Sm,
       },
     },
