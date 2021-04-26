@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React, { ComponentProps, forwardRef, PropsWithoutRef } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { variant } from 'styled-system'
 
 import { BASE_FOCUS } from '../../styles/modules/mixins'
@@ -73,6 +74,15 @@ const variants = [
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ id, name, disabled, type = 'text', _focus, ...rest }, ref) => {
     const context = useFormControl()
+    const formContext = useFormContext()
+    let errors = null
+    if (formContext && formContext.formState) {
+      const {
+        formState: { errors: formErrors },
+      } = formContext
+      errors = formErrors
+    }
+    const hasError = errors && name && !!errors[name]
     return (
       <InputInner
         as="input"
@@ -87,6 +97,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         id={context?.id ?? id ?? name}
         aria-describedby={context?.helperId}
+        aria-invalid={hasError ? 'true' : 'false'}
         disabled={disabled}
         {...rest}
       />

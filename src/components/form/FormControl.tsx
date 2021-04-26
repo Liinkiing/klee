@@ -5,6 +5,7 @@ import { cleanChildren } from '../../utils/jsx'
 import { Flex, FlexProps } from '../layout'
 import { Box, BoxProps } from '../primitives'
 import { BoxPropsOf } from '../primitives/Box'
+import { ErrorMessage } from './ErrorMessage'
 import { FormControlContext, useFormControl } from './FormControl.context'
 
 export interface FormControlProps extends Omit<FlexProps, 'id'> {
@@ -55,6 +56,7 @@ export const FormControl: FC<FormControlProps> & SubComponents = ({ children, id
     <FormControlContext.Provider value={{ id, helperId: hasHelperText ? `${id}-helptext` : undefined }}>
       <Flex width="100%" direction="column" spacing={2} role="group" {...props}>
         {children}
+        <ErrorMessage name={id} />
       </Flex>
     </FormControlContext.Provider>
   )

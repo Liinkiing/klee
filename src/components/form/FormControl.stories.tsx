@@ -20,7 +20,7 @@ export const Default: Story<FormControlProps> = args => (
   <FormControl {...args}>
     <FormControl.Label>Username</FormControl.Label>
     <Input />
-    <FormControl.HelperText>Please enter a valid username</FormControl.HelperText>
+    <FormControl.HelperText>The username will be public</FormControl.HelperText>
   </FormControl>
 )
 
@@ -37,7 +37,7 @@ export const WithInputGroup: Story<FormControlProps> = args => (
       </InputGroup.LeftElement>
       <Input />
     </InputGroup>
-    <FormControl.HelperText>Please enter a valid username</FormControl.HelperText>
+    <FormControl.HelperText>The username will be public</FormControl.HelperText>
   </FormControl>
 )
 
