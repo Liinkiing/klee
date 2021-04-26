@@ -78,6 +78,8 @@ export const Default = () => {
   )
 }
 
+Default.args = {}
+
 export const WithZodValidation = () => {
   const form = useZodForm({
     schema,
@@ -127,4 +129,4 @@ export const WithZodValidation = () => {
   )
 }
 
-Default.args = {}
+WithZodValidation.args = {}
