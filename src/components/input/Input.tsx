@@ -6,6 +6,7 @@ import { BASE_FOCUS } from '../../styles/modules/mixins'
 import { KleeBorder, KleeRadius } from '../../styles/theme'
 import { KleeFontFamily, KleeFontSize } from '../../styles/theme/typography'
 import { CssVars } from '../../utils'
+import { useFormControl } from '../form/FormControl.context'
 import { Box, BoxProps } from '../primitives'
 
 type FilteredInputProps = Omit<ComponentProps<'input'>, 'css'>
@@ -71,6 +72,7 @@ const variants = [
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ id, name, disabled, type = 'text', _focus, ...rest }, ref) => {
+    const context = useFormControl()
     return (
       <InputInner
         as="input"
@@ -83,7 +85,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         type={type}
         name={name}
         ref={ref}
-        id={id ?? name}
+        id={context?.id ?? id ?? name}
+        aria-describedby={context?.helperId}
         disabled={disabled}
         {...rest}
       />
