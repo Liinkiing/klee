@@ -1,9 +1,10 @@
-import { Theme } from '@emotion/react'
+import { PropsOf, Theme } from '@emotion/react'
 import styled from '@emotion/styled'
 import css, { SystemStyleObject } from '@styled-system/css'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
-import type { ComponentPropsWithRef, ElementType, HTMLAttributes, JSXElementConstructor, RefAttributes } from 'react'
+import type { ElementType, HTMLAttributes, RefAttributes } from 'react'
+import * as React from 'react'
 import {
   BackgroundImageProps,
   border,
@@ -316,10 +317,11 @@ type BoxCssStateProps = {
 
 export type BoxProps = BoxHTMLProps & CustomBoxProps & StyledSystemProps & ModifiedStyledSystemProps & BoxCssStateProps
 
-type PropsOf<E extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>> = JSX.LibraryManagedAttributes<
-  E,
-  ComponentPropsWithRef<E>
->
+export type BoxPropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = Omit<
+  BoxProps,
+  keyof Omit<PropsOf<C>, 'css'>
+> &
+  Omit<PropsOf<C>, 'css'>
 
 export interface BoxOwnProps<E extends ElementType = ElementType> extends BoxProps {
   as?: E

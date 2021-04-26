@@ -81,6 +81,9 @@ const InnerButton = styled(Box)(
     '&:hover': {
       cursor: 'pointer',
     },
+    '&:disabled': {
+      cursor: 'not-allowed',
+    },
   },
   systemVariant<{}, Variant>({
     variants: {

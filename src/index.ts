@@ -30,6 +30,7 @@ export * from './utils'
  * Hooks
  */
 export { useTheme } from './hooks/useTheme'
+export { useZodForm } from './hooks/useZodForm'
 
 /**
  * Theming

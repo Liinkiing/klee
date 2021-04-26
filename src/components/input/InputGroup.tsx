@@ -130,7 +130,7 @@ const getInputPaddingBasedOnVariant = (size: InputProps['variantSize']) => {
 export const InputGroup: FC<InputGroupProps> & SubComponents = ({ children, ...props }) => {
   const leftAddon = cleanChildren(children).find((c: any) => c.type === InputGroupLeftAddon)
   const leftElement = cleanChildren(children).find((c: any) => c.type === InputGroupLeftElement)
-  const input = cleanChildren(children).find((c: any) => c.type === Input)
+  const input = cleanChildren(children).find((c: any) => c.type === Input || c.ref !== null)
   const rightAddon = cleanChildren(children).find((c: any) => c.type === InputGroupRightAddon)
   const rightElement = cleanChildren(children).find((c: any) => c.type === InputGroupRightElement)
   const inputStyles: Partial<BoxProps> = {
