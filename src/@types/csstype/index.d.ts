@@ -3,6 +3,7 @@ import 'csstype'
 declare module 'csstype' {
   export interface Properties {
     '--klee-focus-border-color'?: any
+    '--klee-invalid-focus-border-color'?: any
     '--klee-transform'?: any
     '--klee-translate-x'?: any
     '--klee-translate-y'?: any

@@ -32,20 +32,36 @@ const variants = [
       blank: {
         borderRadius: DEFAULT_INPUT_RADIUS,
         border: 0,
+        '&:focus': {
+          ...BASE_FOCUS,
+        },
+        '&[aria-invalid="true"]': {
+          boxShadow: `var(${CssVars.InvalidFocusBorderColor}) 0px 0px 0px 2px`,
+        },
       },
       flushed: {
         border: 0,
         borderRadius: 0,
         borderBottom: KleeBorder.Xs,
         '&:focus': {
+          ...BASE_FOCUS,
           boxShadow: 'none',
           borderBottom: KleeBorder.Sm,
           borderColor: `var(${CssVars.FocusBorderColor})`,
+        },
+        '&[aria-invalid="true"]': {
+          borderColor: `var(${CssVars.InvalidFocusBorderColor})`,
         },
       },
       outline: {
         borderRadius: DEFAULT_INPUT_RADIUS,
         border: KleeBorder.Sm,
+        '&:focus': {
+          ...BASE_FOCUS,
+        },
+        '&[aria-invalid="true"]': {
+          borderColor: `var(${CssVars.InvalidFocusBorderColor})`,
+        },
       },
     },
   }),
@@ -72,7 +88,7 @@ const variants = [
 ]
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ id, name, disabled, type = 'text', _focus, ...rest }, ref) => {
+  ({ id, name, disabled, type = 'text', _invalid, ...rest }, ref) => {
     const context = useFormControl()
     const formContext = useFormContext()
     let errors = null
@@ -87,7 +103,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <InputInner
         as="input"
         _variants={variants}
-        _focus={{ ...BASE_FOCUS, ..._focus }}
+        _invalid={{ bg: 'red.50', ..._invalid }}
         minWidth={0}
         width="100%"
         fontFamily={KleeFontFamily.Body}
@@ -96,8 +112,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         name={name}
         ref={ref}
         id={context?.id ?? id ?? name}
-        aria-describedby={context?.helperId}
-        aria-invalid={hasError ? 'true' : 'false'}
+        aria-describedby={rest['aria-describedby'] ?? context?.helperId}
+        aria-invalid={rest['aria-invalid'] ?? hasError ? 'true' : 'false'}
         disabled={disabled}
         {...rest}
       />

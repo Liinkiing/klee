@@ -13,11 +13,13 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<InputProps> = args => <Input {...args} />
+const Template: Story<InputProps & { isValid: boolean }> = ({ isValid, ...args }) => {
+  return <Input aria-invalid={isValid ? 'false' : 'true'} {...args} />
+}
 
 export const Default = Template.bind({})
 
 Default.args = {
+  isValid: true,
   placeholder: 'Klee',
-  focusBorderColor: 'blue.300',
 }

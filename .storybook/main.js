@@ -49,6 +49,8 @@ const EXLUDED_DOCGEN_PROPS = [
   'skewY',
   'skewX',
   'ref',
+  '_invalid',
+  'invalidFocusBorderColor',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']

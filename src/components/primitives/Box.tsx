@@ -90,6 +90,7 @@ type AppCustomStyledProps = {
   bgClip?: 'text' | (string & {})
   backgroundClip?: 'text' | (string & {})
   focusBorderColor?: AppBorderProps['borderColor']
+  invalidFocusBorderColor?: AppBorderProps['borderColor']
   scale?: ResponsiveValue<number>
   scaleX?: ResponsiveValue<number>
   scaleY?: ResponsiveValue<number>
@@ -313,6 +314,7 @@ type BoxCssStateProps = {
   _active?: SystemStyleObject
   _focus?: SystemStyleObject
   _disabled?: SystemStyleObject
+  _invalid?: SystemStyleObject
 }
 
 export type BoxProps = BoxHTMLProps & CustomBoxProps & StyledSystemProps & ModifiedStyledSystemProps & BoxCssStateProps
@@ -345,7 +347,18 @@ export const Box = styled('div', {
     textTransform: props.uppercase ? 'uppercase' : undefined,
     ...bgClipTransform(props.bgClip ?? props.backgroundClip),
   }),
-  ({ sx, _hover, _active, _focus, _disabled, _selected, disableFocusStyles, transform, enableGpuAcceleration }) =>
+  ({
+    sx,
+    _hover,
+    _active,
+    _focus,
+    _disabled,
+    _selected,
+    _invalid,
+    disableFocusStyles,
+    transform,
+    enableGpuAcceleration,
+  }) =>
     css({
       ...(sx ?? {}),
       ...(transform
@@ -356,6 +369,7 @@ export const Box = styled('div', {
       '&:hover': _hover ?? {},
       '&:active': _active ?? {},
       '&[aria-selected="true"]': _selected ?? {},
+      '&[aria-invalid="true"]': _invalid ?? {},
       '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
       '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled ?? {},
     }),
@@ -407,6 +421,10 @@ export const Box = styled('div', {
       transformOrigin: true,
       focusBorderColor: {
         property: CssVars.FocusBorderColor,
+        scale: 'colors',
+      },
+      invalidFocusBorderColor: {
+        property: CssVars.InvalidFocusBorderColor,
         scale: 'colors',
       },
       minSize: {
