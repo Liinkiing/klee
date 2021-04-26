@@ -48,6 +48,7 @@ const EXLUDED_DOCGEN_PROPS = [
   'translateY',
   'skewY',
   'skewX',
+  'ref',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
