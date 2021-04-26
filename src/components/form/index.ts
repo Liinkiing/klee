@@ -1,5 +1,4 @@
 export * from './Form'
 export * from './SubmitButton'
-export * from './FormInput'
 export * from './ErrorMessage'
 export * from './FormControl'

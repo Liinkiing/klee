@@ -7,11 +7,10 @@ import { object, string } from 'zod'
 import { useZodForm } from '../../hooks/useZodForm'
 import { WEBSITE_REGEX } from '../../utils/regex'
 import { Icon } from '../icon'
-import { InputGroup } from '../input'
+import { Input, InputGroup } from '../input'
 import { Flex, VStack } from '../layout'
 import { Form } from './Form'
 import { FormControl } from './FormControl'
-import { FormInput } from './FormInput'
 import { SubmitButton } from './SubmitButton'
 
 const meta: Meta = {
@@ -49,7 +48,7 @@ export const Default = () => {
             <InputGroup.LeftElement>
               <Icon as={FiUser} />
             </InputGroup.LeftElement>
-            <FormInput placeholder="Enter your username" {...form.register('username')} />
+            <Input placeholder="Enter your username" {...form.register('username')} />
           </InputGroup>
         </FormControl>
         <Flex direction={['column', 'row']} spacing={4}>
@@ -59,7 +58,7 @@ export const Default = () => {
               <InputGroup.LeftElement>
                 <Icon as={FiMail} />
               </InputGroup.LeftElement>
-              <FormInput placeholder="Enter your email" {...form.register('email')} />
+              <Input placeholder="Enter your email" {...form.register('email')} />
             </InputGroup>
           </FormControl>
           <FormControl id="website">
@@ -68,7 +67,7 @@ export const Default = () => {
               <InputGroup.LeftElement>
                 <Icon as={FiGlobe} />
               </InputGroup.LeftElement>
-              <FormInput placeholder="https://yourwebsite.com" {...form.register('website')} />
+              <Input placeholder="https://yourwebsite.com" {...form.register('website')} />
             </InputGroup>
           </FormControl>
         </Flex>
@@ -100,7 +99,7 @@ export const WithZodValidation = () => {
             <InputGroup.LeftElement>
               <Icon as={FiUser} />
             </InputGroup.LeftElement>
-            <FormInput placeholder="Enter your username" {...form.register('username')} />
+            <Input placeholder="Enter your username" {...form.register('username')} />
           </InputGroup>
         </FormControl>
         <Flex direction={['column', 'row']} spacing={4}>
@@ -110,7 +109,7 @@ export const WithZodValidation = () => {
               <InputGroup.LeftElement>
                 <Icon as={FiMail} />
               </InputGroup.LeftElement>
-              <FormInput placeholder="Enter your email" {...form.register('email')} />
+              <Input placeholder="Enter your email" {...form.register('email')} />
             </InputGroup>
           </FormControl>
           <FormControl minHeight="102px" id="website">
@@ -119,7 +118,7 @@ export const WithZodValidation = () => {
               <InputGroup.LeftElement>
                 <Icon as={FiGlobe} />
               </InputGroup.LeftElement>
-              <FormInput placeholder="https://yourwebsite.com" {...form.register('website')} />
+              <Input placeholder="https://yourwebsite.com" {...form.register('website')} />
             </InputGroup>
           </FormControl>
         </Flex>
