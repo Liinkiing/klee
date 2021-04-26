@@ -42,6 +42,8 @@ const variants = [
       flushed: {
         border: 0,
         borderRadius: 0,
+        borderTopLeftRadius: DEFAULT_INPUT_RADIUS,
+        borderTopRightRadius: DEFAULT_INPUT_RADIUS,
         borderBottom: KleeBorder.Xs,
         '&:focus': {
           ...BASE_FOCUS,
