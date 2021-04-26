@@ -2230,6 +2230,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@hookform/resolvers@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.4.0.tgz#3b454463fbb5e7a0de4da029fa34e677f32d8d8d"
+  integrity sha512-KiHc7Uwd2IJMvPTMQ9vQxfss2ulq2gRYL/HYZ90qiTs+07UgGWCikiIvE2pKjjGVltEYjq5eR8x0ITmoyEjGxQ==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -13448,6 +13453,11 @@ react-helmet-async@^1.0.7:
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
 
+react-hook-form@^7.3.3:
+  version "7.3.3"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.3.3.tgz#0061714a7c3aec6c5a13f10d4e6bf49884f6ca20"
+  integrity sha512-MhKVEwxNgn/VgwOQQwUSZ9g/KhGS+HNzfD++V0mnnGeBjHOFajIPPA19cBzMSd7illd4YyyBXdTxd9+vi6Ne4A==
+
 react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
@@ -16612,6 +16622,11 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^1.11.16:
+  version "1.11.16"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-1.11.16.tgz#2696e96af86907ad7c0e05b58fdea099437a1c1e"
+  integrity sha512-vjVcrlxza/GzlGrYWo0+0Ii7HiDatOdNq1mlRNVSFWHGATY5pTbQBmXxY0QrmqTdlj35gFO2YDMr9q1csQRXaQ==
 
 zwitch@^1.0.0:
   version "1.0.5"

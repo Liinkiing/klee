@@ -16,10 +16,10 @@ inspiration), but may be used to do some livestream... And to put **KLEE** EVERY
 
 ```bash
 # using yarn
-$ yarn add @liinkiing/klee @emotion/react@^11 @emotion/styled@^11 framer-motion@^4 react-icons@^4 @styled-system/css@^5
+$ yarn add @liinkiing/klee @emotion/react@^11 @emotion/styled@^11 framer-motion@^4 react-icons@^4 @styled-system/css@^5 react-hook-form@^7 @hookform/resolvers@^2 zod@^1
 
 # using npm
-$ npm i @liinkiing/klee @emotion/react@^11 @emotion/styled@^11 framer-motion@^4 react-icons@^4 @styled-system/css@^5
+$ npm i @liinkiing/klee @emotion/react@^11 @emotion/styled@^11 framer-motion@^4 react-icons@^4 @styled-system/css@^5 react-hook-form@^7 @hookform/resolvers@^2 zod@^1
 ```
 
 ## Usage
