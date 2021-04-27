@@ -3,7 +3,8 @@
   "labels": ["upgrade-deps"],
   "groupName": "all",
   "ignorePaths": [
-    "example/package.json"
+    "example/package.json",
+    ".github/workflows/**/*.yml"
   ],
   "extends": [
     "config:js-lib"
