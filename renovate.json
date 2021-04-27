@@ -7,7 +7,7 @@
     ".github/workflows/**/*.yml"
   ],
   "extends": [
-    "config:js-lib",
-    ":preserveSemverRanges"
+    ":preserveSemverRanges",
+    "config:js-lib"
   ]
 }
