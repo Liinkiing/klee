@@ -1,5 +1,8 @@
 {
+  "ignorePaths": [
+    "example/package.json"
+  ],
   "extends": [
-    "config:base"
+    "config:js-lib"
   ]
 }
