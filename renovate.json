@@ -2,12 +2,12 @@
   "assignees": ["Liinkiing"],
   "labels": ["upgrade-deps"],
   "groupName": "all",
+  "rangeStrategy": "bump",
   "ignorePaths": [
     "example/package.json",
     ".github/workflows/**/*.yml"
   ],
   "extends": [
-    ":preserveSemverRanges",
     "config:js-lib"
   ]
 }
