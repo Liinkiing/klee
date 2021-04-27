@@ -1,4 +1,3 @@
-// @flow
 import styled from '@emotion/styled'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { AnimatePresence, motion } from 'framer-motion'
