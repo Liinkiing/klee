@@ -1,4 +1,7 @@
 {
+  "assignees": ["omar.jbara2@gmail.com"],
+  "labels": ["upgrade-deps"],
+  "groupName": "all",
   "ignorePaths": [
     "example/package.json"
   ],
