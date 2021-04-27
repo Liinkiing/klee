@@ -1,0 +1,13 @@
+{
+  "assignees": ["Liinkiing"],
+  "labels": ["upgrade-deps"],
+  "groupName": "all",
+  "ignorePaths": [
+    "example/package.json",
+    ".github/workflows/**/*.yml"
+  ],
+  "extends": [
+    "config:js-lib",
+    ":preserveSemverRanges"
+  ]
+}
