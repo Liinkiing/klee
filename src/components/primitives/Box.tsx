@@ -368,12 +368,19 @@ export const Box = styled('div', {
                 transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
               }
             : {}),
-          '&:hover': _hover ?? {},
-          '&:active': _active ?? {},
-          '&[aria-selected="true"]': _selected ?? {},
-          '&[aria-invalid="true"]': _invalid ?? {},
-          '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
-          '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled ?? {},
+          ...(_hover ? { '&:hover': _hover } : {}),
+          ...(_active ? { '&:active': _active } : {}),
+          ...(_selected ? { '&[aria-selected="true"]': _selected } : {}),
+          ...(_invalid ? { '&[aria-invalid="true"]': _invalid } : {}),
+          ...(disableFocusStyles
+            ? merge.all([
+                _focus ? { '&:focus': _focus } : {},
+                { '&:focus': { outline: 'none !important', boxShadow: 'none !important' } },
+              ])
+            : _focus
+            ? { '&:focus': _focus }
+            : {}),
+          ...(_disabled ? { '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled } : {}),
         },
         sx ?? {},
       ]),
