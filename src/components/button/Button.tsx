@@ -98,7 +98,7 @@ const InnerButton = styled(Box)(
       sm: {
         px: 2,
         py: 1,
-        fontSize: KleeFontSize.Sm,
+        fontSize: KleeFontSize.Xs,
       },
       md: {
         px: 4,
@@ -120,6 +120,7 @@ export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps
       <InnerButton
         display="flex"
         alignItems="center"
+        justifyContent="center"
         border="none"
         borderRadius="lg"
         fontFamily={KleeFontFamily.Body}
