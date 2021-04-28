@@ -29,7 +29,7 @@ The package uses **styled-system** underneath, so all the UI component extends t
 You can see all the theme values (typography, colors, spacing etc) in the [theme file](src/styles/theme/index.ts). The color palette used is from **Tailwind 2.0**, which is a great color palette!
 
 ```tsx
-import { klee, KleeProvider, Flex, Button, Icon, Box } from '@liinkiing/klee'
+import { klee, KleeProvider, Flex, Button, Text, Icon, Box } from '@liinkiing/klee'
 import { FiAirplay } from 'react-icons/fi'
 const App = () => {
   return (
