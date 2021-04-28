@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import css, { SystemStyleObject } from '@styled-system/css'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
+import merge from 'deepmerge'
 import type { ElementType, HTMLAttributes, RefAttributes } from 'react'
 import * as React from 'react'
 import {
@@ -359,20 +360,24 @@ export const Box = styled('div', {
     transform,
     enableGpuAcceleration,
   }) =>
-    css({
-      ...(sx ?? {}),
-      ...(transform
-        ? {
-            transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
-          }
-        : {}),
-      '&:hover': _hover ?? {},
-      '&:active': _active ?? {},
-      '&[aria-selected="true"]': _selected ?? {},
-      '&[aria-invalid="true"]': _invalid ?? {},
-      '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
-      '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled ?? {},
-    }),
+    css(
+      merge.all([
+        {
+          ...(transform
+            ? {
+                transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
+              }
+            : {}),
+          '&:hover': _hover ?? {},
+          '&:active': _active ?? {},
+          '&[aria-selected="true"]': _selected ?? {},
+          '&[aria-invalid="true"]': _invalid ?? {},
+          '&:focus': disableFocusStyles ? { ..._focus, outline: 'none', boxShadow: 'none' } : _focus ?? {},
+          '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled ?? {},
+        },
+        sx ?? {},
+      ]),
+    ),
   ({ _variants }) => (Array.isArray(_variants) ? _variants.map(v => v) : _variants ?? {}),
   compose(
     system({
