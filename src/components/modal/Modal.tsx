@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import * as React from 'react'
 import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } from 'react'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
@@ -18,7 +18,9 @@ type RenderProps = (props: Context) => ReactNode
 
 export interface ModalProps
   extends Pick<DialogProps, 'hideOnClickOutside' | 'hideOnEsc' | 'preventBodyScroll'>,
-    BoxProps {
+    Omit<BoxProps, keyof MotionProps | 'children'>,
+    MotionProps {
+  readonly overlay?: Omit<Partial<BoxProps>, keyof MotionProps> & Partial<MotionProps>
   readonly hideCloseButton?: boolean
   readonly scrollBehavior?: 'inside' | 'outside'
   readonly disclosure: FunctionComponentElement<{}>
@@ -53,6 +55,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
   ariaLabel,
   onOpen,
   onClose,
+  overlay,
   scrollBehavior = 'inside',
   hideCloseButton = false,
   hideOnClickOutside = true,
@@ -127,6 +130,11 @@ const Modal: FC<ModalProps> & SubComponents = ({
               display="flex"
               flexDirection="column"
               alignItems="center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: TRANSITION_DURATION, ease }}
+              exit={{ opacity: 0 }}
+              {...overlay}
               overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
               ref={$container as any}
               onClick={(e: MouseEvent) => {
@@ -134,10 +142,6 @@ const Modal: FC<ModalProps> & SubComponents = ({
                   dialog.hide()
                 }
               }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: TRANSITION_DURATION, ease }}
-              exit={{ opacity: 0 }}
             >
               <ModalInner
                 display="flex"
@@ -156,6 +160,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
                 transition={{
                   opacity: { duration: TRANSITION_DURATION, ease },
                   y: LAYOUT_TRANSITION_SPRING,
+                  x: LAYOUT_TRANSITION_SPRING,
                 }}
                 exit={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 {...props}
