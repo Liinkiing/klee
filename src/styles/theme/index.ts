@@ -85,6 +85,13 @@ export const SPACING = {
   26: '18rem',
   27: '20rem',
   28: '24rem',
+  29: '28rem',
+  30: '32rem',
+  31: '36rem',
+  32: '42rem',
+  33: '50rem',
+  34: '64rem',
+  35: '128rem',
 } as const
 
 export type ThemeSpacingValues = keyof typeof SPACING | (string & {}) | (number & {})
