@@ -1,3 +1,5 @@
+import { Portal } from 'reakit/Portal'
+
 export * from './button'
 export * from './icon'
 export * from './layout'
@@ -16,3 +18,4 @@ export * from './tabs'
 export * from './conditional-wrapper'
 export * from './input'
 export * from './form'
+export { Portal }
