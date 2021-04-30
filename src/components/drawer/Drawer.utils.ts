@@ -4,7 +4,10 @@ import { KleeRadius } from '../../styles/theme'
 import { CommonAnimations } from '../../utils/motion'
 import { DrawerPlacement, DrawerProps } from './Drawer'
 
-export const getPropsBasedOnPlacement = (placement: DrawerPlacement): Partial<DrawerProps> => {
+export const getPropsBasedOnPlacement = (
+  placement: DrawerPlacement,
+  dimensions: Pick<DrawerProps, 'width' | 'minWidth'>,
+): Partial<DrawerProps> => {
   const X_MIN_WIDTH = '240px'
   switch (placement) {
     case 'top':
@@ -12,6 +15,7 @@ export const getPropsBasedOnPlacement = (placement: DrawerPlacement): Partial<Dr
         m: 0,
         width: '100%',
         height: 'auto',
+        maxHeight: '90%',
         borderTopLeftRadius: [0, 0],
         borderTopRightRadius: [0, 0],
         borderBottomLeftRadius: KleeRadius.Lg,
@@ -22,6 +26,7 @@ export const getPropsBasedOnPlacement = (placement: DrawerPlacement): Partial<Dr
         mt: 'auto',
         width: '100%',
         height: 'auto',
+        maxHeight: '90%',
         borderTopLeftRadius: KleeRadius.Lg,
         borderTopRightRadius: KleeRadius.Lg,
         borderBottomLeftRadius: [0, 0],
@@ -30,8 +35,8 @@ export const getPropsBasedOnPlacement = (placement: DrawerPlacement): Partial<Dr
     case 'right':
       return {
         m: 0,
-        width: 'auto',
-        minWidth: X_MIN_WIDTH,
+        width: dimensions?.width ?? 'auto',
+        minWidth: dimensions?.minWidth ?? X_MIN_WIDTH,
         height: '100%',
         alignSelf: 'flex-end',
         borderTopLeftRadius: KleeRadius.Lg,
@@ -42,8 +47,8 @@ export const getPropsBasedOnPlacement = (placement: DrawerPlacement): Partial<Dr
     case 'left':
       return {
         m: 0,
-        width: 'auto',
-        minWidth: X_MIN_WIDTH,
+        width: dimensions?.width ?? 'auto',
+        minWidth: dimensions?.minWidth ?? X_MIN_WIDTH,
         height: '100%',
         alignSelf: 'flex-start',
         borderTopRightRadius: KleeRadius.Lg,

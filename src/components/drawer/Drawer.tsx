@@ -18,7 +18,14 @@ type SubComponents = {
   Footer: typeof DrawerFooter
 }
 
-export const Drawer: FC<DrawerProps> & SubComponents = ({ children, overlay, placement = 'right', ...props }) => {
+export const Drawer: FC<DrawerProps> & SubComponents = ({
+  children,
+  overlay,
+  minWidth,
+  width,
+  placement = 'right',
+  ...props
+}) => {
   return (
     <Modal
       scrollBehavior="inside"
@@ -26,7 +33,7 @@ export const Drawer: FC<DrawerProps> & SubComponents = ({ children, overlay, pla
         p: 0,
         ...overlay,
       }}
-      {...getPropsBasedOnPlacement(placement)}
+      {...getPropsBasedOnPlacement(placement, { minWidth, width })}
       {...getAnimationPropsBasedOnPlacement(placement)}
       {...props}
     >
