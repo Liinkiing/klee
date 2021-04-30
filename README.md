@@ -59,3 +59,14 @@ const App = () => {
   )
 }
 ```
+
+You also get for free a **great DX** thanks to TypeScript and the typings work
+that has been made in this repository. All the related color props, border radiuses, z indices
+etc... have full support for autocomplete and suggest by default the ones available on the theme.
+You can also use the exported enums if you prefer (`KleeRadius | KleeFontFamily | KleeZIndex` etc...)
+
+<p align="center">
+
+<img width="500" src="https://github.com/Liinkiing/klee/raw/master/.github/screens/autocomplete.jpg?raw=true">
+
+</p>
