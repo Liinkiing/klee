@@ -18,7 +18,7 @@ type RenderProps = (props: Context) => ReactNode
 
 export interface ModalProps
   extends Pick<DialogProps, 'hideOnClickOutside' | 'hideOnEsc' | 'preventBodyScroll'>,
-    Omit<BoxProps, keyof MotionProps>,
+    Omit<BoxProps, keyof MotionProps | 'children'>,
     MotionProps {
   readonly overlay?: Omit<Partial<BoxProps>, keyof MotionProps> & Partial<MotionProps>
   readonly hideCloseButton?: boolean
