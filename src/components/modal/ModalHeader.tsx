@@ -15,7 +15,9 @@ import { Box } from '../primitives'
 import { Heading } from '../typography'
 import { useModal } from './context'
 
-const ModalHeader: FC<FlexProps> = ({ children, ...rest }) => {
+export interface ModalHeaderProps extends FlexProps {}
+
+const ModalHeader: FC<ModalHeaderProps> = ({ children, ...rest }) => {
   const { hide, hideCloseButton } = useModal()
   return (
     <Flex as="header" p={4} pb={0} align="center" {...rest}>

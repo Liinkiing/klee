@@ -3,7 +3,9 @@ import React, { FC } from 'react'
 import { Flex } from '../layout'
 import { FlexProps } from '../layout/Flex'
 
-const ModalBody: FC<FlexProps> = ({ children, ...rest }) => {
+export interface ModalBodyProps extends FlexProps {}
+
+const ModalBody: FC<ModalBodyProps> = ({ children, ...rest }) => {
   return (
     <Flex as="main" p={4} direction="column" {...rest}>
       {children}

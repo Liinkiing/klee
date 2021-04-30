@@ -3,7 +3,9 @@ import React, { FC } from 'react'
 import { Flex } from '../layout'
 import { FlexProps } from '../layout/Flex'
 
-const ModalFooter: FC<FlexProps> = ({ children, ...rest }) => {
+export interface ModalFooterProps extends FlexProps {}
+
+const ModalFooter: FC<ModalFooterProps> = ({ children, ...rest }) => {
   return (
     <Flex as="footer" p={4} pt={0} align="center" justify="flex-end" spacing={4} {...rest}>
       {children}

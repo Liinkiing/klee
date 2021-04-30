@@ -10,6 +10,7 @@ const meta: Meta = {
   title: 'Library/Modal',
   component: Modal,
   argTypes: {
+    overlay: { table: { disable: true }, control: { disable: true } },
     disclosure: { table: { disable: true }, control: { disable: true } },
   },
   parameters: {
