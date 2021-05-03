@@ -13,6 +13,7 @@ import { Fragment } from 'react'
 import { FC, ReactNode } from 'react'
 import { Instance as TippyInstance } from 'tippy.js'
 
+import { ShowableOnCreate } from '../../@types'
 import { KleeRadius, KleeShadow, KleeZIndex, Z_INDICES } from '../../styles/theme'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
@@ -20,8 +21,9 @@ import Box, { BoxProps } from '../primitives/Box'
 import { Text } from '../typography'
 
 export interface TooltipProps
-  extends Omit<BoxProps, 'children'>,
-    Partial<Pick<TippyPropsType, 'delay' | 'showOnCreate' | 'onShow' | 'onHide' | 'placement' | 'children'>> {
+  extends ShowableOnCreate,
+    Omit<BoxProps, 'children'>,
+    Partial<Pick<TippyPropsType, 'delay' | 'onShow' | 'onHide' | 'placement' | 'children'>> {
   readonly trigger?: Array<'mouseenter' | 'focus' | 'click' | 'focusin' | 'manual'>
   readonly label: ReactNode
   readonly vibrancy?: boolean
@@ -71,12 +73,12 @@ const BLUR_AMOUNT = 20
 export const Tooltip: FC<TooltipProps> = ({
   children,
   label,
-  showOnCreate,
   onShow,
   onHide,
   truncate,
   bg,
   backgroundColor,
+  showOnCreate = false,
   vibrancy = false,
   delay = [null, null],
   trigger = ['mouseenter', 'focus'],

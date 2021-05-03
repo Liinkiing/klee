@@ -8,11 +8,14 @@ import { Modal } from '../modal'
 import Text from '../typography/Text'
 import Menu, { MenuProps } from './Menu'
 
-const meta: Meta = {
+const meta: Meta<MenuProps> = {
   title: 'Library/Menu',
   component: Menu,
   argTypes: {
     menuList: { table: { disable: true }, control: { disable: true } },
+  },
+  args: {
+    showOnCreate: true,
   },
   parameters: {
     controls: { expanded: true },

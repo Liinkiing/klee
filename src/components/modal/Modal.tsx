@@ -5,6 +5,7 @@ import * as React from 'react'
 import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } from 'react'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 
+import { ShowableOnCreate } from '../../@types'
 import useIsMobile from '../../hooks/useIsMobile'
 import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { ease, LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
@@ -17,7 +18,8 @@ import { Context, ModalContext } from './context'
 type RenderProps = (props: Context) => ReactNode
 
 export interface ModalProps
-  extends Pick<DialogProps, 'hideOnClickOutside' | 'hideOnEsc' | 'preventBodyScroll'>,
+  extends ShowableOnCreate,
+    Pick<DialogProps, 'hideOnClickOutside' | 'hideOnEsc' | 'preventBodyScroll'>,
     Omit<BoxProps, keyof MotionProps | 'children'>,
     MotionProps {
   readonly overlay?: Omit<Partial<BoxProps>, keyof MotionProps> & Partial<MotionProps>
@@ -61,10 +63,11 @@ const Modal: FC<ModalProps> & SubComponents = ({
   hideOnClickOutside = true,
   hideOnEsc = true,
   preventBodyScroll = true,
+  showOnCreate = false,
   ...props
 }) => {
   const firstMount = useRef(true)
-  const dialog = useDialogState({ animated: TRANSITION_DURATION * 1000 })
+  const dialog = useDialogState({ animated: TRANSITION_DURATION * 1000, visible: showOnCreate })
   const isMobile = useIsMobile()
   const $container = useRef()
   const $scrollBox = useRef<HTMLElement>()

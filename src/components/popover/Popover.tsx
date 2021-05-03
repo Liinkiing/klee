@@ -12,6 +12,7 @@ import { transparentize } from 'polished'
 import { cloneElement, FC, FunctionComponentElement, memo, ReactNode, useMemo } from 'react'
 import { Popover as ReakitPopover, PopoverArrow, PopoverDisclosure } from 'reakit/Popover'
 
+import { ShowableOnCreate } from '../../@types'
 import { useHoverPopoverState } from '../../hooks/useHoverPopoverState'
 import { KleeRadius, KleeShadow } from '../../styles/theme'
 import { ease } from '../../utils/motion'
@@ -25,7 +26,8 @@ import { IPopoverContext, PopoverContext } from './context'
 type RenderProps = (props: IPopoverContext) => ReactNode
 
 export type PopoverProps = Omit<BoxProps, 'children'> &
-  Partial<Pick<TippyProps, 'placement' | 'showOnCreate'>> & {
+  ShowableOnCreate &
+  Partial<Pick<TippyProps, 'placement'>> & {
     readonly ariaLabel: string
     readonly vibrancy?: boolean
     readonly hideCloseButton?: boolean

@@ -3,6 +3,7 @@ import * as React from 'react'
 import { FC, ReactElement, useMemo } from 'react'
 import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
 
+import { ShowableOnCreate } from '../../@types'
 import { KleeZIndex, Z_INDICES } from '../../styles/theme'
 import { MENU_TRANSITION_DURATION } from '../../utils/motion'
 import Box from '../primitives/Box'
@@ -17,6 +18,7 @@ import { CommonProps } from './common'
 
 export interface MenuProps
   extends CommonProps,
+    ShowableOnCreate,
     Partial<Pick<TippyProps, 'placement'>>,
     Partial<Pick<MenuInitialState, 'loop'>>,
     Partial<Pick<ReakitMenuProps, 'hideOnClickOutside'>> {
@@ -41,11 +43,12 @@ const Menu: FC<MenuProps> & SubComponents = ({
   closeOnSelect = true,
   loop = false,
   hideOnClickOutside = true,
+  showOnCreate = false,
   children,
 }) => {
   const button = React.Children.toArray(children).find((c: any) => c.type === MenuButton) as ReactElement
   const list = React.Children.toArray(children).find((c: any) => c.type === MenuList) as ReactElement
-  const menu = useMenuState({ animated: MENU_TRANSITION_DURATION * 1000, loop })
+  const menu = useMenuState({ animated: MENU_TRANSITION_DURATION * 1000, loop, visible: showOnCreate })
   const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside }), [
     menu,
     closeOnSelect,

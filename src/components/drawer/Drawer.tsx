@@ -24,11 +24,13 @@ export const Drawer: FC<DrawerProps> & SubComponents = ({
   minWidth,
   width,
   placement = 'right',
+  showOnCreate = false,
   ...props
 }) => {
   return (
     <Modal
       scrollBehavior="inside"
+      showOnCreate={showOnCreate}
       overlay={{
         p: 0,
         ...overlay,

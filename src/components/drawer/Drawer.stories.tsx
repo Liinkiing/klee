@@ -13,13 +13,16 @@ import { Heading, Text } from '../typography'
 import { KleeHeadingSize } from '../typography/Heading'
 import { Drawer, DrawerProps } from './Drawer'
 
-const meta: Meta = {
+const meta: Meta<DrawerProps> = {
   title: 'Library/Drawer',
   component: Drawer,
   argTypes: {
     overlay: { table: { disable: true }, control: { disable: true } },
     disclosure: { table: { disable: true }, control: { disable: true } },
     content: { table: { disable: true }, control: { disable: true } },
+  },
+  args: {
+    showOnCreate: true,
   },
   parameters: {
     controls: { expanded: true },

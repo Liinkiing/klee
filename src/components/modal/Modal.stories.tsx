@@ -6,12 +6,15 @@ import { Heading, Text } from '../typography'
 import Modal from './Modal'
 import { ModalProps } from './Modal'
 
-const meta: Meta = {
+const meta: Meta<ModalProps> = {
   title: 'Library/Modal',
   component: Modal,
   argTypes: {
     overlay: { table: { disable: true }, control: { disable: true } },
     disclosure: { table: { disable: true }, control: { disable: true } },
+  },
+  args: {
+    showOnCreate: true,
   },
   parameters: {
     controls: { expanded: true },
