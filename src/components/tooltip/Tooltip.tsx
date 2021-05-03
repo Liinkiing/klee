@@ -13,11 +13,11 @@ import { Fragment } from 'react'
 import { FC, ReactNode } from 'react'
 import { Instance as TippyInstance } from 'tippy.js'
 
-import { ShowableOnCreate } from '../../@types'
 import { KleeRadius, KleeShadow, KleeZIndex, Z_INDICES } from '../../styles/theme'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import Box, { BoxProps } from '../primitives/Box'
+import { ShowableOnCreate } from '../types'
 import { Text } from '../typography'
 
 export interface TooltipProps
