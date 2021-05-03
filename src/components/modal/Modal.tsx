@@ -6,6 +6,7 @@ import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } f
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 
 import { ShowableOnCreate } from '../../@types'
+import { useHasMounted } from '../../hooks/useHasMounted'
 import useIsMobile from '../../hooks/useIsMobile'
 import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { ease, LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
@@ -67,6 +68,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
   ...props
 }) => {
   const firstMount = useRef(true)
+  const hasMounted = useHasMounted()
   const dialog = useDialogState({ animated: TRANSITION_DURATION * 1000, visible: showOnCreate })
   const isMobile = useIsMobile()
   const $container = useRef()
@@ -106,6 +108,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
       }
     }
   }, [onOpen, onClose, dialog.visible])
+  const duration = showOnCreate && !hasMounted ? 0 : TRANSITION_DURATION
 
   return (
     <Provider context={context}>
@@ -135,7 +138,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
               alignItems="center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: TRANSITION_DURATION, ease }}
+              transition={{ duration, ease }}
               exit={{ opacity: 0 }}
               {...overlay}
               overflow={scrollBehavior === 'outside' ? 'auto' : undefined}
@@ -160,11 +163,15 @@ const Modal: FC<ModalProps> & SubComponents = ({
                 ref={$scrollBox}
                 initial={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  opacity: { duration: TRANSITION_DURATION, ease },
-                  y: LAYOUT_TRANSITION_SPRING,
-                  x: LAYOUT_TRANSITION_SPRING,
-                }}
+                transition={
+                  duration === 0
+                    ? { duration: 0 }
+                    : {
+                        opacity: { duration, ease },
+                        y: LAYOUT_TRANSITION_SPRING,
+                        x: LAYOUT_TRANSITION_SPRING,
+                      }
+                }
                 exit={{ opacity: 0, y: isMobile ? 20 : -20 }}
                 {...props}
               >
