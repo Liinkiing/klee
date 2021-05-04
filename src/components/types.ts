@@ -11,5 +11,5 @@ export interface ColorSchemable {
   /**
    * @default blue
    */
-  readonly colorScheme?: keyof KleeTheme['colors'] | string
+  readonly colorScheme?: keyof KleeTheme['colors']
 }

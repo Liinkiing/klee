@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
 import { useTheme } from '../../hooks/useTheme'
+import { KleeTheme } from '../../styles/theme'
 import { HStack } from '../layout'
 import { Badge, BadgeProps } from './Badge'
 
@@ -25,7 +26,9 @@ const EXCLUDED_COLORS = ['current', 'dark', 'black', 'white']
 
 export const AllColorScheme: Story<BadgeProps> = args => {
   const theme = useTheme()
-  const colors = Object.keys(theme.colors).filter(color => !EXCLUDED_COLORS.includes(color))
+  const colors = Object.keys(theme.colors).filter(color => !EXCLUDED_COLORS.includes(color)) as Array<
+    keyof KleeTheme['colors']
+  >
   return (
     <HStack wrap="wrap" gap={4}>
       {colors.map(color => (
