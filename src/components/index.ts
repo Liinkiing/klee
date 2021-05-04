@@ -19,4 +19,5 @@ export * from './conditional-wrapper'
 export * from './input'
 export * from './form'
 export * from './drawer'
+export * from './badge'
 export { Portal }
