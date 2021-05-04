@@ -29,11 +29,21 @@ The package uses **styled-system** underneath, so all the UI component extends t
 You can see all the theme values (typography, colors, spacing etc) in the [theme file](src/styles/theme/index.ts). The color palette used is from **Tailwind 2.0**, which is a great color palette!
 
 ```tsx
-import { klee, KleeProvider, Flex, Button, Text, Icon, Box } from '@liinkiing/klee'
+import { extendTheme, klee, KleeProvider, Flex, Button, Text, Icon, Box } from '@liinkiing/klee'
 import { FiAirplay } from 'react-icons/fi'
+
+const appTheme = extendTheme({
+  colors: {
+    brand: {
+      100: '#6e9c49',
+      200: '#567a3a'
+    }
+  }  
+})
+
 const App = () => {
   return (
-    <KleeProvider>
+    <KleeProvider theme={appTheme}>
       <Flex spacing={4} direction={['column', 'row']} bg="amber.300">
         <Button>Hello world</Button>
         <Button variant="danger">Hello world</Button>
@@ -42,7 +52,7 @@ const App = () => {
           <Text _hover={{ bg: 'amber.500', cursor: 'pointer' }}>Ehe te nandayo</Text>
         </Box>
         {/* You can also use the klee factory, it accept all the Box props  */}
-        <klee.main p={4} bg="red.300" transform scale={1.1}>
+        <klee.main p={4} bg="brand.100" transform scale={1.1}>
           <klee.div>
             <Text>Hello</Text>
           </klee.div>
