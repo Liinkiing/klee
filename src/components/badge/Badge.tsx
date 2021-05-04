@@ -59,3 +59,5 @@ Badge.defaultProps = {
   colorScheme: 'blue',
   variantSize: 'md',
 }
+
+Badge.displayName = 'Badge'
