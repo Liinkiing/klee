@@ -51,7 +51,7 @@ const getAlign = (align: TabsAlign): CSSProperties['justifyContent'] => {
   }
 }
 
-export const TabList: FC<TabListProps> = ({ children, ariaLabel, ...props }) => {
+export const TabList: FC<TabListProps> = ({ children, ariaLabel, sx, ...props }) => {
   const { tabs, variant, stretch, align, orientation } = useTabs()
   return (
     <AnimateSharedLayout>
@@ -70,8 +70,9 @@ export const TabList: FC<TabListProps> = ({ children, ariaLabel, ...props }) => 
                 '& .tab': {
                   flex: 1,
                 },
+                ...sx,
               }
-            : {}
+            : sx
         }
         {...props}
       >
