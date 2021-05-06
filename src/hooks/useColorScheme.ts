@@ -6,9 +6,20 @@ import { useTheme } from './useTheme'
 
 type Options = { colorScheme: string; shading?: number; fallback?: string }
 
-export const useColorScheme = ({ colorScheme, shading = 100, fallback = 'black' }: Options): string => {
+const isMultipleOptions = (options: Options | Options[]): options is Options[] => {
+  return Array.isArray(options)
+}
+
+export const useColorScheme = (options: Options | Options[]): ResponsiveValue<any> => {
   const theme = useTheme()
-  return themeGet(`colors.${colorScheme}.${shading}`, fallback)({ theme })
+  if (isMultipleOptions(options)) {
+    return options.map(({ colorScheme, fallback, shading }) =>
+      themeGet(`colors.${colorScheme}.${shading}`, fallback)({ theme }),
+    )
+  } else {
+    const { colorScheme, shading, fallback } = options
+    return themeGet(`colors.${colorScheme}.${shading}`, fallback)({ theme })
+  }
 }
 
 export const useMultipleColorScheme = <T extends Partial<Record<keyof BoxProps, Options | Options[]>>>(
@@ -21,7 +32,7 @@ export const useMultipleColorScheme = <T extends Partial<Record<keyof BoxProps, 
       const index = prop as keyof BoxProps
       const value = mapping[index]
       if (!value) continue
-      if (Array.isArray(value)) {
+      if (isMultipleOptions(value)) {
         result[index] = value.map(option =>
           themeGet(`colors.${option.colorScheme}.${option.shading}`, option.fallback)({ theme }),
         )
