@@ -59,30 +59,23 @@ export const AvatarGroup: FC<AvatarGroupProps> = ({
   }
   const computedMax = max ?? validChildren.length
   const count = validChildren.length - computedMax
+  const commonProps = {
+    size,
+    squared,
+    color: 'white',
+    border: getBorderForSize(size),
+    borderColor: 'background',
+  }
   const renderAvatarChildren = validChildren.slice(0, computedMax).map((c, i) => (
     <Box {...margins} key={i}>
-      {React.cloneElement(c as ReactElement, {
-        size,
-        squared,
-        color: 'white',
-        borderColor: 'white',
-        border: getBorderForSize(size),
-      })}
+      {React.cloneElement(c as ReactElement, commonProps)}
     </Box>
   ))
   return (
     <Flex direction={computedDirection} pr={Math.abs(getMarginForSize(size))} {...rest}>
       {renderAvatarChildren}
       {count > 0 && (
-        <Avatar
-          {...margins}
-          bg="indigo.500"
-          color="white"
-          borderColor="white"
-          border={getBorderForSize(size)}
-          size={size}
-          squared={squared}
-        >
+        <Avatar {...margins} bg="indigo.500" {...commonProps}>
           +{count}
         </Avatar>
       )}
