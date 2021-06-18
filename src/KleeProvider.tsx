@@ -5,6 +5,7 @@ import { jsx, ThemeProvider } from '@emotion/react'
 import merge from 'deepmerge'
 import { FC, useMemo } from 'react'
 import { Provider } from 'reakit/Provider'
+import invariant from 'tiny-invariant'
 
 import ColorModeProvider from './components/color-mode-provider/ColorModeProvider'
 import { AppColorScheme, useColorMode } from './components/color-mode-provider/context'
@@ -50,6 +51,10 @@ export const KleeProvider: FC<Props> = ({
   defaultColorMode = 'light',
   children,
 }) => {
+  invariant(
+    ['light', 'dark'].includes(defaultColorMode),
+    'The `defaultColorMode` must either be "light" or "dark", but you provided "' + defaultColorMode + '"',
+  )
   return (
     <Provider>
       <ColorModeProvider defaultColorMode={defaultColorMode}>
