@@ -25,6 +25,11 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
     popover: {
       background: '#28263b',
     },
+    tabs: {
+      list: {
+        borderColor: '#625e80',
+      },
+    },
   },
   light: {
     text: '#18181b',
@@ -48,6 +53,11 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
     },
     popover: {
       background: '#fff',
+    },
+    tabs: {
+      list: {
+        borderColor: colors['cool-gray'][200],
+      },
     },
   },
 }

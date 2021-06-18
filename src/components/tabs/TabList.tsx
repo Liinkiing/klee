@@ -17,8 +17,8 @@ const variants = [
       line: {
         borderBottom: KleeBorder.Sm,
         borderRight: KleeBorder.Sm,
-        borderBottomColor: 'cool-gray.200',
-        borderRightColor: 'cool-gray.200',
+        borderBottomColor: 'tabs.list.borderColor',
+        borderRightColor: 'tabs.list.borderColor',
       },
       rounded: {},
     },
