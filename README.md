@@ -31,16 +31,7 @@ You can see all the theme values (typography, colors, spacing etc) in the [theme
 ```tsx
 import { extendTheme, klee, KleeProvider, Flex, Button, Text, Icon, Box } from '@liinkiing/klee'
 import { FiAirplay } from 'react-icons/fi'
-
-const appTheme = extendTheme({
-  colors: {
-    brand: {
-      100: '#6e9c49',
-      200: '#567a3a'
-    }
-  }  
-})
-
+const appTheme = extendTheme({ colors: { brand: { 100: '#6e9c49', 200: '#567a3a' } } })
 const App = () => {
   return (
     <KleeProvider theme={appTheme}>
@@ -80,3 +71,9 @@ You can also use the exported enums if you prefer (`KleeRadius | KleeFontFamily 
 <img width="500" src="https://github.com/Liinkiing/klee/raw/master/.github/screens/autocomplete.jpg?raw=true">
 
 </p>
+
+## Dark mode
+
+Klee has a support for dark mode. Currently, it is a bit limited, as it does not support
+fancy saves user preferences in local storage / cookies nor @media (prefers-color-scheme dark), but
+has some great way to customize some internal elements, see more informations here: https://github.com/Liinkiing/klee/pull/22
