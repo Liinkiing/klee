@@ -28,6 +28,7 @@ const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme,
     return merge.all([
       theme,
       {
+        currentMode: mode,
         colors: theme.modes[mode],
       },
     ])

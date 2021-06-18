@@ -1,6 +1,7 @@
 import type { Theme } from '@emotion/react'
 import merge from 'deepmerge'
 
+import { AppColorScheme } from '../../components/color-mode-provider/context'
 import colors from '../modules/colors'
 import { MODES } from './modes'
 import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
@@ -25,6 +26,7 @@ export interface Typography {
 }
 
 export interface KleeTheme extends Typography {
+  currentMode: AppColorScheme
   breakpoints: string[]
   space: typeof SPACING
   sizes: typeof SPACING
@@ -205,6 +207,7 @@ export enum KleeZIndex {
 export type ThemeZIndicesValues = keyof typeof Z_INDICES | (string & {}) | (number & {})
 
 export const kleeTheme: Theme = {
+  currentMode: 'light',
   ...typography,
   colors,
   breakpoints: [breakpoints.tablet, breakpoints.desktop, breakpoints.wide, breakpoints.ultraWide],

@@ -148,7 +148,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
             >
               <ModalInner
                 display="flex"
-                bg="white"
+                bg="background"
                 flexDirection="column"
                 mt={['auto', 0]}
                 width={['100%', '50%']}
