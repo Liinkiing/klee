@@ -22,6 +22,9 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
     modal: {
       background: '#28263b',
     },
+    popover: {
+      background: '#28263b',
+    },
   },
   light: {
     text: '#18181b',
@@ -41,6 +44,9 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
       },
     },
     modal: {
+      background: '#fff',
+    },
+    popover: {
       background: '#fff',
     },
   },

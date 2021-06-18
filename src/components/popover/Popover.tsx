@@ -107,7 +107,7 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
     }),
     [popover, hideCloseButton],
   )
-  const computedBg = bg ?? backgroundColor ?? 'white'
+  const computedBg = bg ?? backgroundColor ?? 'popover.background'
   return (
     <Provider context={context}>
       <PopoverDisclosure {...popover} {...popoverProps} ref={disclosure.ref} {...disclosure.props}>
