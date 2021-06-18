@@ -5,6 +5,12 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
   dark: {
     text: 'whitesmoke',
     background: '#1f1d2c',
+    input: {
+      addons: {
+        background: colors['cool-gray'][300],
+        color: colors['cool-gray'][700],
+      },
+    },
     menu: {
       background: '#29263e',
       borderColor: '#625e80',
@@ -13,6 +19,12 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
   light: {
     text: '#18181b',
     background: '#fff',
+    input: {
+      addons: {
+        background: colors['cool-gray'][100],
+        color: colors['cool-gray'][600],
+      },
+    },
     menu: {
       background: '#fff',
       borderColor: colors['cool-gray'][100],

@@ -112,6 +112,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         borderColor="cool-gray.100"
         type={type}
         name={name}
+        color="black"
         ref={ref}
         id={context?.id ?? id ?? name}
         aria-describedby={rest['aria-describedby'] ?? context?.helperId}
