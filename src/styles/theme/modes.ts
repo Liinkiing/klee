@@ -42,7 +42,7 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
     },
     menu: {
       background: '#fff',
-      borderColor: colors['cool-gray'][100],
+      borderColor: colors['cool-gray'][300],
       optionGroup: {
         background: colors['cool-gray'][100],
         borderColor: colors['cool-gray'][300],
