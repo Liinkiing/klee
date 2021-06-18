@@ -91,7 +91,6 @@ WithCustomization.args = {
       backdropFilter: 'blur(3px)',
     },
   },
-  bgGradient: 'linear(to bottom, cool-gray.50, cool-gray.100)',
   disclosure: <Button>Open drawer</Button>,
 }
 
