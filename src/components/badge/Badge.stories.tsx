@@ -22,7 +22,7 @@ Default.args = {
   children: 'Hello Klee',
 }
 
-const EXCLUDED_COLORS = ['current', 'dark', 'black', 'white']
+const EXCLUDED_COLORS = ['current', 'dark', 'black', 'white', 'background', 'text', 'menu']
 
 export const AllColorScheme: Story<BadgeProps> = args => {
   const theme = useTheme()

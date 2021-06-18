@@ -38,7 +38,7 @@ const variants = [
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ children, colorScheme = 'blue', ...props }, ref) => {
   const styles = useMultipleColorScheme({
     bg: { colorScheme, shading: 100, fallback: 'transparent' },
-    color: { colorScheme, shading: 600, fallback: 'black' },
+    color: { colorScheme, shading: 600, fallback: 'text' },
   })
   return (
     <klee.span
