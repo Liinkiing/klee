@@ -70,7 +70,7 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story = () => (
-  <Grid bg="cool-gray.100" p={4} templateColumns={['1fr', '1fr 1fr 1fr']}>
+  <Grid color="black" bg="cool-gray.100" p={4} templateColumns={['1fr', '1fr 1fr 1fr']}>
     <Text p={4} bg="cool-gray.200">
       Hello
     </Text>
@@ -89,6 +89,7 @@ Default.parameters = {
 
 export const WithAutoFitFill: Story<{ mode: 'fit' | 'fill' }> = ({ mode = 'fill' }) => (
   <Grid
+    color="black"
     bg="cool-gray.100"
     p={4}
     {...(mode === 'fit' ? { autoFit: { min: '200px', max: '1fr' } } : { autoFill: { min: '200px', max: '1fr' } })}
