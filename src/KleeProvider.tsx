@@ -2,9 +2,13 @@
 
 /** @jsx jsx */
 import { jsx, ThemeProvider } from '@emotion/react'
-import { FC } from 'react'
+import merge from 'deepmerge'
+import { FC, useMemo } from 'react'
 import { Provider } from 'reakit/Provider'
+import invariant from 'tiny-invariant'
 
+import ColorModeProvider from './components/color-mode-provider/ColorModeProvider'
+import { AppColorScheme, useColorMode } from './components/color-mode-provider/context'
 import { ToastsContainer } from './components/toast/ToastContainer'
 import { CSSReset } from './styles/CSSReset'
 import { GlobalFonts } from './styles/GlobalFonts'
@@ -13,19 +17,51 @@ import { KleeTheme, kleeTheme } from './styles/theme'
 
 interface Props {
   readonly resetCSS?: boolean
+  readonly defaultColorMode?: AppColorScheme
   readonly theme?: KleeTheme
 }
 
-export const KleeProvider: FC<Props> = ({ resetCSS = true, theme = kleeTheme, children }) => {
+type InnerProps = Required<Pick<Props, 'resetCSS' | 'theme'>>
+
+const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme, children }) => {
+  const [mode] = useColorMode()
+  const appTheme = useMemo(() => {
+    return merge.all([
+      theme,
+      {
+        currentMode: mode,
+        colors: theme.modes[mode],
+      },
+    ])
+  }, [theme, mode])
+  return (
+    <ThemeProvider theme={appTheme}>
+      {resetCSS && <CSSReset />}
+      <GlobalStyles />
+      <GlobalFonts />
+      <ToastsContainer />
+      {children}
+    </ThemeProvider>
+  )
+}
+
+export const KleeProvider: FC<Props> = ({
+  resetCSS = true,
+  theme = kleeTheme,
+  defaultColorMode = 'light',
+  children,
+}) => {
+  invariant(
+    ['light', 'dark'].includes(defaultColorMode),
+    'The `defaultColorMode` must either be "light" or "dark", but you provided "' + defaultColorMode + '"',
+  )
   return (
     <Provider>
-      <ThemeProvider theme={theme}>
-        {resetCSS && <CSSReset />}
-        <GlobalStyles />
-        <GlobalFonts />
-        <ToastsContainer />
-        {children}
-      </ThemeProvider>
+      <ColorModeProvider defaultColorMode={defaultColorMode}>
+        <KleeProviderInner resetCSS={resetCSS} theme={theme}>
+          {children}
+        </KleeProviderInner>
+      </ColorModeProvider>
     </Provider>
   )
 }

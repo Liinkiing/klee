@@ -1,7 +1,9 @@
 import type { Theme } from '@emotion/react'
 import merge from 'deepmerge'
 
+import { AppColorScheme } from '../../components/color-mode-provider/context'
 import colors from '../modules/colors'
+import { MODES } from './modes'
 import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
 
 /* eslint-disable @typescript-eslint/ban-types */
@@ -24,6 +26,7 @@ export interface Typography {
 }
 
 export interface KleeTheme extends Typography {
+  currentMode: AppColorScheme
   breakpoints: string[]
   space: typeof SPACING
   sizes: typeof SPACING
@@ -38,6 +41,7 @@ export interface KleeTheme extends Typography {
   shadows: typeof SHADOWS
   borders: typeof BORDERS
   zIndices: typeof Z_INDICES
+  modes: typeof MODES
 }
 
 export const theme = <Props extends { theme: KleeTheme }>(props: Props) => props.theme
@@ -203,6 +207,7 @@ export enum KleeZIndex {
 export type ThemeZIndicesValues = keyof typeof Z_INDICES | (string & {}) | (number & {})
 
 export const kleeTheme: Theme = {
+  currentMode: 'light',
   ...typography,
   colors,
   breakpoints: [breakpoints.tablet, breakpoints.desktop, breakpoints.wide, breakpoints.ultraWide],
@@ -218,8 +223,11 @@ export const kleeTheme: Theme = {
   borders: BORDERS,
   shadows: SHADOWS,
   zIndices: Z_INDICES,
+  modes: MODES,
 }
 
 export const extendTheme = <T extends Record<any, any>>(
-  extendedTheme: T & Partial<Record<keyof KleeTheme, unknown>>,
+  extendedTheme: T &
+    Omit<Partial<Record<keyof KleeTheme, unknown>>, 'modes'> &
+    Partial<Record<'modes', Partial<typeof MODES>>>,
 ): KleeTheme & T => merge.all([kleeTheme, extendedTheme]) as KleeTheme & T

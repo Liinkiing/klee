@@ -17,7 +17,7 @@ const meta: Meta = {
 export default meta
 
 export const Default: Story<HStackProps> = () => (
-  <HStack spacing={4} p={4} bg="cool-gray.100" align="center">
+  <HStack color="black" spacing={4} p={4} bg="cool-gray.100" align="center">
     <Text>Hello</Text>
     <Text>Everybody</Text>
     <HStack spacing={4} p={4} bg="cool-gray.200" align="center">

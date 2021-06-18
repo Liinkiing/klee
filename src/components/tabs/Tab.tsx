@@ -27,7 +27,10 @@ const borderBoxVariants = ({ colorScheme, theme, variant: tabVariant }: VariantA
         left: '25%',
         width: '50%',
         height: '2px',
-        bg: themeGet(`colors.${colorScheme}.700`, 'black')({ theme }),
+        bg:
+          theme.currentMode === 'light'
+            ? themeGet(`colors.${colorScheme}.400`, 'text')({ theme })
+            : themeGet(`colors.${colorScheme}.500`, 'text')({ theme }),
       },
       rounded: {
         borderRadius: 'inherit',
@@ -36,7 +39,10 @@ const borderBoxVariants = ({ colorScheme, theme, variant: tabVariant }: VariantA
         bottom: 0,
         top: 0,
         zIndex: 0,
-        bg: themeGet(`colors.${colorScheme}.200`, 'transparent')({ theme }),
+        bg:
+          theme.currentMode === 'light'
+            ? themeGet(`colors.${colorScheme}.200`, 'transparent')({ theme })
+            : themeGet(`colors.${colorScheme}.400`, 'transparent')({ theme }),
       },
     },
   }),
@@ -58,18 +64,18 @@ const borderBoxVariants = ({ colorScheme, theme, variant: tabVariant }: VariantA
     },
   }),
 ]
-const tabVariants = ({ colorScheme, theme }: VariantArgs) =>
-  variant<{}, TabsVariant>({
-    variants: {
-      line: {
-        borderRadius: KleeRadius.None,
-      },
-      rounded: {
-        borderRadius: KleeRadius.Xxxl,
-        color: themeGet(`colors.${colorScheme}.900`, 'black')({ theme }),
-      },
+const tabVariants = variant<{}, TabsVariant>({
+  variants: {
+    line: {
+      borderRadius: KleeRadius.None,
+      color: 'text',
     },
-  })
+    rounded: {
+      borderRadius: KleeRadius.Xxxl,
+      color: 'text',
+    },
+  },
+})
 
 export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, _disabled, ...props }) => {
   const { tabs, colorScheme, variant, orientation } = useTabs()
@@ -98,6 +104,9 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, _di
       }}
       sx={{
         transition: 'box-shadow 0.2s, opacity 0.2s',
+        '&[aria-selected="false"]': {
+          color: 'text',
+        },
         '&[aria-selected="false"]:hover': {
           opacity: 0.6,
         },
@@ -118,7 +127,7 @@ export const Tab: FC<TabProps> = ({ children, _focus, sx, _hover, _selected, _di
         },
       }}
       {...{ variant }}
-      _variants={tabVariants({ colorScheme, theme })}
+      _variants={tabVariants}
       {...props}
     >
       <Box as="span" zIndex={1} position="relative">

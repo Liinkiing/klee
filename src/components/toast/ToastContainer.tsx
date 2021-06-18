@@ -40,8 +40,15 @@ const filterByPosition = ({ toasts, placement, onHide, reverse = false }: Filter
     results = results.reverse()
   }
 
-  return results.map(n => (
-    <ToastWrapper key={n.id} layout transition={LAYOUT_TRANSITION_SPRING}>
+  return results.map((n, i) => (
+    <ToastWrapper
+      style={{
+        zIndex: reverse ? results.length - i : i,
+      }}
+      key={n.id}
+      layout
+      transition={LAYOUT_TRANSITION_SPRING}
+    >
       <Toast {...n} onHide={onHide} />
     </ToastWrapper>
   ))

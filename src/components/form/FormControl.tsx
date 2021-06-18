@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react'
 
+import { useColorModeValue } from '../../hooks'
 import { KleeFontFamily, KleeFontSize, KleeFontWeight } from '../../styles/theme/typography'
 import { cleanChildren } from '../../utils/jsx'
 import { Flex, FlexProps } from '../layout'
@@ -38,7 +39,7 @@ export const FormControlHelperText: FC<FormControlHelperTextProps> = ({ ...props
     <Box
       fontFamily={KleeFontFamily.Body}
       fontSize={KleeFontSize.Sm}
-      color="cool-gray.500"
+      color={useColorModeValue('cool-gray.500', 'cool-gray.300')}
       id={context?.helperId}
       {...props}
     />

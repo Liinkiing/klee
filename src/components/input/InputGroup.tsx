@@ -18,9 +18,9 @@ type SubComponents = {
 }
 
 const COMMON_ADDON_PROPS: Partial<FlexProps> = {
-  bg: 'cool-gray.100',
+  bg: 'input.addons.background',
   align: 'center',
-  color: 'cool-gray.600',
+  color: 'input.addons.color',
 }
 
 const COMMON_ELEMENT_PROPS: Partial<FlexProps> = {

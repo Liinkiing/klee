@@ -1,5 +1,5 @@
 import { keyframes } from '@emotion/react'
-import { Keyframes } from '@emotion/serialize'
+import type { Keyframes } from '@emotion/serialize'
 
 export const blink: Keyframes = keyframes`
   from {
