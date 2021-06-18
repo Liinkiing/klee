@@ -9,7 +9,7 @@ const MenuDivider: FC<BoxProps> = ({ ...props }) => {
       as="hr"
       border="0"
       borderBottom="sm"
-      borderColor="cool-gray.200"
+      borderColor="menu.borderColor"
       width="92%"
       mx="auto"
       my={1}

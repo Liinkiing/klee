@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 import * as React from 'react'
-import { FC } from 'react'
-import { forwardRef } from 'react'
+import { FC, forwardRef } from 'react'
 import { Menu } from 'reakit/Menu'
 
+import { useShadowModeValue } from '../../hooks'
 import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { KleeFontSize } from '../../styles/theme/typography'
 import { ease, MENU_TRANSITION_DURATION } from '../../utils/motion'
@@ -53,7 +53,7 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, ariaLabel, 
       direction="column"
       minWidth="200px"
       bg="menu.background"
-      boxShadow={KleeShadow.Lg}
+      boxShadow={useShadowModeValue(KleeShadow.Lg, KleeShadow.DarkLg)}
       border={KleeBorder.Xs}
       fontSize={KleeFontSize.Sm}
       borderColor="menu.borderColor"
