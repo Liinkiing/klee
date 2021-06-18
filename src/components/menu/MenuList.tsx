@@ -9,6 +9,7 @@ import { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from '../../styles/the
 import { KleeFontSize } from '../../styles/theme/typography'
 import { ease, MENU_TRANSITION_DURATION } from '../../utils/motion'
 import Flex from '../layout/Flex'
+import { Box } from '../primitives'
 import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
 import { CommonProps } from './common'
@@ -38,35 +39,39 @@ const MenuList = forwardRef<HTMLElement, MenuListProps>(({ children, ariaLabel, 
   const label = ariaLabel ?? props['aria-label'] ?? undefined
   const labelledby = ariaLabelledby ?? props['aria-labelledby'] ?? undefined
   return (
-    <Menu
+    <MenuItems
+      style={{ outline: 'none' }}
       variants={{
         hidden: { opacity: 0, y: -10, scale: 0.9 },
         visible: { opacity: 1, y: 0, scale: 1 },
       }}
-      aria-label={label}
-      aria-labelledby={labelledby}
-      hideOnClickOutside={hideOnClickOutside}
-      {...reakitMenu}
-      style={{ outline: 'none', transformOrigin: 'top left' }}
-      as={MenuItems}
-      ref={ref}
-      direction="column"
-      minWidth="200px"
-      bg="menu.background"
-      boxShadow={useShadowModeValue(KleeShadow.Lg, KleeShadow.DarkLg)}
-      border={KleeBorder.Xs}
-      fontSize={KleeFontSize.Sm}
-      borderColor="menu.borderColor"
-      borderRadius={KleeRadius.Lg}
-      zIndex={KleeZIndex.Dropdown}
-      overflow="hidden"
-      {...props}
       initial="hidden"
       animate={reakitMenu.visible ? 'visible' : 'hidden'}
       transition={{ duration: MENU_TRANSITION_DURATION, ease }}
     >
-      {children}
-    </Menu>
+      <Menu
+        style={{ outline: 'none' }}
+        aria-label={label}
+        aria-labelledby={labelledby}
+        hideOnClickOutside={hideOnClickOutside}
+        as={Box}
+        {...reakitMenu}
+        ref={ref}
+        direction="column"
+        minWidth="200px"
+        bg="menu.background"
+        boxShadow={useShadowModeValue(KleeShadow.Lg, KleeShadow.DarkLg)}
+        border={KleeBorder.Xs}
+        fontSize={KleeFontSize.Sm}
+        borderColor="menu.borderColor"
+        borderRadius={KleeRadius.Lg}
+        zIndex={KleeZIndex.Dropdown}
+        overflow="hidden"
+        {...props}
+      >
+        {children}
+      </Menu>
+    </MenuItems>
   )
 }) as FC<MenuListProps>
 

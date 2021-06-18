@@ -19,7 +19,7 @@ import { CommonProps } from './common'
 export interface MenuProps
   extends CommonProps,
     ShowableOnCreate,
-    Partial<Pick<TippyProps, 'placement'>>,
+    Partial<Pick<TippyProps, 'placement' | 'offset'>>,
     Partial<Pick<MenuInitialState, 'loop'>>,
     Partial<Pick<ReakitMenuProps, 'hideOnClickOutside'>> {
   /**
@@ -40,6 +40,7 @@ type SubComponents = {
 
 const Menu: FC<MenuProps> & SubComponents = ({
   placement = 'bottom-start',
+  offset = [0, 10],
   closeOnSelect = true,
   loop = false,
   hideOnClickOutside = true,
@@ -49,16 +50,17 @@ const Menu: FC<MenuProps> & SubComponents = ({
   const button = React.Children.toArray(children).find((c: any) => c.type === MenuButton) as ReactElement
   const list = React.Children.toArray(children).find((c: any) => c.type === MenuList) as ReactElement
   const menu = useMenuState({ animated: MENU_TRANSITION_DURATION * 1000, loop, visible: showOnCreate })
-  const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside }), [
+  const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside, placement }), [
     menu,
     closeOnSelect,
     hideOnClickOutside,
+    placement,
   ])
-
   return (
     <MenuContext.Provider value={context}>
       <Box position="relative" display="inline-block">
         <Tippy
+          offset={offset}
           zIndex={Z_INDICES[KleeZIndex.Dropdown]}
           placement={placement}
           render={attrs => (list ? React.cloneElement(list, attrs) : null)}

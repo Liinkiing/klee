@@ -1,8 +1,10 @@
+import { TippyProps } from '@tippyjs/react/headless'
 import * as React from 'react'
 import type { MenuStateReturn } from 'reakit/Menu'
 
 export interface Context {
   readonly reakitMenu: MenuStateReturn
+  readonly placement: TippyProps['placement']
   readonly hideOnClickOutside: boolean
   readonly closeOnSelect: boolean
 }
