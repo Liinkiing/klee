@@ -43,15 +43,15 @@ const MenuOptionGroup: FC<Props> = ({ children, title, value, onChange, type, ..
         {title && (
           <Text
             className="menu__option__group--title"
-            color="cool-gray.900"
+            color="text"
             fontWeight={KleeFontWeight.Bold}
             fontSize={KleeFontSize.Xs}
             px={3}
             py={2}
-            bg="cool-gray.100"
+            bg="menu.optionGroup.background"
             borderBottom={KleeBorder.Xs}
             borderTop={KleeBorder.Xs}
-            borderColor="cool-gray.300"
+            borderColor="menu.optionGroup.borderColor"
             uppercase
           >
             {title}

@@ -14,6 +14,10 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
     menu: {
       background: '#29263e',
       borderColor: '#625e80',
+      optionGroup: {
+        background: '#4e4a6c',
+        borderColor: '#28263b',
+      },
     },
     modal: {
       background: '#28263b',
@@ -31,6 +35,10 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
     menu: {
       background: '#fff',
       borderColor: colors['cool-gray'][100],
+      optionGroup: {
+        background: colors['cool-gray'][100],
+        borderColor: colors['cool-gray'][300],
+      },
     },
     modal: {
       background: '#fff',
