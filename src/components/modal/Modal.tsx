@@ -5,6 +5,7 @@ import * as React from 'react'
 import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } from 'react'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 
+import { useColorModeValue } from '../../hooks'
 import useIsMobile from '../../hooks/useIsMobile'
 import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { ease, LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
@@ -81,6 +82,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
     }),
     [dialog, hideCloseButton],
   )
+  const overlayBackground = useColorModeValue('rgba(0,0,0,0.5)', 'rgba(255,255,255,0.1)')
   useEffect(() => {
     const scrollContainer = $scrollBox.current
     if (dialog.visible) {
@@ -128,7 +130,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
               bottom={0}
               top={0}
               p={[0, 4]}
-              bg={'rgba(0,0,0,0.5)'}
+              bg={overlayBackground}
               zIndex={KleeZIndex.Modal}
               display="flex"
               flexDirection="column"
@@ -148,7 +150,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
             >
               <ModalInner
                 display="flex"
-                bg="background"
+                bg="modal.background"
                 flexDirection="column"
                 mt={['auto', 0]}
                 width={['100%', '50%']}

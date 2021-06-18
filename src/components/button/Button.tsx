@@ -31,7 +31,7 @@ const generateVariant = (color: keyof typeof colors | 'semi-transparent', theme:
         bg: `rgba(0, 0, 0, 0.06)`,
       },
       '&:focus': {
-        boxShadow: theme.currentMode === 'light' ? `0 0 0 2px rgba(0,0,0,0.10)` : `0 0 0 2px rgba(255,255,255,0.20)`,
+        boxShadow: theme.currentMode === 'light' ? `0 0 0 2px rgba(0,0,0,0.10)` : `0 0 0 2px rgba(255,255,255,0.5)`,
       },
       '&:disabled': {
         bg: `transparent`,
@@ -41,9 +41,9 @@ const generateVariant = (color: keyof typeof colors | 'semi-transparent', theme:
   }
   if (color === 'semi-transparent') {
     return {
-      bg: theme.currentMode === 'light' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.4)',
+      bg: theme.currentMode === 'light' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.1)',
       '&:hover': {
-        bg: theme.currentMode === 'light' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.2)',
+        bg: theme.currentMode === 'light' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.05)',
       },
       '&:focus': {
         boxShadow: theme.currentMode === 'light' ? '0 0 0 2px rgba(0,0,0,0.2)' : '0 0 0 2px rgba(255,255,255,0.5)',
