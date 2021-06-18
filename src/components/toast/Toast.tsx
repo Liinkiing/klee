@@ -38,44 +38,48 @@ export interface ToastProps extends IToast {
 
 const MIN_TIMEOUT = 1500
 
-const ToastInner = styled(motion(Box))`
-  pointer-events: all;
-  position: relative;
-
-  & > p {
-    margin: 0;
-  }
-
-  & a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  ${styledVariant<{}, Variant>({
-    variants: {
-      danger: {
-        color: 'red.900',
-        bg: 'red.50',
-        boxShadow: `0 -5px 0 ${colors.red[100]}, ${SHADOWS.lg}`,
-      },
-      info: {
-        color: 'blue.900',
-        bg: 'blue.50',
-        boxShadow: `0 -5px 0 ${colors.blue[100]}, ${SHADOWS.lg}`,
-      },
-      success: {
-        color: 'green.900',
-        bg: 'green.50',
-        boxShadow: `0 -5px 0 ${colors.green[100]}, ${SHADOWS.lg}`,
-      },
-      warning: {
-        color: 'amber.900',
-        bg: 'amber.50',
-        boxShadow: `0 -5px 0 ${colors.amber[100]}, ${SHADOWS.lg}`,
-      },
+const ToastInner = styled(motion(Box))(
+  {
+    pointerEvents: 'all',
+    position: 'relative',
+    '& > p': {
+      margin: 0,
     },
-  })};
-`
+    '& a': {
+      color: 'inherit',
+      textDecoration: 'underline',
+    },
+  },
+  ({ theme }) =>
+    styledVariant<{}, Variant>({
+      variants: {
+        danger: {
+          color: 'red.900',
+          bg: 'red.50',
+          boxShadow: `0 -5px 0 ${colors.red[100]}, ${theme.currentMode === 'light' ? SHADOWS.lg : SHADOWS['dark-lg']}`,
+        },
+        info: {
+          color: 'blue.900',
+          bg: 'blue.50',
+          boxShadow: `0 -5px 0 ${colors.blue[100]}, ${theme.currentMode === 'light' ? SHADOWS.lg : SHADOWS['dark-lg']}`,
+        },
+        success: {
+          color: 'green.900',
+          bg: 'green.50',
+          boxShadow: `0 -5px 0 ${colors.green[100]}, ${
+            theme.currentMode === 'light' ? SHADOWS.lg : SHADOWS['dark-lg']
+          }`,
+        },
+        warning: {
+          color: 'amber.900',
+          bg: 'amber.50',
+          boxShadow: `0 -5px 0 ${colors.amber[100]}, ${
+            theme.currentMode === 'light' ? SHADOWS.lg : SHADOWS['dark-lg']
+          }`,
+        },
+      },
+    }),
+)
 
 const getIcon = (variant: IToast['variant'], props?: IconProps): ReactNode => {
   const common: IconProps = {
