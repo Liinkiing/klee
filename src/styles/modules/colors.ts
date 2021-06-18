@@ -3,7 +3,8 @@ const colors = {
   transparent: 'transparent',
   current: 'currentColor',
   dark: '#30363D',
-
+  text: '#18181b',
+  background: '#fff',
   black: '#000',
   white: '#fff',
 
@@ -538,7 +539,7 @@ type NestedThemeColorsValues =
   | 'blue-gray.800'
   | 'blue-gray.900'
 
-type RootThemeColorsValues = 'transparent' | 'current' | 'dark' | 'black' | 'white'
+type RootThemeColorsValues = 'transparent' | 'current' | 'dark' | 'black' | 'white' | 'text' | 'background'
 
 export type ThemeColorsValues = NestedThemeColorsValues | RootThemeColorsValues | (string & {})
 

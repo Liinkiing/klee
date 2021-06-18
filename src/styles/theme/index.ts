@@ -2,6 +2,7 @@ import type { Theme } from '@emotion/react'
 import merge from 'deepmerge'
 
 import colors from '../modules/colors'
+import { MODES } from './modes'
 import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, LINE_HEIGHTS } from './typography'
 
 /* eslint-disable @typescript-eslint/ban-types */
@@ -38,6 +39,7 @@ export interface KleeTheme extends Typography {
   shadows: typeof SHADOWS
   borders: typeof BORDERS
   zIndices: typeof Z_INDICES
+  modes: typeof MODES
 }
 
 export const theme = <Props extends { theme: KleeTheme }>(props: Props) => props.theme
@@ -218,8 +220,11 @@ export const kleeTheme: Theme = {
   borders: BORDERS,
   shadows: SHADOWS,
   zIndices: Z_INDICES,
+  modes: MODES,
 }
 
 export const extendTheme = <T extends Record<any, any>>(
-  extendedTheme: T & Partial<Record<keyof KleeTheme, unknown>>,
+  extendedTheme: T &
+    Omit<Partial<Record<keyof KleeTheme, unknown>>, 'modes'> &
+    Partial<Record<'modes', Partial<typeof MODES>>>,
 ): KleeTheme & T => merge.all([kleeTheme, extendedTheme]) as KleeTheme & T

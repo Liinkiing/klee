@@ -20,4 +20,5 @@ export * from './input'
 export * from './form'
 export * from './drawer'
 export * from './badge'
+export * from './color-mode-provider'
 export { Portal }
