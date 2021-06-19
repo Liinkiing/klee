@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/react'
 import React from 'react'
 
-import { useTheme } from '../../hooks/useTheme'
 import { KleeTheme } from '../../styles/theme'
 import { HStack } from '../layout'
 import { Badge, BadgeProps } from './Badge'
@@ -22,23 +21,40 @@ Default.args = {
   children: 'Hello Klee',
 }
 
-const EXCLUDED_COLORS = ['current', 'dark', 'black', 'white', 'background', 'text', 'menu']
+const colors: Array<keyof KleeTheme['colors']> = [
+  'rose',
+  'pink',
+  'fuchsia',
+  'purple',
+  'violet',
+  'indigo',
+  'blue',
+  'cyan',
+  'teal',
+  'emerald',
+  'green',
+  'lime',
+  'yellow',
+  'amber',
+  'orange',
+  'red',
+  'gray',
+  'light-blue',
+  'warm-gray',
+  'true-gray',
+  'cool-gray',
+  'blue-gray',
+]
 
-export const AllColorScheme: Story<BadgeProps> = args => {
-  const theme = useTheme()
-  const colors = Object.keys(theme.colors).filter(color => !EXCLUDED_COLORS.includes(color)) as Array<
-    keyof KleeTheme['colors']
-  >
-  return (
-    <HStack wrap="wrap" gap={4}>
-      {colors.map(color => (
-        <Badge key={color} {...args} colorScheme={color}>
-          {color}
-        </Badge>
-      ))}
-    </HStack>
-  )
-}
+export const AllColorScheme: Story<BadgeProps> = args => (
+  <HStack wrap="wrap" gap={4}>
+    {colors.map(color => (
+      <Badge key={color} {...args} colorScheme={color}>
+        {color}
+      </Badge>
+    ))}
+  </HStack>
+)
 
 AllColorScheme.argTypes = {
   colorScheme: { table: { disable: true }, control: { disable: true } },
