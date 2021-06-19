@@ -28,6 +28,7 @@ const getChildren = (children: ReactNode) => {
     marginLeft: 0,
     marginTop: 0,
   }
+  if (!children) return null
   if (typeof children === 'string') {
     return children
   }
