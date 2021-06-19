@@ -25,7 +25,7 @@ interface Props {
 type InnerProps = Required<Pick<Props, 'resetCSS' | 'theme'>>
 
 const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme, children }) => {
-  const [mode] = useColorMode()
+  const { mode } = useColorMode()
   const appTheme = useMemo(() => {
     return merge.all([
       theme,
