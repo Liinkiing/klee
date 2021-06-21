@@ -1,8 +1,4 @@
-/** @jsxRuntime classic */
-
-/** @jsx jsx */
-import { jsx } from '@emotion/react'
-import css from '@styled-system/css'
+import React from 'react'
 import { FC, forwardRef } from 'react'
 
 import Box, { BoxProps } from '../primitives/Box'
@@ -22,10 +18,10 @@ export const List = forwardRef<HTMLElement, ListProps>(
       <Box
         ref={ref}
         as="ul"
-        css={css({
+        sx={{
           listStyle: 'none',
           listStyleType: 'none',
-        })}
+        }}
         display="flex"
         flexDirection={direction ?? flexDirection}
         {...props}
