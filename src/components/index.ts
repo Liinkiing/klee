@@ -21,4 +21,5 @@ export * from './form'
 export * from './drawer'
 export * from './badge'
 export * from './color-mode-provider'
+export * from './spinner'
 export { Portal }
