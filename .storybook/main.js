@@ -56,6 +56,9 @@ const EXLUDED_DOCGEN_PROPS = [
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   webpackFinal: async config => {
     return {
       ...config,
