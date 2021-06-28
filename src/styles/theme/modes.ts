@@ -11,6 +11,9 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
         color: colors['cool-gray'][700],
       },
     },
+    drawer: {
+      borderColor: '#44415a',
+    },
     menu: {
       background: '#29263e',
       borderColor: '#625e80',
@@ -39,6 +42,9 @@ export const MODES: Record<AppColorScheme, Partial<Record<keyof typeof colors | 
         background: colors['cool-gray'][100],
         color: colors['cool-gray'][600],
       },
+    },
+    drawer: {
+      borderColor: colors['cool-gray'][100],
     },
     menu: {
       background: '#fff',

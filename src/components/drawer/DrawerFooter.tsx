@@ -7,7 +7,7 @@ import { ModalFooterProps } from '../modal/ModalFooter'
 export interface DrawerFooterProps extends ModalFooterProps {}
 
 export const DrawerFooter: FC<DrawerFooterProps> = ({ ...props }) => (
-  <ModalFooter pt={4} borderTop={KleeBorder.Sm} borderColor="menu.borderColor" {...props} />
+  <ModalFooter pt={4} borderTop={KleeBorder.Sm} borderColor="drawer.borderColor" {...props} />
 )
 
 DrawerFooter.displayName = 'Drawer.Body'
