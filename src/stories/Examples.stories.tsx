@@ -10,6 +10,7 @@ import Popover from '../components/popover/Popover'
 import Box from '../components/primitives/Box'
 import Text from '../components/typography/Text'
 import { KleeRadius, KleeShadow } from '../styles/theme'
+import { useColorModeValue } from '../hooks'
 
 const meta: Meta = {
   title: 'Examples/Layouts',
@@ -34,14 +35,14 @@ const AppContainer = styled(Grid)(
 )
 
 const NavItem = styled(List.Item)(
-  css({ '&:hover': { cursor: 'pointer', bg: 'cool-gray.200' }, p: [0, 2], gap: 2, borderRadius: KleeRadius.Lg }),
+  css(theme => ({ '&:hover': { cursor: 'pointer', bg: theme.currentMode === 'light' ? 'cool-gray.200' : 'cool-gray.600'}, p: [0, 2], gap: 2, borderRadius: KleeRadius.Lg })),
 )
 
 type Character = { name: string; avatarUrl: string; elementUrl: string; description: string }
 
 export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters }) => (
   <AppContainer
-    bg="cool-gray.100"
+    bg={useColorModeValue('cool-gray.100', 'cool-gray.700')}
     overflow="hidden"
     height={['100vh', 'auto']}
     gridTemplateColumns={['1fr', '300px 1fr']}
@@ -49,7 +50,7 @@ export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters
   >
     <Flex
       p={6}
-      bg="cool-gray.100"
+      bg={useColorModeValue('cool-gray.100', 'cool-gray.700')}
       spacing={4}
       overflowX={['overlay' as any, 'auto']}
       justify={['center', 'flex-start']}
@@ -85,7 +86,7 @@ export const PageLayout: Story<{ characters: Array<Character> }> = ({ characters
       borderTopLeftRadius={[0, KleeRadius.Xxl]}
       borderBottomLeftRadius={[0, KleeRadius.Xxl]}
       boxShadow={['none', KleeShadow.Lg]}
-      bg="cool-gray.50"
+      bg={useColorModeValue('cool-gray.50', 'cool-gray.600')}
       overflowY="auto"
       direction="column"
       p={6}
