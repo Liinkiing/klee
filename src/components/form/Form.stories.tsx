@@ -2,9 +2,9 @@ import { Meta } from '@storybook/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { FiGlobe, FiMail, FiUser } from 'react-icons/fi'
-import { object, string } from 'zod'
+import { z } from 'zod'
 
-import { useZodForm } from '../../hooks/useZodForm'
+import { useZodForm } from '../../hooks'
 import { WEBSITE_REGEX } from '../../utils/regex'
 import { Icon } from '../icon'
 import { Input, InputGroup } from '../input'
@@ -23,10 +23,10 @@ const meta: Meta = {
 
 export default meta
 
-const schema = object({
-  username: string().min(6),
-  email: string().email('The email you entered is invalid'),
-  website: string().regex(WEBSITE_REGEX, 'Please enter a correct url'),
+const schema = z.object({
+  username: z.string().min(6),
+  email: z.string().email('The email you entered is invalid'),
+  website: z.string().regex(WEBSITE_REGEX, 'Please enter a correct url'),
 })
 
 export const Default = () => {
