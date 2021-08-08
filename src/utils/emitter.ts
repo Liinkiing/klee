@@ -1,7 +1,13 @@
 import mitt from 'mitt'
 
+import { ToastProps } from '../components/toast/Toast'
+
 export enum UIEvents {
   ToastShow = 'toast-show',
 }
 
-export const Emitter = mitt()
+type Events = {
+  [UIEvents.ToastShow]: ToastProps
+}
+
+export const Emitter = mitt<Events>()
