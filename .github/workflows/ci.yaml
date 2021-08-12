@@ -1,8 +1,5 @@
 name: CI
 on: [push]
-concurrency:
-  group: ${{ github.head_ref }}
-  cancel-in-progress: true
 jobs:
   install-cache:
     runs-on: ubuntu-latest
