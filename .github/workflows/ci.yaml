@@ -30,6 +30,9 @@ jobs:
           yarn install --force --non-interactive --ignore-scripts
   chromatic-deployment:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['14.x']
     needs: install-cache
     steps:
       - name: Checkout commit
