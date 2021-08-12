@@ -28,6 +28,22 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn install --force --non-interactive --ignore-scripts
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    needs: install-cache
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
   lint:
     runs-on: ubuntu-latest
     strategy:
