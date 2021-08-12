@@ -9,8 +9,8 @@ import Grid from '../components/layout/Grid'
 import Popover from '../components/popover/Popover'
 import Box from '../components/primitives/Box'
 import Text from '../components/typography/Text'
-import { KleeRadius, KleeShadow } from '../styles/theme'
 import { useColorModeValue } from '../hooks'
+import { KleeRadius, KleeShadow } from '../styles/theme'
 
 const meta: Meta = {
   title: 'Examples/Layouts',
@@ -35,7 +35,12 @@ const AppContainer = styled(Grid)(
 )
 
 const NavItem = styled(List.Item)(
-  css(theme => ({ '&:hover': { cursor: 'pointer', bg: theme.currentMode === 'light' ? 'cool-gray.200' : 'cool-gray.600'}, p: [0, 2], gap: 2, borderRadius: KleeRadius.Lg })),
+  css(theme => ({
+    '&:hover': { cursor: 'pointer', bg: theme.currentMode === 'light' ? 'cool-gray.200' : 'cool-gray.600' },
+    p: [0, 2],
+    gap: 2,
+    borderRadius: KleeRadius.Lg,
+  })),
 )
 
 type Character = { name: string; avatarUrl: string; elementUrl: string; description: string }
