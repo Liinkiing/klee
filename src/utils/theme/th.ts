@@ -32,8 +32,8 @@ export const th = {
   zIndex<T extends keyof typeof Z_INDICES>(value: T): typeof Z_INDICES[T] {
     return Z_INDICES[value]
   },
-  color(path: ThemeColorsValues): string {
-    return get(colors, path)
+  color(path: ThemeColorsValues, fallback?: string): string {
+    return get(colors, path) ?? fallback
   },
   space<T extends keyof typeof SPACING>(value: T): typeof SPACING[T] {
     return SPACING[value]

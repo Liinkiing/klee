@@ -5,6 +5,9 @@ describe('utils/theme/th', () => {
     it('should return the correct value', () => {
       expect(th.color('amber.100')).toBe('#fef3c7')
     })
+    it('should return the fallback when value not found', () => {
+      expect(th.color('not.found', '#000')).toBe('#000')
+    })
   })
   describe('border', () => {
     it('should return the correct value', () => {
