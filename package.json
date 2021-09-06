@@ -93,7 +93,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "chromatic": "^5.9.2",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "framer-motion": "^4.1.17",
     "husky": "^7.0.1",
     "np": "^7.5.0",
