@@ -1,4 +1,4 @@
-import { AnimateSharedLayout } from 'framer-motion'
+import { LayoutGroup } from 'framer-motion'
 import React, { CSSProperties, FC } from 'react'
 import { TabList as BaseTabList } from 'reakit/Tab'
 import { variant } from 'styled-system'
@@ -54,7 +54,7 @@ const getAlign = (align: TabsAlign): CSSProperties['justifyContent'] => {
 export const TabList: FC<TabListProps> = ({ children, ariaLabel, sx, ...props }) => {
   const { tabs, variant, stretch, align, orientation } = useTabs()
   return (
-    <AnimateSharedLayout>
+    <LayoutGroup>
       <BaseTabList
         aria-label={ariaLabel}
         as={Box}
@@ -78,7 +78,7 @@ export const TabList: FC<TabListProps> = ({ children, ariaLabel, sx, ...props })
       >
         {children}
       </BaseTabList>
-    </AnimateSharedLayout>
+    </LayoutGroup>
   )
 }
 
