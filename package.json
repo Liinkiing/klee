@@ -43,7 +43,8 @@
     "zod": "^3.0.0"
   },
   "resolutions": {
-    "typescript": "4.4.3"
+    "typescript": "4.4.4",
+    "eslint": "7.32.0"
   },
   "lint-staged": {
     "*.md": [
@@ -70,11 +71,11 @@
     }
   ],
   "devDependencies": {
-    "@babel/core": "^7.15.8",
+    "@babel/core": "^7.16.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@hookform/resolvers": "^2.5.2",
-    "@size-limit/preset-small-lib": "^6.0.3",
+    "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.3.12",
@@ -93,7 +94,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "chromatic": "^6.0.5",
-    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "framer-motion": "^5.0.0",
     "husky": "^7.0.4",
     "np": "^7.5.0",
@@ -102,13 +103,13 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.8.8",
     "react-icons": "^4.2.0",
-    "size-limit": "^6.0.3",
+    "size-limit": "^6.0.4",
     "storybook-dark-mode": "^1.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "type-fest": "^2.5.2",
     "typescript": "^4.4.4",
-    "webpack": "^5.60.0",
+    "webpack": "^5.61.0",
     "zod": "^3.7.1"
   },
   "dependencies": {
@@ -117,7 +118,7 @@
     "@liinkiing/react-hooks": "^1.10.3",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
-    "@tippyjs/react": "^4.2.5",
+    "@tippyjs/react": "^4.2.6",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
@@ -128,7 +129,8 @@
     "body-scroll-lock": "^3.1.5",
     "color-hash-ts": "^0.0.7",
     "deepmerge": "^4.2.2",
-    "font-color-contrast": "^1.1.1",
+    "eslint": "7.32.0",
+    "font-color-contrast": "^9.0.2",
     "lint-staged": "^11.2.6",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
@@ -140,7 +142,7 @@
     "react-no-ssr": "^1.1.0",
     "reakit": "^1.3.10",
     "styled-system": "^5.1.5",
-    "tiny-invariant": "^1.1.0",
+    "tiny-invariant": "^1.2.0",
     "tiny-warning": "^1.0.3"
   }
 }
