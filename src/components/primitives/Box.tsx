@@ -84,6 +84,7 @@ type AppTypographyProps = Omit<
 >
 
 type AppCustomStyledProps = {
+  inset?: AppSizeProps['size']
   minSize?: AppSizeProps['size']
   maxSize?: AppSizeProps['size']
   backgroundGradient?: BackgroundImageProps['backgroundImage']
@@ -336,7 +337,7 @@ export type PolymorphicComponentProps<E extends ElementType, P> = P & Polymorphi
 
 const defaultElement = 'div'
 
-const ALLOWED_PROPS = ['rotate', 'transform', 'scale']
+const ALLOWED_PROPS = ['rotate', 'transform', 'scale', 'inset']
 
 export const Box = styled('div', {
   shouldForwardProp: propName => {
@@ -400,6 +401,10 @@ export const Box = styled('div', {
       },
       gap: {
         properties: ['gap'],
+        scale: 'sizes',
+      },
+      inset: {
+        properties: ['left', 'right', 'top', 'bottom'],
         scale: 'sizes',
       },
       scale: {
