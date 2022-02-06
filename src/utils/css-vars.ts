@@ -27,7 +27,7 @@ const transformValues = [
   `skewY(${cssVar(CssVars.SkewY)})`,
 ]
 const transformGpuValues = [
-  `translate3d(${cssVar(CssVars.TranslateX)}, ${cssVar(CssVars.TranslateX)}, 0)`,
+  `translate3d(${cssVar(CssVars.TranslateX)}, ${cssVar(CssVars.TranslateY)}, 0)`,
   `rotate(${cssVar(CssVars.Rotate)})`,
   `scaleX(${cssVar(CssVars.ScaleX)})`,
   `scaleY(${cssVar(CssVars.ScaleY)})`,
