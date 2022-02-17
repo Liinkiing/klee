@@ -311,6 +311,8 @@ interface CustomBoxProps {
 type BoxCssStateProps = {
   sx?: SystemStyleObject
   _variants?: Array<typeof variant> | typeof variant
+  _dark?: SystemStyleObject
+  _light?: SystemStyleObject
   _hover?: SystemStyleObject
   _selected?: SystemStyleObject
   _active?: SystemStyleObject
@@ -349,8 +351,10 @@ export const Box = styled('div', {
     textTransform: props.uppercase ? 'uppercase' : undefined,
     ...bgClipTransform(props.bgClip ?? props.backgroundClip),
   }),
-  ({
+  props => ({
     sx,
+    _dark,
+    _light,
     _hover,
     _active,
     _focus,
@@ -369,6 +373,8 @@ export const Box = styled('div', {
                 transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
               }
             : {}),
+          ...(_dark && props.theme.currentMode === 'dark' ? { ..._dark } : {}),
+          ...(_light && props.theme.currentMode === 'light' ? { ..._light } : {}),
           ...(_hover ? { '&:hover': _hover } : {}),
           ...(_active ? { '&:active': _active } : {}),
           ...(_selected ? { '&[aria-selected="true"]': _selected } : {}),
