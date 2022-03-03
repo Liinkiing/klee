@@ -130,7 +130,7 @@
     "color-hash-ts": "^0.0.7",
     "deepmerge": "^4.2.2",
     "eslint": "7.32.0",
-    "font-color-contrast": "^9.0.2",
+    "font-color-contrast": "^11.1.0",
     "lint-staged": "^11.2.6",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",

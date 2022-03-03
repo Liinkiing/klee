@@ -8376,10 +8376,10 @@ focus-lock@^0.9.1:
   dependencies:
     tslib "^2.0.3"
 
-font-color-contrast@^9.0.2:
-  version "9.0.2"
-  resolved "https://registry.yarnpkg.com/font-color-contrast/-/font-color-contrast-9.0.2.tgz#ecfa0ceb892d07685fe529b50dd6799171cde689"
-  integrity sha512-lrHCEgOiz1HhbAOauKBWNtekg8gBZDHAlCRyPceXEn3SuF6BMeA4Pc3enKo3SG5Xrc0Xc7pmXtmYgkspubBqOQ==
+font-color-contrast@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/font-color-contrast/-/font-color-contrast-11.1.0.tgz#f147720c1fd6e5e43be7aea86d247b1cdc46508b"
+  integrity sha512-PxpFaesCSsDwaciw7MF6B2thUkH7skqZlz4BzUnvapR6+Es2877q7ru/tqfsITuaraPz+TGfsOfdtU4D0qjqEw==
 
 for-in@^1.0.2:
   version "1.0.2"
