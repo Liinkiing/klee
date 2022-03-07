@@ -1,4 +1,5 @@
 import { themeGet } from '@styled-system/theme-get'
+import get from 'lodash/get'
 import { Scale } from 'styled-system'
 
 const globalSet = new Set(['none', '-moz-initial', 'inherit', 'initial', 'revert', 'unset'])
@@ -38,6 +39,8 @@ export const translateTransform = (value: string | number | null | undefined, sc
 // Again, check ChakraUI, a great library!
 export const bgGradientTransform = (value: string | null | undefined, colors?: Scale) => {
   if (value == null || globalSet.has(value)) return value
+  const themeColor = get(colors, value)
+  if (themeColor) return themeColor
   const regex = /(?<type>^[a-z-A-Z]+)\((?<values>(.*))\)/g
   const { type, values } = regex.exec(value)?.groups ?? {}
   if (!type || !values) return value
