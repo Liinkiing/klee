@@ -317,6 +317,7 @@ type BoxCssStateProps = {
   _selected?: SystemStyleObject
   _active?: SystemStyleObject
   _focus?: SystemStyleObject
+  _focusVisible?: SystemStyleObject
   _disabled?: SystemStyleObject
   _invalid?: SystemStyleObject
 }
@@ -358,6 +359,7 @@ export const Box = styled('div', {
     _hover,
     _active,
     _focus,
+    _focusVisible,
     _disabled,
     _selected,
     _invalid,
@@ -386,6 +388,14 @@ export const Box = styled('div', {
               ])
             : _focus
             ? { '&:focus': _focus }
+            : {}),
+          ...(disableFocusStyles
+            ? merge.all([
+                _focusVisible ? { '&:focus-visible': _focusVisible } : {},
+                { '&:focus-visible': { outline: 'none !important', boxShadow: 'none !important' } },
+              ])
+            : _focusVisible
+            ? { '&:focus-visible': _focusVisible }
             : {}),
           ...(_disabled ? { '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled } : {}),
         },
