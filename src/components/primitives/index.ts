@@ -1,4 +1,4 @@
 export { default as Box } from './Box'
 
-export type { BoxProps, PolymorphicBox, PolymorphicComponent, BoxOwnProps, BoxPropsOf } from './Box'
-export { klee } from './utils'
+export type { BoxProps, PolymorphicBox, PolymorphicComponent, BoxOwnProps, BoxPropsOf, MotionBoxPropsOf } from './Box'
+export { klee, kmotion } from './utils'

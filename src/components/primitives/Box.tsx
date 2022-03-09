@@ -4,6 +4,7 @@ import css, { SystemStyleObject } from '@styled-system/css'
 import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import merge from 'deepmerge'
+import { MotionProps } from 'framer-motion'
 import type { ElementType, HTMLAttributes, RefAttributes } from 'react'
 import * as React from 'react'
 import {
@@ -329,6 +330,13 @@ export type BoxPropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementC
   keyof Omit<PropsOf<C>, 'css'>
 > &
   Omit<PropsOf<C>, 'css'>
+
+export type MotionBoxPropsOf<C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>> = Omit<
+  BoxProps,
+  keyof Omit<PropsOf<C>, 'css'> | keyof MotionProps
+> &
+  Omit<PropsOf<C>, 'css'> &
+  MotionProps
 
 export interface BoxOwnProps<E extends ElementType = ElementType> extends BoxProps {
   as?: E

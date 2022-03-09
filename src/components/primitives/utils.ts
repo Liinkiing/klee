@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 
-import { Box, BoxPropsOf } from './Box'
+import { Box, BoxPropsOf, MotionBoxPropsOf } from './Box'
 
 export const domElements = [
   'a',
@@ -129,6 +130,68 @@ type Components = {
   ul: FC<BoxPropsOf<'ul'>>
 }
 
+type MotionComponents = {
+  a: FC<MotionBoxPropsOf<'a'>>
+  b: FC<MotionBoxPropsOf<'b'>>
+  article: FC<MotionBoxPropsOf<'article'>>
+  aside: FC<MotionBoxPropsOf<'aside'>>
+  blockquote: FC<MotionBoxPropsOf<'blockquote'>>
+  button: FC<MotionBoxPropsOf<'button'>>
+  caption: FC<MotionBoxPropsOf<'caption'>>
+  cite: FC<MotionBoxPropsOf<'cite'>>
+  circle: FC<MotionBoxPropsOf<'circle'>>
+  code: FC<MotionBoxPropsOf<'code'>>
+  dd: FC<MotionBoxPropsOf<'dd'>>
+  div: FC<MotionBoxPropsOf<'div'>>
+  dl: FC<MotionBoxPropsOf<'dl'>>
+  dt: FC<MotionBoxPropsOf<'dt'>>
+  fieldset: FC<MotionBoxPropsOf<'fieldset'>>
+  figcaption: FC<MotionBoxPropsOf<'figcaption'>>
+  figure: FC<MotionBoxPropsOf<'figure'>>
+  footer: FC<MotionBoxPropsOf<'footer'>>
+  form: FC<MotionBoxPropsOf<'form'>>
+  h1: FC<MotionBoxPropsOf<'h1'>>
+  h2: FC<MotionBoxPropsOf<'h2'>>
+  h3: FC<MotionBoxPropsOf<'h3'>>
+  h4: FC<MotionBoxPropsOf<'h4'>>
+  h5: FC<MotionBoxPropsOf<'h5'>>
+  h6: FC<MotionBoxPropsOf<'h6'>>
+  header: FC<MotionBoxPropsOf<'header'>>
+  hr: FC<MotionBoxPropsOf<'hr'>>
+  img: FC<MotionBoxPropsOf<'img'>>
+  input: FC<MotionBoxPropsOf<'input'>>
+  kbd: FC<MotionBoxPropsOf<'kbd'>>
+  label: FC<MotionBoxPropsOf<'label'>>
+  li: FC<MotionBoxPropsOf<'li'>>
+  main: FC<MotionBoxPropsOf<'main'>>
+  mark: FC<MotionBoxPropsOf<'mark'>>
+  nav: FC<MotionBoxPropsOf<'nav'>>
+  ol: FC<MotionBoxPropsOf<'ol'>>
+  p: FC<MotionBoxPropsOf<'p'>>
+  path: FC<MotionBoxPropsOf<'path'>>
+  pre: FC<MotionBoxPropsOf<'pre'>>
+  q: FC<MotionBoxPropsOf<'q'>>
+  rect: FC<MotionBoxPropsOf<'rect'>>
+  s: FC<MotionBoxPropsOf<'s'>>
+  svg: FC<MotionBoxPropsOf<'svg'>>
+  section: FC<MotionBoxPropsOf<'section'>>
+  select: FC<MotionBoxPropsOf<'select'>>
+  strong: FC<MotionBoxPropsOf<'strong'>>
+  small: FC<MotionBoxPropsOf<'small'>>
+  span: FC<MotionBoxPropsOf<'span'>>
+  sub: FC<MotionBoxPropsOf<'sub'>>
+  sup: FC<MotionBoxPropsOf<'sup'>>
+  table: FC<MotionBoxPropsOf<'table'>>
+  tbody: FC<MotionBoxPropsOf<'tbody'>>
+  td: FC<MotionBoxPropsOf<'td'>>
+  textarea: FC<MotionBoxPropsOf<'textarea'>>
+  tfoot: FC<MotionBoxPropsOf<'tfoot'>>
+  th: FC<MotionBoxPropsOf<'th'>>
+  thead: FC<MotionBoxPropsOf<'thead'>>
+  tr: FC<MotionBoxPropsOf<'tr'>>
+  ul: FC<MotionBoxPropsOf<'ul'>>
+}
+
 export const klee: Components = Object.freeze<Components>(
   domElements.reduce((acc, tag) => {
     const Component = styled(Box)()
@@ -142,4 +205,19 @@ export const klee: Components = Object.freeze<Components>(
       [tag]: Component,
     }
   }, {} as Components),
+)
+
+export const kmotion: MotionComponents = Object.freeze<MotionComponents>(
+  domElements.reduce((acc, tag) => {
+    const Component = motion(Box)
+    Component.displayName = `kmotion.${tag}`
+    Component.defaultProps = {
+      as: tag,
+    }
+
+    return {
+      ...acc,
+      [tag]: Component,
+    }
+  }, {} as MotionComponents),
 )
