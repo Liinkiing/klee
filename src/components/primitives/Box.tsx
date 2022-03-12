@@ -335,7 +335,7 @@ export type MotionBoxPropsOf<C extends keyof JSX.IntrinsicElements | React.JSXEl
   BoxProps,
   keyof Omit<PropsOf<C>, 'css'> | keyof MotionProps
 > &
-  Omit<PropsOf<C>, 'css'> &
+  Omit<PropsOf<C>, 'css' | keyof MotionProps> &
   MotionProps
 
 export interface BoxOwnProps<E extends ElementType = ElementType> extends BoxProps {
