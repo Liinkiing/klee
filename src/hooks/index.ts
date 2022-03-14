@@ -1,4 +1,5 @@
 export * from './theme'
+export * from './breakpoints'
 export * from './useColorMode'
 export * from './useTheme'
 export * from './useZodForm'

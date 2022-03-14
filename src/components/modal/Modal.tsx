@@ -6,7 +6,7 @@ import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } f
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 
 import { useColorModeValue } from '../../hooks'
-import useIsMobile from '../../hooks/useIsMobile'
+import { useIsMobile } from '../../hooks'
 import { KleeRadius, KleeShadow, KleeZIndex } from '../../styles/theme'
 import { ease, LAYOUT_TRANSITION_SPRING } from '../../utils/motion'
 import { Box, BoxProps } from '../primitives'

@@ -1,7 +1,7 @@
 /**
  * Enums
  */
-export { KleeBorder, KleeRadius, KleeShadow, KleeZIndex } from './styles/theme'
+export { KleeBorder, KleeRadius, KleeShadow, KleeZIndex, KleeBreakpoint } from './styles/theme'
 export { KleeHeadingSize } from './components/typography/Heading'
 export {
   KleeFontWeight,

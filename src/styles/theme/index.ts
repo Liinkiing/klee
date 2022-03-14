@@ -10,12 +10,14 @@ import typography, { FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LETTER_SPACINGS, L
 
 // Some values comes from chakra-ui, a great UI library!
 
-export interface Breakpoints {
-  tablet: string
-  desktop: string
-  wide: string
-  ultraWide: string
+export enum KleeBreakpoint {
+  Tablet = 'tablet',
+  Desktop = 'desktop',
+  Wide = 'wide',
+  UltraWide = 'ultraWide',
 }
+
+export type Breakpoints = Record<KleeBreakpoint, string>
 
 export interface Typography {
   letterSpacings: typeof LETTER_SPACINGS
