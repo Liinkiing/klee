@@ -1,6 +1,6 @@
 import Tippy, { TippyProps } from '@tippyjs/react/headless'
 import * as React from 'react'
-import { FC, ReactElement, useMemo } from 'react'
+import { FC, ReactElement, ReactNode, useMemo } from 'react'
 import { MenuInitialState, useMenuState, MenuProps as ReakitMenuProps } from 'reakit/Menu'
 
 import { KleeZIndex, Z_INDICES } from '../../styles/theme'
@@ -22,6 +22,7 @@ export interface MenuProps
     Partial<Pick<TippyProps, 'placement' | 'offset'>>,
     Partial<Pick<MenuInitialState, 'loop'>>,
     Partial<Pick<ReakitMenuProps, 'hideOnClickOutside'>> {
+  readonly children: ReactNode
   /**
    * When enabled, the menu will auto close itself after you've selected a choice. It can also be enabled on a
    * per-instance of a `Menu.ListItem`

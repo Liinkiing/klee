@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import type { FC } from 'react'
 import { useMemo, useState } from 'react'
 
@@ -8,6 +8,7 @@ import { ColorModeContext } from './context'
 const BODY_CLASS = 'klee-mode'
 
 interface Props {
+  readonly children: ReactNode
   readonly defaultColorMode?: AppColorScheme
 }
 

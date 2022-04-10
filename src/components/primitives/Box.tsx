@@ -5,7 +5,7 @@ import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import merge from 'deepmerge'
 import { MotionProps } from 'framer-motion'
-import type { ElementType, HTMLAttributes, RefAttributes } from 'react'
+import type { ElementType, HTMLAttributes, ReactNode, RefAttributes } from 'react'
 import * as React from 'react'
 import {
   BackgroundImageProps,
@@ -303,6 +303,7 @@ type ModifiedStyledSystemProps = AppSizeProps &
   AppLineHeight
 
 interface CustomBoxProps {
+  readonly children?: ReactNode
   readonly uppercase?: boolean
   readonly disableFocusStyles?: boolean
   readonly css?: ((theme: Theme) => any) | ReturnType<typeof css> | Record<string, unknown>

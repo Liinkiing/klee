@@ -2,6 +2,7 @@ import { FC, ReactElement, ReactNode } from 'react'
 
 export interface ConditionalWrapperProps {
   readonly when: boolean
+  readonly children: ReactNode
   readonly wrapper: (children: ReactNode) => ReactNode
 }
 
