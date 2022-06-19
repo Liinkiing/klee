@@ -3,7 +3,7 @@
 /** @jsx jsx */
 import { jsx, ThemeProvider } from '@emotion/react'
 import merge from 'deepmerge'
-import { FC, useMemo } from 'react'
+import { FC, ReactNode, useMemo } from 'react'
 import { Provider } from 'reakit/Provider'
 import invariant from 'tiny-invariant'
 
@@ -17,12 +17,13 @@ import GlobalStyles from './styles/GlobalStyles'
 import { KleeTheme, kleeTheme } from './styles/theme'
 
 interface Props {
+  readonly children: ReactNode
   readonly resetCSS?: boolean
   readonly defaultColorMode?: AppColorScheme
   readonly theme?: KleeTheme
 }
 
-type InnerProps = Required<Pick<Props, 'resetCSS' | 'theme'>>
+type InnerProps = Required<Pick<Props, 'resetCSS' | 'theme' | 'children'>>
 
 const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme, children }) => {
   const { mode } = useColorMode()

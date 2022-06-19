@@ -51,6 +51,10 @@ const EXLUDED_DOCGEN_PROPS = [
   'ref',
   '_invalid',
   'invalidFocusBorderColor',
+  '_light',
+  '_dark',
+  '_focusVisible',
+  'inset',
 ]
 
 const ALLOWED_DOCGEN_NODE_MODULES = ['tippy.js']

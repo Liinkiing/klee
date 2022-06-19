@@ -14,7 +14,7 @@ import { BoxProps } from '../primitives/Box'
 import { useMenu } from './Menu.context'
 import { CommonProps } from './common'
 
-export type MenuListProps = Omit<BoxProps, 'children'> &
+export type MenuListProps = BoxProps &
   CommonProps &
   (
     | {

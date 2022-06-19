@@ -19,7 +19,6 @@ const meta: Meta<DrawerProps> = {
   argTypes: {
     overlay: { table: { disable: true }, control: { disable: true } },
     disclosure: { table: { disable: true }, control: { disable: true } },
-    content: { table: { disable: true }, control: { disable: true } },
   },
   args: {
     showOnCreate: true,

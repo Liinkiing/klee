@@ -1,6 +1,6 @@
 import * as React from 'react'
 import 'react-app-polyfill/ie11'
-import * as ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import { Button, Flex, KleeProvider } from '../.'
 
@@ -17,4 +17,6 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const root = createRoot(document.getElementById('root')!)
+
+root.render(<App />)
