@@ -19,13 +19,14 @@ import { KleeTheme, kleeTheme } from './styles/theme'
 interface Props {
   readonly children: ReactNode
   readonly resetCSS?: boolean
+  readonly useNunitoFont?: boolean
   readonly defaultColorMode?: AppColorScheme
   readonly theme?: KleeTheme
 }
 
-type InnerProps = Required<Pick<Props, 'resetCSS' | 'theme' | 'children'>>
+type InnerProps = Required<Pick<Props, 'resetCSS' | 'theme' | 'children' | 'useNunitoFont'>>
 
-const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme, children }) => {
+const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, useNunitoFont = true, theme = kleeTheme, children }) => {
   const { mode } = useColorMode()
   const appTheme = useMemo(() => {
     return merge.all([
@@ -40,7 +41,7 @@ const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme,
     <ThemeProvider theme={appTheme}>
       {resetCSS && <CSSReset />}
       <GlobalStyles />
-      <GlobalFonts />
+      {useNunitoFont && <GlobalFonts />}
       <ToastsContainer />
       {children}
     </ThemeProvider>
@@ -49,6 +50,7 @@ const KleeProviderInner: FC<InnerProps> = ({ resetCSS = true, theme = kleeTheme,
 
 export const KleeProvider: FC<Props> = ({
   resetCSS = true,
+  useNunitoFont = true,
   theme = kleeTheme,
   defaultColorMode = 'light',
   children,
@@ -60,7 +62,7 @@ export const KleeProvider: FC<Props> = ({
   return (
     <Provider>
       <ColorModeProvider defaultColorMode={defaultColorMode}>
-        <KleeProviderInner resetCSS={resetCSS} theme={theme}>
+        <KleeProviderInner resetCSS={resetCSS} theme={theme} useNunitoFont={useNunitoFont}>
           {children}
         </KleeProviderInner>
       </ColorModeProvider>
