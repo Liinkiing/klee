@@ -306,7 +306,7 @@ interface CustomBoxProps {
   readonly children?: ReactNode
   readonly uppercase?: boolean
   readonly disableFocusStyles?: boolean
-  readonly css?: ((theme: Theme) => any) | ReturnType<typeof css> | Record<string, unknown>
+  readonly css?: ((theme: Theme) => any) | ReturnType<typeof css> | any
   readonly ref?: any
 }
 

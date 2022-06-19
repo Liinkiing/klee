@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 
 /** @jsx jsx */
-import { jsx } from '@emotion/react'
+import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import ColorHash from 'color-hash-ts'
 import { FC, Fragment } from 'react'
@@ -123,7 +123,9 @@ export const Avatar: FC<AvatarProps> = ({
           as="img"
           width="100%"
           height="100%"
-          css={{ objectFit: 'cover' }}
+          css={css({
+            objectFit: 'cover',
+          })}
           src={src}
           alt={alt ?? name}
           title={alt ?? name}

@@ -8,7 +8,9 @@ import { Modal } from '../modal'
 import Text from '../typography/Text'
 import Menu, { MenuProps } from './Menu'
 
-const meta: Meta<MenuProps> = {
+type StoryMenuProps = MenuProps & { menuList: ReactNode }
+
+const meta: Meta<StoryMenuProps> = {
   title: 'Library/Menu',
   component: Menu,
   argTypes: {
@@ -24,7 +26,7 @@ const meta: Meta<MenuProps> = {
 
 export default meta
 
-const Template: Story<MenuProps & { menuList: ReactNode }> = ({ menuList, ...args }) => (
+const Template: Story<StoryMenuProps> = ({ menuList, ...args }) => (
   <Menu {...args}>
     <Menu.Button as={Button} variant="primary">
       Menu

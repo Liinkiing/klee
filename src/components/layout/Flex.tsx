@@ -7,14 +7,14 @@ import { cleanChildren, hasProps } from '../../utils/jsx'
 import Box, { BoxProps, PolymorphicComponent } from '../primitives/Box'
 
 export interface FlexOptions {
-  align?: FlexboxProps['alignItems']
-  justify?: FlexboxProps['justifyContent']
-  wrap?: FlexboxProps['flexWrap']
-  direction?: FlexboxProps['flexDirection']
-  basis?: FlexboxProps['flexBasis']
-  grow?: FlexboxProps['flexGrow']
-  shrink?: FlexboxProps['flexShrink']
-  spacing?: number | string
+  readonly align?: FlexboxProps['alignItems']
+  readonly justify?: FlexboxProps['justifyContent']
+  readonly wrap?: FlexboxProps['flexWrap']
+  readonly direction?: FlexboxProps['flexDirection']
+  readonly basis?: FlexboxProps['flexBasis']
+  readonly grow?: FlexboxProps['flexGrow']
+  readonly shrink?: FlexboxProps['flexShrink']
+  readonly spacing?: number | string
 }
 
 export type FlexProps = Omit<

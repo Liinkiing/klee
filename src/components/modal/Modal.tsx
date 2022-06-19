@@ -111,6 +111,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
 
   return (
     <Provider context={context}>
+      {/* @ts-ignore */}
       <DialogDisclosure {...dialog} ref={disclosure.ref} {...disclosure.props}>
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
       </DialogDisclosure>

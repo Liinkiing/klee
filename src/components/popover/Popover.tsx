@@ -110,6 +110,7 @@ export const Popover: FC<PopoverProps> & SubComponents = ({
   const computedBg = bg ?? backgroundColor ?? 'popover.background'
   return (
     <Provider context={context}>
+      {/* @ts-ignore */}
       <PopoverDisclosure {...popover} {...popoverProps} ref={disclosure.ref} {...disclosure.props}>
         {disclosureProps => cloneElement(disclosure, disclosureProps)}
       </PopoverDisclosure>

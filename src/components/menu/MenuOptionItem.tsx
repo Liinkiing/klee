@@ -42,7 +42,7 @@ const MenuOptionItem = ({ children, value, ...props }: Props) => {
             pointerEvents: 'none',
             mt: '0 !important',
             mr: `${themeGet('space.2')({ theme })} !important`,
-          }) as any
+          })
         }
         type={type}
       />
