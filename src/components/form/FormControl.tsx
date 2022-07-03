@@ -11,6 +11,7 @@ import { FormControlContext, useFormControl } from './FormControl.context'
 
 export interface FormControlProps extends Omit<FlexProps, 'id'> {
   readonly id: string
+  readonly hideErrorMessage?: boolean
 }
 
 export interface FormControlLabelProps extends BoxPropsOf<'label'> {}
@@ -48,7 +49,7 @@ export const FormControlHelperText: FC<FormControlHelperTextProps> = ({ ...props
 
 FormControlHelperText.displayName = 'FormControl.HelperText'
 
-export const FormControl: FC<FormControlProps> & SubComponents = ({ children, id, ...props }) => {
+export const FormControl: FC<FormControlProps> & SubComponents = ({ children, id, hideErrorMessage = false, ...props }) => {
   const hasHelperText = useMemo<boolean>(
     () => !!cleanChildren(children).find((c: any) => c.type === FormControlHelperText),
     [children],
@@ -57,7 +58,7 @@ export const FormControl: FC<FormControlProps> & SubComponents = ({ children, id
     <FormControlContext.Provider value={{ id, helperId: hasHelperText ? `${id}-helptext` : undefined }}>
       <Flex width="100%" direction="column" spacing={2} role="group" {...props}>
         {children}
-        <ErrorMessage name={id} />
+        {!hideErrorMessage ? <ErrorMessage name={id} /> : null}
       </Flex>
     </FormControlContext.Provider>
   )
