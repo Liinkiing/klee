@@ -18,7 +18,7 @@ import { useModal } from './context'
 export interface ModalHeaderProps extends FlexProps {}
 
 const ModalHeader: FC<ModalHeaderProps> = ({ children, ...rest }) => {
-  const { hide, hideCloseButton } = useModal()
+  const { hide, preventClose, hideCloseButton } = useModal()
   return (
     <Flex as="header" p={4} pb={0} align="center" {...rest}>
       <Box
@@ -32,7 +32,7 @@ const ModalHeader: FC<ModalHeaderProps> = ({ children, ...rest }) => {
       >
         {typeof children === 'string' ? <Heading as="h2">{children}</Heading> : children}
       </Box>
-      {!hideCloseButton && <IconButton variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
+      {!hideCloseButton && <IconButton disabled={preventClose} variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
     </Flex>
   )
 }

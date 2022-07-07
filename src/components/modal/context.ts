@@ -5,6 +5,7 @@ export interface Context {
   readonly show: () => void
   readonly toggle: () => void
   readonly hideCloseButton?: boolean
+  readonly preventClose?: boolean
   readonly visible: boolean
 }
 
@@ -12,6 +13,7 @@ export const ModalContext = React.createContext<Context>({
   hide: () => {},
   show: () => {},
   toggle: () => {},
+  preventClose: false,
   visible: false,
   hideCloseButton: false,
 })

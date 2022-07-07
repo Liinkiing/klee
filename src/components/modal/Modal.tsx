@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { AnimatePresence, motion, MotionProps } from 'framer-motion'
 import * as React from 'react'
-import { FC, FunctionComponentElement, ReactNode, useEffect, useMemo, useRef } from 'react'
+import { FC, FunctionComponentElement, ReactNode, useCallback, useEffect, useMemo, useRef } from 'react'
 import { Dialog, DialogDisclosure, DialogProps, useDialogState } from 'reakit/Dialog'
 
 import { useColorModeValue } from '../../hooks'
@@ -30,6 +30,7 @@ export interface ModalProps
   readonly children: RenderProps | ReactNode
   readonly ariaLabel: string
   readonly isOpen?: boolean
+  readonly preventClose?: boolean
   readonly onOpen?: () => void
   readonly onClose?: () => void
 }
@@ -61,6 +62,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
   onClose,
   overlay,
   isOpen,
+  preventClose = false,
   scrollBehavior = 'inside',
   hideCloseButton = false,
   hideOnClickOutside = true,
@@ -76,15 +78,22 @@ const Modal: FC<ModalProps> & SubComponents = ({
   const isMobile = useIsMobile()
   const $container = useRef()
   const $scrollBox = useRef<HTMLElement>()
+  const dialogHide = useCallback(() => {
+    if (!preventClose) {
+      dialog.hide()
+    }
+  }, [dialog.hide, preventClose])
+  
   const context = useMemo(
     () => ({
-      hide: dialog.hide,
+      hide: dialogHide,
       show: dialog.show,
       toggle: dialog.toggle,
       visible: dialog.visible,
+      preventClose,
       hideCloseButton,
     }),
-    [dialog, hideCloseButton],
+    [dialog, hideCloseButton, preventClose],
   )
   const overlayBackground = useColorModeValue('rgba(0,0,0,0.5)', 'rgba(255,255,255,0.1)')
   useEffect(() => {
@@ -116,7 +125,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
     if (isOpen === true) {
       dialog.show()
     } else if (isOpen === false) {
-      dialog.hide()
+      dialogHide()
     }
   }, [isOpen])
 
@@ -129,8 +138,8 @@ const Modal: FC<ModalProps> & SubComponents = ({
       <Dialog
         {...dialog}
         aria-label={ariaLabel}
-        hideOnClickOutside={hideOnClickOutside}
-        hideOnEsc={hideOnEsc}
+        hideOnClickOutside={preventClose ? false : hideOnClickOutside}
+        hideOnEsc={preventClose ? false : hideOnEsc}
         preventBodyScroll={preventBodyScroll}
       >
         <AnimatePresence initial={!showOnCreate}>
@@ -156,7 +165,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
               ref={$container as any}
               onClick={(e: MouseEvent) => {
                 if (e.target === $container.current && hideOnClickOutside) {
-                  dialog.hide()
+                  dialogHide()
                 }
               }}
             >
