@@ -26,9 +26,10 @@ export interface ModalProps
   readonly overlay?: Omit<Partial<BoxProps>, keyof MotionProps> & Partial<MotionProps>
   readonly hideCloseButton?: boolean
   readonly scrollBehavior?: 'inside' | 'outside'
-  readonly disclosure: FunctionComponentElement<{}>
+  readonly disclosure?: FunctionComponentElement<{}>
   readonly children: RenderProps | ReactNode
   readonly ariaLabel: string
+  readonly isOpen?: boolean
   readonly onOpen?: () => void
   readonly onClose?: () => void
 }
@@ -59,6 +60,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
   onOpen,
   onClose,
   overlay,
+  isOpen,
   scrollBehavior = 'inside',
   hideCloseButton = false,
   hideOnClickOutside = true,
@@ -68,7 +70,9 @@ const Modal: FC<ModalProps> & SubComponents = ({
   ...props
 }) => {
   const firstMount = useRef(true)
-  const dialog = useDialogState({ animated: TRANSITION_DURATION * 1000, visible: showOnCreate })
+  const isControlled = typeof isOpen === 'boolean'
+  const visible = isControlled ? isOpen : showOnCreate
+  const dialog = useDialogState({ animated: TRANSITION_DURATION * 1000, visible })
   const isMobile = useIsMobile()
   const $container = useRef()
   const $scrollBox = useRef<HTMLElement>()
@@ -108,13 +112,20 @@ const Modal: FC<ModalProps> & SubComponents = ({
       }
     }
   }, [onOpen, onClose, dialog.visible])
+  useEffect(() => {
+    if (isOpen === true) {
+      dialog.show()
+    } else if (isOpen === false) {
+      dialog.hide()
+    }
+  }, [isOpen])
 
   return (
     <Provider context={context}>
       {/* @ts-ignore */}
-      <DialogDisclosure {...dialog} ref={disclosure.ref} {...disclosure.props}>
+      {disclosure ? <DialogDisclosure {...dialog} ref={disclosure.ref} {...disclosure.props}>
         {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
-      </DialogDisclosure>
+      </DialogDisclosure> : null}
       <Dialog
         {...dialog}
         aria-label={ariaLabel}
