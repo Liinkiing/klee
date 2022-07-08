@@ -32,7 +32,7 @@ const ModalHeader: FC<ModalHeaderProps> = ({ children, ...rest }) => {
       >
         {typeof children === 'string' ? <Heading as="h2">{children}</Heading> : children}
       </Box>
-      {!hideCloseButton && <IconButton disabled={preventClose} variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
+      {!hideCloseButton && <IconButton type="button" disabled={preventClose} variant="transparent" icon={<Icon as={FiX} />} onClick={hide} />}
     </Flex>
   )
 }
