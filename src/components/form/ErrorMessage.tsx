@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import get from 'lodash/get'
 import { AnimatePresence, AnimationProps, motion, MotionProps } from 'framer-motion'
 import React, { FC } from 'react'
 import { useFormContext } from 'react-hook-form'
@@ -50,9 +51,10 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
   if (!name) return null
   if (!formContext || !formContext.formState) return null
   const { errors } = formContext.formState
+  const hasFieldError = !!get(errors, `${name}.message`)
   return (
     <AnimatePresence>
-      {errors[name] && errors[name].message && (
+      {hasFieldError && (
         <ErrorMessageInner
           {...COMMON_PROPS}
           key="error-message"
@@ -63,7 +65,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
           {...props}
         >
           <ErrorIcon />
-          {errors[name].message}
+          {get(errors, `${name}.message`)}
         </ErrorMessageInner>
       )}
     </AnimatePresence>

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import get from 'lodash/get'
 import React, { ComponentProps, forwardRef, PropsWithoutRef } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { variant } from 'styled-system'
@@ -100,7 +101,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       } = formContext
       errors = formErrors
     }
-    const hasError = errors && name && !!errors[name]
+    const hasError = !!get(errors, `${name}.message`)
     return (
       <InputInner
         as="input"

@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { FiGlobe, FiMail, FiUser } from 'react-icons/fi'
+import { FiGlobe, FiMail, FiPhone, FiUser } from 'react-icons/fi'
 import { z } from 'zod'
 
 import { useZodForm } from '../../hooks'
@@ -27,6 +27,11 @@ const schema = z.object({
   username: z.string().min(6),
   email: z.string().email('The email you entered is invalid'),
   website: z.string().regex(WEBSITE_REGEX, 'Please enter a correct url'),
+  contact: z.object({
+    telephone: z
+      .string()
+      .regex(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/, 'Veuillez entrer un numéro de téléphone valide'),
+  })
 })
 
 export const Default = () => {
@@ -119,6 +124,15 @@ export const WithZodValidation = () => {
                 <Icon as={FiGlobe} />
               </InputGroup.LeftElement>
               <Input placeholder="https://yourwebsite.com" {...form.register('website')} />
+            </InputGroup>
+          </FormControl>
+          <FormControl minHeight="102px" id="contact.telephone">
+            <FormControl.Label>Telephone</FormControl.Label>
+            <InputGroup>
+              <InputGroup.LeftElement>
+                <Icon as={FiPhone} />
+              </InputGroup.LeftElement>
+              <Input {...form.register('contact.telephone')} />
             </InputGroup>
           </FormControl>
         </Flex>
