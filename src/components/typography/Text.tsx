@@ -5,13 +5,13 @@ import { jsxInnerText } from '../../utils/jsx'
 import Box, { BoxOwnProps, PolymorphicComponent } from '../primitives/Box'
 
 type Props = BoxOwnProps & {
-  readonly truncate?: number
+  readonly truncate?: number | boolean
 }
 
-const Text = forwardRef<HTMLElement, Props>(({ children, truncate, ...props }, ref) => {
+const Text = forwardRef<HTMLElement, Props>(({ children, truncate, sx, ...props }, ref) => {
   let content = children
   const innerText = jsxInnerText(content)
-  if (truncate && innerText.length > truncate) {
+  if (truncate && typeof truncate === 'number' && innerText.length > truncate) {
     content = `${innerText.slice(0, truncate)}…`
   }
   return (
@@ -22,6 +22,16 @@ const Text = forwardRef<HTMLElement, Props>(({ children, truncate, ...props }, r
       fontWeight={KleeFontWeight.Semibold}
       lineHeight={KleeLineHeight.Base}
       {...(truncate ? { title: innerText } : {})}
+      {...(typeof truncate === 'boolean' && truncate
+        ? {
+            sx: {
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              ...sx,
+            },
+          }
+        : { sx })}
       {...props}
     >
       {content}
