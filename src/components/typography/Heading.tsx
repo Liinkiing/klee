@@ -26,16 +26,17 @@ const sizes: { [Key in Size]: ResponsiveValue<string | KleeFontSize> } = {
 type Props = Omit<BoxOwnProps, 'size' | 'as'> & {
   readonly as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   readonly size?: KleeHeadingSize | Size
-  readonly truncate?: number
+  readonly truncate?: number | boolean
 }
 
 const Heading: FC<Props> = forwardRef<HTMLHeadingElement, Props>(
-  ({ children, truncate, size = 'xl', as = 'h2', ...rest }, ref) => {
+  ({ children, truncate, size = 'xl', as = 'h2', sx, ...rest }, ref) => {
     let content = children
     const innerText = jsxInnerText(content)
-    if (truncate && innerText.length > truncate) {
+    if (truncate && typeof truncate === 'number' && innerText.length > truncate) {
       content = `${innerText.slice(0, truncate)}…`
     }
+
     return (
       <Box
         ref={ref}
@@ -44,6 +45,17 @@ const Heading: FC<Props> = forwardRef<HTMLHeadingElement, Props>(
         fontFamily="heading"
         as={as}
         fontSize={sizes[size]}
+        {...(truncate ? { title: innerText } : {})}
+        {...(typeof truncate === 'boolean' && truncate
+          ? {
+              sx: {
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                ...sx,
+              },
+            }
+          : { sx })}
         {...rest}
       >
         {content}
