@@ -41,14 +41,10 @@ export const Tabs: FC<TabsProps> & SubComponents = ({
     selectedId,
     orientation,
   })
-  const context = useMemo<Context>(() => ({ tabs, colorScheme, variant, stretch, align, orientation }), [
-    tabs,
-    align,
-    stretch,
-    colorScheme,
-    variant,
-    orientation,
-  ])
+  const context = useMemo<Context>(
+    () => ({ tabs, colorScheme, variant, stretch, align, orientation }),
+    [tabs, align, stretch, colorScheme, variant, orientation],
+  )
 
   useEffect(() => {
     if (tabs.selectedId) {

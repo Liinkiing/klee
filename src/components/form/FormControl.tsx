@@ -49,7 +49,12 @@ export const FormControlHelperText: FC<FormControlHelperTextProps> = ({ ...props
 
 FormControlHelperText.displayName = 'FormControl.HelperText'
 
-export const FormControl: FC<FormControlProps> & SubComponents = ({ children, id, hideErrorMessage = false, ...props }) => {
+export const FormControl: FC<FormControlProps> & SubComponents = ({
+  children,
+  id,
+  hideErrorMessage = false,
+  ...props
+}) => {
   const hasHelperText = useMemo<boolean>(
     () => !!cleanChildren(children).find((c: any) => c.type === FormControlHelperText),
     [children],

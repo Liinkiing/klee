@@ -35,4 +35,4 @@ export const List = forwardRef<HTMLElement, ListProps>(
 List.displayName = 'List'
 ;(List as any).Item = ListItem
 
-export default (List as unknown) as FC<ListProps> & SubComponents
+export default List as unknown as FC<ListProps> & SubComponents

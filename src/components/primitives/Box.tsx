@@ -5,7 +5,7 @@ import shouldForwardProp from '@styled-system/should-forward-prop'
 import * as CSS from 'csstype'
 import merge from 'deepmerge'
 import { MotionProps } from 'framer-motion'
-import type { ElementType, HTMLAttributes, ReactNode, RefAttributes } from 'react'
+import { ElementType, HTMLAttributes, ReactNode, RefAttributes } from 'react'
 import * as React from 'react'
 import {
   BackgroundImageProps,
@@ -40,7 +40,7 @@ import {
   ThemeSpacingValues,
   ThemeZIndicesValues,
 } from '../../styles/theme'
-import type {
+import {
   ThemeFontFamiliesValue,
   ThemeFontSizesValues,
   ThemeFontWeightsValues,
@@ -361,56 +361,57 @@ export const Box = styled('div', {
     textTransform: props.uppercase ? 'uppercase' : undefined,
     ...bgClipTransform(props.bgClip ?? props.backgroundClip),
   }),
-  props => ({
-    sx,
-    _dark,
-    _light,
-    _hover,
-    _active,
-    _focus,
-    _focusVisible,
-    _disabled,
-    _selected,
-    _invalid,
-    disableFocusStyles,
-    transform,
-    enableGpuAcceleration,
-  }) =>
-    css(
-      merge.all([
-        {
-          ...(transform
-            ? {
-                transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
-              }
-            : {}),
-          ...(_dark && props.theme.currentMode === 'dark' ? { ..._dark } : {}),
-          ...(_light && props.theme.currentMode === 'light' ? { ..._light } : {}),
-          ...(_hover ? { '&:hover': _hover } : {}),
-          ...(_active ? { '&:active': _active } : {}),
-          ...(_selected ? { '&[aria-selected="true"]': _selected } : {}),
-          ...(_invalid ? { '&[aria-invalid="true"]': _invalid } : {}),
-          ...(disableFocusStyles
-            ? merge.all([
-                _focus ? { '&:focus': _focus } : {},
-                { '&:focus': { outline: 'none !important', boxShadow: 'none !important' } },
-              ])
-            : _focus
-            ? { '&:focus': _focus }
-            : {}),
-          ...(disableFocusStyles
-            ? merge.all([
-                _focusVisible ? { '&:focus-visible': _focusVisible } : {},
-                { '&:focus-visible': { outline: 'none !important', boxShadow: 'none !important' } },
-              ])
-            : _focusVisible
-            ? { '&:focus-visible': _focusVisible }
-            : {}),
-          ...(_disabled ? { '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled } : {}),
-        },
-        sx ?? {},
-      ]),
-    ),
+  props =>
+    ({
+      sx,
+      _dark,
+      _light,
+      _hover,
+      _active,
+      _focus,
+      _focusVisible,
+      _disabled,
+      _selected,
+      _invalid,
+      disableFocusStyles,
+      transform,
+      enableGpuAcceleration,
+    }) =>
+      css(
+        merge.all([
+          {
+            ...(transform
+              ? {
+                  transform: enableGpuAcceleration ? transformGpuCssWithVariables : transformCssWithVariables,
+                }
+              : {}),
+            ...(_dark && props.theme.currentMode === 'dark' ? { ..._dark } : {}),
+            ...(_light && props.theme.currentMode === 'light' ? { ..._light } : {}),
+            ...(_hover ? { '&:hover': _hover } : {}),
+            ...(_active ? { '&:active': _active } : {}),
+            ...(_selected ? { '&[aria-selected="true"]': _selected } : {}),
+            ...(_invalid ? { '&[aria-invalid="true"]': _invalid } : {}),
+            ...(disableFocusStyles
+              ? merge.all([
+                  _focus ? { '&:focus': _focus } : {},
+                  { '&:focus': { outline: 'none !important', boxShadow: 'none !important' } },
+                ])
+              : _focus
+              ? { '&:focus': _focus }
+              : {}),
+            ...(disableFocusStyles
+              ? merge.all([
+                  _focusVisible ? { '&:focus-visible': _focusVisible } : {},
+                  { '&:focus-visible': { outline: 'none !important', boxShadow: 'none !important' } },
+                ])
+              : _focusVisible
+              ? { '&:focus-visible': _focusVisible }
+              : {}),
+            ...(_disabled ? { '&:disabled,&[disabled],&[aria-disabled="true"]': _disabled } : {}),
+          },
+          sx ?? {},
+        ]),
+      ),
   ({ _variants }) => (Array.isArray(_variants) ? _variants.map(v => v) : _variants ?? {}),
   compose(
     system({

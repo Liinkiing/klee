@@ -63,7 +63,7 @@ export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
     ...rest
   } = props
   const theme = useTheme()
-  const spacing = (themeGet(`space.${userSpacing}`, userSpacing ?? 0)({ theme }) as unknown) as number
+  const spacing = themeGet(`space.${userSpacing}`, userSpacing ?? 0)({ theme }) as unknown as number
   const styles = {
     ...(spacing
       ? {

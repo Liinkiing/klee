@@ -51,12 +51,10 @@ const Menu: FC<MenuProps> & SubComponents = ({
   const button = React.Children.toArray(children).find((c: any) => c.type === MenuButton) as ReactElement
   const list = React.Children.toArray(children).find((c: any) => c.type === MenuList) as ReactElement
   const menu = useMenuState({ animated: MENU_TRANSITION_DURATION * 1000, loop, visible: showOnCreate })
-  const context = useMemo<Context>(() => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside, placement }), [
-    menu,
-    closeOnSelect,
-    hideOnClickOutside,
-    placement,
-  ])
+  const context = useMemo<Context>(
+    () => ({ reakitMenu: menu, closeOnSelect, hideOnClickOutside, placement }),
+    [menu, closeOnSelect, hideOnClickOutside, placement],
+  )
   return (
     <MenuContext.Provider value={context}>
       <Box position="relative" display="inline-block">

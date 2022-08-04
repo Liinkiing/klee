@@ -31,7 +31,7 @@ const schema = z.object({
     telephone: z
       .string()
       .regex(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/, 'Veuillez entrer un numéro de téléphone valide'),
-  })
+  }),
 })
 
 export const Default = () => {

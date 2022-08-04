@@ -83,7 +83,7 @@ const Modal: FC<ModalProps> & SubComponents = ({
       dialog.hide()
     }
   }, [dialog.hide, preventClose])
-  
+
   const context = useMemo(
     () => ({
       hide: dialogHide,
@@ -132,9 +132,11 @@ const Modal: FC<ModalProps> & SubComponents = ({
   return (
     <Provider context={context}>
       {/* @ts-ignore */}
-      {disclosure ? <DialogDisclosure {...dialog} ref={disclosure.ref} {...disclosure.props}>
-        {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
-      </DialogDisclosure> : null}
+      {disclosure ? (
+        <DialogDisclosure {...dialog} ref={disclosure.ref} {...disclosure.props}>
+          {disclosureProps => React.cloneElement(disclosure, disclosureProps)}
+        </DialogDisclosure>
+      ) : null}
       <Dialog
         {...dialog}
         aria-label={ariaLabel}
