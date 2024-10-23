@@ -11,13 +11,13 @@ jobs:
         node: ['14.x']
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Cache yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-dependencies
         with:
           path: node_modules
@@ -36,15 +36,15 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Restore yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-dependencies
         with:
           path: node_modules
@@ -52,7 +52,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Publish to Chromatic
-        uses: chromaui/action@v1
+        uses: chromaui/action@v11
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
@@ -65,13 +65,13 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Restore yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-dependencies
         with:
           path: node_modules
@@ -89,13 +89,13 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Restore yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-dependencies
         with:
           path: node_modules
@@ -113,13 +113,13 @@ jobs:
     needs: install-cache
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Restore yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-dependencies
         with:
           path: node_modules
@@ -137,13 +137,13 @@ jobs:
     needs: [lint, typecheck, test]
     steps:
       - name: Checkout Commit
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
       - name: Restore yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: cache-dependencies
         with:
           path: node_modules
